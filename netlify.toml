@@ -1,0 +1,10 @@
+# netlify.toml
+# Serve password.html as the homepage
+
+[build]
+  publish = "."
+
+[[redirects]]
+  from = "/"
+  to   = "/password.html"
+  status = 200
