@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Category Intelligence Dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#F7F8FA;--sf:#FFF;--sf2:#F0F2F5;--bd:#E4E7EC;--bd2:#CBD2DA;
+  --tx:#111827;--tx2:#4B5563;--mu:#9CA3AF;
+  --bl:#2563EB;--bl2:#EFF6FF;
+  --gn:#059669;--gn2:#ECFDF5;
+  --am:#D97706;--am2:#FFFBEB;
+  --rd:#DC2626;--rd2:#FEF2F2;
+  --nav:52px;
+}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--tx);font-size:13px}
+
+/* ── NAV ─────────────────────────── */
+.nav{position:fixed;top:0;left:0;right:0;height:var(--nav);background:var(--sf);border-bottom:1px solid var(--bd);display:flex;align-items:center;padding:0 20px;z-index:200;gap:20px;box-shadow:0 1px 4px rgba(0,0,0,.05)}
+.brand{font-weight:700;font-size:15px}.brand span{color:var(--bl)}
+.tabs{display:flex;gap:3px}
+.tab{padding:5px 14px;border-radius:6px;font-size:12px;font-weight:500;color:var(--tx2);cursor:pointer;border:none;background:transparent;transition:all .15s;white-space:nowrap}
+.tab:hover{background:var(--sf2)}.tab.on{background:var(--bl2);color:var(--bl)}
+.meta{margin-left:auto;font-size:11px;color:var(--mu)}.meta b{color:var(--tx2);font-weight:500}
+
+/* ── LAYOUT ──────────────────────── */
+.wrap{margin-top:var(--nav);padding:16px 20px;max-width:1700px;margin-left:auto;margin-right:auto}
+.page{display:none}.page.active{display:block}
+
+/* ── PLATFORM FILTER ─────────────── */
+.fbar{background:var(--sf);border:1px solid var(--bd);border-radius:10px;padding:10px 16px;margin-bottom:14px;display:flex;align-items:flex-start;gap:10px;flex-wrap:wrap;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.fbar-lbl{font-size:10px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--mu);white-space:nowrap;padding-top:4px}
+.chips{display:flex;gap:5px;flex-wrap:wrap;flex:1}
+.chip{padding:3px 11px;border-radius:20px;font-size:11px;font-weight:500;cursor:pointer;border:1px solid var(--bd);background:var(--sf2);color:var(--tx2);transition:all .12s;white-space:nowrap}
+.chip:hover{border-color:var(--bl);color:var(--bl)}
+.chip.on{background:var(--bl);color:#fff;border-color:var(--bl)}
+.chip.all.on{background:var(--tx);border-color:var(--tx)}
+
+/* ── RIBBONS — vertical stack ────── */
+.rstack{display:flex;flex-direction:column;gap:10px;margin-bottom:16px}
+.ribbon{background:var(--sf);border:1px solid var(--bd);border-radius:10px;box-shadow:0 1px 3px rgba(0,0,0,.06);overflow:hidden}
+.ribbon-hdr{display:flex;align-items:center;gap:8px;padding:10px 16px;border-bottom:1px solid var(--bd)}
+.ribbon-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.ribbon-dot.mtd{background:var(--bl)}.ribbon-dot.lm{background:var(--am)}.ribbon-dot.l3m{background:var(--gn)}
+.ribbon-title{font-size:11px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--mu)}
+.ribbon-accent{flex:1;height:2px;border-radius:1px}
+.ribbon-accent.mtd{background:var(--bl)}.ribbon-accent.lm{background:var(--am)}.ribbon-accent.l3m{background:var(--gn)}
+.ribbon-body{display:flex;flex-wrap:nowrap;overflow-x:auto}
+.rm{flex:1;min-width:120px;padding:12px 16px;border-right:1px solid var(--bd)}
+.rm:last-child{border-right:none}
+.rm-lbl{font-size:10px;font-weight:600;letter-spacing:.4px;text-transform:uppercase;color:var(--mu);margin-bottom:4px;white-space:nowrap}
+.rm-val{font-size:20px;font-weight:700;letter-spacing:-.4px;white-space:nowrap;color:var(--tx)}
+.rm-val.g{color:var(--gn)}.rm-val.r{color:var(--rd)}.rm-val.a{color:var(--am)}.rm-val.b{color:var(--bl)}
+.rm-sub{font-size:10px;color:var(--mu);margin-top:2px;white-space:nowrap}
+
+/* ── SECTION HEADERS ─────────────── */
+.sh{display:flex;align-items:center;gap:8px;margin:20px 0 12px}
+.sh:first-child{margin-top:0}
+.sh-lbl{font-size:10px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:var(--mu);white-space:nowrap}
+.sh-title{font-size:14px;font-weight:600}
+.sh-div{flex:1;height:1px;background:var(--bd)}
+
+/* ── CHARTS ──────────────────────── */
+.cgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px}
+.cbox{background:var(--sf);border:1px solid var(--bd);border-radius:10px;padding:16px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.cbox-t{font-size:12px;font-weight:600;margin-bottom:12px}
+.cbox-c{position:relative;height:210px}
+@media(max-width:900px){.cgrid{grid-template-columns:1fr}}
+
+/* ── TABLES ──────────────────────── */
+.tw{background:var(--sf);border:1px solid var(--bd);border-radius:10px;box-shadow:0 1px 3px rgba(0,0,0,.06);overflow:hidden;margin-bottom:14px}
+.ttbar{display:flex;align-items:center;padding:10px 14px;border-bottom:1px solid var(--bd);gap:8px;flex-wrap:wrap}
+.tt{font-size:12px;font-weight:600;flex:1}
+.si{padding:5px 10px;border:1px solid var(--bd);border-radius:6px;font-size:11px;background:var(--sf2);outline:none;width:160px;font-family:inherit}
+.si:focus{border-color:var(--bl);background:var(--sf)}
+.ts{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:12px}
+thead th{background:var(--sf2);padding:8px 12px;text-align:left;font-weight:600;font-size:10px;letter-spacing:.3px;text-transform:uppercase;color:var(--tx2);border-bottom:1px solid var(--bd);white-space:nowrap;cursor:pointer;user-select:none}
+thead th:hover{background:var(--bd2)}
+thead th.sa::after{content:" ↑";color:var(--bl)}
+thead th.sd::after{content:" ↓";color:var(--bl)}
+thead th.r{text-align:right}
+tbody tr{border-bottom:1px solid var(--bd);transition:background .1s}
+tbody tr:last-child{border-bottom:none}
+tbody tr:hover{background:var(--sf2)}
+tbody tr.cl{cursor:pointer}
+tbody tr.cl:hover{background:var(--bl2)}
+td{padding:8px 12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+td.r{text-align:right}
+td.mn{font-family:'DM Mono',monospace;font-size:11px}
+
+/* ── BADGES & TAGS ───────────────── */
+.badge{display:inline-flex;align-items:center;gap:3px;padding:2px 8px;border-radius:20px;font-size:10px;font-weight:600}
+.badge.good{background:var(--gn2);color:var(--gn)}
+.badge.warning{background:var(--am2);color:var(--am)}
+.badge.critical{background:var(--rd2);color:var(--rd)}
+.tag{display:inline-block;padding:2px 7px;border-radius:4px;font-size:10px;font-weight:500}
+.tag.on-track{background:var(--gn2);color:var(--gn)}
+.tag.units-gap{background:var(--am2);color:var(--am)}
+.tag.disc-creep{background:#FEF3C7;color:#92400E}
+.tag.both{background:var(--rd2);color:var(--rd)}
+.tag.stretch{background:var(--bl2);color:var(--bl)}
+
+/* ── ATTAINMENT BAR ──────────────── */
+.ab{display:flex;align-items:center;gap:6px;min-width:100px}
+.bt{flex:1;height:5px;background:var(--sf2);border-radius:3px;overflow:hidden}
+.bf{height:100%;border-radius:3px}
+.bf.g{background:var(--gn)}.bf.a{background:var(--am)}.bf.r{background:var(--rd)}
+.bp{font-size:10px;font-weight:600;font-family:'DM Mono',monospace;min-width:38px;text-align:right}
+
+/* ── DELTA ───────────────────────── */
+.d{font-size:11px;font-weight:600;font-family:'DM Mono',monospace}
+.d.p{color:var(--gn)}.d.n{color:var(--rd)}.d.z{color:var(--mu)}
+
+/* ── DRILL PANELS ────────────────── */
+.dp{background:var(--sf);border:1px solid var(--bd);border-radius:10px;box-shadow:0 4px 12px rgba(0,0,0,.09);margin-bottom:14px;overflow:hidden;border-left:3px solid var(--bl)}
+.dph{display:flex;align-items:center;padding:10px 14px;border-bottom:1px solid var(--bd);gap:8px;background:var(--bl2);cursor:pointer}
+.dpt{font-size:12px;font-weight:600;color:var(--bl);flex:1}
+.dpc{font-size:14px;color:var(--mu);cursor:pointer;line-height:1}
+.dpc:hover{color:var(--rd)}
+.dpb{padding:14px}
+
+/* ── COLUMN PICKER ───────────────── */
+.cpick{display:flex;align-items:center;gap:6px;padding:8px 14px;border-bottom:1px solid var(--bd);flex-wrap:wrap;background:var(--sf2)}
+.cpick-lbl{font-size:10px;font-weight:700;color:var(--mu);text-transform:uppercase;letter-spacing:.4px;white-space:nowrap}
+.cchip{padding:2px 9px;border-radius:4px;font-size:10px;font-weight:500;cursor:pointer;border:1px solid var(--bd);background:var(--sf);color:var(--tx2);transition:all .12s;white-space:nowrap}
+.cchip:hover{border-color:var(--bl);color:var(--bl)}
+.cchip.on{background:var(--bl);color:#fff;border-color:var(--bl)}
+
+/* ── BREADCRUMB ──────────────────── */
+.bc{display:flex;align-items:center;gap:5px;margin-bottom:12px;flex-wrap:wrap}
+.bi{font-size:11px;color:var(--mu);cursor:pointer}
+.bi:hover{color:var(--bl)}
+.bi.act{color:var(--tx);font-weight:500;cursor:default}
+.bs{color:var(--bd2);font-size:11px}
+
+::-webkit-scrollbar{width:4px;height:4px}
+::-webkit-scrollbar-thumb{background:var(--bd2);border-radius:3px}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="brand">Category <span>Intelligence</span></div>
+  <div class="tabs">
+    <button class="tab on" onclick="showPage('revenue',this)">📊 Revenue</button>
+    <button class="tab" onclick="showPage('ads',this)">📣 Ads Intelligence</button>
+    <button class="tab" onclick="showPage('discount',this)">🏷️ Price &amp; Discount</button>
+  </div>
+  <div class="meta">Last updated: <b id="lu">—</b></div>
+</nav>
+
+<div class="wrap">
+
+<!-- ══════════════════════════════════════
+     PAGE 1 — REVENUE
+══════════════════════════════════════ -->
+<div id="page-revenue" class="page active">
+  <div class="fbar"><span class="fbar-lbl">Platform</span><div class="chips" id="rev-pf"></div></div>
+  <div class="rstack" id="rev-ribbons"></div>
+  <div class="bc" id="rev-bc"><span class="bi act" onclick="revReset()">All Categories</span></div>
+  <div class="sh"><span class="sh-lbl">A</span><span class="sh-title">Category Scorecard</span><div class="sh-div"></div></div>
+  <div class="cgrid" id="rev-charts"></div>
+  <div class="tw">
+    <div class="ttbar"><span class="tt">All Categories — click a row to drill into platforms</span>
+      <input class="si" placeholder="Search category…" oninput="fT('rev-ct',this.value)"/></div>
+    <div class="ts"><table id="rev-ct">
+      <thead><tr>
+        <th onclick="sT('rev-ct',0)" style="min-width:140px">Category</th>
+        <th onclick="sT('rev-ct',1)" class="r" style="min-width:110px">Monthly Target</th>
+        <th onclick="sT('rev-ct',2)" class="r" style="min-width:110px">Prorated Target</th>
+        <th onclick="sT('rev-ct',3)" class="r" style="min-width:110px">Actual Revenue</th>
+        <th onclick="sT('rev-ct',4)" style="min-width:120px">Attainment vs Pace</th>
+        <th onclick="sT('rev-ct',5)" class="r" style="min-width:100px">Revenue Gap</th>
+        <th onclick="sT('rev-ct',6)" class="r" style="min-width:90px">Units Gap</th>
+        <th onclick="sT('rev-ct',7)" class="r" style="min-width:90px">Actual Disc%</th>
+        <th onclick="sT('rev-ct',8)" style="min-width:90px">Status</th>
+      </tr></thead>
+      <tbody id="rev-cb"></tbody>
+    </table></div>
+  </div>
+
+  <div class="dp" id="rev-pp" style="display:none">
+    <div class="dph" onclick="tB('rev-pb')">
+      <span class="dpt" id="rev-pt">Platform Breakdown</span>
+      <span class="dpc" onclick="event.stopPropagation();cD('rev-pp',()=>cD('rev-sp'))">✕</span>
+    </div>
+    <div class="dpb" id="rev-pb">
+      <div class="ts"><table id="rev-platt">
+        <thead><tr>
+          <th onclick="sT('rev-platt',0)" style="min-width:120px">Platform</th>
+          <th onclick="sT('rev-platt',1)" class="r" style="min-width:110px">Monthly Target</th>
+          <th onclick="sT('rev-platt',2)" class="r" style="min-width:110px">Prorated Target</th>
+          <th onclick="sT('rev-platt',3)" class="r" style="min-width:110px">Actual Revenue</th>
+          <th onclick="sT('rev-platt',4)" style="min-width:120px">Attainment</th>
+          <th onclick="sT('rev-platt',5)" class="r" style="min-width:100px">Revenue Gap</th>
+          <th onclick="sT('rev-platt',6)" class="r" style="min-width:90px">Units Gap</th>
+          <th onclick="sT('rev-platt',7)" class="r" style="min-width:100px">Disc Δ vs Plan</th>
+          <th onclick="sT('rev-platt',8)" style="min-width:80px">Target?</th>
+          <th onclick="sT('rev-platt',9)" style="min-width:80px">Status</th>
+        </tr></thead>
+        <tbody id="rev-platb"></tbody>
+      </table></div>
+    </div>
+  </div>
+
+  <div class="dp" id="rev-sp" style="display:none">
+    <div class="dph" onclick="tB('rev-sb')">
+      <span class="dpt" id="rev-st">SKU Detail</span>
+      <span class="dpc" onclick="event.stopPropagation();cD('rev-sp')">✕</span>
+    </div>
+    <div class="dpb" id="rev-sb">
+      <div class="ts"><table id="rev-skut">
+        <thead><tr>
+          <th onclick="sT('rev-skut',0)" style="min-width:130px">SKU</th>
+          <th onclick="sT('rev-skut',1)" style="min-width:150px">Name</th>
+          <th onclick="sT('rev-skut',2)" class="r" style="min-width:80px">Plan Qty</th>
+          <th onclick="sT('rev-skut',3)" class="r" style="min-width:90px">Prorated Qty</th>
+          <th onclick="sT('rev-skut',4)" class="r" style="min-width:80px">Actual Qty</th>
+          <th onclick="sT('rev-skut',5)" style="min-width:110px">Units Attain%</th>
+          <th onclick="sT('rev-skut',6)" class="r" style="min-width:100px">Prorated Rev</th>
+          <th onclick="sT('rev-skut',7)" class="r" style="min-width:100px">Actual Rev</th>
+          <th onclick="sT('rev-skut',8)" style="min-width:110px">Rev Attain%</th>
+          <th onclick="sT('rev-skut',9)" class="r" style="min-width:80px">Plan Disc%</th>
+          <th onclick="sT('rev-skut',10)" class="r" style="min-width:85px">Actual Disc%</th>
+          <th onclick="sT('rev-skut',11)" class="r" style="min-width:85px">Δ vs Guide</th>
+          <th onclick="sT('rev-skut',12)" class="r" style="min-width:90px">LM Growth%</th>
+          <th onclick="sT('rev-skut',13)" style="min-width:100px">Root Cause</th>
+        </tr></thead>
+        <tbody id="rev-skub"></tbody>
+      </table></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     PAGE 2 — ADS
+══════════════════════════════════════ -->
+<div id="page-ads" class="page">
+  <div class="fbar"><span class="fbar-lbl">Platform</span><div class="chips" id="ads-pf"></div></div>
+  <div class="rstack" id="ads-ribbons"></div>
+  <div class="bc" id="ads-bc"><span class="bi act" onclick="adsReset()">All Categories</span></div>
+  <div class="sh"><span class="sh-lbl">B</span><span class="sh-title">Category-Level Ads Performance</span><div class="sh-div"></div></div>
+  <div class="tw">
+    <div class="ttbar"><span class="tt">Categories — click to drill into platforms</span>
+      <input class="si" placeholder="Search…" oninput="fT('ads-ct',this.value)"/></div>
+    <div class="cpick" id="ads-cat-cp"></div>
+    <div class="ts"><table id="ads-ct">
+      <thead id="ads-ct-h"></thead><tbody id="ads-cb"></tbody>
+    </table></div>
+  </div>
+
+  <div class="dp" id="ads-pp" style="display:none">
+    <div class="dph" onclick="tB('ads-pb')">
+      <span class="dpt" id="ads-pt">Platform Ads</span>
+      <span class="dpc" onclick="event.stopPropagation();cD('ads-pp',()=>cD('ads-sp'))">✕</span>
+    </div>
+    <div class="dpb" id="ads-pb">
+      <div class="cpick" id="ads-plat-cp"></div>
+      <div class="ts"><table id="ads-pt-t"><thead id="ads-pt-h"></thead><tbody id="ads-pb-r"></tbody></table></div>
+    </div>
+  </div>
+
+  <div class="dp" id="ads-sp" style="display:none">
+    <div class="dph" onclick="tB('ads-sb')">
+      <span class="dpt" id="ads-st">SKU Ads Detail</span>
+      <span class="dpc" onclick="event.stopPropagation();cD('ads-sp')">✕</span>
+    </div>
+    <div class="dpb" id="ads-sb">
+      <div class="cpick" id="ads-sku-cp"></div>
+      <div class="ts"><table id="ads-st-t"><thead id="ads-st-h"></thead><tbody id="ads-sb-r"></tbody></table></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     PAGE 3 — DISCOUNT
+══════════════════════════════════════ -->
+<div id="page-discount" class="page">
+  <div class="rstack" id="disc-ribbons"></div>
+  <div class="bc" id="disc-bc"><span class="bi act" onclick="discReset()">All Categories</span></div>
+  <div class="sh"><span class="sh-lbl">B</span><span class="sh-title">Category Discount Audit — sorted by planned revenue</span><div class="sh-div"></div></div>
+  <div class="tw">
+    <div class="ttbar"><span class="tt">Categories — click to drill</span>
+      <input class="si" placeholder="Search…" oninput="fT('disc-ct',this.value)"/></div>
+    <div class="ts"><table id="disc-ct">
+      <thead><tr>
+        <th onclick="sT('disc-ct',0)" style="min-width:140px">Category</th>
+        <th onclick="sT('disc-ct',1)" class="r" style="min-width:110px">Planned Revenue</th>
+        <th onclick="sT('disc-ct',2)" class="r" style="min-width:110px">Guideline Disc%</th>
+        <th onclick="sT('disc-ct',3)" class="r" style="min-width:100px">Planned Disc%</th>
+        <th onclick="sT('disc-ct',4)" class="r" style="min-width:100px">Actual Disc%</th>
+        <th onclick="sT('disc-ct',5)" class="r" style="min-width:90px">Δ vs Plan</th>
+        <th onclick="sT('disc-ct',6)" class="r" style="min-width:100px">Δ vs Guideline</th>
+        <th onclick="sT('disc-ct',7)" style="min-width:90px">Status</th>
+        <th onclick="sT('disc-ct',8)" class="r" style="min-width:60px">SKUs</th>
+      </tr></thead>
+      <tbody id="disc-cb"></tbody>
+    </table></div>
+  </div>
+
+  <div class="dp" id="disc-pp" style="display:none">
+    <div class="dph" onclick="tB('disc-pb')">
+      <span class="dpt" id="disc-pt">Platform Discount</span>
+      <span class="dpc" onclick="event.stopPropagation();cD('disc-pp',()=>cD('disc-sp'))">✕</span>
+    </div>
+    <div class="dpb" id="disc-pb">
+      <div class="ts"><table id="disc-platt">
+        <thead><tr>
+          <th onclick="sT('disc-platt',0)" style="min-width:120px">Platform</th>
+          <th onclick="sT('disc-platt',1)" class="r" style="min-width:110px">Guideline Disc%</th>
+          <th onclick="sT('disc-platt',2)" class="r" style="min-width:100px">Planned Disc%</th>
+          <th onclick="sT('disc-platt',3)" class="r" style="min-width:100px">Actual Disc%</th>
+          <th onclick="sT('disc-platt',4)" class="r" style="min-width:110px">Δ vs Guideline</th>
+          <th onclick="sT('disc-platt',5)" style="min-width:90px">Status</th>
+        </tr></thead>
+        <tbody id="disc-pb-r"></tbody>
+      </table></div>
+    </div>
+  </div>
+
+  <div class="dp" id="disc-sp" style="display:none">
+    <div class="dph" onclick="tB('disc-sb')">
+      <span class="dpt" id="disc-st">SKU Price Detail</span>
+      <span class="dpc" onclick="event.stopPropagation();cD('disc-sp')">✕</span>
+    </div>
+    <div class="dpb" id="disc-sb">
+      <div class="ts"><table id="disc-skut">
+        <thead><tr>
+          <th onclick="sT('disc-skut',0)" style="min-width:130px">SKU</th>
+          <th onclick="sT('disc-skut',1)" style="min-width:160px">Name</th>
+          <th onclick="sT('disc-skut',2)" class="r" style="min-width:70px">MRP</th>
+          <th onclick="sT('disc-skut',3)" class="r" style="min-width:80px">Guide SP</th>
+          <th onclick="sT('disc-skut',4)" class="r" style="min-width:90px">Actual SP/Unit</th>
+          <th onclick="sT('disc-skut',5)" class="r" style="min-width:90px">Guide Disc%</th>
+          <th onclick="sT('disc-skut',6)" class="r" style="min-width:85px">Plan Disc%</th>
+          <th onclick="sT('disc-skut',7)" class="r" style="min-width:90px">Actual Disc%</th>
+          <th onclick="sT('disc-skut',8)" class="r" style="min-width:95px">Δ vs Guideline</th>
+          <th onclick="sT('disc-skut',9)" style="min-width:90px">Status</th>
+        </tr></thead>
+        <tbody id="disc-sb-r"></tbody>
+      </table></div>
+    </div>
+  </div>
+</div>
+</div>
+
+<script>const DATA=__DATA_PLACEHOLDER__;</script>
+<script>
+// ══════════════════════════════════════════════════
+// GLOBALS
+// ══════════════════════════════════════════════════
+const C='₹';
+let rcBar=null,rcDonut=null;
+let aPlatRev=new Set(['__ALL__']),aPlatAds=new Set(['__ALL__']);
+let revSelCat=null,adsSelCat=null,discSelCat=null;
+let adsCatActive=new Set(['Ad_Spend_MTD','ROAS_MTD','TROAS_MTD','CPC_MTD','CPM_MTD','CTR_MTD']);
+let adsPlatActive=new Set(['Ad_Spend_MTD','ROAS_MTD','TROAS_MTD','CPC_MTD','CPM_MTD','CTR_MTD']);
+let adsSkuActive=new Set(['Ad_Spend_MTD','ROAS_MTD','TROAS_MTD','CPC_MTD','CPM_MTD','CTR_MTD']);
+let adsPlatData=[],adsSkuData=[];
+
+// ══════════════════════════════════════════════════
+// FORMAT HELPERS
+// ══════════════════════════════════════════════════
+function n(v){return isNaN(+v)?0:+v||0}
+function fc(v){
+  if(v==null||isNaN(+v))return'—';
+  const a=Math.abs(+v);
+  if(a>=1e7)return C+(a/1e7).toFixed(2)+' Cr';
+  if(a>=1e5)return C+(a/1e5).toFixed(2)+' L';
+  if(a>=1000)return C+Math.round(a).toLocaleString('en-IN');
+  return C+(+v).toFixed(0);
+}
+function fn(v){if(v==null||isNaN(+v))return'—';return Math.round(+v).toLocaleString('en-IN')}
+function fp(v,s=false){if(v==null||isNaN(+v))return'—';return(s&&v>0?'+':'')+Number(v).toFixed(1)+'%'}
+function fr(v){if(v==null||isNaN(+v)||+v===0)return'—';return Number(v).toFixed(2)+'x'}
+function badge(f){const m={good:'✓ Good',warning:'⚠ Watch',critical:'✗ Critical'};return`<span class="badge ${f}">${m[f]||f}</span>`}
+function rtag(rc){const m={'On Track':'on-track','Units Gap':'units-gap','Discount Creep':'disc-creep','Both':'both'};return`<span class="tag ${m[rc]||'on-track'}">${rc}</span>`}
+function dc(v){if(v==null||isNaN(+v)||+v===0)return`<span class="d z">—</span>`;const c=+v>0?'p':+v<0?'n':'z';return`<span class="d ${c}">${+v>0?'+':''}${Number(v).toFixed(1)}%</span>`}
+function abar(p){
+  const pv=Math.min(Math.max(+p||0,0),200);
+  const c=pv>=85?'g':pv>=70?'a':'r';
+  const color=pv>=85?'var(--gn)':pv>=70?'var(--am)':'var(--rd)';
+  return`<div class="ab"><div class="bt"><div class="bf ${c}" style="width:${Math.min(pv,100)}%"></div></div><span class="bp" style="color:${color}">${fp(p)}</span></div>`;
+}
+
+// ══════════════════════════════════════════════════
+// NAV & UTILS
+// ══════════════════════════════════════════════════
+function showPage(nm,btn){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('on'));
+  document.getElementById('page-'+nm).classList.add('active');
+  btn.classList.add('on');
+}
+function tB(id){const e=document.getElementById(id);if(e)e.style.display=e.style.display==='none'?'block':'none'}
+function cD(id,cb){const e=document.getElementById(id);if(e)e.style.display='none';if(cb)cb()}
+function show(id){const e=document.getElementById(id);if(e)e.style.display='block'}
+function scroll(id){setTimeout(()=>{const e=document.getElementById(id);if(e)e.scrollIntoView({behavior:'smooth',block:'nearest'})},50)}
+function setBc(id,html){const e=document.getElementById(id);if(e)e.innerHTML=html}
+
+// Sort & Filter
+let SS={};
+function sT(tid,col){
+  const t=document.getElementById(tid);if(!t)return;
+  const tb=t.querySelector('tbody');const rows=Array.from(tb.querySelectorAll('tr'));
+  const k=tid+'_'+col;const asc=SS[k]!==true;SS[k]=asc;
+  rows.sort((a,b)=>{
+    const av=a.cells[col]?.dataset.val??a.cells[col]?.textContent??'';
+    const bv=b.cells[col]?.dataset.val??b.cells[col]?.textContent??'';
+    const an=parseFloat(av),bn=parseFloat(bv);
+    if(!isNaN(an)&&!isNaN(bn))return asc?an-bn:bn-an;
+    return asc?av.localeCompare(bv):bv.localeCompare(av);
+  });
+  rows.forEach(r=>tb.appendChild(r));
+  t.querySelectorAll('thead th').forEach((th,i)=>{th.classList.remove('sa','sd');if(i===col)th.classList.add(asc?'sa':'sd')});
+}
+function fT(tid,q){
+  const t=document.getElementById(tid);if(!t)return;
+  const lq=q.toLowerCase();
+  t.querySelectorAll('tbody tr').forEach(r=>r.style.display=r.textContent.toLowerCase().includes(lq)?'':'none');
+}
+
+// ══════════════════════════════════════════════════
+// PLATFORM FILTER
+// ══════════════════════════════════════════════════
+function buildPF(cid,state,cb){
+  const plats=[...new Set([
+    ...DATA.cat_plat_summary.map(r=>r.Platform),
+    ...DATA.ads_by_plat.map(r=>r.Platform)
+  ])].sort();
+  const el=document.getElementById(cid);el.innerHTML='';
+  const ac=document.createElement('span');
+  ac.className='chip all'+(state.has('__ALL__')?' on':'');
+  ac.textContent='All';
+  ac.onclick=()=>{state.clear();state.add('__ALL__');render();cb()};
+  el.appendChild(ac);
+  plats.forEach(p=>{
+    const c=document.createElement('span');
+    c.className='chip'+((!state.has('__ALL__')&&state.has(p))?' on':'');
+    c.textContent=p;c.dataset.p=p;
+    c.onclick=()=>{
+      if(state.has('__ALL__'))state.clear();
+      state.has(p)?state.delete(p):state.add(p);
+      if(!state.size)state.add('__ALL__');
+      render();cb();
+    };
+    el.appendChild(c);
+  });
+  function render(){
+    el.querySelectorAll('.chip').forEach(c=>{
+      if(c.classList.contains('all'))c.classList.toggle('on',state.has('__ALL__'));
+      else c.classList.toggle('on',!state.has('__ALL__')&&state.has(c.dataset.p));
+    });
+  }
+}
+
+// ══════════════════════════════════════════════════
+// ADS METRICS DEFINITION
+// ══════════════════════════════════════════════════
+const AM=[
+  {k:'Ad_Spend_MTD',   l:'Spend MTD',        f:v=>fc(v),  fix:true},
+  {k:'ROAS_MTD',       l:'ROAS MTD',         f:v=>fr(v),  fix:true},
+  {k:'TROAS_MTD',      l:'TROAS MTD',        f:v=>fr(v),  fix:true},
+  {k:'CPC_MTD',        l:'CPC MTD',          f:v=>fc(v),  fix:true},
+  {k:'CPM_MTD',        l:'CPM MTD',          f:v=>fc(v),  fix:true},
+  {k:'CTR_MTD',        l:'CTR% MTD',         f:v=>fp(v),  fix:true},
+  {k:'Ad_Units_MTD',   l:'Ad Units MTD',     f:v=>fn(v)},
+  {k:'Gross_Units_MTD',l:'Gross Units MTD',  f:v=>fn(v)},
+  {k:'Ad_Contribution_MTD',l:'Ad Contrib% MTD',f:v=>fp(v)},
+  {k:'CPO_MTD',        l:'CPO MTD',          f:v=>fc(v)},
+  {k:'Ad_Spend_LFM',   l:'Spend LFM',        f:v=>fc(v)},
+  {k:'ROAS_LFM',       l:'ROAS LFM',         f:v=>fr(v)},
+  {k:'TROAS_LFM',      l:'TROAS LFM',        f:v=>fr(v)},
+  {k:'CPC_LFM',        l:'CPC LFM',          f:v=>fc(v)},
+  {k:'CPM_LFM',        l:'CPM LFM',          f:v=>fc(v)},
+  {k:'CTR_LFM',        l:'CTR% LFM',         f:v=>fp(v)},
+  {k:'Ad_Units_LFM',   l:'Ad Units LFM',     f:v=>fn(v)},
+  {k:'CPO_LFM',        l:'CPO LFM',          f:v=>fc(v)},
+  {k:'Ad_Contribution_LFM',l:'Ad Contrib% LFM',f:v=>fp(v)},
+  {k:'ROAS_L3M',       l:'ROAS L3M',         f:v=>fr(v)},
+  {k:'TROAS_L3M',      l:'TROAS L3M',        f:v=>fr(v)},
+  {k:'CPC_L3M',        l:'CPC L3M',          f:v=>fc(v)},
+  {k:'CPM_L3M',        l:'CPM L3M',          f:v=>fc(v)},
+  {k:'CTR_L3M',        l:'CTR% L3M',         f:v=>fp(v)},
+  {k:'Ad_Spend_L3M',   l:'Spend L3M',        f:v=>fc(v)},
+  {k:'Ad_Units_L3M',   l:'Ad Units L3M',     f:v=>fn(v)},
+  {k:'CPO_L3M',        l:'CPO L3M',          f:v=>fc(v)},
+  {k:'ROAS_Delta_vs_LFM', l:'ROAS Δ LFM',   f:v=>dc(v),  delta:true},
+  {k:'TROAS_Delta_vs_LFM',l:'TROAS Δ LFM',  f:v=>dc(v),  delta:true},
+  {k:'CPC_Delta_vs_LFM',  l:'CPC Δ LFM',    f:v=>dc(v),  delta:true},
+  {k:'Ad_Spend_Delta_vs_LFM',l:'Spend Δ LFM',    f:v=>dc(v),  delta:true},
+  {k:'Ad_CVR_MTD',          l:'Ad CVR MTD',      f:v=>fp(v)},
+  {k:'Gross_CVR_MTD',       l:'Gross CVR MTD',   f:v=>fp(v)},
+  {k:'Ad_CVR_LFM',          l:'Ad CVR LFM',      f:v=>fp(v)},
+  {k:'Gross_CVR_LFM',       l:'Gross CVR LFM',   f:v=>fp(v)},
+  {k:'Ad_CVR_L3M',          l:'Ad CVR L3M',      f:v=>fp(v)},
+  {k:'Gross_CVR_L3M',       l:'Gross CVR L3M',   f:v=>fp(v)},
+];
+
+function withCPO(arr){
+  return arr.map(r=>({...r,
+    CPO_MTD:      n(r.Ad_Units_MTD)>0      ? n(r.Ad_Spend_MTD)/n(r.Ad_Units_MTD)*1          : null,
+    CPO_LFM:      n(r.Ad_Units_LFM)>0      ? n(r.Ad_Spend_LFM)/n(r.Ad_Units_LFM)*1          : null,
+    CPO_L3M:      n(r.Ad_Units_L3M)>0      ? n(r.Ad_Spend_L3M)/n(r.Ad_Units_L3M)*1          : null,
+    Ad_CVR_MTD:   n(r.Ad_Clicks_MTD)>0     ? n(r.Ad_Units_MTD)/n(r.Ad_Clicks_MTD)*100        : null,
+    Gross_CVR_MTD:n(r.Gross_Clicks_MTD)>0  ? n(r.Gross_Units_MTD)/n(r.Gross_Clicks_MTD)*100  : null,
+    Ad_CVR_LFM:   n(r.Ad_Clicks_LFM)>0     ? n(r.Ad_Units_LFM)/n(r.Ad_Clicks_LFM)*100        : null,
+    Gross_CVR_LFM:n(r.Gross_Clicks_LFM)>0  ? n(r.Gross_Units_LFM)/n(r.Gross_Clicks_LFM)*100  : null,
+    Ad_CVR_L3M:   n(r.Ad_Clicks_L3M)>0     ? n(r.Ad_Units_L3M)/n(r.Ad_Clicks_L3M)*100        : null,
+    Gross_CVR_L3M:n(r.Gross_Clicks_L3M)>0  ? n(r.Gross_Units_L3M)/n(r.Gross_Clicks_L3M)*100  : null,
+  }));
+}
+
+function buildCP(cid,activeSet,cb){
+  const el=document.getElementById(cid);el.innerHTML='';
+  const lbl=document.createElement('span');lbl.className='cpick-lbl';lbl.textContent='Add Columns:';
+  el.appendChild(lbl);
+  AM.filter(m=>!m.fix).forEach(m=>{
+    const c=document.createElement('span');
+    c.className='cchip'+(activeSet.has(m.k)?' on':'');
+    c.textContent=m.l;
+    c.onclick=()=>{activeSet.has(m.k)?activeSet.delete(m.k):activeSet.add(m.k);c.classList.toggle('on');cb()};
+    el.appendChild(c);
+  });
+}
+
+function renderAdsTable(tid,hid,bid,data,activeSet,gkey){
+  const metrics=AM.filter(m=>m.fix||activeSet.has(m.k));
+  const thead=document.getElementById(hid);
+  thead.innerHTML=`<tr>
+    <th onclick="sT('${tid}',0)" style="min-width:120px">${gkey}</th>
+    ${metrics.map((m,i)=>`<th onclick="sT('${tid}',${i+1})" class="r" style="min-width:90px">${m.l}</th>`).join('')}
+    <th style="min-width:80px">Status</th>
+  </tr>`;
+  const tbody=document.getElementById(bid);tbody.innerHTML='';
+  data.forEach(r=>{
+    const tr=document.createElement('tr');tr.classList.add('cl');
+    let cells=`<td class="mn" style="font-size:10.5px">${r[gkey]||''}</td>`;
+    metrics.forEach(m=>{
+      const raw=r[m.k];
+      cells+=`<td class="r${m.delta?'':' mn'}" data-val="${n(raw)}">${m.f(raw)}</td>`;
+    });
+    cells+=`<td>${badge(r.ROAS_Flag||'good')}</td>`;
+    tr.innerHTML=cells;
+    tbody.appendChild(tr);
+  });
+}
+
+// ══════════════════════════════════════════════════
+// REVENUE — DATA HELPERS
+// ══════════════════════════════════════════════════
+function getRevCats(){
+  if(aPlatRev.has('__ALL__'))return DATA.cat_summary;
+  const filtered=DATA.cat_plat_summary.filter(r=>aPlatRev.has(r.Platform));
+  const cats={};
+  filtered.forEach(r=>{
+    if(!cats[r.Category])cats[r.Category]={
+      Category:r.Category,
+      Planned_SP_Revenue:0,Prorated_Planned_SP:0,Actual_SP_Revenue:0,
+      Planned_MRP_Revenue:0,Actual_MRP_Revenue:0,
+      Planned_Qty:0,Prorated_Planned_Qty:0,Actual_Qty:0,
+      LM_Revenue:0,L3M_Revenue:0,
+      LM_Prorated_Revenue:0,L3M_Prorated_Revenue:0,
+      Target_Stretch_Count:0
+    };
+    const c=cats[r.Category];
+    ['Planned_SP_Revenue','Prorated_Planned_SP','Actual_SP_Revenue',
+     'Planned_MRP_Revenue','Actual_MRP_Revenue','Planned_Qty','Prorated_Planned_Qty',
+     'Actual_Qty','LM_Revenue','L3M_Revenue','LM_Prorated_Revenue','L3M_Prorated_Revenue',
+     'Target_Stretch_Count'].forEach(k=>c[k]+=n(r[k]));
+  });
+  return Object.values(cats).map(c=>{
+    c.Revenue_Attainment=c.Prorated_Planned_SP>0?c.Actual_SP_Revenue/c.Prorated_Planned_SP*100:0;
+    c.Units_Attainment=c.Prorated_Planned_Qty>0?c.Actual_Qty/c.Prorated_Planned_Qty*100:0;
+    c.Revenue_Gap=c.Actual_SP_Revenue-c.Prorated_Planned_SP;
+    c.Units_Gap=c.Actual_Qty-c.Prorated_Planned_Qty;
+    c.Actual_Discount_Pct=c.Actual_MRP_Revenue>0?(c.Actual_MRP_Revenue-c.Actual_SP_Revenue)/c.Actual_MRP_Revenue*100:0;
+    c.Revenue_Flag=c.Revenue_Attainment<70?'critical':c.Revenue_Attainment<85?'warning':'good';
+    return c;
+  });
+}
+
+function getRevTotals(){
+  const cats=getRevCats();
+  const tPlan   = cats.reduce((a,c)=>a+n(c.Planned_SP_Revenue),0);
+  const tPro    = cats.reduce((a,c)=>a+n(c.Prorated_Planned_SP),0);
+  const tAct    = cats.reduce((a,c)=>a+n(c.Actual_SP_Revenue),0);
+  const tLM     = cats.reduce((a,c)=>a+n(c.LM_Revenue),0);
+  const tL3M    = cats.reduce((a,c)=>a+n(c.L3M_Revenue),0);
+  const tLMPro  = cats.reduce((a,c)=>a+n(c.LM_Prorated_Revenue),0);
+  const tL3MPro = cats.reduce((a,c)=>a+n(c.L3M_Prorated_Revenue),0);
+  const tMRP    = cats.reduce((a,c)=>a+n(c.Actual_MRP_Revenue),0);
+  const disc    = tMRP>0?(tMRP-tAct)/tMRP*100:0;
+  return{tPlan,tPro,tAct,tLM,tL3M,tLMPro,tL3MPro,disc,
+    attMTD: tPro>0?tAct/tPro*100:0,
+    attLM:  tLMPro>0?tAct/tLMPro*100:0,
+    attL3M: tL3MPro>0?tAct/tL3MPro*100:0
+  };
+}
+
+function getAdsTotals(){
+  const src=aPlatAds.has('__ALL__')?DATA.ads_by_plat:DATA.ads_by_plat.filter(r=>aPlatAds.has(r.Platform));
+  const sm=k=>src.reduce((a,r)=>a+n(r[k]),0);
+  return{
+    spMTD:sm('Ad_Spend_MTD'), slMTD:sm('Ad_Sales_MTD'), gsMTD:sm('Gross_Sales_MTD'),
+    suMTD:sm('Ad_Units_MTD'), siMTD:sm('Ad_Impressions_MTD'), scMTD:sm('Ad_Clicks_MTD'),
+    guMTD:sm('Gross_Units_MTD'), gcMTD:sm('Gross_Clicks_MTD'),
+    spLFM:sm('Ad_Spend_LFM'), slLFM:sm('Ad_Sales_LFM'), gsLFM:sm('Gross_Sales_LFM'),
+    suLFM:sm('Ad_Units_LFM'), siLFM:sm('Ad_Impressions_LFM'), scLFM:sm('Ad_Clicks_LFM'),
+    guLFM:sm('Gross_Units_LFM'), gcLFM:sm('Gross_Clicks_LFM'),
+    spL3M:sm('Ad_Spend_L3M'), slL3M:sm('Ad_Sales_L3M'), gsL3M:sm('Gross_Sales_L3M'),
+    suL3M:sm('Ad_Units_L3M'), siL3M:sm('Ad_Impressions_L3M'), scL3M:sm('Ad_Clicks_L3M'),
+    guL3M:sm('Gross_Units_L3M'), gcL3M:sm('Gross_Clicks_L3M'),
+  };
+}
+
+// ══════════════════════════════════════════════════
+// REVENUE — RIBBONS (STACKED VERTICALLY)
+// ══════════════════════════════════════════════════
+function mkRibbon(period, title, metrics){
+  const rows = metrics.map(([lbl,val,sub,cls])=>`
+    <div class="rm">
+      <div class="rm-lbl">${lbl}</div>
+      <div class="rm-val${cls?' '+cls:''}">${val}</div>
+      ${sub?`<div class="rm-sub">${sub}</div>`:''}
+    </div>`).join('');
+  return`<div class="ribbon">
+    <div class="ribbon-hdr">
+      <span class="ribbon-dot ${period}"></span>
+      <span class="ribbon-title">${title}</span>
+      <div class="ribbon-accent ${period}"></div>
+    </div>
+    <div class="ribbon-body">${rows}</div>
+  </div>`;
+}
+
+function buildRevRibbons(){
+  const rv=getRevTotals();
+  const ad=getAdsTotals();
+  const s=DATA.summary;
+  const roasMTD =ad.spMTD>0?ad.slMTD/ad.spMTD:0;
+  const troasMTD=ad.spMTD>0?ad.gsMTD/ad.spMTD:0;
+  const roasLFM =ad.spLFM>0?ad.slLFM/ad.spLFM:0;
+  const troasLFM=ad.spLFM>0?ad.gsLFM/ad.spLFM:0;
+  const roasL3M =ad.spL3M>0?ad.slL3M/ad.spL3M:0;
+  const troasL3M=ad.spL3M>0?ad.gsL3M/ad.spL3M:0;
+  const attMTDcls=rv.attMTD>=85?'g':rv.attMTD>=70?'a':'r';
+  const attLMcls =rv.attLM>=85?'g':rv.attLM>=70?'a':'r';
+  const attL3Mcls=rv.attL3M>=85?'g':rv.attL3M>=70?'a':'r';
+
+  document.getElementById('rev-ribbons').innerHTML=
+    mkRibbon('mtd','MTD — Current Month',[
+      ['Monthly Target',     fc(rv.tPlan),  `Full month plan`,       ''],
+      ['Prorated Target',    fc(rv.tPro),   `Day ${s.median_elapsed_day}/${s.total_days} pace`,''],
+      ['Actual Revenue',     fc(rv.tAct),   'As of today',           attMTDcls],
+      ['Attainment vs Pace', fp(rv.attMTD), '',                      attMTDcls],
+      ['Actual Disc%',       fp(rv.disc),   '',                      ''],
+      ['ROAS',               fr(roasMTD),   'Ad sales / Ad spend',   ''],
+      ['TROAS',              fr(troasMTD),  'Gross sales / Ad spend',''],
+    ])+
+        mkRibbon('lm','Last Full Month',[
+      ['Monthly Actual',      fc(rv.tLM),            'Complete month',      ''],
+      ['Prorated (same pace)', fc(rv.tLMPro),         'LM at same day pace', ''],
+      ['MTD vs LM Pace',      fp(rv.attLM),           '',                    attLMcls],
+      ['Actual Disc% LFM',    fp(s.lm_discount_pct),  'Derived from MRP/unit',''],
+      ['ROAS LFM',            fr(roasLFM),            'Last full month',     ''],
+      ['TROAS LFM',           fr(troasLFM),           'Last full month',     ''],
+    ])+
+    mkRibbon('l3m','Last 3 Months Average',[
+      ['Monthly Avg',         fc(rv.tL3M/3),          '3-month monthly avg',  ''],
+      ['Prorated (same pace)', fc(rv.tL3MPro),         'L3M avg at same pace', ''],
+      ['MTD vs L3M Pace',     fp(rv.attL3M),           '',                     attL3Mcls],
+      ['Actual Disc% L3M',    fp(s.l3m_discount_pct),  'Derived from MRP/unit',''],
+      ['ROAS L3M',            fr(roasL3M),             '3-month avg',          ''],
+      ['TROAS L3M',           fr(troasL3M),            '3-month avg',          ''],
+    ]);
+}
+
+// ══════════════════════════════════════════════════
+// REVENUE — CHARTS & TABLE
+// ══════════════════════════════════════════════════
+function buildRevCharts(){
+  const cats=getRevCats().sort((a,b)=>n(b.Planned_SP_Revenue)-n(a.Planned_SP_Revenue)).slice(0,12);
+  const flags=getRevCats().reduce((acc,c)=>{acc[c.Revenue_Flag]=(acc[c.Revenue_Flag]||0)+1;return acc},{});
+  document.getElementById('rev-charts').innerHTML=`
+    <div class="cbox"><div class="cbox-t">Revenue by Category — Prorated Target vs Actual</div><div class="cbox-c"><canvas id="rc-bar"></canvas></div></div>
+    <div class="cbox"><div class="cbox-t">Category Status vs Pace</div><div class="cbox-c"><canvas id="rc-donut"></canvas></div></div>`;
+  if(rcBar)rcBar.destroy();
+  rcBar=new Chart(document.getElementById('rc-bar'),{
+    type:'bar',
+    data:{
+      labels:cats.map(c=>c.Category),
+      datasets:[
+        {label:'Prorated Target',data:cats.map(c=>n(c.Prorated_Planned_SP)),backgroundColor:'#BFDBFE',borderRadius:3},
+        {label:'Actual',data:cats.map(c=>n(c.Actual_SP_Revenue)),backgroundColor:'#2563EB',borderRadius:3}
+      ]
+    },
+    options:{responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{position:'bottom',labels:{font:{size:10}}}},
+      scales:{x:{ticks:{font:{size:9},maxRotation:45}},y:{ticks:{callback:v=>v>=1e5?'₹'+(v/1e5).toFixed(0)+'L':v,font:{size:10}}}}}
+  });
+  if(rcDonut)rcDonut.destroy();
+  rcDonut=new Chart(document.getElementById('rc-donut'),{
+    type:'doughnut',
+    data:{
+      labels:['On Track','Warning','Critical'],
+      datasets:[{data:[flags.good||0,flags.warning||0,flags.critical||0],backgroundColor:['#059669','#D97706','#DC2626'],borderWidth:0}]
+    },
+    options:{responsive:true,maintainAspectRatio:false,cutout:'65%',plugins:{legend:{position:'bottom',labels:{font:{size:10}}}}}
+  });
+}
+
+function buildRevCatTable(){
+  const cats=getRevCats().sort((a,b)=>n(b.Planned_SP_Revenue)-n(a.Planned_SP_Revenue));
+  const tb=document.getElementById('rev-cb');tb.innerHTML='';
+  cats.forEach(c=>{
+    const att=n(c.Revenue_Attainment);
+    const tr=document.createElement('tr');tr.classList.add('cl');
+    tr.innerHTML=`
+      <td>${c.Category}</td>
+      <td class="r mn" data-val="${n(c.Planned_SP_Revenue)}">${fc(c.Planned_SP_Revenue)}</td>
+      <td class="r mn" data-val="${n(c.Prorated_Planned_SP)}">${fc(c.Prorated_Planned_SP)}</td>
+      <td class="r mn" data-val="${n(c.Actual_SP_Revenue)}">${fc(c.Actual_SP_Revenue)}</td>
+      <td data-val="${att}">${abar(att)}</td>
+      <td class="r mn" data-val="${n(c.Revenue_Gap)}" style="color:${n(c.Revenue_Gap)>=0?'var(--gn)':'var(--rd)'}">${fc(c.Revenue_Gap)}</td>
+      <td class="r mn" data-val="${n(c.Units_Gap)}" style="color:${n(c.Units_Gap)>=0?'var(--gn)':'var(--rd)'}">${fn(c.Units_Gap)}</td>
+      <td class="r" data-val="${n(c.Actual_Discount_Pct)}">${fp(c.Actual_Discount_Pct)}</td>
+      <td>${badge(c.Revenue_Flag)}</td>`;
+    tr.onclick=()=>drillRevCat(c.Category);
+    tb.appendChild(tr);
+  });
+}
+
+// ══════════════════════════════════════════════════
+// REVENUE — DRILLS
+// ══════════════════════════════════════════════════
+function drillRevCat(cat){
+  revSelCat=cat;cD('rev-sp');
+  setBc('rev-bc',`<span class="bi" onclick="revReset()">All Categories</span><span class="bs">›</span><span class="bi act">${cat}</span>`);
+  const rows=DATA.cat_plat_summary
+    .filter(r=>r.Category===cat&&(aPlatRev.has('__ALL__')||aPlatRev.has(r.Platform)))
+    .sort((a,b)=>n(b.Planned_SP_Revenue)-n(a.Planned_SP_Revenue));
+  const tb=document.getElementById('rev-platb');tb.innerHTML='';
+  rows.forEach(r=>{
+    const att=n(r.Revenue_Attainment);
+    const tr=document.createElement('tr');tr.classList.add('cl');
+    tr.innerHTML=`
+      <td>${r.Platform}</td>
+      <td class="r mn" data-val="${n(r.Planned_SP_Revenue)}">${fc(r.Planned_SP_Revenue)}</td>
+      <td class="r mn" data-val="${n(r.Prorated_Planned_SP)}">${fc(r.Prorated_Planned_SP)}</td>
+      <td class="r mn" data-val="${n(r.Actual_SP_Revenue)}">${fc(r.Actual_SP_Revenue)}</td>
+      <td data-val="${att}">${abar(att)}</td>
+      <td class="r mn" data-val="${n(r.Revenue_Gap)}" style="color:${n(r.Revenue_Gap)>=0?'var(--gn)':'var(--rd)'}">${fc(r.Revenue_Gap)}</td>
+      <td class="r mn" data-val="${n(r.Units_Gap)}" style="color:${n(r.Units_Gap)>=0?'var(--gn)':'var(--rd)'}">${fn(r.Units_Gap)}</td>
+      <td class="r" data-val="${n(r.Discount_vs_Plan)}">${dc(r.Discount_vs_Plan)}</td>
+      <td>${n(r.Target_Stretch_Count)>0?'<span class="tag stretch">⚑ Stretch</span>':'<span class="badge good">✓ Normal</span>'}</td>
+      <td>${badge(r.Revenue_Flag)}</td>`;
+    tr.onclick=()=>drillRevPlat(cat,r.Platform);
+    tb.appendChild(tr);
+  });
+  document.getElementById('rev-pt').textContent=`Platform Breakdown — ${cat}`;
+  show('rev-pp');show('rev-pb');scroll('rev-pp');
+}
+
+function drillRevPlat(cat,plat){
+  setBc('rev-bc',`<span class="bi" onclick="revReset()">All</span><span class="bs">›</span><span class="bi" onclick="drillRevCat('${cat}')">${cat}</span><span class="bs">›</span><span class="bi act">${plat}</span>`);
+  const skus=DATA.sku_detail
+    .filter(r=>r.Category===cat&&r.Platform===plat)
+    .sort((a,b)=>n(b['Prorated Planned SP Revenue'])-n(a['Prorated Planned SP Revenue']));
+  const tb=document.getElementById('rev-skub');tb.innerHTML='';
+  skus.forEach(s=>{
+    const tr=document.createElement('tr');
+    tr.innerHTML=`
+      <td class="mn" style="font-size:10px">${s.SKU}</td>
+      <td style="max-width:150px;overflow:hidden;text-overflow:ellipsis" title="${s['Short Name']}">${s['Short Name']}</td>
+      <td class="r mn" data-val="${n(s['Planned Quantity'])}">${fn(s['Planned Quantity'])}</td>
+      <td class="r mn" data-val="${n(s['Prorated Planned Quantity'])}">${fn(s['Prorated Planned Quantity'])}</td>
+      <td class="r mn" data-val="${n(s['MTD Actual Quantity'])}">${fn(s['MTD Actual Quantity'])}</td>
+      <td data-val="${n(s['Units Attainment %'])}">${abar(s['Units Attainment %'])}</td>
+      <td class="r mn" data-val="${n(s['Prorated Planned SP Revenue'])}">${fc(s['Prorated Planned SP Revenue'])}</td>
+      <td class="r mn" data-val="${n(s['MTD Actual SP Revenue'])}">${fc(s['MTD Actual SP Revenue'])}</td>
+      <td data-val="${n(s['Revenue Attainment %'])}">${abar(s['Revenue Attainment %'])}</td>
+      <td class="r" data-val="${n(s['Planned Discount %'])}">${fp(s['Planned Discount %'])}</td>
+      <td class="r" data-val="${n(s['Actual Discount %'])}">${fp(s['Actual Discount %'])}</td>
+      <td data-val="${n(s['Discount vs Guideline Variance'])}">${dc(s['Discount vs Guideline Variance'])}</td>
+      <td data-val="${n(s['LM Revenue Growth %'])}">${dc(s['LM Revenue Growth %'])}</td>
+      <td>${rtag(s['Root Cause'])}${s['Target Stretch']?'&nbsp;<span class="tag stretch" style="font-size:9px">⚑</span>':''}</td>`;
+    tb.appendChild(tr);
+  });
+  document.getElementById('rev-st').textContent=`SKU Detail — ${cat} / ${plat}`;
+  show('rev-sp');show('rev-sb');scroll('rev-sp');
+}
+
+function revReset(){revSelCat=null;cD('rev-pp',()=>cD('rev-sp'));setBc('rev-bc','<span class="bi act" onclick="revReset()">All Categories</span>')}
+function revRefresh(){buildRevRibbons();buildRevCharts();buildRevCatTable();if(revSelCat)drillRevCat(revSelCat)}
+
+// ══════════════════════════════════════════════════
+// ADS — RIBBONS (STACKED VERTICALLY)
+// ══════════════════════════════════════════════════
+function buildAdsRibbons(){
+  const ad=getAdsTotals();
+  const src2=aPlatAds.has('__ALL__')?DATA.ads_by_plat:DATA.ads_by_plat.filter(r=>aPlatAds.has(r.Platform));
+  const sm=k=>src2.reduce((a,r)=>a+n(r[k]),0);
+  const rMTD=ad.spMTD>0?ad.slMTD/ad.spMTD:0, tMTD=ad.spMTD>0?ad.gsMTD/ad.spMTD:0;
+  const rLFM=ad.spLFM>0?ad.slLFM/ad.spLFM:0, tLFM=ad.spLFM>0?ad.gsLFM/ad.spLFM:0;
+  const rL3M=ad.spL3M>0?ad.slL3M/ad.spL3M:0, tL3M=ad.spL3M>0?ad.gsL3M/ad.spL3M:0;
+  const cpoMTD=ad.suMTD>0?ad.spMTD/ad.suMTD:0;
+  const cpoLFM=ad.suLFM>0?ad.spLFM/ad.suLFM:0;
+  const cpoL3M=ad.suL3M>0?ad.spL3M/ad.suL3M:0;
+  const ctrMTD=ad.siMTD>0?ad.scMTD/ad.siMTD*100:0;
+  const adcMTD=ad.guMTD>0?ad.suMTD/ad.guMTD*100:0;
+
+  document.getElementById('ads-ribbons').innerHTML=
+    mkRibbon('mtd','MTD — Current Month',[
+      ['Ad Spend',   fc(ad.spMTD),                                          'Current month to date',   ''],
+      ['Ad Sales',   fc(ad.slMTD),                                          'Attributed to ads',       ''],
+      ['Ad CVR',     ad.scMTD>0?fp(ad.suMTD/ad.scMTD*100):'—',            'Ad units / Ad clicks',    ''],
+      ['Gross CVR',  ad.gcMTD>0?fp(ad.guMTD/ad.gcMTD*100):'—',            'Gross units / Gross clks', ''],
+      ['ROAS',       fr(rMTD),                                              'Ad sales / Ad spend',     ''],
+      ['TROAS',      fr(tMTD),                                              'Gross sales / Ad spend',  ''],
+      ['Cost/Order', fc(cpoMTD),                                            'Spend / Ad units',        ''],
+      ['CTR%',       fp(ctrMTD),                                            'Ad clicks / Impressions', ''],
+    ])+
+    mkRibbon('lm','Last Full Month',[
+      ['Ad Spend LFM',   fc(ad.spLFM),                                         'Last month total',        ''],
+      ['Ad Sales LFM',   fc(ad.slLFM),                                         'Attributed to ads',       ''],
+      ['Ad CVR LFM',     ad.scLFM>0?fp(ad.suLFM/ad.scLFM*100):'—',           'Ad units / Ad clicks',    ''],
+      ['Gross CVR LFM',  ad.gcLFM>0?fp(ad.guLFM/ad.gcLFM*100):'—',           'Gross units / Gross clks', ''],
+      ['ROAS LFM',       fr(rLFM),                                             'Last month',              ''],
+      ['TROAS LFM',      fr(tLFM),                                             'Last month',              ''],
+      ['Cost/Order LFM',  fc(cpoLFM),                                             'Spend / Ad units',      ''],
+      ['CTR% LFM',        ad.siLFM>0?fp(ad.scLFM/ad.siLFM*100):'—',             'Clicks / Impressions',  ''],
+      ['Ad Contrib% LFM', ad.guLFM>0?fp(ad.suLFM/ad.guLFM*100):'—',             'Ad units / Gross',      ''],
+    ])+
+    mkRibbon('l3m','Last 3 Months Average',[
+      ['Ad Spend L3M',   fc(ad.spL3M/3),                                       'Monthly average',         ''],
+      ['Ad Sales L3M',   fc(ad.slL3M/3),                                       'Monthly average',         ''],
+      ['Ad CVR L3M',     ad.scL3M>0?fp(ad.suL3M/ad.scL3M*100):'—',           'Ad units / Ad clicks',    ''],
+      ['Gross CVR L3M',  ad.gcL3M>0?fp(ad.guL3M/ad.gcL3M*100):'—',           'Gross units / Gross clks', ''],
+      ['ROAS L3M',       fr(rL3M),                                             '3-month avg',             ''],
+      ['TROAS L3M',      fr(tL3M),                                             '3-month avg',             ''],
+      ['Cost/Order L3M',  fc(cpoL3M),                                             'Monthly average',       ''],
+      ['CTR% L3M',        ad.siL3M>0?fp(ad.scL3M/ad.siL3M*100):'—',             'Clicks / Impressions',  ''],
+      ['Ad Contrib% L3M', ad.guL3M>0?fp(ad.suL3M/ad.guL3M*100):'—',             'Ad units / Gross',      ''],
+    ]);
+}
+
+// ══════════════════════════════════════════════════
+// ADS — CATEGORY TABLE & DRILLS
+// ══════════════════════════════════════════════════
+function getAdsCats(){
+  if(aPlatAds.has('__ALL__'))return withCPO(DATA.ads_by_cat);
+  const filtered=DATA.ads_by_cat_plat.filter(r=>aPlatAds.has(r.Platform));
+  const cats={};
+  filtered.forEach(r=>{
+    if(!cats[r.Category])cats[r.Category]={Category:r.Category,ROAS_Flag:'good',
+      Ad_Spend_MTD:0,Ad_Sales_MTD:0,Ad_Units_MTD:0,Gross_Units_MTD:0,Gross_Sales_MTD:0,
+      Ad_Impressions_MTD:0,Ad_Clicks_MTD:0,
+      Ad_Spend_LFM:0,Ad_Sales_LFM:0,Ad_Units_LFM:0,Gross_Sales_LFM:0,
+      Ad_Spend_L3M:0,Ad_Sales_L3M:0,Ad_Units_L3M:0,Gross_Sales_L3M:0};
+    const c=cats[r.Category];
+    ['Ad_Spend_MTD','Ad_Sales_MTD','Ad_Units_MTD','Gross_Units_MTD','Gross_Sales_MTD',
+     'Ad_Impressions_MTD','Ad_Clicks_MTD',
+     'Ad_Spend_LFM','Ad_Sales_LFM','Ad_Units_LFM','Gross_Sales_LFM',
+     'Ad_Spend_L3M','Ad_Sales_L3M','Ad_Units_L3M','Gross_Sales_L3M'
+    ].forEach(k=>c[k]+=n(r[k]));
+  });
+  return withCPO(Object.values(cats).map(c=>{
+    ['MTD','LFM','L3M'].forEach(s=>{
+      c[`ROAS_${s}`] =n(c[`Ad_Spend_${s}`])>0?n(c[`Ad_Sales_${s}`])/n(c[`Ad_Spend_${s}`]):0;
+      c[`TROAS_${s}`]=n(c[`Ad_Spend_${s}`])>0?n(c[`Gross_Sales_${s}`])/n(c[`Ad_Spend_${s}`]):0;
+      c[`CPC_${s}`]  =n(c[`Ad_Clicks_${s}`])>0?n(c[`Ad_Spend_${s}`])/n(c[`Ad_Clicks_${s}`]):0;
+      c[`CPM_${s}`]  =n(c[`Ad_Impressions_${s}`])>0?n(c[`Ad_Spend_${s}`])/n(c[`Ad_Impressions_${s}`])*1000:0;
+      c[`CTR_${s}`]  =n(c[`Ad_Impressions_${s}`])>0?n(c[`Ad_Clicks_${s}`])/n(c[`Ad_Impressions_${s}`])*100:0;
+      c[`Ad_Contribution_${s}`]=n(c[`Gross_Units_${s}`])>0?n(c[`Ad_Units_${s}`])/n(c[`Gross_Units_${s}`])*100:0;
+    });
+    c.ROAS_Delta_vs_LFM =n(c.ROAS_LFM)>0?(n(c.ROAS_MTD)-n(c.ROAS_LFM))/n(c.ROAS_LFM)*100:0;
+    c.TROAS_Delta_vs_LFM=n(c.TROAS_LFM)>0?(n(c.TROAS_MTD)-n(c.TROAS_LFM))/n(c.TROAS_LFM)*100:0;
+    c.CPC_Delta_vs_LFM  =n(c.CPC_LFM)>0?(n(c.CPC_MTD)-n(c.CPC_LFM))/n(c.CPC_LFM)*100:0;
+    c.Ad_Spend_Delta_vs_LFM=n(c.Ad_Spend_LFM)>0?(n(c.Ad_Spend_MTD)-n(c.Ad_Spend_LFM))/n(c.Ad_Spend_LFM)*100:0;
+    c.ROAS_Flag=n(c.ROAS_LFM)>0&&(n(c.ROAS_LFM)-n(c.ROAS_MTD))/n(c.ROAS_LFM)>0.2?'warning':'good';
+    return c;
+  }));
+}
+
+function buildAdsCatTable(){
+  const cats=getAdsCats().sort((a,b)=>n(b.Ad_Spend_MTD)-n(a.Ad_Spend_MTD));
+  buildCP('ads-cat-cp',adsCatActive,()=>buildAdsCatTable());
+  renderAdsTable('ads-ct','ads-ct-h','ads-cb',cats,adsCatActive,'Category');
+  // rewire click
+  const rows=document.querySelectorAll('#ads-cb tr');
+  rows.forEach((tr,i)=>{if(cats[i])tr.onclick=()=>drillAdsCat(cats[i].Category)});
+}
+
+function drillAdsCat(cat){
+  adsSelCat=cat;cD('ads-sp');
+  setBc('ads-bc',`<span class="bi" onclick="adsReset()">All Categories</span><span class="bs">›</span><span class="bi act">${cat}</span>`);
+  adsPlatData=withCPO(DATA.ads_by_cat_plat
+    .filter(r=>r.Category===cat&&(aPlatAds.has('__ALL__')||aPlatAds.has(r.Platform)))
+    .map(r=>({...r,
+      ROAS_Delta_vs_LFM:n(r.ROAS_LFM)>0?(n(r.ROAS_MTD)-n(r.ROAS_LFM))/n(r.ROAS_LFM)*100:0,
+      TROAS_Delta_vs_LFM:n(r.TROAS_LFM)>0?(n(r.TROAS_MTD)-n(r.TROAS_LFM))/n(r.TROAS_LFM)*100:0,
+      CPC_Delta_vs_LFM:n(r.CPC_LFM)>0?(n(r.CPC_MTD)-n(r.CPC_LFM))/n(r.CPC_LFM)*100:0,
+      Ad_Spend_Delta_vs_LFM:n(r.Ad_Spend_LFM)>0?(n(r.Ad_Spend_MTD)-n(r.Ad_Spend_LFM))/n(r.Ad_Spend_LFM)*100:0,
+    }))
+    .sort((a,b)=>n(b.Ad_Spend_MTD)-n(a.Ad_Spend_MTD)));
+  buildCP('ads-plat-cp',adsPlatActive,()=>{
+    renderAdsTable('ads-pt-t','ads-pt-h','ads-pb-r',adsPlatData,adsPlatActive,'Platform');
+    rewirePlat(cat);
+  });
+  renderAdsTable('ads-pt-t','ads-pt-h','ads-pb-r',adsPlatData,adsPlatActive,'Platform');
+  rewirePlat(cat);
+  document.getElementById('ads-pt').textContent=`Platform Ads — ${cat}`;
+  show('ads-pp');show('ads-pb');scroll('ads-pp');
+}
+
+function rewirePlat(cat){
+  document.querySelectorAll('#ads-pb-r tr').forEach((tr,i)=>{
+    if(adsPlatData[i])tr.onclick=()=>drillAdsPlat(cat,adsPlatData[i].Platform);
+  });
+}
+
+function drillAdsPlat(cat,plat){
+  setBc('ads-bc',`<span class="bi" onclick="adsReset()">All</span><span class="bs">›</span><span class="bi" onclick="drillAdsCat('${cat}')">${cat}</span><span class="bs">›</span><span class="bi act">${plat}</span>`);
+  adsSkuData=withCPO(DATA.ads_sku_detail
+    .filter(r=>r.Category===cat&&r.Platform===plat)
+    .map(r=>({...r,
+      ROAS_Delta_vs_LFM:n(r.ROAS_LFM)>0?(n(r.ROAS_MTD)-n(r.ROAS_LFM))/n(r.ROAS_LFM)*100:0,
+      TROAS_Delta_vs_LFM:n(r.TROAS_LFM)>0?(n(r.TROAS_MTD)-n(r.TROAS_LFM))/n(r.TROAS_LFM)*100:0,
+      CPC_Delta_vs_LFM:n(r.CPC_LFM)>0?(n(r.CPC_MTD)-n(r.CPC_LFM))/n(r.CPC_LFM)*100:0,
+      Ad_Spend_Delta_vs_LFM:n(r.Ad_Spend_LFM)>0?(n(r.Ad_Spend_MTD)-n(r.Ad_Spend_LFM))/n(r.Ad_Spend_LFM)*100:0,
+    }))
+    .sort((a,b)=>n(b.Ad_Spend_MTD)-n(a.Ad_Spend_MTD)));
+  buildCP('ads-sku-cp',adsSkuActive,()=>renderAdsTable('ads-st-t','ads-st-h','ads-sb-r',adsSkuData,adsSkuActive,'SKU'));
+  renderAdsTable('ads-st-t','ads-st-h','ads-sb-r',adsSkuData,adsSkuActive,'SKU');
+  document.getElementById('ads-st').textContent=`SKU Ads — ${cat} / ${plat}`;
+  show('ads-sp');show('ads-sb');scroll('ads-sp');
+}
+
+function adsReset(){adsSelCat=null;cD('ads-pp',()=>cD('ads-sp'));setBc('ads-bc','<span class="bi act" onclick="adsReset()">All Categories</span>')}
+function adsRefresh(){buildAdsRibbons();buildAdsCatTable();if(adsSelCat)drillAdsCat(adsSelCat)}
+
+// ══════════════════════════════════════════════════
+// DISCOUNT — RIBBONS & TABLES
+// ══════════════════════════════════════════════════
+function buildDiscRibbons(){
+  const s=DATA.summary;
+  const total=s.disc_ok_skus+s.disc_warning_skus+s.disc_critical_skus;
+  const critRate=total>0?(s.disc_critical_skus/total*100).toFixed(1):0;
+  document.getElementById('disc-ribbons').innerHTML=
+    mkRibbon('mtd','Discount Health — MTD',[
+      ['Within Guideline', String(s.disc_ok_skus),   'SKUs ✓', 'g'],
+      ['Watch (+3–5%)',     String(s.disc_warning_skus), 'SKUs ⚠', 'a'],
+      ['Critical (>+5%)',  String(s.disc_critical_skus),'SKUs ✗', 'r'],
+      ['Critical Rate',    critRate+'%',              'of all SKUs', critRate>10?'r':'a'],
+      ['Warning Threshold','3pp above guideline',     '',            ''],
+      ['Critical Threshold','5pp above guideline',    '',            ''],
+      ['Total SKUs',       String(total),             'in scope',    ''],
+    ]);
+}
+
+function buildDiscCatTable(){
+  const cats=DATA.discount_by_cat.slice().sort((a,b)=>n(b.Planned_Revenue)-n(a.Planned_Revenue));
+  const tb=document.getElementById('disc-cb');tb.innerHTML='';
+  cats.forEach(c=>{
+    const tr=document.createElement('tr');tr.classList.add('cl');
+    tr.innerHTML=`
+      <td>${c.Category}</td>
+      <td class="r mn" data-val="${n(c.Planned_Revenue)}">${fc(c.Planned_Revenue)}</td>
+      <td class="r" data-val="${n(c.Guideline_Discount_Pct)}">${fp(c.Guideline_Discount_Pct)}</td>
+      <td class="r" data-val="${n(c.Planned_Discount_Pct)}">${fp(c.Planned_Discount_Pct)}</td>
+      <td class="r" data-val="${n(c.Actual_Discount_Pct)}">${fp(c.Actual_Discount_Pct)}</td>
+      <td class="r" data-val="${n(c.Discount_vs_Plan)}">${dc(c.Discount_vs_Plan)}</td>
+      <td class="r" data-val="${n(c.Discount_vs_Guideline)}">${dc(c.Discount_vs_Guideline)}</td>
+      <td>${badge(c.Discount_Flag)}</td>
+      <td class="r" data-val="${n(c.SKU_Count)}">${c.SKU_Count}</td>`;
+    tr.onclick=()=>drillDiscCat(c.Category);
+    tb.appendChild(tr);
+  });
+}
+
+function drillDiscCat(cat){
+  discSelCat=cat;cD('disc-sp');
+  setBc('disc-bc',`<span class="bi" onclick="discReset()">All Categories</span><span class="bs">›</span><span class="bi act">${cat}</span>`);
+  const rows=DATA.discount_by_cat_plat.filter(r=>r.Category===cat)
+    .sort((a,b)=>n(b.Discount_vs_Guideline)-n(a.Discount_vs_Guideline));
+  const tb=document.getElementById('disc-pb-r');tb.innerHTML='';
+  rows.forEach(r=>{
+    const tr=document.createElement('tr');tr.classList.add('cl');
+    tr.innerHTML=`
+      <td>${r.Platform}</td>
+      <td class="r" data-val="${n(r.Guideline_Discount_Pct)}">${fp(r.Guideline_Discount_Pct)}</td>
+      <td class="r" data-val="${n(r.Planned_Discount_Pct)}">${fp(r.Planned_Discount_Pct)}</td>
+      <td class="r" data-val="${n(r.Actual_Discount_Pct)}">${fp(r.Actual_Discount_Pct)}</td>
+      <td class="r" data-val="${n(r.Discount_vs_Guideline)}">${dc(r.Discount_vs_Guideline)}</td>
+      <td>${badge(r.Discount_Flag)}</td>`;
+    tr.onclick=()=>drillDiscPlat(cat,r.Platform);
+    tb.appendChild(tr);
+  });
+  document.getElementById('disc-pt').textContent=`Platform Discount — ${cat}`;
+  show('disc-pp');show('disc-pb');scroll('disc-pp');
+}
+
+function drillDiscPlat(cat,plat){
+  setBc('disc-bc',`<span class="bi" onclick="discReset()">All</span><span class="bs">›</span><span class="bi" onclick="drillDiscCat('${cat}')">${cat}</span><span class="bs">›</span><span class="bi act">${plat}</span>`);
+  const skus=DATA.discount_sku.filter(r=>r.Category===cat&&r.Platform===plat)
+    .sort((a,b)=>n(b.Discount_vs_Guideline)-n(a.Discount_vs_Guideline));
+  const tb=document.getElementById('disc-sb-r');tb.innerHTML='';
+  skus.forEach(s=>{
+    const tr=document.createElement('tr');
+    tr.innerHTML=`
+      <td class="mn" style="font-size:10px">${s.SKU}</td>
+      <td style="max-width:160px;overflow:hidden;text-overflow:ellipsis" title="${s.Short_Name}">${s.Short_Name}</td>
+      <td class="r mn" data-val="${n(s.MRP)}">${C}${fn(s.MRP)}</td>
+      <td class="r mn" data-val="${n(s.Guideline_SP)}">${C}${fn(s.Guideline_SP)}</td>
+      <td class="r mn" data-val="${n(s.Actual_SP_per_Unit)}">${s.Actual_SP_per_Unit?C+fn(s.Actual_SP_per_Unit):'—'}</td>
+      <td class="r" data-val="${n(s.Guideline_Discount_Pct)}">${fp(s.Guideline_Discount_Pct)}</td>
+      <td class="r" data-val="${n(s.Planned_Discount_Pct)}">${fp(s.Planned_Discount_Pct)}</td>
+      <td class="r" data-val="${n(s.Actual_Discount_Pct)}">${fp(s.Actual_Discount_Pct)}</td>
+      <td class="r" data-val="${n(s.Discount_vs_Guideline)}">${dc(s.Discount_vs_Guideline)}</td>
+      <td>${badge(s.Discount_Flag)}</td>`;
+    tb.appendChild(tr);
+  });
+  document.getElementById('disc-st').textContent=`SKU Price — ${cat} / ${plat}`;
+  show('disc-sp');show('disc-sb');scroll('disc-sp');
+}
+
+function discReset(){discSelCat=null;cD('disc-pp',()=>cD('disc-sp'));setBc('disc-bc','<span class="bi act" onclick="discReset()">All Categories</span>')}
+
+// ══════════════════════════════════════════════════
+// INIT
+// ══════════════════════════════════════════════════
+function init(){
+  document.getElementById('lu').textContent=DATA.meta?.fetched_at||'—';
+  buildPF('rev-pf',aPlatRev,revRefresh);
+  buildPF('ads-pf',aPlatAds,adsRefresh);
+  buildRevRibbons();
+  buildRevCharts();
+  buildRevCatTable();
+  buildAdsRibbons();
+  buildAdsCatTable();
+  buildDiscRibbons();
+  buildDiscCatTable();
+}
+init();
+</script>
+</body>
+</html>
