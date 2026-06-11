@@ -1,0 +1,52 @@
+name: Refresh Dashboard
+
+on:
+  schedule:
+    - cron: '30 5 * * *'    # 11:00 AM IST (UTC+5:30)
+    - cron: '30 6 * * *'    # 12:00 PM IST
+    - cron: '30 7 * * *'    # 01:00 PM IST
+  workflow_dispatch:          # Manual trigger from GitHub UI anytime
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Check out the repo
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # 2. Set up Python
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      # 3. Install dependencies
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      # 4. Write credentials.json from GitHub Secret
+      - name: Write Google credentials
+        run: echo '${{ secrets.GOOGLE_CREDENTIALS }}' > credentials.json
+
+      # 5. Fetch data from Google Sheets
+      - name: Fetch data
+        run: python fetch_data.py
+
+      # 6. Run calculations
+      - name: Calculate metrics
+        run: python calculate.py
+
+      # 7. Build dashboard HTML
+      - name: Build dashboard
+        run: python build_dashboard.py
+
+      # 8. Commit and push the new dashboard.html
+      - name: Commit dashboard
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add dashboard.html
+          git diff --staged --quiet || git commit -m "Refresh dashboard — $(date +'%d %b %Y %H:%M IST' -d '+5 hours 30 minutes')"
+          git push
