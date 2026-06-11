@@ -18,7 +18,7 @@ CREDENTIALS_FILE = "credentials.json"
 # ── Paths ──────────────────────────────────────
 RAW_DIR       = "data/raw"
 PROCESSED_DIR = "data/processed"
-OUTPUT_HTML   = "dashboard.html"
+OUTPUT_HTML   = "nh_category_intel.html"
 TEMPLATE_FILE = "templates/dashboard_template.html"
 
 # ── Flag Thresholds ────────────────────────────
