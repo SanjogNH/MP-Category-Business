@@ -378,6 +378,13 @@ function fc(v){
   return C+(+v).toFixed(0);
 }
 function fn(v){if(v==null||isNaN(+v))return'—';return Math.round(+v).toLocaleString('en-IN')}
+function fL(v){
+  if(v==null||isNaN(+v))return'—';
+  const a=Math.abs(+v);
+  if(a>=1e7)return (a/1e7).toFixed(2)+' Cr';
+  if(a>=1e5)return (a/1e5).toFixed(2)+' L';
+  return Math.round(a).toLocaleString('en-IN');
+}
 function fp(v,s=false){if(v==null||isNaN(+v))return'—';return(s&&v>0?'+':'')+Number(v).toFixed(1)+'%'}
 function fr(v){if(v==null||isNaN(+v)||+v===0)return'—';return Number(v).toFixed(2)+'x'}
 function badge(f){const m={good:'✓ Good',warning:'⚠ Watch',critical:'✗ Critical'};return`<span class="badge ${f}">${m[f]||f}</span>`}
@@ -473,7 +480,7 @@ function buildPF(cid,state,cb){
 // not produced by Python (CPO, Ad_CVR, Gross_CVR, Total_AOV) are computed
 // row-wise in withCPO() below.
 const ADS_METRICS=[
-  {k:'Ad_Impressions',  l:'Ad Impressions', f:v=>fn(v)},
+  {k:'Ad_Impressions',  l:'Ad Impressions', f:v=>fL(v)},
   {k:'Ad_Clicks',       l:'Ad Clicks',      f:v=>fn(v)},
   {k:'Ad_Spend',        l:'Ad Spend',       f:v=>fc(v)},
   {k:'Ad_Sales',        l:'Ad Sales',       f:v=>fc(v)},
@@ -841,7 +848,7 @@ function buildAdsRibbons(){
     mkRibbon('mtd','MTD — Current Month',[
       ['Ad Spend',      fc(ad.spMTD),                                          'Current month to date',   ''],
       ['Ad Sales',      fc(ad.slMTD),                                          'Attributed to ads',       ''],
-      ['Ad Impressions',fn(ad.siMTD),                                          'Total impressions',       ''],
+      ['Ad Impressions',fL(ad.siMTD),                                          'Total impressions',       ''],
       ['Ad CVR',        ad.scMTD>0?fp(ad.suMTD/ad.scMTD*100):'—',             'Ad units / Ad clicks',    ''],
       ['Gross CVR',     ad.gcMTD>0?fp(ad.guMTD/ad.gcMTD*100):'—',             'Gross units / Gross clks',''],
       ['ROAS',          fr(rMTD),                                              'Ad sales / Ad spend',     ''],
@@ -853,7 +860,7 @@ function buildAdsRibbons(){
     mkRibbon('lm','Last Full Month',[
       ['Ad Spend LFM',      fc(ad.spLFM),                                         'Last month total',        ''],
       ['Ad Sales LFM',      fc(ad.slLFM),                                         'Attributed to ads',       ''],
-      ['Ad Impressions LFM',fn(ad.siLFM),                                         'Last month total',        ''],
+      ['Ad Impressions LFM',fL(ad.siLFM),                                         'Last month total',        ''],
       ['Ad CVR LFM',        ad.scLFM>0?fp(ad.suLFM/ad.scLFM*100):'—',            'Ad units / Ad clicks',    ''],
       ['Gross CVR LFM',     ad.gcLFM>0?fp(ad.guLFM/ad.gcLFM*100):'—',            'Gross units / Gross clks',''],
       ['ROAS LFM',          fr(rLFM),                                             'Last month',              ''],
@@ -865,7 +872,7 @@ function buildAdsRibbons(){
     mkRibbon('l3m','Last 3 Months Average',[
       ['Ad Spend L3M',      fc(ad.spL3M/3),                                       'Monthly average',         ''],
       ['Ad Sales L3M',      fc(ad.slL3M/3),                                       'Monthly average',         ''],
-      ['Ad Impressions L3M',fn(ad.siL3M/3),                                       'Monthly average',         ''],
+      ['Ad Impressions L3M',fL(ad.siL3M/3),                                       'Monthly average',         ''],
       ['Ad CVR L3M',        ad.scL3M>0?fp(ad.suL3M/ad.scL3M*100):'—',            'Ad units / Ad clicks',    ''],
       ['Gross CVR L3M',     ad.gcL3M>0?fp(ad.guL3M/ad.gcL3M*100):'—',            'Gross units / Gross clks',''],
       ['ROAS L3M',          fr(rL3M),                                             '3-month avg',             ''],
