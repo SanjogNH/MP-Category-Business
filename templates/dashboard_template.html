@@ -32,7 +32,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--tx);font-si
 .page{display:none}.page.active{display:block}
 
 /* ── PLATFORM FILTER ─────────────── */
-.fbar{background:var(--sf);border:1px solid var(--bd);border-radius:10px;padding:10px 16px;margin-bottom:14px;display:flex;align-items:flex-start;gap:10px;flex-wrap:wrap;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.fbar{background:var(--sf);border:1px solid var(--bd);border-radius:10px;padding:10px 16px;margin-bottom:14px;display:flex;align-items:flex-start;gap:10px;flex-wrap:wrap;box-shadow:0 2px 6px rgba(0,0,0,.08);position:sticky;top:calc(var(--nav) + 8px);z-index:100}
 .fbar-lbl{font-size:10px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--mu);white-space:nowrap;padding-top:4px}
 .chips{display:flex;gap:5px;flex-wrap:wrap;flex:1}
 .chip{padding:3px 11px;border-radius:20px;font-size:11px;font-weight:500;cursor:pointer;border:1px solid var(--bd);background:var(--sf2);color:var(--tx2);transition:all .12s;white-space:nowrap}
@@ -137,6 +137,12 @@ td.mn{font-family:'DM Mono',monospace;font-size:11px}
 .bi:hover{color:var(--bl)}
 .bi.act{color:var(--tx);font-weight:500;cursor:default}
 .bs{color:var(--bd2);font-size:11px}
+
+/* ── BACK TO TOP ─────────────────── */
+.btt{position:fixed;bottom:24px;right:24px;width:40px;height:40px;border-radius:50%;background:var(--bl);color:#fff;border:none;font-size:20px;font-weight:600;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,.18);opacity:0;visibility:hidden;transition:opacity .2s,visibility .2s,transform .15s;z-index:150;display:flex;align-items:center;justify-content:center;line-height:1;padding:0}
+.btt.show{opacity:1;visibility:visible}
+.btt:hover{background:#1d4ed8;box-shadow:0 6px 16px rgba(0,0,0,.22);transform:translateY(-2px)}
+.btt:active{transform:translateY(0)}
 
 ::-webkit-scrollbar{width:4px;height:4px}
 ::-webkit-scrollbar-thumb{background:var(--bd2);border-radius:3px}
@@ -1191,6 +1197,14 @@ function init(){
   buildDiscCatTable();
 }
 init();
+
+// Back-to-top button: appears past 300px scroll, smooth-scrolls on click.
+window.addEventListener('scroll',()=>{
+  const b=document.getElementById('btt');
+  if(!b)return;
+  if(window.scrollY>300)b.classList.add('show');else b.classList.remove('show');
+},{passive:true});
 </script>
+<button id="btt" class="btt" aria-label="Back to top" title="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
 </body>
 </html>
