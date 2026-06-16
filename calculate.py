@@ -63,9 +63,14 @@ def target_stretch(plan, lm, l3m):
 # ── per-platform prorate factor ────────────────────────────────────────────
 def parse_sheet_date(raw, today):
     """
-    Try both DD/MM and MM/DD interpretations of ambiguous date strings.
-    Picks whichever lands in the current month.
-    Also handles datetime objects and Excel serials.
+    Parse a sheet date using the project's two known, unambiguous formats:
+      - Sales Data : DD/MM/YYYY   e.g. 16/06/2026
+      - Ads Data   : DD-Month-YY  e.g. 16-June-26 / 16-Jun-26
+    Also handles datetime objects and Excel serials as fallbacks.
+
+    No more DD/MM vs MM/DD guessing — the formats are fixed, so we parse them
+    deterministically and warn loudly if a value can't be read instead of
+    silently picking the "latest-in-month" candidate.
     """
     if raw is None or (isinstance(raw, float) and pd.isna(raw)):
         return None
@@ -77,25 +82,36 @@ def parse_sheet_date(raw, today):
         except: pass
 
     raw_str = str(raw).strip()
-    candidates = []
 
-    # Try both DD/MM and MM/DD
-    for dayfirst in [True, False]:
+    # Explicit known formats, tried in order. Day is always first.
+    KNOWN_FORMATS = [
+        "%d/%m/%Y",   # Sales  : 16/06/2026
+        "%d/%m/%y",   # Sales  : 16/06/26  (2-digit year tolerance)
+        "%d-%B-%y",   # Ads    : 16-June-26
+        "%d-%b-%y",   # Ads    : 16-Jun-26
+        "%d-%B-%Y",   # Ads    : 16-June-2026
+        "%d-%b-%Y",   # Ads    : 16-Jun-2026
+    ]
+    for fmt in KNOWN_FORMATS:
         try:
-            d = pd.to_datetime(raw_str, dayfirst=dayfirst).date()
-            candidates.append(d)
-        except: pass
+            return pd.to_datetime(raw_str, format=fmt).date()
+        except (ValueError, TypeError):
+            continue
 
-    # Try Excel serial
+    # Day-first generic parse (formats above should already catch real data;
+    # this only rescues odd separators, still day-first so never ambiguous).
     try:
-        d = date(1899, 12, 30) + timedelta(days=int(float(raw_str)))
-        candidates.append(d)
-    except: pass
+        return pd.to_datetime(raw_str, dayfirst=True).date()
+    except (ValueError, TypeError):
+        pass
 
-    # Return whichever lands in current month (latest day wins if tie)
-    current = [d for d in candidates if d.month == today.month and d.year == today.year]
-    if current:
-        return max(current)
+    # Excel serial fallback
+    try:
+        return date(1899, 12, 30) + timedelta(days=int(float(raw_str)))
+    except (ValueError, TypeError):
+        pass
+
+    log.warning(f"    parse_sheet_date: unrecognised date value {raw!r} — caller will fall back")
     return None
 
 
@@ -143,35 +159,6 @@ def load_data():
         if c in ads.columns: ads[c] = pd.to_numeric(ads[c], errors="coerce").fillna(0)
     guide["MRP"]           = pd.to_numeric(guide["MRP"],           errors="coerce").fillna(0)
     guide["Selling Price"] = pd.to_numeric(guide["Selling Price"], errors="coerce").fillna(0)
-
-    # ── Platform value normalization ────────────────────────────────
-    # Fix: sales & ads CSVs are independent sources; case/whitespace drift in
-    # the Platform column caused chips to split (sales-side "Blinkit" vs
-    # ads-side " Blinkit "/"blinkit") and made ROAS/TROAS look unfiltered on
-    # the Revenue page. Strip both, then remap ads → canonical sales names.
-    sales["Platform"] = sales["Platform"].astype(str).str.strip()
-    ads["Platform"]   = ads["Platform"].astype(str).str.strip()
-
-    canonical = {p.lower(): p for p in sales["Platform"].unique() if p and p.lower() != "nan"}
-    unmapped  = set()
-    def _remap(p):
-        key = p.lower()
-        if key in canonical:
-            return canonical[key]
-        unmapped.add(p)
-        return p
-    ads["Platform"] = ads["Platform"].apply(_remap)
-
-    sales_plats = set(sales["Platform"].unique())
-    ads_plats   = set(ads["Platform"].unique())
-    log.info(f"  Platforms — sales:{sorted(sales_plats)}")
-    log.info(f"  Platforms — ads  :{sorted(ads_plats)}")
-    if unmapped:
-        log.warning(f"  ⚠ Platforms in ads NOT found in sales (left as-is): {sorted(unmapped)}")
-    sales_only = sales_plats - ads_plats
-    if sales_only:
-        log.warning(f"  ⚠ Platforms in sales NOT found in ads (ROAS will be 0 when filtered to these): {sorted(sales_only)}")
-    # ────────────────────────────────────────────────────────────────
 
     log.info(f"  Sales:{len(sales):,}  Ads:{len(ads):,}  Guide:{len(guide):,}")
     return sales, ads, guide
@@ -379,10 +366,17 @@ def build_summary(sales, ads_mtd, ads_lfm, ads_l3m, prorate_map):
     disc_warn = int((sales["Discount Flag"]=="warning").sum())
     disc_ok   = int((sales["Discount Flag"]=="good").sum())
 
-    # median prorate for display
-    factors = [v[2] for v in prorate_map.values()]
-    med_factor = sorted(factors)[len(factors)//2] if factors else 8/30
-    med_day    = round(med_factor * 30)
+    # median prorate for display (true median; even counts average the two middle values)
+    def _median(xs, fb):
+        xs = sorted(xs)
+        if not xs:
+            return fb
+        m = len(xs) // 2
+        return xs[m] if len(xs) % 2 else (xs[m - 1] + xs[m]) / 2
+    days   = [v[0] for v in prorate_map.values()]
+    totals = [v[1] for v in prorate_map.values()]
+    med_day   = round(_median(days, 8))
+    med_total = round(_median(totals, 30))
 
     return {
         "total_planned_revenue":   fmt(tot_plan),
@@ -405,7 +399,11 @@ def build_summary(sales, ads_mtd, ads_lfm, ads_l3m, prorate_map):
             (sales["L3M MRP Revenue"] - sales["L3M SP Monthly"]).dropna().sum(),
             sales["L3M MRP Revenue"].dropna().sum()) * 100, 1),
         "median_elapsed_day":      med_day,
-        "total_days":              30,
+        "total_days":              med_total,
+        # flag thresholds (single source of truth for the dashboard JS)
+        "attainment_critical_pct": round(config.ATTAINMENT_CRITICAL * 100, 1),
+        "attainment_warning_pct":  round(config.ATTAINMENT_WARNING * 100, 1),
+        "roas_drop_warning":       config.ROAS_DROP_WARNING,
         # ads MTD
         "ad_spend_mtd":   fmt(sp_mtd), "ad_sales_mtd": fmt(sl_mtd),
         "gross_sales_mtd":fmt(gs_mtd), "ad_units_mtd": fmt(su_mtd),
@@ -445,6 +443,37 @@ def build_discount_audit(sales):
             "Discount_Flag":          r.get("Discount Flag", "good"),
         })
     return records
+
+def weighted_discount_aggs(grp):
+    """
+    Return (guideline, planned, actual) discount ratios for a group, all on a
+    consistent revenue-weighted basis so that the Δ columns reconcile:
+        Discount_vs_Plan      = actual - planned
+        Discount_vs_Guideline = actual - guideline
+
+    - planned   : revenue-weighted by Planned MRP Revenue   (sum-of-revenue method)
+    - actual    : revenue-weighted by Actual  MRP Revenue   (dead SKUs → 0 weight, excluded)
+    - guideline : Option B — weighted by Planned MRP Revenue, over rows that
+                  actually have a guideline (NaN guideline rows excluded from
+                  both numerator and denominator).
+    """
+    planned = safe_div((grp["Planned MRP Revenue"] - grp["Planned SP Revenue"]).sum(),
+                        grp["Planned MRP Revenue"].sum())
+    actual  = safe_div((grp["MTD Actual MRP Revenue"] - grp["MTD Actual SP Revenue"]).sum(),
+                       grp["MTD Actual MRP Revenue"].sum())
+    # Coverage is determined by the presence of a guideline MRP, NOT by the
+    # discount % (safe_div coerces a missing guideline to 0.0, which would be
+    # indistinguishable from a genuine 0% guideline).
+    gmask = grp["Guideline MRP"].notna() & (grp["Guideline MRP"] > 0)
+    w  = grp.loc[gmask, "Planned MRP Revenue"]
+    gd = grp.loc[gmask, "Guideline Discount %"]
+    if not gmask.any():
+        guideline = None                              # no guideline coverage at all
+    elif w.sum() > 0:
+        guideline = safe_div((gd * w).sum(), w.sum()) # revenue-weighted (Option B)
+    else:
+        guideline = gd.mean()                         # covered but zero planned rev → unweighted
+    return guideline, planned, actual
 
 def df_to_records(df): return nan_to_none(df.to_dict(orient="records"))
 
@@ -492,8 +521,15 @@ def main():
         if c in sku_detail.columns: sku_detail[c] = sku_detail[c].apply(lambda v: pct(v))
 
     log.info("Aggregating ads…")
-    sku_cat_map = sales[["SKU","Category"]].drop_duplicates().set_index("SKU")["Category"].to_dict()
-    for df in [mtd, lfm, l3m]: df["Category"] = df["SKU"].map(sku_cat_map).fillna("Unknown")
+    # SKU → Category: most-frequent category in sales (deterministic on ties:
+    # value_counts is ordered by count desc, then we take the first index).
+    # Ads SKUs with no sales match become "Unmapped Category".
+    def _dominant_category(s):
+        vc = s.value_counts()
+        return vc.index[0] if len(vc) else np.nan
+    sku_cat_map = sales.groupby("SKU")["Category"].agg(_dominant_category).to_dict()
+    for df in [mtd, lfm, l3m]:
+        df["Category"] = df["SKU"].map(sku_cat_map).fillna("Unmapped Category")
 
     ads_by_cat      = agg_ads_periods(mtd, lfm, l3m, ["Category"])
     ads_by_plat     = agg_ads_periods(mtd, lfm, l3m, ["Platform"])
@@ -509,26 +545,34 @@ def main():
     discount_sku = build_discount_audit(sales)
     discount_by_cat = []
     for cat, grp in sales.groupby("Category"):
+        g_disc, p_disc, a_disc = weighted_discount_aggs(grp)
+        has_guide = g_disc is not None
+        dvg  = (a_disc - g_disc) if has_guide else None
+        flag = discount_flag(a_disc - g_disc) if has_guide else "good"
         discount_by_cat.append({
             "Category": cat,
             "Planned_Revenue": fmt(grp["Planned SP Revenue"].sum()),
-            "Guideline_Discount_Pct": pct(safe_div((grp["Guideline MRP"]-grp["Guideline SP"]).sum(), grp["Guideline MRP"].sum())),
-            "Planned_Discount_Pct":   pct(safe_div((grp["Planned MRP Revenue"]-grp["Planned SP Revenue"]).sum(), grp["Planned MRP Revenue"].sum())),
-            "Actual_Discount_Pct":    pct(safe_div((grp["MTD Actual MRP Revenue"]-grp["MTD Actual SP Revenue"]).sum(), grp["MTD Actual MRP Revenue"].sum())),
-            "Discount_vs_Plan":       pct(grp["Discount vs Plan Variance"].mean()),
-            "Discount_vs_Guideline":  pct(grp["Discount vs Guideline Variance"].mean()),
-            "Discount_Flag":          discount_flag(grp["Discount vs Guideline Variance"].mean()),
+            "Guideline_Discount_Pct": pct(g_disc) if has_guide else None,
+            "Planned_Discount_Pct":   pct(p_disc),
+            "Actual_Discount_Pct":    pct(a_disc),
+            "Discount_vs_Plan":       pct(a_disc - p_disc),
+            "Discount_vs_Guideline":  pct(dvg) if has_guide else None,
+            "Discount_Flag":          flag,
             "SKU_Count":              int(grp["SKU"].nunique()),
         })
     discount_by_cat_plat = []
     for (cat, plat), grp in sales.groupby(["Category","Platform"]):
+        g_disc, p_disc, a_disc = weighted_discount_aggs(grp)
+        has_guide = g_disc is not None
+        dvg  = (a_disc - g_disc) if has_guide else None
+        flag = discount_flag(a_disc - g_disc) if has_guide else "good"
         discount_by_cat_plat.append({
             "Category": cat, "Platform": plat,
-            "Guideline_Discount_Pct": pct(safe_div((grp["Guideline MRP"]-grp["Guideline SP"]).sum(), grp["Guideline MRP"].sum())),
-            "Planned_Discount_Pct":   pct(safe_div((grp["Planned MRP Revenue"]-grp["Planned SP Revenue"]).sum(), grp["Planned MRP Revenue"].sum())),
-            "Actual_Discount_Pct":    pct(safe_div((grp["MTD Actual MRP Revenue"]-grp["MTD Actual SP Revenue"]).sum(), grp["MTD Actual MRP Revenue"].sum())),
-            "Discount_vs_Guideline":  pct(grp["Discount vs Guideline Variance"].mean()),
-            "Discount_Flag":          discount_flag(grp["Discount vs Guideline Variance"].mean()),
+            "Guideline_Discount_Pct": pct(g_disc) if has_guide else None,
+            "Planned_Discount_Pct":   pct(p_disc),
+            "Actual_Discount_Pct":    pct(a_disc),
+            "Discount_vs_Guideline":  pct(dvg) if has_guide else None,
+            "Discount_Flag":          flag,
         })
 
     try:
