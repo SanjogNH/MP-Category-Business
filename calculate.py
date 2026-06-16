@@ -249,6 +249,8 @@ def agg_sales_by(sales, group_cols):
         L3M_Revenue          =("Last 3month SP Revenue",      "sum"),
         LM_Prorated_Revenue  =("LM Prorated Revenue",         "sum"),
         L3M_Prorated_Revenue =("L3M Prorated Revenue",        "sum"),
+        LM_MRP_Revenue       =("LM MRP Revenue",              "sum"),
+        L3M_MRP_Revenue      =("L3M MRP Revenue",             "sum"),
         Target_Stretch_Count =("Target Stretch",              "sum"),
         SKU_Count            =("SKU",                         "nunique"),
     )
