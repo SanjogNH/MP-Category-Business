@@ -342,6 +342,10 @@ def build_summary(sales, ads_mtd, ads_lfm, ads_l3m, prorate_map):
     tot_act_mrp = sales["MTD Actual MRP Revenue"].sum()
     act_disc_pct= (tot_act_mrp - tot_actual) / tot_act_mrp * 100 if tot_act_mrp else 0
 
+    # overall guideline & planned discount, computed on the same revenue-weighted
+    # basis as actual so all five ribbon figures reconcile with the per-category cuts
+    g_overall, p_overall, _ = weighted_discount_aggs(sales)
+
     # ads totals
     sp_mtd = ads_mtd["Ad Spend"].sum();   sl_mtd = ads_mtd["Ad Sales"].sum()
     gs_mtd = ads_mtd["Gross Sales"].sum();su_mtd = ads_mtd["Ad Units"].sum()
@@ -391,6 +395,8 @@ def build_summary(sales, ads_mtd, ads_lfm, ads_l3m, prorate_map):
         "lm_attainment_pct":       pct(safe_div(tot_actual, lm_prorated)),
         "l3m_attainment_pct":      pct(safe_div(tot_actual, l3m_prorated)),
         "actual_discount_pct":     round(act_disc_pct, 1),
+        "guideline_discount_pct":  round(g_overall * 100, 1) if g_overall is not None else None,
+        "planned_discount_pct":    round(p_overall * 100, 1),
         # LM/L3M discount: sum only rows where guideline MRP is available
         "lm_discount_pct":         round(safe_div(
             (sales["LM MRP Revenue"] - sales["LM SP Monthly"]).dropna().sum(),
