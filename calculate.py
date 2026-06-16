@@ -144,6 +144,35 @@ def load_data():
     guide["MRP"]           = pd.to_numeric(guide["MRP"],           errors="coerce").fillna(0)
     guide["Selling Price"] = pd.to_numeric(guide["Selling Price"], errors="coerce").fillna(0)
 
+    # ── Platform value normalization ────────────────────────────────
+    # Fix: sales & ads CSVs are independent sources; case/whitespace drift in
+    # the Platform column caused chips to split (sales-side "Blinkit" vs
+    # ads-side " Blinkit "/"blinkit") and made ROAS/TROAS look unfiltered on
+    # the Revenue page. Strip both, then remap ads → canonical sales names.
+    sales["Platform"] = sales["Platform"].astype(str).str.strip()
+    ads["Platform"]   = ads["Platform"].astype(str).str.strip()
+
+    canonical = {p.lower(): p for p in sales["Platform"].unique() if p and p.lower() != "nan"}
+    unmapped  = set()
+    def _remap(p):
+        key = p.lower()
+        if key in canonical:
+            return canonical[key]
+        unmapped.add(p)
+        return p
+    ads["Platform"] = ads["Platform"].apply(_remap)
+
+    sales_plats = set(sales["Platform"].unique())
+    ads_plats   = set(ads["Platform"].unique())
+    log.info(f"  Platforms — sales:{sorted(sales_plats)}")
+    log.info(f"  Platforms — ads  :{sorted(ads_plats)}")
+    if unmapped:
+        log.warning(f"  ⚠ Platforms in ads NOT found in sales (left as-is): {sorted(unmapped)}")
+    sales_only = sales_plats - ads_plats
+    if sales_only:
+        log.warning(f"  ⚠ Platforms in sales NOT found in ads (ROAS will be 0 when filtered to these): {sorted(sales_only)}")
+    # ────────────────────────────────────────────────────────────────
+
     log.info(f"  Sales:{len(sales):,}  Ads:{len(ads):,}  Guide:{len(guide):,}")
     return sales, ads, guide
 
