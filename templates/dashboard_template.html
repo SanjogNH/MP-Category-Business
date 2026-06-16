@@ -566,12 +566,14 @@ function getRevCats(){
       Planned_Qty:0,Prorated_Planned_Qty:0,Actual_Qty:0,
       LM_Revenue:0,L3M_Revenue:0,
       LM_Prorated_Revenue:0,L3M_Prorated_Revenue:0,
+      LM_MRP_Revenue:0,L3M_MRP_Revenue:0,
       Target_Stretch_Count:0
     };
     const c=cats[r.Category];
     ['Planned_SP_Revenue','Prorated_Planned_SP','Actual_SP_Revenue',
      'Planned_MRP_Revenue','Actual_MRP_Revenue','Planned_Qty','Prorated_Planned_Qty',
      'Actual_Qty','LM_Revenue','L3M_Revenue','LM_Prorated_Revenue','L3M_Prorated_Revenue',
+     'LM_MRP_Revenue','L3M_MRP_Revenue',
      'Target_Stretch_Count'].forEach(k=>c[k]+=n(r[k]));
   });
   return Object.values(cats).map(c=>{
@@ -587,16 +589,20 @@ function getRevCats(){
 
 function getRevTotals(){
   const cats=getRevCats();
-  const tPlan   = cats.reduce((a,c)=>a+n(c.Planned_SP_Revenue),0);
-  const tPro    = cats.reduce((a,c)=>a+n(c.Prorated_Planned_SP),0);
-  const tAct    = cats.reduce((a,c)=>a+n(c.Actual_SP_Revenue),0);
-  const tLM     = cats.reduce((a,c)=>a+n(c.LM_Revenue),0);
-  const tL3M    = cats.reduce((a,c)=>a+n(c.L3M_Revenue),0);
-  const tLMPro  = cats.reduce((a,c)=>a+n(c.LM_Prorated_Revenue),0);
-  const tL3MPro = cats.reduce((a,c)=>a+n(c.L3M_Prorated_Revenue),0);
-  const tMRP    = cats.reduce((a,c)=>a+n(c.Actual_MRP_Revenue),0);
-  const disc    = tMRP>0?(tMRP-tAct)/tMRP*100:0;
-  return{tPlan,tPro,tAct,tLM,tL3M,tLMPro,tL3MPro,disc,
+  const tPlan    = cats.reduce((a,c)=>a+n(c.Planned_SP_Revenue),0);
+  const tPro     = cats.reduce((a,c)=>a+n(c.Prorated_Planned_SP),0);
+  const tAct     = cats.reduce((a,c)=>a+n(c.Actual_SP_Revenue),0);
+  const tLM      = cats.reduce((a,c)=>a+n(c.LM_Revenue),0);
+  const tL3M     = cats.reduce((a,c)=>a+n(c.L3M_Revenue),0);
+  const tLMPro   = cats.reduce((a,c)=>a+n(c.LM_Prorated_Revenue),0);
+  const tL3MPro  = cats.reduce((a,c)=>a+n(c.L3M_Prorated_Revenue),0);
+  const tMRP     = cats.reduce((a,c)=>a+n(c.Actual_MRP_Revenue),0);
+  const tLMMRP   = cats.reduce((a,c)=>a+n(c.LM_MRP_Revenue),0);
+  const tL3MMRP  = cats.reduce((a,c)=>a+n(c.L3M_MRP_Revenue),0);
+  const disc     = tMRP>0    ? (tMRP    - tAct  ) / tMRP    * 100 : 0;
+  const lmDisc   = tLMMRP>0  ? (tLMMRP  - tLM     ) / tLMMRP  * 100 : 0;
+  const l3mDisc  = tL3MMRP>0 ? (tL3MMRP - tL3M/3 ) / tL3MMRP * 100 : 0;  // L3M_Revenue is 3-month total, L3M_MRP is monthly avg
+  return{tPlan,tPro,tAct,tLM,tL3M,tLMPro,tL3MPro,disc,lmDisc,l3mDisc,
     attMTD: tPro>0?tAct/tPro*100:0,
     attLM:  tLMPro>0?tAct/tLMPro*100:0,
     attL3M: tL3MPro>0?tAct/tL3MPro*100:0
@@ -641,7 +647,7 @@ function mkRibbon(period, title, metrics){
 
 function buildRevRibbons(){
   const rv=getRevTotals();
-  const ad=getAdsTotals();
+  const ad=getAdsTotals(aPlatRev);
   const s=DATA.summary;
   const roasMTD =ad.spMTD>0?ad.slMTD/ad.spMTD:0;
   const troasMTD=ad.spMTD>0?ad.gsMTD/ad.spMTD:0;
@@ -667,7 +673,7 @@ function buildRevRibbons(){
       ['Monthly Actual',      fc(rv.tLM),            'Complete month',      ''],
       ['Prorated (same pace)', fc(rv.tLMPro),         'LM at same day pace', ''],
       ['MTD vs LM Pace',      fp(rv.attLM),           '',                    attLMcls],
-      ['Actual Disc% LFM',    fp(s.lm_discount_pct),  'Derived from MRP/unit',''],
+      ['Actual Disc% LFM',    fp(rv.lmDisc),          'Derived from MRP/unit',''],
       ['ROAS LFM',            fr(roasLFM),            'Last full month',     ''],
       ['TROAS LFM',           fr(troasLFM),           'Last full month',     ''],
     ])+
@@ -675,7 +681,7 @@ function buildRevRibbons(){
       ['Monthly Avg',         fc(rv.tL3M/3),          '3-month monthly avg',  ''],
       ['Prorated (same pace)', fc(rv.tL3MPro),         'L3M avg at same pace', ''],
       ['MTD vs L3M Pace',     fp(rv.attL3M),           '',                     attL3Mcls],
-      ['Actual Disc% L3M',    fp(s.l3m_discount_pct),  'Derived from MRP/unit',''],
+      ['Actual Disc% L3M',    fp(rv.l3mDisc),          'Derived from MRP/unit',''],
       ['ROAS L3M',            fr(roasL3M),             '3-month avg',          ''],
       ['TROAS L3M',           fr(troasL3M),            '3-month avg',          ''],
     ]);
