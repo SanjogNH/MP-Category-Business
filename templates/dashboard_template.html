@@ -392,8 +392,9 @@ function rtag(rc){const m={'On Track':'on-track','Units Gap':'units-gap','Discou
 function dc(v){if(v==null||isNaN(+v)||+v===0)return`<span class="d z">—</span>`;const c=+v>0?'p':+v<0?'n':'z';return`<span class="d ${c}">${+v>0?'+':''}${Number(v).toFixed(1)}%</span>`}
 function abar(p){
   const pv=Math.min(Math.max(+p||0,0),200);
-  const c=pv>=85?'g':pv>=70?'a':'r';
-  const color=pv>=85?'var(--gn)':pv>=70?'var(--am)':'var(--rd)';
+  const critT=n(DATA.summary?.attainment_critical_pct)||70, warnT=n(DATA.summary?.attainment_warning_pct)||85;
+  const c=pv>=warnT?'g':pv>=critT?'a':'r';
+  const color=pv>=warnT?'var(--gn)':pv>=critT?'var(--am)':'var(--rd)';
   return`<div class="ab"><div class="bt"><div class="bf ${c}" style="width:${Math.min(pv,100)}%"></div></div><span class="bp" style="color:${color}">${fp(p)}</span></div>`;
 }
 
@@ -500,6 +501,14 @@ const ADS_METRICS=[
   {k:'Total_AOV',       l:'Total AOV',      f:v=>fc(v)},
 ];
 const ADS_PERIODS=['MTD','LFM','L3M'];
+// Canonical raw fields the Python aggregator emits per period. Used to build
+// the platform-filtered category roll-up so it can never drift out of sync
+// with what Python produces (previous bug: only a subset were summed for
+// LFM/L3M, blanking CTR/CPC/CPM/Ad CVR/Gross CVR/Ad Contrib/AOV under a filter).
+const ADS_RAW_FIELDS=['Ad_Spend','Ad_Sales','Ad_Units','Ad_Impressions','Ad_Clicks',
+                      'Gross_Units','Gross_Sales','Gross_Clicks'];
+const ADS_RAW_KEYS=[];
+ADS_RAW_FIELDS.forEach(f=>ADS_PERIODS.forEach(p=>ADS_RAW_KEYS.push(`${f}_${p}`)));
 
 function withCPO(arr){
   return arr.map(r=>{
@@ -565,7 +574,8 @@ function renderAdsTable(tid,hid,bid,data,periodSet,metricSet,gkey){
     let cells=`<td class="mn" style="font-size:10.5px">${r[gkey]||''}</td>`;
     cols.forEach(c=>{
       const raw=r[c.key];
-      cells+=`<td class="r mn" data-val="${n(raw)}">${c.fmt(raw)}</td>`;
+      const missing=(raw===undefined||raw===null);
+      cells+=`<td class="r mn" data-val="${missing?'':n(raw)}">${missing?'—':c.fmt(raw)}</td>`;
     });
     cells+=`<td>${badge(r.ROAS_Flag||'good')}</td>`;
     tr.innerHTML=cells;
@@ -604,7 +614,8 @@ function getRevCats(){
     c.Revenue_Gap=c.Actual_SP_Revenue-c.Prorated_Planned_SP;
     c.Units_Gap=c.Actual_Qty-c.Prorated_Planned_Qty;
     c.Actual_Discount_Pct=c.Actual_MRP_Revenue>0?(c.Actual_MRP_Revenue-c.Actual_SP_Revenue)/c.Actual_MRP_Revenue*100:0;
-    c.Revenue_Flag=c.Revenue_Attainment<70?'critical':c.Revenue_Attainment<85?'warning':'good';
+    const critT=n(DATA.summary?.attainment_critical_pct)||70, warnT=n(DATA.summary?.attainment_warning_pct)||85;
+    c.Revenue_Flag=c.Revenue_Attainment<critT?'critical':c.Revenue_Attainment<warnT?'warning':'good';
     return c;
   });
 }
@@ -891,20 +902,16 @@ function getAdsCats(){
   const filtered=DATA.ads_by_cat_plat.filter(r=>aPlatAds.has(r.Platform));
   const cats={};
   filtered.forEach(r=>{
-    if(!cats[r.Category])cats[r.Category]={Category:r.Category,ROAS_Flag:'good',
-      Ad_Spend_MTD:0,Ad_Sales_MTD:0,Ad_Units_MTD:0,Gross_Units_MTD:0,Gross_Sales_MTD:0,
-      Ad_Impressions_MTD:0,Ad_Clicks_MTD:0,
-      Ad_Spend_LFM:0,Ad_Sales_LFM:0,Ad_Units_LFM:0,Gross_Sales_LFM:0,
-      Ad_Spend_L3M:0,Ad_Sales_L3M:0,Ad_Units_L3M:0,Gross_Sales_L3M:0};
+    if(!cats[r.Category]){
+      cats[r.Category]={Category:r.Category,ROAS_Flag:'good'};
+      ADS_RAW_KEYS.forEach(k=>cats[r.Category][k]=0);
+    }
     const c=cats[r.Category];
-    ['Ad_Spend_MTD','Ad_Sales_MTD','Ad_Units_MTD','Gross_Units_MTD','Gross_Sales_MTD',
-     'Ad_Impressions_MTD','Ad_Clicks_MTD',
-     'Ad_Spend_LFM','Ad_Sales_LFM','Ad_Units_LFM','Gross_Sales_LFM',
-     'Ad_Spend_L3M','Ad_Sales_L3M','Ad_Units_L3M','Gross_Sales_L3M'
-    ].forEach(k=>c[k]+=n(r[k]));
+    ADS_RAW_KEYS.forEach(k=>c[k]+=n(r[k]));
   });
+  const roasDrop=n(DATA.summary?.roas_drop_warning)||0.2;
   return withCPO(Object.values(cats).map(c=>{
-    ['MTD','LFM','L3M'].forEach(s=>{
+    ADS_PERIODS.forEach(s=>{
       c[`ROAS_${s}`] =n(c[`Ad_Spend_${s}`])>0?n(c[`Ad_Sales_${s}`])/n(c[`Ad_Spend_${s}`]):0;
       c[`TROAS_${s}`]=n(c[`Ad_Spend_${s}`])>0?n(c[`Gross_Sales_${s}`])/n(c[`Ad_Spend_${s}`]):0;
       c[`CPC_${s}`]  =n(c[`Ad_Clicks_${s}`])>0?n(c[`Ad_Spend_${s}`])/n(c[`Ad_Clicks_${s}`]):0;
@@ -916,7 +923,7 @@ function getAdsCats(){
     c.TROAS_Delta_vs_LFM=n(c.TROAS_LFM)>0?(n(c.TROAS_MTD)-n(c.TROAS_LFM))/n(c.TROAS_LFM)*100:0;
     c.CPC_Delta_vs_LFM  =n(c.CPC_LFM)>0?(n(c.CPC_MTD)-n(c.CPC_LFM))/n(c.CPC_LFM)*100:0;
     c.Ad_Spend_Delta_vs_LFM=n(c.Ad_Spend_LFM)>0?(n(c.Ad_Spend_MTD)-n(c.Ad_Spend_LFM))/n(c.Ad_Spend_LFM)*100:0;
-    c.ROAS_Flag=n(c.ROAS_LFM)>0&&(n(c.ROAS_LFM)-n(c.ROAS_MTD))/n(c.ROAS_LFM)>0.2?'warning':'good';
+    c.ROAS_Flag=n(c.ROAS_LFM)>0&&(n(c.ROAS_LFM)-n(c.ROAS_MTD))/n(c.ROAS_LFM)>roasDrop?'warning':'good';
     return c;
   }));
 }
