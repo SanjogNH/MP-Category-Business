@@ -689,6 +689,10 @@ function buildRevRibbons(){
   const troasLFM=ad.spLFM>0?ad.gsLFM/ad.spLFM:0;
   const roasL3M =ad.spL3M>0?ad.slL3M/ad.spL3M:0;
   const troasL3M=ad.spL3M>0?ad.gsL3M/ad.spL3M:0;
+  // AOV = Gross Sales / Gross Units (ratio, so the L3M /3 cancels — use raw totals)
+  const aovMTD=ad.guMTD>0?ad.gsMTD/ad.guMTD:0;
+  const aovLFM=ad.guLFM>0?ad.gsLFM/ad.guLFM:0;
+  const aovL3M=ad.guL3M>0?ad.gsL3M/ad.guL3M:0;
   const attMTDcls=rv.attMTD>=85?'g':rv.attMTD>=70?'a':'r';
   const attLMcls =rv.attLM>=85?'g':rv.attLM>=70?'a':'r';
   const attL3Mcls=rv.attL3M>=85?'g':rv.attL3M>=70?'a':'r';
@@ -702,22 +706,27 @@ function buildRevRibbons(){
       ['Actual Disc%',       fp(rv.disc),   '',                      ''],
       ['ROAS',               fr(roasMTD),   'Ad sales / Ad spend',   ''],
       ['TROAS',              fr(troasMTD),  'Gross sales / Ad spend',''],
+      ['AOV',                fc(aovMTD),    'Gross sales / Gross units',''],
     ])+
         mkRibbon('lm','Last Full Month',[
       ['Monthly Actual',      fc(rv.tLM),            'Complete month',      ''],
+      ['',                    '',                    '',                    ''],
       ['Prorated (same pace)', fc(rv.tLMPro),         'LM at same day pace', ''],
       ['MTD vs LM Pace',      fp(rv.attLM),           '',                    attLMcls],
       ['Actual Disc% LFM',    fp(rv.lmDisc),          'Derived from MRP/unit',''],
       ['ROAS LFM',            fr(roasLFM),            'Last full month',     ''],
       ['TROAS LFM',           fr(troasLFM),           'Last full month',     ''],
+      ['AOV LFM',             fc(aovLFM),             'Gross sales / Gross units',''],
     ])+
     mkRibbon('l3m','Last 3 Months Average',[
       ['Monthly Avg',         fc(rv.tL3M/3),          '3-month monthly avg',  ''],
+      ['',                    '',                     '',                     ''],
       ['Prorated (same pace)', fc(rv.tL3MPro),         'L3M avg at same pace', ''],
       ['MTD vs L3M Pace',     fp(rv.attL3M),           '',                     attL3Mcls],
       ['Actual Disc% L3M',    fp(rv.l3mDisc),          'Derived from MRP/unit',''],
       ['ROAS L3M',            fr(roasL3M),             '3-month avg',          ''],
       ['TROAS L3M',           fr(troasL3M),            '3-month avg',          ''],
+      ['AOV L3M',             fc(aovL3M),              'Gross sales / Gross units',''],
     ]);
 }
 
@@ -990,17 +999,13 @@ function adsRefresh(){buildAdsRibbons();buildAdsCatTable();if(adsSelCat)drillAds
 // ══════════════════════════════════════════════════
 function buildDiscRibbons(){
   const s=DATA.summary;
-  const total=s.disc_ok_skus+s.disc_warning_skus+s.disc_critical_skus;
-  const critRate=total>0?(s.disc_critical_skus/total*100).toFixed(1):0;
   document.getElementById('disc-ribbons').innerHTML=
-    mkRibbon('mtd','Discount Health — MTD',[
-      ['Within Guideline', String(s.disc_ok_skus),   'SKUs ✓', 'g'],
-      ['Watch (+3–5%)',     String(s.disc_warning_skus), 'SKUs ⚠', 'a'],
-      ['Critical (>+5%)',  String(s.disc_critical_skus),'SKUs ✗', 'r'],
-      ['Critical Rate',    critRate+'%',              'of all SKUs', critRate>10?'r':'a'],
-      ['Warning Threshold','3pp above guideline',     '',            ''],
-      ['Critical Threshold','5pp above guideline',    '',            ''],
-      ['Total SKUs',       String(total),             'in scope',    ''],
+    mkRibbon('mtd','Discount Overview',[
+      ['Guideline Discount %',    fp(s.guideline_discount_pct), '', ''],
+      ['Planned Discount %',      fp(s.planned_discount_pct),   '', ''],
+      ['Actual Discount %',       fp(s.actual_discount_pct),    '', ''],
+      ['Last Month Discount %',   fp(s.lm_discount_pct),        '', ''],
+      ['Last 3 Month Discount %', fp(s.l3m_discount_pct),       '', ''],
     ]);
 }
 
