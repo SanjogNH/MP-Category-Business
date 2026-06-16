@@ -358,9 +358,11 @@ const C='₹';
 let rcBar=null,rcDonut=null;
 let aPlatRev=new Set(['__ALL__']),aPlatAds=new Set(['__ALL__']);
 let revSelCat=null,adsSelCat=null,discSelCat=null;
-let adsCatActive=new Set(['Ad_Spend_MTD','ROAS_MTD','TROAS_MTD','CPC_MTD','CPM_MTD','CTR_MTD']);
-let adsPlatActive=new Set(['Ad_Spend_MTD','ROAS_MTD','TROAS_MTD','CPC_MTD','CPM_MTD','CTR_MTD']);
-let adsSkuActive=new Set(['Ad_Spend_MTD','ROAS_MTD','TROAS_MTD','CPC_MTD','CPM_MTD','CTR_MTD']);
+// Ads-table column picker state: 2 Sets per table — periods × metrics.
+// Visible columns = (selected periods) × (selected metrics). Default = MTD × Ad Spend.
+let adsCatPeriods =new Set(['MTD']), adsCatMetrics =new Set(['Ad_Spend']);
+let adsPlatPeriods=new Set(['MTD']), adsPlatMetrics=new Set(['Ad_Spend']);
+let adsSkuPeriods =new Set(['MTD']), adsSkuMetrics =new Set(['Ad_Spend']);
 let adsPlatData=[],adsSkuData=[];
 
 // ══════════════════════════════════════════════════
@@ -462,88 +464,101 @@ function buildPF(cid,state,cb){
 // ══════════════════════════════════════════════════
 // ADS METRICS DEFINITION
 // ══════════════════════════════════════════════════
-const AM=[
-  {k:'Ad_Spend_MTD',   l:'Spend MTD',        f:v=>fc(v),  fix:true},
-  {k:'ROAS_MTD',       l:'ROAS MTD',         f:v=>fr(v),  fix:true},
-  {k:'TROAS_MTD',      l:'TROAS MTD',        f:v=>fr(v),  fix:true},
-  {k:'CPC_MTD',        l:'CPC MTD',          f:v=>fc(v),  fix:true},
-  {k:'CPM_MTD',        l:'CPM MTD',          f:v=>fc(v),  fix:true},
-  {k:'CTR_MTD',        l:'CTR% MTD',         f:v=>fp(v),  fix:true},
-  {k:'Ad_Units_MTD',   l:'Ad Units MTD',     f:v=>fn(v)},
-  {k:'Gross_Units_MTD',l:'Gross Units MTD',  f:v=>fn(v)},
-  {k:'Ad_Contribution_MTD',l:'Ad Contrib% MTD',f:v=>fp(v)},
-  {k:'CPO_MTD',        l:'CPO MTD',          f:v=>fc(v)},
-  {k:'Ad_Spend_LFM',   l:'Spend LFM',        f:v=>fc(v)},
-  {k:'ROAS_LFM',       l:'ROAS LFM',         f:v=>fr(v)},
-  {k:'TROAS_LFM',      l:'TROAS LFM',        f:v=>fr(v)},
-  {k:'CPC_LFM',        l:'CPC LFM',          f:v=>fc(v)},
-  {k:'CPM_LFM',        l:'CPM LFM',          f:v=>fc(v)},
-  {k:'CTR_LFM',        l:'CTR% LFM',         f:v=>fp(v)},
-  {k:'Ad_Units_LFM',   l:'Ad Units LFM',     f:v=>fn(v)},
-  {k:'CPO_LFM',        l:'CPO LFM',          f:v=>fc(v)},
-  {k:'Ad_Contribution_LFM',l:'Ad Contrib% LFM',f:v=>fp(v)},
-  {k:'ROAS_L3M',       l:'ROAS L3M',         f:v=>fr(v)},
-  {k:'TROAS_L3M',      l:'TROAS L3M',        f:v=>fr(v)},
-  {k:'CPC_L3M',        l:'CPC L3M',          f:v=>fc(v)},
-  {k:'CPM_L3M',        l:'CPM L3M',          f:v=>fc(v)},
-  {k:'CTR_L3M',        l:'CTR% L3M',         f:v=>fp(v)},
-  {k:'Ad_Spend_L3M',   l:'Spend L3M',        f:v=>fc(v)},
-  {k:'Ad_Units_L3M',   l:'Ad Units L3M',     f:v=>fn(v)},
-  {k:'CPO_L3M',        l:'CPO L3M',          f:v=>fc(v)},
-  {k:'ROAS_Delta_vs_LFM', l:'ROAS Δ LFM',   f:v=>dc(v),  delta:true},
-  {k:'TROAS_Delta_vs_LFM',l:'TROAS Δ LFM',  f:v=>dc(v),  delta:true},
-  {k:'CPC_Delta_vs_LFM',  l:'CPC Δ LFM',    f:v=>dc(v),  delta:true},
-  {k:'Ad_Spend_Delta_vs_LFM',l:'Spend Δ LFM',    f:v=>dc(v),  delta:true},
-  {k:'Ad_CVR_MTD',          l:'Ad CVR MTD',      f:v=>fp(v)},
-  {k:'Gross_CVR_MTD',       l:'Gross CVR MTD',   f:v=>fp(v)},
-  {k:'Ad_CVR_LFM',          l:'Ad CVR LFM',      f:v=>fp(v)},
-  {k:'Gross_CVR_LFM',       l:'Gross CVR LFM',   f:v=>fp(v)},
-  {k:'Ad_CVR_L3M',          l:'Ad CVR L3M',      f:v=>fp(v)},
-  {k:'Gross_CVR_L3M',       l:'Gross CVR L3M',   f:v=>fp(v)},
+// ──────────────────────────────────────────────────────────────────
+// Ads metric model
+//
+// 18 canonical metrics × 3 periods (MTD / LFM / L3M). The column key for a
+// (metric, period) pair is `${metric.k}_${period}` — matching what the
+// Python aggregator produces (Ad_Spend_MTD, ROAS_LFM, …). Derived metrics
+// not produced by Python (CPO, Ad_CVR, Gross_CVR, Total_AOV) are computed
+// row-wise in withCPO() below.
+const ADS_METRICS=[
+  {k:'Ad_Impressions',  l:'Ad Impressions', f:v=>fn(v)},
+  {k:'Ad_Clicks',       l:'Ad Clicks',      f:v=>fn(v)},
+  {k:'Ad_Spend',        l:'Ad Spend',       f:v=>fc(v)},
+  {k:'Ad_Sales',        l:'Ad Sales',       f:v=>fc(v)},
+  {k:'Ad_Units',        l:'Ad Units',       f:v=>fn(v)},
+  {k:'Gross_Clicks',    l:'Gross Clicks',   f:v=>fn(v)},
+  {k:'Gross_Units',     l:'Gross Units',    f:v=>fn(v)},
+  {k:'Gross_Sales',     l:'Gross Sales',    f:v=>fc(v)},
+  {k:'CTR',             l:'Ad CTR',         f:v=>fp(v)},
+  {k:'Ad_CVR',          l:'Ad CVR',         f:v=>fp(v)},
+  {k:'CPC',             l:'Ad CPC',         f:v=>fc(v)},
+  {k:'CPM',             l:'Ad CPM',         f:v=>fc(v)},
+  {k:'ROAS',            l:'Ad ROAS',        f:v=>fr(v)},
+  {k:'Gross_CVR',       l:'Gross CVR',      f:v=>fp(v)},
+  {k:'TROAS',           l:'TROAS',          f:v=>fr(v)},
+  {k:'CPO',             l:'Total CPO',      f:v=>fc(v)},
+  {k:'Ad_Contribution', l:'Ad Contrib%',    f:v=>fp(v)},
+  {k:'Total_AOV',       l:'Total AOV',      f:v=>fc(v)},
 ];
+const ADS_PERIODS=['MTD','LFM','L3M'];
 
 function withCPO(arr){
-  return arr.map(r=>({...r,
-    CPO_MTD:      n(r.Ad_Units_MTD)>0      ? n(r.Ad_Spend_MTD)/n(r.Ad_Units_MTD)*1          : null,
-    CPO_LFM:      n(r.Ad_Units_LFM)>0      ? n(r.Ad_Spend_LFM)/n(r.Ad_Units_LFM)*1          : null,
-    CPO_L3M:      n(r.Ad_Units_L3M)>0      ? n(r.Ad_Spend_L3M)/n(r.Ad_Units_L3M)*1          : null,
-    Ad_CVR_MTD:   n(r.Ad_Clicks_MTD)>0     ? n(r.Ad_Units_MTD)/n(r.Ad_Clicks_MTD)*100        : null,
-    Gross_CVR_MTD:n(r.Gross_Clicks_MTD)>0  ? n(r.Gross_Units_MTD)/n(r.Gross_Clicks_MTD)*100  : null,
-    Ad_CVR_LFM:   n(r.Ad_Clicks_LFM)>0     ? n(r.Ad_Units_LFM)/n(r.Ad_Clicks_LFM)*100        : null,
-    Gross_CVR_LFM:n(r.Gross_Clicks_LFM)>0  ? n(r.Gross_Units_LFM)/n(r.Gross_Clicks_LFM)*100  : null,
-    Ad_CVR_L3M:   n(r.Ad_Clicks_L3M)>0     ? n(r.Ad_Units_L3M)/n(r.Ad_Clicks_L3M)*100        : null,
-    Gross_CVR_L3M:n(r.Gross_Clicks_L3M)>0  ? n(r.Gross_Units_L3M)/n(r.Gross_Clicks_L3M)*100  : null,
-  }));
-}
-
-function buildCP(cid,activeSet,cb){
-  const el=document.getElementById(cid);el.innerHTML='';
-  const lbl=document.createElement('span');lbl.className='cpick-lbl';lbl.textContent='Add Columns:';
-  el.appendChild(lbl);
-  AM.filter(m=>!m.fix).forEach(m=>{
-    const c=document.createElement('span');
-    c.className='cchip'+(activeSet.has(m.k)?' on':'');
-    c.textContent=m.l;
-    c.onclick=()=>{activeSet.has(m.k)?activeSet.delete(m.k):activeSet.add(m.k);c.classList.toggle('on');cb()};
-    el.appendChild(c);
+  return arr.map(r=>{
+    const o={...r};
+    ['MTD','LFM','L3M'].forEach(s=>{
+      o[`CPO_${s}`]       =n(r[`Ad_Units_${s}`])>0     ? n(r[`Ad_Spend_${s}`]) /n(r[`Ad_Units_${s}`])         : null;
+      o[`Ad_CVR_${s}`]    =n(r[`Ad_Clicks_${s}`])>0    ? n(r[`Ad_Units_${s}`]) /n(r[`Ad_Clicks_${s}`])*100    : null;
+      o[`Gross_CVR_${s}`] =n(r[`Gross_Clicks_${s}`])>0 ? n(r[`Gross_Units_${s}`])/n(r[`Gross_Clicks_${s}`])*100 : null;
+      o[`Total_AOV_${s}`] =n(r[`Gross_Units_${s}`])>0  ? n(r[`Gross_Sales_${s}`])/n(r[`Gross_Units_${s}`])     : null;
+    });
+    return o;
   });
 }
 
-function renderAdsTable(tid,hid,bid,data,activeSet,gkey){
-  const metrics=AM.filter(m=>m.fix||activeSet.has(m.k));
+// Two-row column picker. periodSet & metricSet are mutated in place; cb()
+// re-renders the table. Empties are coerced back to defaults so the table
+// is never blank.
+function buildCP(cid,periodSet,metricSet,cb){
+  const el=document.getElementById(cid);el.innerHTML='';
+  const row=(labelText,items,activeSet,onToggle,extraCls='')=>{
+    const wrap=document.createElement('div');
+    wrap.style.cssText='display:flex;align-items:center;gap:6px;flex-wrap:wrap;width:100%;padding:2px 0';
+    const lbl=document.createElement('span');lbl.className='cpick-lbl';lbl.textContent=labelText;
+    wrap.appendChild(lbl);
+    items.forEach(it=>{
+      const c=document.createElement('span');
+      c.className='cchip'+extraCls+(activeSet.has(it.k)?' on':'');
+      c.textContent=it.l;
+      c.onclick=()=>{onToggle(it.k);c.classList.toggle('on',activeSet.has(it.k));cb();};
+      wrap.appendChild(c);
+    });
+    el.appendChild(wrap);
+  };
+  row('Period:',
+      ADS_PERIODS.map(p=>({k:p,l:p})),
+      periodSet,
+      k=>{periodSet.has(k)?periodSet.delete(k):periodSet.add(k); if(!periodSet.size)periodSet.add('MTD');},
+      ' period');
+  row('Metrics:',
+      ADS_METRICS,
+      metricSet,
+      k=>{metricSet.has(k)?metricSet.delete(k):metricSet.add(k); if(!metricSet.size)metricSet.add('Ad_Spend');});
+}
+
+function renderAdsTable(tid,hid,bid,data,periodSet,metricSet,gkey){
+  // Build columns metric-major (so all periods of one metric are adjacent),
+  // preserving the canonical ADS_PERIODS / ADS_METRICS order regardless of
+  // click sequence.
+  const periods=ADS_PERIODS.filter(p=>periodSet.has(p));
+  const metrics=ADS_METRICS.filter(m=>metricSet.has(m.k));
+  const cols=[];
+  metrics.forEach(m=>periods.forEach(p=>cols.push({key:`${m.k}_${p}`,label:`${m.l} ${p}`,fmt:m.f})));
+
   const thead=document.getElementById(hid);
   thead.innerHTML=`<tr>
     <th onclick="sT('${tid}',0)" style="min-width:120px">${gkey}</th>
-    ${metrics.map((m,i)=>`<th onclick="sT('${tid}',${i+1})" class="r" style="min-width:90px">${m.l}</th>`).join('')}
+    ${cols.map((c,i)=>`<th onclick="sT('${tid}',${i+1})" class="r" style="min-width:90px">${c.label}</th>`).join('')}
     <th style="min-width:80px">Status</th>
   </tr>`;
   const tbody=document.getElementById(bid);tbody.innerHTML='';
   data.forEach(r=>{
     const tr=document.createElement('tr');tr.classList.add('cl');
     let cells=`<td class="mn" style="font-size:10.5px">${r[gkey]||''}</td>`;
-    metrics.forEach(m=>{
-      const raw=r[m.k];
-      cells+=`<td class="r${m.delta?'':' mn'}" data-val="${n(raw)}">${m.f(raw)}</td>`;
+    cols.forEach(c=>{
+      const raw=r[c.key];
+      cells+=`<td class="r mn" data-val="${n(raw)}">${c.fmt(raw)}</td>`;
     });
     cells+=`<td>${badge(r.ROAS_Flag||'good')}</td>`;
     tr.innerHTML=cells;
@@ -824,36 +839,40 @@ function buildAdsRibbons(){
 
   document.getElementById('ads-ribbons').innerHTML=
     mkRibbon('mtd','MTD — Current Month',[
-      ['Ad Spend',   fc(ad.spMTD),                                          'Current month to date',   ''],
-      ['Ad Sales',   fc(ad.slMTD),                                          'Attributed to ads',       ''],
-      ['Ad CVR',     ad.scMTD>0?fp(ad.suMTD/ad.scMTD*100):'—',            'Ad units / Ad clicks',    ''],
-      ['Gross CVR',  ad.gcMTD>0?fp(ad.guMTD/ad.gcMTD*100):'—',            'Gross units / Gross clks', ''],
-      ['ROAS',       fr(rMTD),                                              'Ad sales / Ad spend',     ''],
-      ['TROAS',      fr(tMTD),                                              'Gross sales / Ad spend',  ''],
-      ['Cost/Order', fc(cpoMTD),                                            'Spend / Ad units',        ''],
-      ['CTR%',       fp(ctrMTD),                                            'Ad clicks / Impressions', ''],
+      ['Ad Spend',      fc(ad.spMTD),                                          'Current month to date',   ''],
+      ['Ad Sales',      fc(ad.slMTD),                                          'Attributed to ads',       ''],
+      ['Ad Impressions',fn(ad.siMTD),                                          'Total impressions',       ''],
+      ['Ad CVR',        ad.scMTD>0?fp(ad.suMTD/ad.scMTD*100):'—',             'Ad units / Ad clicks',    ''],
+      ['Gross CVR',     ad.gcMTD>0?fp(ad.guMTD/ad.gcMTD*100):'—',             'Gross units / Gross clks',''],
+      ['ROAS',          fr(rMTD),                                              'Ad sales / Ad spend',     ''],
+      ['TROAS',         fr(tMTD),                                              'Gross sales / Ad spend',  ''],
+      ['Cost/Order',    fc(cpoMTD),                                            'Spend / Ad units',        ''],
+      ['CTR%',          fp(ctrMTD),                                            'Ad clicks / Impressions', ''],
+      ['Ad Contrib%',   ad.guMTD>0?fp(ad.suMTD/ad.guMTD*100):'—',             'Ad units / Gross',        ''],
     ])+
     mkRibbon('lm','Last Full Month',[
-      ['Ad Spend LFM',   fc(ad.spLFM),                                         'Last month total',        ''],
-      ['Ad Sales LFM',   fc(ad.slLFM),                                         'Attributed to ads',       ''],
-      ['Ad CVR LFM',     ad.scLFM>0?fp(ad.suLFM/ad.scLFM*100):'—',           'Ad units / Ad clicks',    ''],
-      ['Gross CVR LFM',  ad.gcLFM>0?fp(ad.guLFM/ad.gcLFM*100):'—',           'Gross units / Gross clks', ''],
-      ['ROAS LFM',       fr(rLFM),                                             'Last month',              ''],
-      ['TROAS LFM',      fr(tLFM),                                             'Last month',              ''],
-      ['Cost/Order LFM',  fc(cpoLFM),                                             'Spend / Ad units',      ''],
-      ['CTR% LFM',        ad.siLFM>0?fp(ad.scLFM/ad.siLFM*100):'—',             'Clicks / Impressions',  ''],
-      ['Ad Contrib% LFM', ad.guLFM>0?fp(ad.suLFM/ad.guLFM*100):'—',             'Ad units / Gross',      ''],
+      ['Ad Spend LFM',      fc(ad.spLFM),                                         'Last month total',        ''],
+      ['Ad Sales LFM',      fc(ad.slLFM),                                         'Attributed to ads',       ''],
+      ['Ad Impressions LFM',fn(ad.siLFM),                                         'Last month total',        ''],
+      ['Ad CVR LFM',        ad.scLFM>0?fp(ad.suLFM/ad.scLFM*100):'—',            'Ad units / Ad clicks',    ''],
+      ['Gross CVR LFM',     ad.gcLFM>0?fp(ad.guLFM/ad.gcLFM*100):'—',            'Gross units / Gross clks',''],
+      ['ROAS LFM',          fr(rLFM),                                             'Last month',              ''],
+      ['TROAS LFM',         fr(tLFM),                                             'Last month',              ''],
+      ['Cost/Order LFM',    fc(cpoLFM),                                           'Spend / Ad units',        ''],
+      ['CTR% LFM',          ad.siLFM>0?fp(ad.scLFM/ad.siLFM*100):'—',            'Clicks / Impressions',    ''],
+      ['Ad Contrib% LFM',   ad.guLFM>0?fp(ad.suLFM/ad.guLFM*100):'—',            'Ad units / Gross',        ''],
     ])+
     mkRibbon('l3m','Last 3 Months Average',[
-      ['Ad Spend L3M',   fc(ad.spL3M/3),                                       'Monthly average',         ''],
-      ['Ad Sales L3M',   fc(ad.slL3M/3),                                       'Monthly average',         ''],
-      ['Ad CVR L3M',     ad.scL3M>0?fp(ad.suL3M/ad.scL3M*100):'—',           'Ad units / Ad clicks',    ''],
-      ['Gross CVR L3M',  ad.gcL3M>0?fp(ad.guL3M/ad.gcL3M*100):'—',           'Gross units / Gross clks', ''],
-      ['ROAS L3M',       fr(rL3M),                                             '3-month avg',             ''],
-      ['TROAS L3M',      fr(tL3M),                                             '3-month avg',             ''],
-      ['Cost/Order L3M',  fc(cpoL3M),                                             'Monthly average',       ''],
-      ['CTR% L3M',        ad.siL3M>0?fp(ad.scL3M/ad.siL3M*100):'—',             'Clicks / Impressions',  ''],
-      ['Ad Contrib% L3M', ad.guL3M>0?fp(ad.suL3M/ad.guL3M*100):'—',             'Ad units / Gross',      ''],
+      ['Ad Spend L3M',      fc(ad.spL3M/3),                                       'Monthly average',         ''],
+      ['Ad Sales L3M',      fc(ad.slL3M/3),                                       'Monthly average',         ''],
+      ['Ad Impressions L3M',fn(ad.siL3M/3),                                       'Monthly average',         ''],
+      ['Ad CVR L3M',        ad.scL3M>0?fp(ad.suL3M/ad.scL3M*100):'—',            'Ad units / Ad clicks',    ''],
+      ['Gross CVR L3M',     ad.gcL3M>0?fp(ad.guL3M/ad.gcL3M*100):'—',            'Gross units / Gross clks',''],
+      ['ROAS L3M',          fr(rL3M),                                             '3-month avg',             ''],
+      ['TROAS L3M',         fr(tL3M),                                             '3-month avg',             ''],
+      ['Cost/Order L3M',    fc(cpoL3M),                                           'Monthly average',         ''],
+      ['CTR% L3M',          ad.siL3M>0?fp(ad.scL3M/ad.siL3M*100):'—',            'Clicks / Impressions',    ''],
+      ['Ad Contrib% L3M',   ad.guL3M>0?fp(ad.suL3M/ad.guL3M*100):'—',            'Ad units / Gross',        ''],
     ]);
 }
 
@@ -897,8 +916,8 @@ function getAdsCats(){
 
 function buildAdsCatTable(){
   const cats=getAdsCats().sort((a,b)=>n(b.Ad_Spend_MTD)-n(a.Ad_Spend_MTD));
-  buildCP('ads-cat-cp',adsCatActive,()=>buildAdsCatTable());
-  renderAdsTable('ads-ct','ads-ct-h','ads-cb',cats,adsCatActive,'Category');
+  buildCP('ads-cat-cp',adsCatPeriods,adsCatMetrics,()=>buildAdsCatTable());
+  renderAdsTable('ads-ct','ads-ct-h','ads-cb',cats,adsCatPeriods,adsCatMetrics,'Category');
   // rewire click
   const rows=document.querySelectorAll('#ads-cb tr');
   rows.forEach((tr,i)=>{if(cats[i])tr.onclick=()=>drillAdsCat(cats[i].Category)});
@@ -916,11 +935,11 @@ function drillAdsCat(cat){
       Ad_Spend_Delta_vs_LFM:n(r.Ad_Spend_LFM)>0?(n(r.Ad_Spend_MTD)-n(r.Ad_Spend_LFM))/n(r.Ad_Spend_LFM)*100:0,
     }))
     .sort((a,b)=>n(b.Ad_Spend_MTD)-n(a.Ad_Spend_MTD)));
-  buildCP('ads-plat-cp',adsPlatActive,()=>{
-    renderAdsTable('ads-pt-t','ads-pt-h','ads-pb-r',adsPlatData,adsPlatActive,'Platform');
+  buildCP('ads-plat-cp',adsPlatPeriods,adsPlatMetrics,()=>{
+    renderAdsTable('ads-pt-t','ads-pt-h','ads-pb-r',adsPlatData,adsPlatPeriods,adsPlatMetrics,'Platform');
     rewirePlat(cat);
   });
-  renderAdsTable('ads-pt-t','ads-pt-h','ads-pb-r',adsPlatData,adsPlatActive,'Platform');
+  renderAdsTable('ads-pt-t','ads-pt-h','ads-pb-r',adsPlatData,adsPlatPeriods,adsPlatMetrics,'Platform');
   rewirePlat(cat);
   document.getElementById('ads-pt').textContent=`Platform Ads — ${cat}`;
   show('ads-pp');show('ads-pb');scroll('ads-pp');
@@ -943,8 +962,8 @@ function drillAdsPlat(cat,plat){
       Ad_Spend_Delta_vs_LFM:n(r.Ad_Spend_LFM)>0?(n(r.Ad_Spend_MTD)-n(r.Ad_Spend_LFM))/n(r.Ad_Spend_LFM)*100:0,
     }))
     .sort((a,b)=>n(b.Ad_Spend_MTD)-n(a.Ad_Spend_MTD)));
-  buildCP('ads-sku-cp',adsSkuActive,()=>renderAdsTable('ads-st-t','ads-st-h','ads-sb-r',adsSkuData,adsSkuActive,'SKU'));
-  renderAdsTable('ads-st-t','ads-st-h','ads-sb-r',adsSkuData,adsSkuActive,'SKU');
+  buildCP('ads-sku-cp',adsSkuPeriods,adsSkuMetrics,()=>renderAdsTable('ads-st-t','ads-st-h','ads-sb-r',adsSkuData,adsSkuPeriods,adsSkuMetrics,'SKU'));
+  renderAdsTable('ads-st-t','ads-st-h','ads-sb-r',adsSkuData,adsSkuPeriods,adsSkuMetrics,'SKU');
   document.getElementById('ads-st').textContent=`SKU Ads — ${cat} / ${plat}`;
   show('ads-sp');show('ads-sb');scroll('ads-sp');
 }
