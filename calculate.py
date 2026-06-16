@@ -410,6 +410,8 @@ def build_summary(sales, ads_mtd, ads_lfm, ads_l3m, prorate_map):
         "attainment_critical_pct": round(config.ATTAINMENT_CRITICAL * 100, 1),
         "attainment_warning_pct":  round(config.ATTAINMENT_WARNING * 100, 1),
         "roas_drop_warning":       config.ROAS_DROP_WARNING,
+        "discount_critical":       config.DISCOUNT_CRITICAL,
+        "discount_warning":        config.DISCOUNT_WARNING,
         # ads MTD
         "ad_spend_mtd":   fmt(sp_mtd), "ad_sales_mtd": fmt(sl_mtd),
         "gross_sales_mtd":fmt(gs_mtd), "ad_units_mtd": fmt(su_mtd),
@@ -435,6 +437,10 @@ def build_summary(sales, ads_mtd, ads_lfm, ads_l3m, prorate_map):
 def build_discount_audit(sales):
     records = []
     for _, r in sales.iterrows():
+        gmrp = r.get("Guideline MRP")
+        has_guide = bool(pd.notna(gmrp) and gmrp > 0)
+        lm_mrp  = r.get("LM MRP Revenue")
+        l3m_mrp = r.get("L3M MRP Revenue")
         records.append({
             "Platform": r["Platform"], "Category": r["Category"],
             "SKU": r["SKU"], "Short_Name": r["Short Name"],
@@ -447,6 +453,21 @@ def build_discount_audit(sales):
             "Discount_vs_Plan":       pct(r.get("Discount vs Plan Variance", 0)),
             "Discount_vs_Guideline":  pct(r.get("Discount vs Guideline Variance", 0)),
             "Discount_Flag":          r.get("Discount Flag", "good"),
+            # Raw revenue fields — used by the dashboard to re-aggregate
+            # discount metrics under any platform filter on the same
+            # revenue-weighted basis as weighted_discount_aggs().
+            "Planned_MRP_Revenue":  fmt(r.get("Planned MRP Revenue", 0)),
+            "Planned_SP_Revenue":   fmt(r.get("Planned SP Revenue", 0)),
+            "Actual_MRP_Revenue":   fmt(r.get("MTD Actual MRP Revenue", 0)),
+            "Actual_SP_Revenue":    fmt(r.get("MTD Actual SP Revenue", 0)),
+            # LM/L3M MRP revenue is NaN for SKUs without a guideline; preserve
+            # that as None so the JS aggregator can drop those rows from both
+            # numerator and denominator (matches the Python summary behaviour).
+            "LM_MRP_Revenue":   None if pd.isna(lm_mrp)  else fmt(lm_mrp),
+            "LM_SP_Monthly":    fmt(r.get("LM SP Monthly", 0)),
+            "L3M_MRP_Revenue":  None if pd.isna(l3m_mrp) else fmt(l3m_mrp),
+            "L3M_SP_Monthly":   fmt(r.get("L3M SP Monthly", 0)),
+            "Has_Guideline":    has_guide,
         })
     return records
 
