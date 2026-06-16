@@ -609,8 +609,9 @@ function getRevTotals(){
   };
 }
 
-function getAdsTotals(){
-  const src=aPlatAds.has('__ALL__')?DATA.ads_by_plat:DATA.ads_by_plat.filter(r=>aPlatAds.has(r.Platform));
+function getAdsTotals(filterSet){
+  const f = filterSet || aPlatAds;
+  const src = f.has('__ALL__') ? DATA.ads_by_plat : DATA.ads_by_plat.filter(r=>f.has(r.Platform));
   const sm=k=>src.reduce((a,r)=>a+n(r[k]),0);
   return{
     spMTD:sm('Ad_Spend_MTD'), slMTD:sm('Ad_Sales_MTD'), gsMTD:sm('Gross_Sales_MTD'),
