@@ -231,9 +231,9 @@ td.mn{font-family:'DM Mono',monospace;font-size:11px}
           <th onclick="sT('rev-skut',6)" class="r" style="min-width:100px">Prorated Rev</th>
           <th onclick="sT('rev-skut',7)" class="r" style="min-width:100px">Actual Rev</th>
           <th onclick="sT('rev-skut',8)" style="min-width:110px">Rev Attain%</th>
-          <th onclick="sT('rev-skut',9)" class="r" style="min-width:80px">Plan Disc%</th>
-          <th onclick="sT('rev-skut',10)" class="r" style="min-width:85px">Actual Disc%</th>
-          <th onclick="sT('rev-skut',11)" class="r" style="min-width:85px">Δ vs Guide</th>
+          <th onclick="sT('rev-skut',9)" class="r" style="min-width:100px">Revenue Gap</th>
+          <th onclick="sT('rev-skut',10)" class="r" style="min-width:80px">Plan Disc%</th>
+          <th onclick="sT('rev-skut',11)" class="r" style="min-width:85px">Actual Disc%</th>
           <th onclick="sT('rev-skut',12)" class="r" style="min-width:90px">LM Growth%</th>
           <th onclick="sT('rev-skut',13)" style="min-width:100px">Root Cause</th>
         </tr></thead>
@@ -366,6 +366,14 @@ let rcBar=null,rcDonut=null;
 let aPlatRev=new Set(['__ALL__']),aPlatAds=new Set(['__ALL__']);
 let aPlatDisc=new Set(['__ALL__']);
 let revSelCat=null,adsSelCat=null,discSelCat=null;
+// Track current Ads drill-down so the Actual ↔ Pro-rated toggle (and any other
+// refresh) can re-open it instead of collapsing the panel under the user's cursor.
+let adsSelPlat=null;
+// Actual / Pro-rated toggle for the Ads tab. When ON, LFM and L3M volume metrics
+// are scaled to match the MTD-to-date elapsed window so the three periods are
+// directly comparable. Ratios (ROAS, CTR, CPC, CPM, CVR, AOV, CPO, Ad Contrib%)
+// are invariant under proration and stay unchanged.
+let adsProRated=false;
 // Ads-table column picker state: 2 Sets per table — periods × metrics.
 // Visible columns = (selected periods) × (selected metrics). Default = MTD × Ad Spend.
 let adsCatPeriods =new Set(['MTD']), adsCatMetrics =new Set(['Ad_Spend']);
@@ -531,34 +539,127 @@ function withCPO(arr){
   });
 }
 
+// ── Prorate-factor selector for the Ads Actual ↔ Pro-rated toggle.
+// Rule (per spec):
+//   • Exactly one platform selected → that platform's own elapsed-day factor
+//     (from prorate_info, which mirrors `MTD Updated Till (Date)`).
+//   • All / multiple platforms      → today's date / days-in-current-month.
+// Returns 1 (no-op) when the toggle is off, so call sites can apply it
+// unconditionally.
+function adsProrateFactor(){
+  if(!adsProRated) return 1;
+  const sels=[...aPlatAds].filter(x=>x!=='__ALL__');
+  if(sels.length===1 && DATA.prorate_info && DATA.prorate_info[sels[0]]){
+    const f=n(DATA.prorate_info[sels[0]].factor);
+    if(f>0) return f;
+  }
+  const now=new Date();
+  const day=now.getDate();
+  const total=new Date(now.getFullYear(),now.getMonth()+1,0).getDate();
+  return day/total;
+}
+
+// Prorate a TABLE row in-place-style (returns new object). Tables render raw
+// volume fields directly, so:
+//   • LFM volume × factor             (one full month → MTD-pace slice)
+//   • L3M volume × factor / 3         (3-month total → monthly-avg-at-pace)
+// Ratios are not touched — they're invariant under proportional scaling.
+function prorateTableRow(r){
+  if(!adsProRated) return r;
+  const f=adsProrateFactor();
+  const out={...r};
+  ADS_RAW_FIELDS.forEach(field=>{
+    const lfmK=`${field}_LFM`, l3mK=`${field}_L3M`;
+    if(out[lfmK]!=null) out[lfmK]=n(out[lfmK])*f;
+    if(out[l3mK]!=null) out[l3mK]=n(out[l3mK])*(f/3);
+  });
+  return out;
+}
+function prorateTableData(arr){return arr.map(prorateTableRow);}
+
+// Prorate the flat totals object used by the ribbons. The ribbon code already
+// divides L3M volumes by 3 downstream (e.g. `ad.spL3M/3` is the monthly avg),
+// so here we only apply × factor to both LFM and L3M raw sums — the ribbon's
+// own /3 then yields monthly-avg-at-pace. Ratios are computed from these same
+// (now-scaled) numerators/denominators and so remain unchanged.
+function prorateRibbonTotals(t){
+  if(!adsProRated) return t;
+  const f=adsProrateFactor();
+  const out={...t};
+  ['spLFM','slLFM','gsLFM','suLFM','siLFM','scLFM','guLFM','gcLFM',
+   'spL3M','slL3M','gsL3M','suL3M','siL3M','scL3M','guL3M','gcL3M']
+    .forEach(k=>{ if(out[k]!=null) out[k]=n(out[k])*f; });
+  return out;
+}
+
 // Two-row column picker. periodSet & metricSet are mutated in place; cb()
 // re-renders the table. Empties are coerced back to defaults so the table
-// is never blank.
+// is never blank. The Period row also carries the shared LFM/L3M view toggle
+// (Actual ↔ Pro-rated) — flipping it triggers adsRefresh() which updates the
+// ribbons and all three Ads tables together, preserving any open drill-downs.
 function buildCP(cid,periodSet,metricSet,cb){
   const el=document.getElementById(cid);el.innerHTML='';
-  const row=(labelText,items,activeSet,onToggle,extraCls='')=>{
-    const wrap=document.createElement('div');
-    wrap.style.cssText='display:flex;align-items:center;gap:6px;flex-wrap:wrap;width:100%;padding:2px 0';
-    const lbl=document.createElement('span');lbl.className='cpick-lbl';lbl.textContent=labelText;
-    wrap.appendChild(lbl);
-    items.forEach(it=>{
-      const c=document.createElement('span');
-      c.className='cchip'+extraCls+(activeSet.has(it.k)?' on':'');
-      c.textContent=it.l;
-      c.onclick=()=>{onToggle(it.k);c.classList.toggle('on',activeSet.has(it.k));cb();};
-      wrap.appendChild(c);
-    });
-    el.appendChild(wrap);
-  };
-  row('Period:',
-      ADS_PERIODS.map(p=>({k:p,l:p})),
-      periodSet,
-      k=>{periodSet.has(k)?periodSet.delete(k):periodSet.add(k); if(!periodSet.size)periodSet.add('MTD');},
-      ' period');
-  row('Metrics:',
-      ADS_METRICS,
-      metricSet,
-      k=>{metricSet.has(k)?metricSet.delete(k):metricSet.add(k); if(!metricSet.size)metricSet.add('Ad_Spend');});
+
+  // ── Row 1 : Period chips + LFM/L3M view toggle ─────────────────
+  const r1=document.createElement('div');
+  r1.style.cssText='display:flex;align-items:center;gap:6px;flex-wrap:wrap;width:100%;padding:2px 0';
+  const pLbl=document.createElement('span');
+  pLbl.className='cpick-lbl';pLbl.textContent='Period:';
+  r1.appendChild(pLbl);
+  ADS_PERIODS.forEach(p=>{
+    const c=document.createElement('span');
+    c.className='cchip period'+(periodSet.has(p)?' on':'');
+    c.textContent=p;
+    c.onclick=()=>{
+      periodSet.has(p)?periodSet.delete(p):periodSet.add(p);
+      if(!periodSet.size)periodSet.add('MTD');
+      c.classList.toggle('on',periodSet.has(p));
+      cb();
+    };
+    r1.appendChild(c);
+  });
+  // Vertical separator between Period and the view toggle
+  const sep=document.createElement('span');
+  sep.style.cssText='width:1px;height:16px;background:var(--bd);margin:0 4px';
+  r1.appendChild(sep);
+  // LFM/L3M view label
+  const vLbl=document.createElement('span');
+  vLbl.className='cpick-lbl';vLbl.textContent='LFM/L3M:';
+  r1.appendChild(vLbl);
+  // Mutually-exclusive Actual / Pro-rated chips
+  ['Actual','Pro-rated'].forEach(label=>{
+    const isPro=(label==='Pro-rated');
+    const c=document.createElement('span');
+    c.className='cchip view'+((adsProRated===isPro)?' on':'');
+    c.textContent=label;
+    c.onclick=()=>{
+      if(adsProRated===isPro) return;     // already on — no-op
+      adsProRated=isPro;
+      adsRefresh();                        // rebuilds ribbons + all 3 tables
+    };
+    r1.appendChild(c);
+  });
+  el.appendChild(r1);
+
+  // ── Row 2 : Metrics chips ──────────────────────────────────────
+  const r2=document.createElement('div');
+  r2.style.cssText='display:flex;align-items:center;gap:6px;flex-wrap:wrap;width:100%;padding:2px 0';
+  const mLbl=document.createElement('span');
+  mLbl.className='cpick-lbl';mLbl.textContent='Metrics:';
+  r2.appendChild(mLbl);
+  ADS_METRICS.forEach(m=>{
+    const c=document.createElement('span');
+    c.className='cchip'+(metricSet.has(m.k)?' on':'');
+    c.textContent=m.l;
+    c.onclick=()=>{
+      metricSet.has(m.k)?metricSet.delete(m.k):metricSet.add(m.k);
+      if(!metricSet.size)metricSet.add('Ad_Spend');
+      c.classList.toggle('on',metricSet.has(m.k));
+      cb();
+    };
+    r2.appendChild(c);
+  });
+  el.appendChild(r2);
 }
 
 function renderAdsTable(tid,hid,bid,data,periodSet,metricSet,gkey){
@@ -842,9 +943,9 @@ function drillRevPlat(cat,plat){
       <td class="r mn" data-val="${n(s['Prorated Planned SP Revenue'])}">${fc(s['Prorated Planned SP Revenue'])}</td>
       <td class="r mn" data-val="${n(s['MTD Actual SP Revenue'])}">${fc(s['MTD Actual SP Revenue'])}</td>
       <td data-val="${n(s['Revenue Attainment %'])}">${abar(s['Revenue Attainment %'])}</td>
+      <td class="r mn" data-val="${n(s['Revenue Gap'])}" style="color:${n(s['Revenue Gap'])>=0?'var(--gn)':'var(--rd)'}">${fc(s['Revenue Gap'])}</td>
       <td class="r" data-val="${n(s['Planned Discount %'])}">${fp(s['Planned Discount %'])}</td>
       <td class="r" data-val="${n(s['Actual Discount %'])}">${fp(s['Actual Discount %'])}</td>
-      <td data-val="${n(s['Discount vs Guideline Variance'])}">${dc(s['Discount vs Guideline Variance'])}</td>
       <td data-val="${n(s['LM Revenue Growth %'])}">${dc(s['LM Revenue Growth %'])}</td>
       <td>${rtag(s['Root Cause'])}${s['Target Stretch']?'&nbsp;<span class="tag stretch" style="font-size:9px">⚑</span>':''}</td>`;
     tb.appendChild(tr);
@@ -860,7 +961,10 @@ function revRefresh(){buildRevRibbons();buildRevCharts();buildRevCatTable();if(r
 // ADS — RIBBONS (STACKED VERTICALLY)
 // ══════════════════════════════════════════════════
 function buildAdsRibbons(){
-  const ad=getAdsTotals();
+  // When the Pro-rated toggle is on, prorateRibbonTotals scales the LFM/L3M
+  // raw sums; ratios computed below from those scaled sums stay correct
+  // because the same factor cancels in numerator and denominator.
+  const ad=prorateRibbonTotals(getAdsTotals());
   const src2=aPlatAds.has('__ALL__')?DATA.ads_by_plat:DATA.ads_by_plat.filter(r=>aPlatAds.has(r.Platform));
   const sm=k=>src2.reduce((a,r)=>a+n(r[k]),0);
   const rMTD=ad.spMTD>0?ad.slMTD/ad.spMTD:0, tMTD=ad.spMTD>0?ad.gsMTD/ad.spMTD:0;
@@ -885,7 +989,7 @@ function buildAdsRibbons(){
       ['CTR%',          fp(ctrMTD),                                            'Ad clicks / Impressions', ''],
       ['Ad Contrib%',   ad.guMTD>0?fp(ad.suMTD/ad.guMTD*100):'—',             'Ad units / Gross',        ''],
     ])+
-    mkRibbon('lm','Last Full Month',[
+    mkRibbon('lm','Last Full Month'+(adsProRated?' — Pro-rated to MTD pace':''),[
       ['Ad Spend LFM',      fc(ad.spLFM),                                         'Last month total',        ''],
       ['Ad Sales LFM',      fc(ad.slLFM),                                         'Attributed to ads',       ''],
       ['Ad Impressions LFM',fL(ad.siLFM),                                         'Last month total',        ''],
@@ -897,7 +1001,7 @@ function buildAdsRibbons(){
       ['CTR% LFM',          ad.siLFM>0?fp(ad.scLFM/ad.siLFM*100):'—',            'Clicks / Impressions',    ''],
       ['Ad Contrib% LFM',   ad.guLFM>0?fp(ad.suLFM/ad.guLFM*100):'—',            'Ad units / Gross',        ''],
     ])+
-    mkRibbon('l3m','Last 3 Months Average',[
+    mkRibbon('l3m','Last 3 Months Average'+(adsProRated?' — Pro-rated to MTD pace':''),[
       ['Ad Spend L3M',      fc(ad.spL3M/3),                                       'Monthly average',         ''],
       ['Ad Sales L3M',      fc(ad.slL3M/3),                                       'Monthly average',         ''],
       ['Ad Impressions L3M',fL(ad.siL3M/3),                                       'Monthly average',         ''],
@@ -946,7 +1050,9 @@ function getAdsCats(){
 }
 
 function buildAdsCatTable(){
-  const cats=getAdsCats().sort((a,b)=>n(b.Ad_Spend_MTD)-n(a.Ad_Spend_MTD));
+  // prorateTableData is a no-op when the toggle is off; otherwise it scales
+  // the LFM/L3M volume fields so they're directly comparable to MTD-to-date.
+  const cats=prorateTableData(getAdsCats()).sort((a,b)=>n(b.Ad_Spend_MTD)-n(a.Ad_Spend_MTD));
   buildCP('ads-cat-cp',adsCatPeriods,adsCatMetrics,()=>buildAdsCatTable());
   renderAdsTable('ads-ct','ads-ct-h','ads-cb',cats,adsCatPeriods,adsCatMetrics,'Category');
   // rewire click
@@ -955,9 +1061,11 @@ function buildAdsCatTable(){
 }
 
 function drillAdsCat(cat,quiet){
-  adsSelCat=cat;cD('ads-sp');
+  adsSelCat=cat;
+  adsSelPlat=null;        // clear any prior SKU-drill platform reference
+  cD('ads-sp');
   setBc('ads-bc',`<span class="bi" onclick="adsReset()">All Categories</span><span class="bs">›</span><span class="bi act">${cat}</span>`);
-  adsPlatData=withCPO(DATA.ads_by_cat_plat
+  adsPlatData=prorateTableData(withCPO(DATA.ads_by_cat_plat
     .filter(r=>r.Category===cat&&(aPlatAds.has('__ALL__')||aPlatAds.has(r.Platform)))
     .map(r=>({...r,
       ROAS_Delta_vs_LFM:n(r.ROAS_LFM)>0?(n(r.ROAS_MTD)-n(r.ROAS_LFM))/n(r.ROAS_LFM)*100:0,
@@ -965,7 +1073,7 @@ function drillAdsCat(cat,quiet){
       CPC_Delta_vs_LFM:n(r.CPC_LFM)>0?(n(r.CPC_MTD)-n(r.CPC_LFM))/n(r.CPC_LFM)*100:0,
       Ad_Spend_Delta_vs_LFM:n(r.Ad_Spend_LFM)>0?(n(r.Ad_Spend_MTD)-n(r.Ad_Spend_LFM))/n(r.Ad_Spend_LFM)*100:0,
     }))
-    .sort((a,b)=>n(b.Ad_Spend_MTD)-n(a.Ad_Spend_MTD)));
+    .sort((a,b)=>n(b.Ad_Spend_MTD)-n(a.Ad_Spend_MTD))));
   buildCP('ads-plat-cp',adsPlatPeriods,adsPlatMetrics,()=>{
     renderAdsTable('ads-pt-t','ads-pt-h','ads-pb-r',adsPlatData,adsPlatPeriods,adsPlatMetrics,'Platform');
     rewirePlat(cat);
@@ -983,8 +1091,9 @@ function rewirePlat(cat){
 }
 
 function drillAdsPlat(cat,plat){
+  adsSelPlat=plat;        // remember so adsRefresh() can re-open this SKU drill
   setBc('ads-bc',`<span class="bi" onclick="adsReset()">All</span><span class="bs">›</span><span class="bi" onclick="drillAdsCat('${cat}')">${cat}</span><span class="bs">›</span><span class="bi act">${plat}</span>`);
-  adsSkuData=withCPO(DATA.ads_sku_detail
+  adsSkuData=prorateTableData(withCPO(DATA.ads_sku_detail
     .filter(r=>r.Category===cat&&r.Platform===plat)
     .map(r=>({...r,
       ROAS_Delta_vs_LFM:n(r.ROAS_LFM)>0?(n(r.ROAS_MTD)-n(r.ROAS_LFM))/n(r.ROAS_LFM)*100:0,
@@ -992,15 +1101,28 @@ function drillAdsPlat(cat,plat){
       CPC_Delta_vs_LFM:n(r.CPC_LFM)>0?(n(r.CPC_MTD)-n(r.CPC_LFM))/n(r.CPC_LFM)*100:0,
       Ad_Spend_Delta_vs_LFM:n(r.Ad_Spend_LFM)>0?(n(r.Ad_Spend_MTD)-n(r.Ad_Spend_LFM))/n(r.Ad_Spend_LFM)*100:0,
     }))
-    .sort((a,b)=>n(b.Ad_Spend_MTD)-n(a.Ad_Spend_MTD)));
+    .sort((a,b)=>n(b.Ad_Spend_MTD)-n(a.Ad_Spend_MTD))));
   buildCP('ads-sku-cp',adsSkuPeriods,adsSkuMetrics,()=>renderAdsTable('ads-st-t','ads-st-h','ads-sb-r',adsSkuData,adsSkuPeriods,adsSkuMetrics,'SKU'));
   renderAdsTable('ads-st-t','ads-st-h','ads-sb-r',adsSkuData,adsSkuPeriods,adsSkuMetrics,'SKU');
   document.getElementById('ads-st').textContent=`SKU Ads — ${cat} / ${plat}`;
   show('ads-sp');show('ads-sb');scroll('ads-sp');
 }
 
-function adsReset(){adsSelCat=null;cD('ads-pp',()=>cD('ads-sp'));setBc('ads-bc','<span class="bi act" onclick="adsReset()">All Categories</span>')}
-function adsRefresh(){buildAdsRibbons();buildAdsCatTable();if(adsSelCat)drillAdsCat(adsSelCat,true)}
+function adsReset(){
+  adsSelCat=null; adsSelPlat=null;
+  cD('ads-pp',()=>cD('ads-sp'));
+  setBc('ads-bc','<span class="bi act" onclick="adsReset()">All Categories</span>');
+}
+function adsRefresh(){
+  buildAdsRibbons();
+  buildAdsCatTable();
+  if(adsSelCat){
+    // drillAdsCat resets adsSelPlat — capture it first, then restore after.
+    const savedPlat=adsSelPlat;
+    drillAdsCat(adsSelCat,true);
+    if(savedPlat) drillAdsPlat(adsSelCat,savedPlat);
+  }
+}
 
 // ══════════════════════════════════════════════════
 // DISCOUNT — DATA HELPERS (platform-filter-aware)
