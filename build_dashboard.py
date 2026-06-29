@@ -50,6 +50,7 @@ def main():
         "discount_by_cat":      load_json("discount_by_cat"),
         "discount_by_cat_plat": load_json("discount_by_cat_plat"),
         "discount_sku":         load_json("discount_sku"),
+        "prorate_info":         load_json("prorate_info"),
     }
 
     log.info("  Loaded processed data:")
