@@ -11,6 +11,7 @@ import os
 import json
 import logging
 from pathlib import Path
+from datetime import datetime, timezone, timedelta
 
 import config
 
@@ -20,6 +21,8 @@ logging.basicConfig(
     datefmt="%H:%M:%S",
 )
 log = logging.getLogger(__name__)
+
+IST = timezone(timedelta(hours=5, minutes=30))
 
 
 def load_json(name: str) -> dict | list:
@@ -52,6 +55,17 @@ def main():
         "discount_sku":         load_json("discount_sku"),
         "prorate_info":         load_json("prorate_info"),
     }
+
+    # ── Stamp build time directly — never trust intermediate files ────
+    # This bakes the ACTUAL build-time (IST) into the dashboard on every run,
+    # so the "Last updated" nav label always reflects reality even if a
+    # committed meta.json from a previous run leaks through checkout.
+    build_stamp = datetime.now(IST).strftime("%d %b %Y, %I:%M %p IST")
+    if not isinstance(data["meta"], dict):
+        data["meta"] = {}
+    data["meta"]["fetched_at"] = build_stamp
+    data["meta"]["built_at"]   = build_stamp
+    log.info(f"  Build stamp: {build_stamp}")
 
     log.info("  Loaded processed data:")
     for k, v in data.items():
