@@ -16,6 +16,23 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      # 1.5. Purge any stale data/ tracked in the repo, before Python runs.
+      #      Ensures every run works from a clean slate — fetch_data.py writes
+      #      fresh CSVs, calculate.py writes fresh JSONs, nothing shadowed.
+      - name: Clean stale tracked data folder
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          if git ls-files data/ | grep -q .; then
+            echo "Removing tracked data/ files from index"
+            git rm -r --cached data/ || true
+            rm -rf data/
+            git commit -m "One-shot: untrack stale data/ (regenerated per run)" || true
+            git push || true
+          else
+            echo "data/ already untracked — nothing to do"
+          fi
+
       # 2. Set up Python
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -51,6 +68,7 @@ jobs:
           ls -la nh_category_intel.html || echo "FILE MISSING at repo root"
           md5sum nh_category_intel.html || true
           grep -o '"fetched_at":"[^"]*"' nh_category_intel.html | head -1 || true
+          grep -o '"total_actual_revenue":[0-9.]*' nh_category_intel.html | head -1 || true
           echo "=== git status ==="
           git status
           git add nh_category_intel.html
