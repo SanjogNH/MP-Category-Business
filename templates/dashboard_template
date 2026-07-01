@@ -80,7 +80,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--tx);font-si
 .si{padding:5px 10px;border:1px solid var(--bd);border-radius:6px;font-size:11px;background:var(--sf2);outline:none;width:160px;font-family:inherit}
 .si:focus{border-color:var(--bl);background:var(--sf)}
 .ts{overflow:visible}
-table{width:100%;border-collapse:collapse;font-size:12px}
+table{width:100%;border-collapse:separate;border-spacing:0;font-size:12px}
 thead th{background:var(--sf2);padding:8px 12px;text-align:left;font-weight:600;font-size:10px;letter-spacing:.3px;text-transform:uppercase;color:var(--tx2);border-bottom:1px solid var(--bd);white-space:nowrap;cursor:pointer;user-select:none}
 thead th:hover{background:var(--bd2)}
 thead th.sa::after{content:" ↑";color:var(--bl)}
@@ -95,7 +95,13 @@ td{padding:8px 12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 td.r{text-align:right}
 td.mn{font-family:'DM Mono',monospace;font-size:11px}
 
-/* ── STICKY SUBTOTAL ROW ──────────── */
+/* ── STICKY SUBTOTAL ROW ──────────────
+   Requirements for sticky <td>:
+   • table needs border-collapse:separate (collapse silently disables sticky
+     on cells in Chrome/Safari)
+   • no ancestor between the <td> and the viewport may have overflow other
+     than visible — else sticky is scoped to that ancestor and won't pin to
+     the page. That's why .ts and .tw both use overflow:visible above. */
 tr.subtotal{background:var(--sf2)}
 tr.subtotal:hover{background:var(--sf2)}
 tr.subtotal td{
