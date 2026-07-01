@@ -1,0 +1,19 @@
+# Google credentials — NEVER commit this
+credentials.json
+
+# Raw and processed data (regenerated on each run)
+data/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+.vscode/
+.idea/
