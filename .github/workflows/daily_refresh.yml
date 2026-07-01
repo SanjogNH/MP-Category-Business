@@ -47,6 +47,14 @@ jobs:
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
+          echo "=== File info ==="
+          ls -la nh_category_intel.html || echo "FILE MISSING at repo root"
+          md5sum nh_category_intel.html || true
+          grep -o '"fetched_at":"[^"]*"' nh_category_intel.html | head -1 || true
+          echo "=== git status ==="
+          git status
           git add nh_category_intel.html
+          echo "=== staged diff summary ==="
+          git diff --staged --stat
           git diff --staged --quiet || git commit -m "Refresh dashboard — $(date +'%d %b %Y %H:%M IST' -d '+5 hours 30 minutes')"
           git push
