@@ -1137,34 +1137,56 @@ function withCPO(arr){
   });
 }
 
-// ── Prorate-factor selector for the Ads Actual ↔ Pro-rated toggle.
-// Rule (per spec):
-//   • Exactly one platform selected → that platform's own elapsed-day factor
-//     (from prorate_info, which mirrors `MTD Updated Till (Date)`).
-//   • All / multiple platforms      → today's date / days-in-current-month.
-// Returns 1 (no-op) when the toggle is off, so call sites can apply it
-// unconditionally.
+// ── Pro-rate helpers (Ads Actual ↔ Pro-rated) ──────────────────────
+//
+// The old logic used ONE factor for the whole aggregate — today's date /
+// days-in-current-month via the browser clock. That's wrong for two reasons:
+//   1. The sheet's MTD data covers a specific per-platform elapsed window
+//      (from "MTD Updated Till (Date)"), not necessarily today.
+//   2. Different platforms have different elapsed windows, so a single
+//      factor can't correctly scale the sum.
+//
+// New logic: apply each platform's own factor from DATA.prorate_info to that
+// platform's LFM/L3M values BEFORE aggregating. Ratios (ROAS, CTR, CPC, CPM,
+// CVR, AOV, Ad Contrib%) stay invariant when both numerator and denominator
+// scale together, so they remain correct after aggregation.
+
+function getFallbackFactor(){
+  // Used only when a platform is missing from prorate_info. Median of known
+  // factors is a much safer default than the browser clock.
+  const info=DATA.prorate_info||{};
+  const facts=Object.values(info).map(v=>n(v.factor)).filter(f=>f>0);
+  if(facts.length){
+    facts.sort((a,b)=>a-b);
+    return facts[Math.floor(facts.length/2)];
+  }
+  const now=new Date();
+  return now.getDate()/new Date(now.getFullYear(),now.getMonth()+1,0).getDate();
+}
+
+function platformFactor(platform){
+  const info=DATA.prorate_info||{};
+  return n(info[platform]?.factor) || getFallbackFactor();
+}
+
+// Kept for any legacy callers — always returns a single "representative"
+// factor. Prefer per-platform aggregation over calling this.
 function adsProrateFactor(){
   if(!adsProRated) return 1;
   const sels=[...aPlatAds].filter(x=>x!=='__ALL__');
-  if(sels.length===1 && DATA.prorate_info && DATA.prorate_info[sels[0]]){
-    const f=n(DATA.prorate_info[sels[0]].factor);
-    if(f>0) return f;
-  }
-  const now=new Date();
-  const day=now.getDate();
-  const total=new Date(now.getFullYear(),now.getMonth()+1,0).getDate();
-  return day/total;
+  if(sels.length===1) return platformFactor(sels[0]);
+  return getFallbackFactor();
 }
 
-// Prorate a TABLE row in-place-style (returns new object). Tables render raw
-// volume fields directly, so:
-//   • LFM volume × factor             (one full month → MTD-pace slice)
-//   • L3M volume × factor / 3         (3-month total → monthly-avg-at-pace)
+// Pro-rate a TABLE row using ITS OWN Platform's factor. Only makes sense for
+// rows that carry a Platform field (per-platform breakdown, SKU detail).
+// For a category-only row (no Platform), fall back to the shared helper.
+//   • LFM volume × factor       (one full month → MTD-pace slice)
+//   • L3M volume × factor / 3   (3-month total → monthly-avg-at-pace)
 // Ratios are not touched — they're invariant under proportional scaling.
 function prorateTableRow(r){
   if(!adsProRated) return r;
-  const f=adsProrateFactor();
+  const f = r.Platform ? platformFactor(r.Platform) : getFallbackFactor();
   const out={...r};
   ADS_RAW_FIELDS.forEach(field=>{
     const lfmK=`${field}_LFM`, l3mK=`${field}_L3M`;
@@ -1175,20 +1197,9 @@ function prorateTableRow(r){
 }
 function prorateTableData(arr){return arr.map(prorateTableRow);}
 
-// Prorate the flat totals object used by the ribbons. The ribbon code already
-// divides L3M volumes by 3 downstream (e.g. `ad.spL3M/3` is the monthly avg),
-// so here we only apply × factor to both LFM and L3M raw sums — the ribbon's
-// own /3 then yields monthly-avg-at-pace. Ratios are computed from these same
-// (now-scaled) numerators/denominators and so remain unchanged.
-function prorateRibbonTotals(t){
-  if(!adsProRated) return t;
-  const f=adsProrateFactor();
-  const out={...t};
-  ['spLFM','slLFM','gsLFM','suLFM','siLFM','scLFM','guLFM','gcLFM',
-   'spL3M','slL3M','gsL3M','suL3M','siL3M','scL3M','guL3M','gcL3M']
-    .forEach(k=>{ if(out[k]!=null) out[k]=n(out[k])*f; });
-  return out;
-}
+// prorateRibbonTotals is gone: getAdsTotals now takes a `prorate` flag and
+// applies per-platform factors at aggregation time, so no post-hoc single-
+// factor scaling is needed (or correct) for the ribbon.
 
 // Two-row column picker. periodSet & metricSet are mutated in place; cb()
 // re-renders the table. Empties are coerced back to defaults so the table
@@ -1357,7 +1368,7 @@ function getRevTotals(){
   };
 }
 
-function getAdsTotals(platSet,catSet){
+function getAdsTotals(platSet,catSet,prorate){
   const ps=platSet||aPlatAds;
   const cs=catSet ||aCatAds;
   // Use ads_by_cat_plat (both dimensions) so platform AND category filters both
@@ -1366,18 +1377,51 @@ function getAdsTotals(platSet,catSet){
   let src=DATA.ads_by_cat_plat;
   if(!ps.has('__ALL__')) src=src.filter(r=>ps.has(r.Platform));
   if(!cs.has('__ALL__')) src=src.filter(r=>cs.has(r.Category));
-  const sm=k=>src.reduce((a,r)=>a+n(r[k]),0);
-  return{
-    spMTD:sm('Ad_Spend_MTD'), slMTD:sm('Ad_Sales_MTD'), gsMTD:sm('Gross_Sales_MTD'),
-    suMTD:sm('Ad_Units_MTD'), siMTD:sm('Ad_Impressions_MTD'), scMTD:sm('Ad_Clicks_MTD'),
-    guMTD:sm('Gross_Units_MTD'), gcMTD:sm('Gross_Clicks_MTD'),
-    spLFM:sm('Ad_Spend_LFM'), slLFM:sm('Ad_Sales_LFM'), gsLFM:sm('Gross_Sales_LFM'),
-    suLFM:sm('Ad_Units_LFM'), siLFM:sm('Ad_Impressions_LFM'), scLFM:sm('Ad_Clicks_LFM'),
-    guLFM:sm('Gross_Units_LFM'), gcLFM:sm('Gross_Clicks_LFM'),
-    spL3M:sm('Ad_Spend_L3M'), slL3M:sm('Ad_Sales_L3M'), gsL3M:sm('Gross_Sales_L3M'),
-    suL3M:sm('Ad_Units_L3M'), siL3M:sm('Ad_Impressions_L3M'), scL3M:sm('Ad_Clicks_L3M'),
-    guL3M:sm('Gross_Units_L3M'), gcL3M:sm('Gross_Clicks_L3M'),
+
+  // ── Per-platform pro-rate at aggregation time ──────────────────
+  // When prorate=true, each row's LFM/L3M raw fields are multiplied by that
+  // row's platform factor BEFORE summing. MTD is never scaled. This yields
+  // an aggregate that respects each platform's real elapsed-days window
+  // (from prorate_info, sourced from the sheet's "MTD Updated Till (Date)").
+  // Ratios are computed from these sums so they remain internally consistent.
+  const fallback = getFallbackFactor();
+  const out={
+    spMTD:0, slMTD:0, gsMTD:0, suMTD:0, siMTD:0, scMTD:0, guMTD:0, gcMTD:0,
+    spLFM:0, slLFM:0, gsLFM:0, suLFM:0, siLFM:0, scLFM:0, guLFM:0, gcLFM:0,
+    spL3M:0, slL3M:0, gsL3M:0, suL3M:0, siL3M:0, scL3M:0, guL3M:0, gcL3M:0,
   };
+  src.forEach(r=>{
+    const f = prorate ? (n((DATA.prorate_info||{})[r.Platform]?.factor) || fallback) : 1;
+    // MTD (never scaled)
+    out.spMTD += n(r.Ad_Spend_MTD);
+    out.slMTD += n(r.Ad_Sales_MTD);
+    out.gsMTD += n(r.Gross_Sales_MTD);
+    out.suMTD += n(r.Ad_Units_MTD);
+    out.siMTD += n(r.Ad_Impressions_MTD);
+    out.scMTD += n(r.Ad_Clicks_MTD);
+    out.guMTD += n(r.Gross_Units_MTD);
+    out.gcMTD += n(r.Gross_Clicks_MTD);
+    // LFM (scaled by this row's platform factor when pro-rating)
+    out.spLFM += n(r.Ad_Spend_LFM)      * f;
+    out.slLFM += n(r.Ad_Sales_LFM)      * f;
+    out.gsLFM += n(r.Gross_Sales_LFM)   * f;
+    out.suLFM += n(r.Ad_Units_LFM)      * f;
+    out.siLFM += n(r.Ad_Impressions_LFM)* f;
+    out.scLFM += n(r.Ad_Clicks_LFM)     * f;
+    out.guLFM += n(r.Gross_Units_LFM)   * f;
+    out.gcLFM += n(r.Gross_Clicks_LFM)  * f;
+    // L3M (also scaled by f; ribbon display code divides by 3 downstream to
+    // convert 3-month total → monthly-avg-at-pace).
+    out.spL3M += n(r.Ad_Spend_L3M)      * f;
+    out.slL3M += n(r.Ad_Sales_L3M)      * f;
+    out.gsL3M += n(r.Gross_Sales_L3M)   * f;
+    out.suL3M += n(r.Ad_Units_L3M)      * f;
+    out.siL3M += n(r.Ad_Impressions_L3M)* f;
+    out.scL3M += n(r.Ad_Clicks_L3M)     * f;
+    out.guL3M += n(r.Gross_Units_L3M)   * f;
+    out.gcL3M += n(r.Gross_Clicks_L3M)  * f;
+  });
+  return out;
 }
 
 // ══════════════════════════════════════════════════
@@ -1402,7 +1446,8 @@ function mkRibbon(period, title, metrics){
 
 function buildRevRibbons(){
   const rv=getRevTotals();
-  const ad=getAdsTotals(aPlatRev,aCatRev);
+  // Revenue tab has no pro-rate toggle; always use actual LFM/L3M values.
+  const ad=getAdsTotals(aPlatRev,aCatRev,false);
   const s=DATA.summary;
   const roasMTD =ad.spMTD>0?ad.slMTD/ad.spMTD:0;
   const troasMTD=ad.spMTD>0?ad.gsMTD/ad.spMTD:0;
@@ -1590,11 +1635,11 @@ function revRefresh(){
 // ADS — RIBBONS (STACKED VERTICALLY)
 // ══════════════════════════════════════════════════
 function buildAdsRibbons(){
-  // When the Pro-rated toggle is on, prorateRibbonTotals scales the LFM/L3M
-  // raw sums; ratios computed below from those scaled sums stay correct
-  // because the same factor cancels in numerator and denominator.
-  // getAdsTotals() with no args picks up aPlatAds + aCatAds — both filters apply.
-  const ad=prorateRibbonTotals(getAdsTotals());
+  // Per-platform pro-rating happens inside getAdsTotals when the third arg
+  // is true — each platform's LFM/L3M values are scaled by its own factor
+  // from prorate_info BEFORE being summed. Ratios computed below stay correct
+  // because numerator and denominator both come from the same weighted sums.
+  const ad=getAdsTotals(aPlatAds,aCatAds,adsProRated);
   const rMTD=ad.spMTD>0?ad.slMTD/ad.spMTD:0, tMTD=ad.spMTD>0?ad.gsMTD/ad.spMTD:0;
   const rLFM=ad.spLFM>0?ad.slLFM/ad.spLFM:0, tLFM=ad.spLFM>0?ad.gsLFM/ad.spLFM:0;
   const rL3M=ad.spL3M>0?ad.slL3M/ad.spL3M:0, tL3M=ad.spL3M>0?ad.gsL3M/ad.spL3M:0;
@@ -1647,11 +1692,19 @@ function buildAdsRibbons(){
 // ADS — CATEGORY TABLE & DRILLS
 // ══════════════════════════════════════════════════
 function getAdsCats(){
+  // Fast path: actual mode + no platform filter — Python's ads_by_cat is
+  // already pre-aggregated correctly, no per-row scaling needed.
   let base;
-  if(aPlatAds.has('__ALL__')){
+  if(!adsProRated && aPlatAds.has('__ALL__')){
     base=withCPO(DATA.ads_by_cat);
   } else {
-    const filtered=DATA.ads_by_cat_plat.filter(r=>aPlatAds.has(r.Platform));
+    // Aggregate from ads_by_cat_plat so we still have Platform per row —
+    // required for correct per-platform pro-rating when the toggle is on.
+    const filtered=DATA.ads_by_cat_plat.filter(r=>
+      aPlatAds.has('__ALL__')||aPlatAds.has(r.Platform)
+    );
+    const info=DATA.prorate_info||{};
+    const fallback=getFallbackFactor();
     const cats={};
     filtered.forEach(r=>{
       if(!cats[r.Category]){
@@ -1659,7 +1712,14 @@ function getAdsCats(){
         ADS_RAW_KEYS.forEach(k=>cats[r.Category][k]=0);
       }
       const c=cats[r.Category];
-      ADS_RAW_KEYS.forEach(k=>c[k]+=n(r[k]));
+      const f = adsProRated ? (n(info[r.Platform]?.factor) || fallback) : 1;
+      ADS_RAW_KEYS.forEach(k=>{
+        // MTD never scaled; LFM/L3M scaled by this row's platform factor
+        // when pro-rating so the aggregate reflects each platform's real
+        // elapsed-days window.
+        const isMTD=k.endsWith('_MTD');
+        c[k]+=n(r[k])*(isMTD?1:f);
+      });
     });
     const roasDrop=n(DATA.summary?.roas_drop_warning)||0.2;
     base=withCPO(Object.values(cats).map(c=>{
@@ -1687,7 +1747,10 @@ function getAdsCats(){
 function buildAdsCatTable(){
   // prorateTableData is a no-op when the toggle is off; otherwise it scales
   // the LFM/L3M volume fields so they're directly comparable to MTD-to-date.
-  const cats=prorateTableData(getAdsCats()).sort((a,b)=>n(b.Ad_Spend_MTD)-n(a.Ad_Spend_MTD));
+  // getAdsCats already applies per-platform pro-rating internally when the
+  // toggle is on, so we sort its output directly — NO prorateTableData wrap
+  // (that would double-scale LFM/L3M).
+  const cats=getAdsCats().sort((a,b)=>n(b.Ad_Spend_MTD)-n(a.Ad_Spend_MTD));
   buildCP('ads-cat-cp',adsCatPeriods,adsCatMetrics,()=>buildAdsCatTable());
   renderAdsTable('ads-ct','ads-ct-h','ads-cb',cats,adsCatPeriods,adsCatMetrics,'Category');
   // Subtotal: factory builds a closure over the current period/metric column
