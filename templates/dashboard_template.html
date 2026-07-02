@@ -680,6 +680,30 @@ function writeEffective(eff,allowed){
 function syncRev(){ writeEffective(aPlatRev,  resolveAllowed(platSelRev,  aChanRev)); }
 function syncAds(){ writeEffective(aPlatAds,  resolveAllowed(platSelAds,  aChanAds)); }
 function syncDisc(){writeEffective(aPlatDisc, resolveAllowed(platSelDisc, aChanDisc)); }
+
+// Platforms belonging to the currently selected channel(s). Used to rescope the
+// Platform picker's option list so it only offers platforms in that channel.
+function platsForChannel(chanState){
+  if(chanState.has('__ALL__')) return PLAT_UNIVERSE.slice();
+  return PLAT_UNIVERSE.filter(p=>chanState.has(channelOf(p)));
+}
+// Per-page wiring for the Platform picker, populated in init(). Lets the Channel
+// filter rebuild the correct picker with a channel-scoped option list.
+const PF_CFG={};
+// (Re)build a page's Platform dropdown with only the current channel's platforms.
+function buildPlatformPicker(page){
+  const c=PF_CFG[page];
+  const items=platsForChannel(c.chan);
+  buildCF(c.cid, c.sel, items, ()=>{ c.sync(); c.refresh(); }, c.lookup, 'Platform');
+}
+// Channel changed → reset the platform picks to "all within this channel", rebuild
+// the Platform list so it shows only the channel's platforms, then re-aggregate.
+function onChannelChange(page){
+  const c=PF_CFG[page];
+  c.sel.clear(); c.sel.add('__ALL__');
+  buildPlatformPicker(page);
+  c.sync(); c.refresh();
+}
 function buildCF(cid,state,items,cb,revLookup,label){
   // Generic dropdown filter. Used for both Platform and Category rows.
   // Compact button that opens a floating panel with search + Select-all / Clear
@@ -830,9 +854,19 @@ function buildCF(cid,state,items,cb,revLookup,label){
     cbTimer=setTimeout(()=>{cb()},60);
   }
 
-  // Close on outside click / Esc — registered once per instance.
-  document.addEventListener('click',e=>{ if(!el.contains(e.target)) closePanel() });
-  document.addEventListener('keydown',e=>{ if(e.key==='Escape') closePanel() });
+  // Close on outside click / Esc. Bound once per element (not per rebuild) so
+  // rebuilding the picker — e.g. when the Channel filter rescopes the platform
+  // list — doesn't accumulate stale listeners. Handlers query the live panel
+  // inside `el` rather than closing over a specific (possibly replaced) node.
+  if(!el._cfBound){
+    el._cfBound=true;
+    document.addEventListener('click',e=>{
+      if(!el.contains(e.target)){const p=el.querySelector('.cf-panel');if(p)p.classList.remove('open');}
+    });
+    document.addEventListener('keydown',e=>{
+      if(e.key==='Escape'){const p=el.querySelector('.cf-panel');if(p)p.classList.remove('open');}
+    });
+  }
 
   updateBtn();
 }
@@ -2174,23 +2208,26 @@ function init(){
   Object.entries(platAdsLookup).forEach(([p,v])=>chanAdsLookup[channelOf(p)]+=n(v));
   const chanDiscLookup=chanRevLookup;
 
-  // Channel + Platform edits both reconcile the effective set before refreshing;
-  // Category is orthogonal and refreshes directly.
-  const revP =()=>{syncRev();  revRefresh();};
-  const adsP =()=>{syncAds();  adsRefresh();};
-  const discP=()=>{syncDisc(); discRefresh();};
+  // Per-page Platform-picker config, so the Channel filter can rebuild each
+  // picker with a channel-scoped option list.
+  PF_CFG.rev ={cid:'rev-pf',  sel:platSelRev,  lookup:platRevLookup,  chan:aChanRev,  sync:syncRev,  refresh:revRefresh};
+  PF_CFG.ads ={cid:'ads-pf',  sel:platSelAds,  lookup:platAdsLookup,  chan:aChanAds,  sync:syncAds,  refresh:adsRefresh};
+  PF_CFG.disc={cid:'disc-pf', sel:platSelDisc, lookup:platDiscLookup, chan:aChanDisc, sync:syncDisc, refresh:discRefresh};
 
-  // Same buildCF for Channel, Platform and Category — the label arg switches the
-  // button text, search placeholder, and empty-state copy.
-  buildCF('rev-chf', aChanRev,   CHANNELS,                    revP,        chanRevLookup,  'Channel');
-  buildCF('rev-pf',  platSelRev, plats,                       revP,        platRevLookup,  'Platform');
-  buildCF('rev-cf',  aCatRev,    Object.keys(catRevLookup),   revRefresh,  catRevLookup,   'Category');
-  buildCF('ads-chf', aChanAds,   CHANNELS,                    adsP,        chanAdsLookup,  'Channel');
-  buildCF('ads-pf',  platSelAds, plats,                       adsP,        platAdsLookup,  'Platform');
-  buildCF('ads-cf',  aCatAds,    Object.keys(catAdsLookup),   adsRefresh,  catAdsLookup,   'Category');
-  buildCF('disc-chf',aChanDisc,  CHANNELS,                    discP,       chanDiscLookup, 'Channel');
-  buildCF('disc-pf', platSelDisc,plats,                       discP,       platDiscLookup, 'Platform');
-  buildCF('disc-cf', aCatDisc,   Object.keys(catDiscLookup),  discRefresh, catDiscLookup,  'Category');
+  // Channel dropdowns: on change they reset + rescope the Platform picker.
+  buildCF('rev-chf', aChanRev,  CHANNELS, ()=>onChannelChange('rev'),  chanRevLookup,  'Channel');
+  buildCF('ads-chf', aChanAds,  CHANNELS, ()=>onChannelChange('ads'),  chanAdsLookup,  'Channel');
+  buildCF('disc-chf',aChanDisc, CHANNELS, ()=>onChannelChange('disc'), chanDiscLookup, 'Channel');
+
+  // Platform pickers (scoped to the initial "all channels" → full list).
+  buildPlatformPicker('rev');
+  buildPlatformPicker('ads');
+  buildPlatformPicker('disc');
+
+  // Category pickers (orthogonal to channel/platform).
+  buildCF('rev-cf',  aCatRev,   Object.keys(catRevLookup),   revRefresh,  catRevLookup,   'Category');
+  buildCF('ads-cf',  aCatAds,   Object.keys(catAdsLookup),   adsRefresh,  catAdsLookup,   'Category');
+  buildCF('disc-cf', aCatDisc,  Object.keys(catDiscLookup),  discRefresh, catDiscLookup,  'Category');
 
   // Reconcile once so the effective sets match the initial (all) selection.
   syncRev(); syncAds(); syncDisc();
