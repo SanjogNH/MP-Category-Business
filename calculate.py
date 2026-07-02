@@ -33,6 +33,45 @@ def nan_to_none(obj):
     if isinstance(obj, list): return [nan_to_none(i) for i in obj]
     return obj
 
+# ── month helpers ────────────────────────────────────────────────────────────
+REPORT_MONTH_COL = "Report Month"
+
+def month_label(m):
+    """'2026-06' -> 'June 2026'. Falls back to the raw value if it can't parse."""
+    try:
+        y, mo = str(m).split("-")[:2]
+        return f"{calendar.month_name[int(mo)]} {y}"
+    except Exception:
+        return str(m)
+
+def month_from_date_series(series):
+    """Fallback: derive a YYYY-MM string from the latest parseable date in a column."""
+    today = date.today()
+    best = None
+    for raw in series:
+        d = parse_sheet_date(raw, today)
+        if d and (best is None or d > best):
+            best = d
+    if best is None:
+        best = today
+    return f"{best.year:04d}-{best.month:02d}"
+
+def normalise_report_month(df, date_col=None):
+    """
+    Ensure the DataFrame has a clean 'Report Month' column (string 'YYYY-MM').
+    Backward-compatible: if the column is absent, synthesise a single month
+    from `date_col` so old (pre-Report-Month) sheets still work.
+    """
+    if REPORT_MONTH_COL in df.columns:
+        df[REPORT_MONTH_COL] = df[REPORT_MONTH_COL].astype(str).str.strip()
+        # tolerate accidental date-typed cells like '2026-06-01' -> '2026-06'
+        df[REPORT_MONTH_COL] = df[REPORT_MONTH_COL].str.slice(0, 7)
+        return df
+    fallback = month_from_date_series(df[date_col]) if date_col and date_col in df.columns else "current"
+    log.warning(f"  '{REPORT_MONTH_COL}' column not found — treating all rows as one month: {fallback}")
+    df[REPORT_MONTH_COL] = fallback
+    return df
+
 def revenue_flag(att):
     if att < config.ATTAINMENT_CRITICAL: return "critical"
     if att < config.ATTAINMENT_WARNING:  return "warning"
@@ -159,6 +198,12 @@ def load_data():
         if c in ads.columns: ads[c] = pd.to_numeric(ads[c], errors="coerce").fillna(0)
     guide["MRP"]           = pd.to_numeric(guide["MRP"],           errors="coerce").fillna(0)
     guide["Selling Price"] = pd.to_numeric(guide["Selling Price"], errors="coerce").fillna(0)
+
+    # ── Month dimension ────────────────────────────────────────────
+    # Every row is stamped with the report batch it belongs to (YYYY-MM).
+    # Guidelines are month-independent, so they are used as-is for all months.
+    sales = normalise_report_month(sales, date_col="MTD Updated Till (Date)")
+    ads   = normalise_report_month(ads,   date_col="Time")
 
     log.info(f"  Sales:{len(sales):,}  Ads:{len(ads):,}  Guide:{len(guide):,}")
     return sales, ads, guide
@@ -505,26 +550,27 @@ def weighted_discount_aggs(grp):
 def df_to_records(df): return nan_to_none(df.to_dict(orient="records"))
 
 # ── main ─────────────────────────────────────────────────────────────────────
-def main():
-    log.info("="*55)
-    log.info("  calculate.py  –  per-platform prorate + TROAS")
-    log.info("="*55)
-
-    sales, ads, guide = load_data()
+def process_slice(sales, ads, guide):
+    """
+    Run the full metric pipeline for ONE month's slice of sales+ads and return
+    a dict of all 13 processed artifacts (everything the dashboard needs for a
+    single month). Guidelines are shared across months (month-independent).
+    """
     prorate_map = build_prorate_map(sales)
     sales = calc_sales(sales, guide, prorate_map)
-    
+
     # ── Verification log ──────────────────────────────────────────
     tot_pro = sales['Prorated Planned SP Revenue'].sum()
     tot_act = sales['MTD Actual SP Revenue'].sum()
     tot_plan= sales['Planned SP Revenue'].sum()
     log.info(f'  Verification:')
     log.info(f'    Monthly Plan      : ₹{tot_plan/1e7:.2f} Cr')
-    log.info(f'    Prorated Target   : ₹{tot_pro/1e7:.2f} Cr  (should be ~₹3.00 Cr)')
-    log.info(f'    MTD Actual        : ₹{tot_act/1e7:.2f} Cr  (should be ~₹2.95 Cr)')
-    log.info(f'    Attainment vs Pace: {tot_act/tot_pro*100:.1f}%  (should be ~98-99%)')
+    log.info(f'    Prorated Target   : ₹{tot_pro/1e7:.2f} Cr')
+    log.info(f'    MTD Actual        : ₹{tot_act/1e7:.2f} Cr')
+    if tot_pro:
+        log.info(f'    Attainment vs Pace: {tot_act/tot_pro*100:.1f}%')
     # ─────────────────────────────────────────────────────────────
-    
+
     mtd, lfm, l3m = calc_ads(ads)
 
     log.info("Aggregating revenue…")
@@ -602,35 +648,92 @@ def main():
             "Discount_Flag":          flag,
         })
 
-    try:
-        with open(f"{config.RAW_DIR}/meta.json") as f: meta = json.load(f)
-    except:
-        from datetime import datetime
-        meta = {"fetched_at": datetime.now().strftime("%d %b %Y, %I:%M %p")}
-
     # per-platform prorate info for dashboard
     prorate_info = {p: {"day": v[0], "total": v[1], "factor": round(v[2], 4)}
                     for p, v in prorate_map.items()}
 
-    def save(name, data):
-        path = f"{config.PROCESSED_DIR}/{name}.json"
-        with open(path, "w") as f: json.dump(nan_to_none(data), f)
-        log.info(f"  → {path}")
+    return {
+        "summary":              summary,
+        "prorate_info":         prorate_info,
+        "cat_summary":          df_to_records(cat_summary),
+        "cat_plat_summary":     df_to_records(cat_plat_summary),
+        "sku_detail":           df_to_records(sku_detail),
+        "ads_by_cat":           df_to_records(ads_by_cat),
+        "ads_by_plat":          df_to_records(ads_by_plat),
+        "ads_by_cat_plat":      df_to_records(ads_by_cat_plat),
+        "ads_sku_detail":       df_to_records(ads_sku_detail),
+        "discount_by_cat":      discount_by_cat,
+        "discount_by_cat_plat": discount_by_cat_plat,
+        "discount_sku":         discount_sku,
+    }
 
-    save("summary",              summary)
-    save("meta",                 meta)
-    save("prorate_info",         prorate_info)
-    save("cat_summary",          df_to_records(cat_summary))
-    save("cat_plat_summary",     df_to_records(cat_plat_summary))
-    save("sku_detail",           df_to_records(sku_detail))
-    save("ads_by_cat",           df_to_records(ads_by_cat))
-    save("ads_by_plat",          df_to_records(ads_by_plat))
-    save("ads_by_cat_plat",      df_to_records(ads_by_cat_plat))
-    save("ads_sku_detail",       df_to_records(ads_sku_detail))
-    save("discount_by_cat",      discount_by_cat)
-    save("discount_by_cat_plat", discount_by_cat_plat)
-    save("discount_sku",         discount_sku)
-    log.info("\n✅  Done.")
+
+def main():
+    log.info("="*55)
+    log.info("  calculate.py  –  multi-month  (per-platform prorate + TROAS)")
+    log.info("="*55)
+
+    sales, ads, guide = load_data()
+
+    # ── Discover months present in the data ────────────────────────
+    months = sorted(
+        set(sales[REPORT_MONTH_COL].dropna().unique())
+        | set(ads[REPORT_MONTH_COL].dropna().unique())
+    )
+    months = [m for m in months if str(m).strip() and str(m).lower() != "nan"]
+    if not months:
+        log.error("No report months found in data — aborting.")
+        return
+    latest = months[-1]
+    log.info(f"  Months found: {', '.join(months)}   (latest = {latest})")
+
+    # ── shared meta (fetch timestamp) ──────────────────────────────
+    try:
+        with open(f"{config.RAW_DIR}/meta.json") as f: meta = json.load(f)
+    except Exception:
+        from datetime import datetime
+        meta = {"fetched_at": datetime.now().strftime("%d %b %Y, %I:%M %p")}
+
+    # ── Process each month independently ───────────────────────────
+    by_month = {}
+    for m in months:
+        log.info("-"*55)
+        log.info(f"  Processing month {m}  ({month_label(m)})")
+        s_m = sales[sales[REPORT_MONTH_COL] == m].copy()
+        a_m = ads[ads[REPORT_MONTH_COL] == m].copy()
+        log.info(f"    rows — sales:{len(s_m):,}  ads:{len(a_m):,}")
+        if s_m.empty and a_m.empty:
+            log.warning(f"    {m}: no rows, skipping")
+            continue
+        slice_data = process_slice(s_m, a_m, guide)
+        slice_data["meta"] = meta          # keep DATA.meta working per month
+        by_month[m] = slice_data
+
+    # ── Write processed output ─────────────────────────────────────
+    # Per-month artifacts live under data/processed/<month>/, and an index.json
+    # ties them together for the dashboard builder.
+    def save(month, name, data):
+        d = f"{config.PROCESSED_DIR}/{month}"
+        os.makedirs(d, exist_ok=True)
+        with open(f"{d}/{name}.json", "w") as f:
+            json.dump(nan_to_none(data), f)
+
+    for m, slice_data in by_month.items():
+        for name, data in slice_data.items():
+            save(m, name, data)
+
+    index = {
+        "months":  list(by_month.keys()),
+        "latest":  latest if latest in by_month else list(by_month.keys())[-1],
+        "labels":  {m: month_label(m) for m in by_month},
+        "meta":    meta,
+    }
+    with open(f"{config.PROCESSED_DIR}/index.json", "w") as f:
+        json.dump(index, f)
+
+    log.info("-"*55)
+    log.info(f"✅  Done. {len(by_month)} month(s) written → {config.PROCESSED_DIR}/")
+    log.info(f"   Index → {config.PROCESSED_DIR}/index.json")
 
 if __name__ == "__main__":
     main()
