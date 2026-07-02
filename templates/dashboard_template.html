@@ -27,6 +27,10 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--tx);font-si
 .tab{padding:5px 14px;border-radius:6px;font-size:12px;font-weight:500;color:var(--tx2);cursor:pointer;border:none;background:transparent;transition:all .15s;white-space:nowrap}
 .tab:hover{background:var(--sf2)}.tab.on{background:var(--bl2);color:var(--bl)}
 .meta{margin-left:auto;font-size:11px;color:var(--mu)}.meta b{color:var(--tx2);font-weight:500}
+.msel-wrap{display:flex;align-items:center;gap:6px}
+.msel-wrap label{font-size:11px;color:var(--mu);font-weight:500}
+#msel{font-family:inherit;font-size:12px;font-weight:600;color:var(--bl);background:var(--bl2);border:1px solid var(--bd);border-radius:6px;padding:5px 10px;cursor:pointer;outline:none}
+#msel:hover{border-color:var(--bl)}
 
 /* ── LAYOUT ──────────────────────── */
 .wrap{margin-top:var(--nav);padding:16px 20px;max-width:1700px;margin-left:auto;margin-right:auto}
@@ -258,6 +262,7 @@ tr.subtotal .ab .bp{font-weight:700}
     <button class="tab" onclick="showPage('discount',this)">🏷️ Price &amp; Discount</button>
   </div>
   <div class="meta">Last updated: <b id="lu">—</b></div>
+  <div class="msel-wrap"><label for="msel">Month</label><select id="msel" onchange="switchMonth(this.value)"></select></div>
 </nav>
 
 <div class="wrap">
@@ -463,20 +468,12 @@ tr.subtotal .ab .bp{font-weight:700}
 </div>
 
 <script>
-let DATA=__DATA_PLACEHOLDER__;
-// ── Payload shape compatibility ───────────────────────────────────────────
-// build_dashboard.py emits a MONTH-KEYED payload: {months, latest, labels,
-// by_month:{ '<YYYY-MM>': {cat_summary, cat_plat_summary, ...} }}. The rest of
-// this dashboard reads the artifacts flat (DATA.cat_summary, DATA.summary, …).
-// Resolve to the latest month's slice so those flat reads work. If a build ever
-// emits a flat single-month object (has cat_summary directly), leave it as-is.
-if(DATA && DATA.by_month && !DATA.cat_summary){
-  const m = DATA.latest
-         || (Array.isArray(DATA.months) && DATA.months.length ? DATA.months[DATA.months.length-1] : null)
-         || Object.keys(DATA.by_month)[0];
-  const slice = (m && DATA.by_month[m]) ? DATA.by_month[m] : {};
-  DATA = Object.assign({__months:DATA.months, __latest:m, __labels:DATA.labels}, slice);
-}
+// Month-keyed payload:  { months, latest, labels, by_month:{ <m>:{...} } }
+const PAYLOAD=__DATA_PLACEHOLDER__;
+// DATA always points at the currently-selected month's slice, so every
+// existing DATA.* reference below keeps working unchanged.
+let ACTIVE_MONTH=(PAYLOAD&&PAYLOAD.latest)?PAYLOAD.latest:null;
+let DATA=(PAYLOAD&&PAYLOAD.by_month&&ACTIVE_MONTH)?PAYLOAD.by_month[ACTIVE_MONTH]:(PAYLOAD||{});
 </script>
 <script>
 // ══════════════════════════════════════════════════
@@ -495,7 +492,7 @@ let platSelDisc=new Set(['__ALL__']);
 // Channel-type filter per page. '__ALL__' = both channels (no filter).
 let aChanRev=new Set(['__ALL__']),aChanAds=new Set(['__ALL__']);
 let aChanDisc=new Set(['__ALL__']);
-let PLAT_UNIVERSE=[];   // all platform names; set in init()
+let PLAT_UNIVERSE=[];   // all platform names for the active month; set in init()
 // Per-page Category filter state (independent across pages, parallels Platform).
 // '__ALL__' = no filter (all categories shown).
 let aCatRev =new Set(['__ALL__']);
@@ -670,8 +667,8 @@ function resolveAllowed(sel,chan){
   return byPlat.filter(p=>chanSet.has(p));
 }
 // Write the resolved allow-list into the effective Set the aggregators read.
-// Collapse to '__ALL__' only when it covers every platform (preserves the
-// existing all-platforms fast paths); leave empty when nothing passes.
+// Collapse to '__ALL__' only when it covers every platform (preserves existing
+// all-platforms fast paths); leave empty when nothing passes.
 function writeEffective(eff,allowed){
   eff.clear();
   if(allowed.length>0 && allowed.length===PLAT_UNIVERSE.length) eff.add('__ALL__');
@@ -2167,6 +2164,47 @@ function discRefresh(){
 }
 
 // ══════════════════════════════════════════════════
+// MONTH SELECTOR
+// ══════════════════════════════════════════════════
+// The whole payload for every month is embedded in the page. Switching months
+// just re-points DATA at that month's slice, resets all view state to defaults
+// (so no stale drill-down or filter leaks across months), and re-runs init().
+function buildMonthSelector(){
+  const sel=document.getElementById('msel');
+  if(!sel||!PAYLOAD.months||!PAYLOAD.months.length){ if(sel)sel.parentElement.style.display='none'; return; }
+  const labels=PAYLOAD.labels||{};
+  // Newest month first in the dropdown.
+  sel.innerHTML=[...PAYLOAD.months].reverse()
+    .map(m=>`<option value="${m}"${m===ACTIVE_MONTH?' selected':''}>${labels[m]||m}</option>`).join('');
+  if(PAYLOAD.months.length<2){ sel.parentElement.style.opacity='.6'; }
+}
+
+function switchMonth(m){
+  if(!PAYLOAD.by_month||!PAYLOAD.by_month[m])return;
+  ACTIVE_MONTH=m;
+  DATA=PAYLOAD.by_month[m];
+
+  // Collapse any open drill-downs + reset breadcrumbs on all three pages.
+  revReset(); adsReset(); discReset();
+
+  // Reset every per-page filter + column-picker to its default so the new
+  // month opens on a clean top-level view.
+  aPlatRev=new Set(['__ALL__']); aPlatAds=new Set(['__ALL__']); aPlatDisc=new Set(['__ALL__']);
+  platSelRev=new Set(['__ALL__']); platSelAds=new Set(['__ALL__']); platSelDisc=new Set(['__ALL__']);
+  aChanRev=new Set(['__ALL__']); aChanAds=new Set(['__ALL__']); aChanDisc=new Set(['__ALL__']);
+  aCatRev =new Set(['__ALL__']); aCatAds =new Set(['__ALL__']); aCatDisc =new Set(['__ALL__']);
+  revSelCat=null; adsSelCat=null; discSelCat=null; adsSelPlat=null;
+  adsProRated=false;
+  adsCatPeriods =new Set(['MTD']); adsCatMetrics =new Set(['Ad_Spend']);
+  adsPlatPeriods=new Set(['MTD']); adsPlatMetrics=new Set(['Ad_Spend']);
+  adsSkuPeriods =new Set(['MTD']); adsSkuMetrics =new Set(['Ad_Spend']);
+  adsPlatData=[]; adsSkuData=[];
+
+  init();
+  const sel=document.getElementById('msel'); if(sel)sel.value=m;
+}
+
+// ══════════════════════════════════════════════════
 // INIT
 // ══════════════════════════════════════════════════
 function init(){
@@ -2219,7 +2257,7 @@ function init(){
   buildCF('ads-chf', aChanAds,  CHANNELS, ()=>onChannelChange('ads'),  chanAdsLookup,  'Channel');
   buildCF('disc-chf',aChanDisc, CHANNELS, ()=>onChannelChange('disc'), chanDiscLookup, 'Channel');
 
-  // Platform pickers (scoped to the initial "all channels" → full list).
+  // Platform pickers (scoped to the current channel; initially "all channels").
   buildPlatformPicker('rev');
   buildPlatformPicker('ads');
   buildPlatformPicker('disc');
@@ -2244,6 +2282,7 @@ function init(){
   // AFTER the buttons build.
   updateStickyOffsets();
 }
+buildMonthSelector();
 init();
 
 // Back-to-top button: appears past 300px scroll, smooth-scrolls on click.
