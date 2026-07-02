@@ -155,29 +155,56 @@ def parse_sheet_date(raw, today):
 
 
 def build_prorate_map(sales: pd.DataFrame) -> dict:
-    """Return {platform: (elapsed_day, total_days, factor)}"""
+    """Return {platform: (elapsed_day, total_days, factor)}.
+
+    A platform is only *live* this month if at least one of its rows carries a
+    parseable 'MTD Updated Till (Date)'. Platforms that have not reported yet
+    (no valid date on any row) are given a factor of 0.0 so their planned
+    revenue is excluded from the prorated (pace) target. Otherwise their full
+    plan would be prorated against zero actuals and drag overall attainment
+    down — e.g. Amazon/Flipkart carrying a large plan but no data yet.
+
+    Note: this only affects the *prorated* target. The full monthly plan still
+    includes these platforms; they simply don't count toward pace until they
+    start reporting.
+    """
     result = {}
     col = "MTD Updated Till (Date)"
     if col not in sales.columns:
         return result
 
     today = date.today()
+    no_data = []
 
-    for _, row in sales[["Platform", col]].drop_duplicates("Platform").iterrows():
-        p   = row["Platform"]
-        raw = row[col]
-        d   = parse_sheet_date(raw, today) if pd.notna(raw) else None
+    # Aggregate per platform (not just the first row): use the latest parseable
+    # date across ALL of the platform's rows, so a stray blank first row can't
+    # mislabel a live platform as missing (or vice-versa).
+    for p, grp in sales.groupby("Platform"):
+        best = None
+        for raw in grp[col]:
+            if pd.isna(raw):
+                continue
+            d = parse_sheet_date(raw, today)
+            if d and (best is None or d > best):
+                best = d
 
-        if d is None:
-            log.warning(f"    {p}: could not parse {raw!r} — using today (day {today.day})")
-            d = today
+        if best is None:
+            # No reported data this month → factor 0 excludes this platform's
+            # plan from the prorated target (actuals are 0 anyway).
+            result[p] = (0, 0, 0.0)
+            no_data.append(p)
+            continue
 
-        total = calendar.monthrange(d.year, d.month)[1]
-        result[p] = (d.day, total, d.day / total)
+        total = calendar.monthrange(best.year, best.month)[1]
+        result[p] = (best.day, total, best.day / total)
 
     log.info("  Per-platform prorate factors:")
     for p, (el, tot, f) in sorted(result.items()):
-        log.info(f"    {p:16} day {el:2}/{tot}  factor={f:.4f}")
+        tag = "  (no data — excluded from pace)" if f == 0 else ""
+        log.info(f"    {p:16} day {el:2}/{tot}  factor={f:.4f}{tag}")
+    if no_data:
+        log.warning(f"  {len(no_data)} platform(s) excluded from prorated target "
+                    f"(no MTD data this month): {', '.join(sorted(no_data))}")
     return result
 # ── load ────────────────────────────────────────────────────────────────────
 def load_data():
@@ -422,10 +449,15 @@ def build_summary(sales, ads_mtd, ads_lfm, ads_l3m, prorate_map):
             return fb
         m = len(xs) // 2
         return xs[m] if len(xs) % 2 else (xs[m - 1] + xs[m]) / 2
-    days   = [v[0] for v in prorate_map.values()]
-    totals = [v[1] for v in prorate_map.values()]
+    # Only live platforms (factor > 0) count toward the displayed pace window,
+    # so "day X/Y" reflects the platforms actually driving the prorated target
+    # rather than being dragged down by platforms with no data this month.
+    live_prorate = [v for v in prorate_map.values() if v[2] > 0]
+    days   = [v[0] for v in live_prorate]
+    totals = [v[1] for v in live_prorate]
     med_day   = round(_median(days, 8))
     med_total = round(_median(totals, 30))
+    excluded_platforms = sorted(p for p, v in prorate_map.items() if v[2] == 0)
 
     return {
         "total_planned_revenue":   fmt(tot_plan),
@@ -451,6 +483,7 @@ def build_summary(sales, ads_mtd, ads_lfm, ads_l3m, prorate_map):
             sales["L3M MRP Revenue"].dropna().sum()) * 100, 1),
         "median_elapsed_day":      med_day,
         "total_days":              med_total,
+        "excluded_platforms":      excluded_platforms,
         # flag thresholds (single source of truth for the dashboard JS)
         "attainment_critical_pct": round(config.ATTAINMENT_CRITICAL * 100, 1),
         "attainment_warning_pct":  round(config.ATTAINMENT_WARNING * 100, 1),
