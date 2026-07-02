@@ -11,7 +11,6 @@ import os
 import json
 import logging
 from pathlib import Path
-from datetime import datetime, timezone, timedelta
 
 import config
 
@@ -22,55 +21,71 @@ logging.basicConfig(
 )
 log = logging.getLogger(__name__)
 
-IST = timezone(timedelta(hours=5, minutes=30))
 
-
-def load_json(name: str) -> dict | list:
-    path = f"{config.PROCESSED_DIR}/{name}.json"
+def load_json(path: str, fallback):
     if not os.path.exists(path):
-        log.warning(f"  Missing processed file: {path}  (using empty fallback)")
-        return {}
+        log.warning(f"  Missing: {path}  (using fallback)")
+        return fallback
     with open(path) as f:
         return json.load(f)
 
 
+ARTIFACTS = [
+    "summary", "meta", "prorate_info",
+    "cat_summary", "cat_plat_summary", "sku_detail",
+    "ads_by_cat", "ads_by_plat", "ads_by_cat_plat", "ads_sku_detail",
+    "discount_by_cat", "discount_by_cat_plat", "discount_sku",
+]
+
+
+def load_month(month: str) -> dict:
+    base = f"{config.PROCESSED_DIR}/{month}"
+    return {name: load_json(f"{base}/{name}.json", {} if name in ("summary", "meta", "prorate_info") else [])
+            for name in ARTIFACTS}
+
+
+def build_payload() -> dict:
+    """
+    Assemble the month-keyed payload the dashboard expects:
+        { months, latest, labels, by_month: { <month>: {13 artifacts} } }
+
+    Backward-compatible: if there is no index.json (old single-month layout
+    with flat files under data/processed/), wrap it as one month.
+    """
+    index_path = f"{config.PROCESSED_DIR}/index.json"
+    if os.path.exists(index_path):
+        with open(index_path) as f:
+            index = json.load(f)
+        months = index.get("months", [])
+        by_month = {m: load_month(m) for m in months}
+        return {
+            "months":  months,
+            "latest":  index.get("latest", months[-1] if months else None),
+            "labels":  index.get("labels", {m: m for m in months}),
+            "by_month": by_month,
+        }
+
+    # ── legacy fallback: flat files, single month ──────────────────
+    log.warning("  No index.json found — falling back to legacy single-month layout.")
+    flat = {name: load_json(f"{config.PROCESSED_DIR}/{name}.json",
+                            {} if name in ("summary", "meta", "prorate_info") else [])
+            for name in ARTIFACTS}
+    m = "current"
+    return {"months": [m], "latest": m, "labels": {m: "Current"}, "by_month": {m: flat}}
+
+
 def main():
     log.info("=" * 55)
-    log.info("  build_dashboard.py  –  assembling HTML")
+    log.info("  build_dashboard.py  –  assembling HTML (multi-month)")
     log.info("=" * 55)
 
-    # ── Load all processed data ────────────────────────────────
-    data = {
-        "summary":              load_json("summary"),
-        "meta":                 load_json("meta"),
-        "cat_summary":          load_json("cat_summary"),
-        "cat_plat_summary":     load_json("cat_plat_summary"),
-        "sku_detail":           load_json("sku_detail"),
-        "ads_by_cat":           load_json("ads_by_cat"),
-        "ads_by_plat":          load_json("ads_by_plat"),
-        "ads_by_cat_plat":      load_json("ads_by_cat_plat"),
-        "ads_sku_detail":       load_json("ads_sku_detail"),
-        "discount_by_cat":      load_json("discount_by_cat"),
-        "discount_by_cat_plat": load_json("discount_by_cat_plat"),
-        "discount_sku":         load_json("discount_sku"),
-        "prorate_info":         load_json("prorate_info"),
-    }
-
-    # ── Stamp build time directly — never trust intermediate files ────
-    # This bakes the ACTUAL build-time (IST) into the dashboard on every run,
-    # so the "Last updated" nav label always reflects reality even if a
-    # committed meta.json from a previous run leaks through checkout.
-    build_stamp = datetime.now(IST).strftime("%d %b %Y, %I:%M %p IST")
-    if not isinstance(data["meta"], dict):
-        data["meta"] = {}
-    data["meta"]["fetched_at"] = build_stamp
-    data["meta"]["built_at"]   = build_stamp
-    log.info(f"  Build stamp: {build_stamp}")
-
-    log.info("  Loaded processed data:")
-    for k, v in data.items():
-        count = len(v) if isinstance(v, list) else "dict"
-        log.info(f"    {k}: {count}")
+    payload = build_payload()
+    log.info(f"  Months: {', '.join(payload['months'])}  (latest = {payload['latest']})")
+    for m in payload["months"]:
+        md = payload["by_month"][m]
+        log.info(f"    {m}: " + ", ".join(
+            f"{k}={len(v) if isinstance(v, list) else 'obj'}" for k, v in md.items()
+            if k in ("cat_summary", "sku_detail", "ads_sku_detail", "discount_sku")))
 
     # ── Read template ──────────────────────────────────────────
     template_path = config.TEMPLATE_FILE
@@ -82,7 +97,7 @@ def main():
         html = f.read()
 
     # ── Inject data ────────────────────────────────────────────
-    data_json = json.dumps(data, ensure_ascii=False, separators=(",", ":"))
+    data_json = json.dumps(payload, ensure_ascii=False, separators=(",", ":"))
     html = html.replace("__DATA_PLACEHOLDER__", data_json)
 
     # ── Write output ───────────────────────────────────────────
