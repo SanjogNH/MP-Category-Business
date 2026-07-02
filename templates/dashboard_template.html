@@ -27,10 +27,6 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--tx);font-si
 .tab{padding:5px 14px;border-radius:6px;font-size:12px;font-weight:500;color:var(--tx2);cursor:pointer;border:none;background:transparent;transition:all .15s;white-space:nowrap}
 .tab:hover{background:var(--sf2)}.tab.on{background:var(--bl2);color:var(--bl)}
 .meta{margin-left:auto;font-size:11px;color:var(--mu)}.meta b{color:var(--tx2);font-weight:500}
-.msel-wrap{display:flex;align-items:center;gap:6px}
-.msel-wrap label{font-size:11px;color:var(--mu);font-weight:500}
-#msel{font-family:inherit;font-size:12px;font-weight:600;color:var(--bl);background:var(--bl2);border:1px solid var(--bd);border-radius:6px;padding:5px 10px;cursor:pointer;outline:none}
-#msel:hover{border-color:var(--bl)}
 
 /* ── LAYOUT ──────────────────────── */
 .wrap{margin-top:var(--nav);padding:16px 20px;max-width:1700px;margin-left:auto;margin-right:auto}
@@ -262,7 +258,6 @@ tr.subtotal .ab .bp{font-weight:700}
     <button class="tab" onclick="showPage('discount',this)">🏷️ Price &amp; Discount</button>
   </div>
   <div class="meta">Last updated: <b id="lu">—</b></div>
-  <div class="msel-wrap"><label for="msel">Month</label><select id="msel" onchange="switchMonth(this.value)"></select></div>
 </nav>
 
 <div class="wrap">
@@ -272,7 +267,7 @@ tr.subtotal .ab .bp{font-weight:700}
 ══════════════════════════════════════ -->
 <div id="page-revenue" class="page active">
   <div class="fbar">
-    <div class="fbar-row"><div id="rev-pf"></div><div id="rev-cf"></div></div>
+    <div class="fbar-row"><div id="rev-chf"></div><div id="rev-pf"></div><div id="rev-cf"></div></div>
   </div>
   <div class="rstack" id="rev-ribbons"></div>
   <div class="bc" id="rev-bc"><span class="bi act" onclick="revReset()">All Categories</span></div>
@@ -355,7 +350,7 @@ tr.subtotal .ab .bp{font-weight:700}
 ══════════════════════════════════════ -->
 <div id="page-ads" class="page">
   <div class="fbar">
-    <div class="fbar-row"><div id="ads-pf"></div><div id="ads-cf"></div></div>
+    <div class="fbar-row"><div id="ads-chf"></div><div id="ads-pf"></div><div id="ads-cf"></div></div>
   </div>
   <div class="rstack" id="ads-ribbons"></div>
   <div class="bc" id="ads-bc"><span class="bi act" onclick="adsReset()">All Categories</span></div>
@@ -397,7 +392,7 @@ tr.subtotal .ab .bp{font-weight:700}
 ══════════════════════════════════════ -->
 <div id="page-discount" class="page">
   <div class="fbar">
-    <div class="fbar-row"><div id="disc-pf"></div><div id="disc-cf"></div></div>
+    <div class="fbar-row"><div id="disc-chf"></div><div id="disc-pf"></div><div id="disc-cf"></div></div>
   </div>
   <div class="rstack" id="disc-ribbons"></div>
   <div class="bc" id="disc-bc"><span class="bi act" onclick="discReset()">All Categories</span></div>
@@ -467,14 +462,7 @@ tr.subtotal .ab .bp{font-weight:700}
 </div>
 </div>
 
-<script>
-// Month-keyed payload:  { months, latest, labels, by_month:{ <m>:{...} } }
-const PAYLOAD=__DATA_PLACEHOLDER__;
-// DATA always points at the currently-selected month's slice, so every
-// existing DATA.* reference below keeps working unchanged.
-let ACTIVE_MONTH=(PAYLOAD&&PAYLOAD.latest)?PAYLOAD.latest:null;
-let DATA=(PAYLOAD&&PAYLOAD.by_month&&ACTIVE_MONTH)?PAYLOAD.by_month[ACTIVE_MONTH]:(PAYLOAD||{});
-</script>
+<script>const DATA=__DATA_PLACEHOLDER__;</script>
 <script>
 // ══════════════════════════════════════════════════
 // GLOBALS
@@ -483,6 +471,16 @@ const C='₹';
 let rcBar=null,rcDonut=null;
 let aPlatRev=new Set(['__ALL__']),aPlatAds=new Set(['__ALL__']);
 let aPlatDisc=new Set(['__ALL__']);
+// Platform *dropdown selection* per page (what the Platform picker edits).
+// The EFFECTIVE platform set that all aggregation reads (aPlatRev/Ads/Disc
+// above) is derived as (channel ∩ selection) by syncRev/Ads/Disc — so no
+// aggregation code needs to know channels exist.
+let platSelRev=new Set(['__ALL__']),platSelAds=new Set(['__ALL__']);
+let platSelDisc=new Set(['__ALL__']);
+// Channel-type filter per page. '__ALL__' = both channels (no filter).
+let aChanRev=new Set(['__ALL__']),aChanAds=new Set(['__ALL__']);
+let aChanDisc=new Set(['__ALL__']);
+let PLAT_UNIVERSE=[];   // all platform names; set in init()
 // Per-page Category filter state (independent across pages, parallels Platform).
 // '__ALL__' = no filter (all categories shown).
 let aCatRev =new Set(['__ALL__']);
@@ -631,6 +629,42 @@ function buildPF(cid,state,cb){
   ])].sort();
   buildChips(cid,state,plats,cb);
 }
+
+// ══════════════════════════════════════════════════
+// CHANNEL-TYPE FILTER (Quick-commerce vs Marketplace)
+// ══════════════════════════════════════════════════
+// Quick-commerce platforms — matched case-insensitively and trimmed. Every
+// platform NOT listed here is treated as Marketplace, so new marketplaces need
+// no code change; only a new *quick-commerce* platform must be added below.
+// NOTE: 'minutes' and 'firstclub' are seeded ahead of appearing in the data —
+// adjust these strings if the sheet uses different spellings.
+const QC_PLATFORMS=new Set(['blinkit','zepto','instamart','big basket','minutes','firstclub']);
+const CHANNELS=['Quick-commerce','Marketplace'];
+function channelOf(p){
+  return QC_PLATFORMS.has(String(p==null?'':p).trim().toLowerCase())
+    ? 'Quick-commerce' : 'Marketplace';
+}
+// Effective platform allow-list = (platform-dropdown picks) ∩ (channel picks).
+// '__ALL__' in either layer means "no constraint from that layer"; an empty
+// explicit set means "nothing selected".
+function resolveAllowed(sel,chan){
+  const uni=PLAT_UNIVERSE;
+  const byPlat=sel.has('__ALL__')  ? uni : uni.filter(p=>sel.has(p));
+  const byChan=chan.has('__ALL__') ? uni : uni.filter(p=>chan.has(channelOf(p)));
+  const chanSet=new Set(byChan);
+  return byPlat.filter(p=>chanSet.has(p));
+}
+// Write the resolved allow-list into the effective Set the aggregators read.
+// Collapse to '__ALL__' only when it covers every platform (preserves the
+// existing all-platforms fast paths); leave empty when nothing passes.
+function writeEffective(eff,allowed){
+  eff.clear();
+  if(allowed.length>0 && allowed.length===PLAT_UNIVERSE.length) eff.add('__ALL__');
+  else allowed.forEach(p=>eff.add(p));
+}
+function syncRev(){ writeEffective(aPlatRev,  resolveAllowed(platSelRev,  aChanRev)); }
+function syncAds(){ writeEffective(aPlatAds,  resolveAllowed(platSelAds,  aChanAds)); }
+function syncDisc(){writeEffective(aPlatDisc, resolveAllowed(platSelDisc, aChanDisc)); }
 function buildCF(cid,state,items,cb,revLookup,label){
   // Generic dropdown filter. Used for both Platform and Category rows.
   // Compact button that opens a floating panel with search + Select-all / Clear
@@ -2084,45 +2118,6 @@ function discRefresh(){
 }
 
 // ══════════════════════════════════════════════════
-// MONTH SELECTOR
-// ══════════════════════════════════════════════════
-// The whole payload for every month is embedded in the page. Switching months
-// just re-points DATA at that month's slice, resets all view state to defaults
-// (so no stale drill-down or filter leaks across months), and re-runs init().
-function buildMonthSelector(){
-  const sel=document.getElementById('msel');
-  if(!sel||!PAYLOAD.months||!PAYLOAD.months.length){ if(sel)sel.parentElement.style.display='none'; return; }
-  const labels=PAYLOAD.labels||{};
-  // Newest month first in the dropdown.
-  sel.innerHTML=[...PAYLOAD.months].reverse()
-    .map(m=>`<option value="${m}"${m===ACTIVE_MONTH?' selected':''}>${labels[m]||m}</option>`).join('');
-  if(PAYLOAD.months.length<2){ sel.parentElement.style.opacity='.6'; }
-}
-
-function switchMonth(m){
-  if(!PAYLOAD.by_month||!PAYLOAD.by_month[m])return;
-  ACTIVE_MONTH=m;
-  DATA=PAYLOAD.by_month[m];
-
-  // Collapse any open drill-downs + reset breadcrumbs on all three pages.
-  revReset(); adsReset(); discReset();
-
-  // Reset every per-page filter + column-picker to its default so the new
-  // month opens on a clean top-level view.
-  aPlatRev=new Set(['__ALL__']); aPlatAds=new Set(['__ALL__']); aPlatDisc=new Set(['__ALL__']);
-  aCatRev =new Set(['__ALL__']); aCatAds =new Set(['__ALL__']); aCatDisc =new Set(['__ALL__']);
-  revSelCat=null; adsSelCat=null; discSelCat=null; adsSelPlat=null;
-  adsProRated=false;
-  adsCatPeriods =new Set(['MTD']); adsCatMetrics =new Set(['Ad_Spend']);
-  adsPlatPeriods=new Set(['MTD']); adsPlatMetrics=new Set(['Ad_Spend']);
-  adsSkuPeriods =new Set(['MTD']); adsSkuMetrics =new Set(['Ad_Spend']);
-  adsPlatData=[]; adsSkuData=[];
-
-  init();
-  const sel=document.getElementById('msel'); if(sel)sel.value=m;
-}
-
-// ══════════════════════════════════════════════════
 // INIT
 // ══════════════════════════════════════════════════
 function init(){
@@ -2155,14 +2150,35 @@ function init(){
   const catDiscLookup=Object.fromEntries((DATA.discount_by_cat ||[]).map(r=>[r.Category, n(r.Planned_Revenue)]));
 
   // ── Filter dropdowns ──────────────────────────────────────────
-  // Same buildCF for both Platform and Category — 6th arg switches the label,
-  // search placeholder, and empty-state message.
-  buildCF('rev-pf',  aPlatRev,  plats,                       revRefresh,  platRevLookup,  'Platform');
-  buildCF('rev-cf',  aCatRev,   Object.keys(catRevLookup),   revRefresh,  catRevLookup,   'Category');
-  buildCF('ads-pf',  aPlatAds,  plats,                       adsRefresh,  platAdsLookup,  'Platform');
-  buildCF('ads-cf',  aCatAds,   Object.keys(catAdsLookup),   adsRefresh,  catAdsLookup,   'Category');
-  buildCF('disc-pf', aPlatDisc, plats,                       discRefresh, platDiscLookup, 'Platform');
-  buildCF('disc-cf', aCatDisc,  Object.keys(catDiscLookup),  discRefresh, catDiscLookup,  'Category');
+  PLAT_UNIVERSE=plats.slice();
+
+  // Channel badge = summed platform exposure per channel (same lens as platform).
+  const chanRevLookup={'Quick-commerce':0,'Marketplace':0};
+  Object.entries(platRevLookup).forEach(([p,v])=>chanRevLookup[channelOf(p)]+=n(v));
+  const chanAdsLookup={'Quick-commerce':0,'Marketplace':0};
+  Object.entries(platAdsLookup).forEach(([p,v])=>chanAdsLookup[channelOf(p)]+=n(v));
+  const chanDiscLookup=chanRevLookup;
+
+  // Channel + Platform edits both reconcile the effective set before refreshing;
+  // Category is orthogonal and refreshes directly.
+  const revP =()=>{syncRev();  revRefresh();};
+  const adsP =()=>{syncAds();  adsRefresh();};
+  const discP=()=>{syncDisc(); discRefresh();};
+
+  // Same buildCF for Channel, Platform and Category — the label arg switches the
+  // button text, search placeholder, and empty-state copy.
+  buildCF('rev-chf', aChanRev,   CHANNELS,                    revP,        chanRevLookup,  'Channel');
+  buildCF('rev-pf',  platSelRev, plats,                       revP,        platRevLookup,  'Platform');
+  buildCF('rev-cf',  aCatRev,    Object.keys(catRevLookup),   revRefresh,  catRevLookup,   'Category');
+  buildCF('ads-chf', aChanAds,   CHANNELS,                    adsP,        chanAdsLookup,  'Channel');
+  buildCF('ads-pf',  platSelAds, plats,                       adsP,        platAdsLookup,  'Platform');
+  buildCF('ads-cf',  aCatAds,    Object.keys(catAdsLookup),   adsRefresh,  catAdsLookup,   'Category');
+  buildCF('disc-chf',aChanDisc,  CHANNELS,                    discP,       chanDiscLookup, 'Channel');
+  buildCF('disc-pf', platSelDisc,plats,                       discP,       platDiscLookup, 'Platform');
+  buildCF('disc-cf', aCatDisc,   Object.keys(catDiscLookup),  discRefresh, catDiscLookup,  'Category');
+
+  // Reconcile once so the effective sets match the initial (all) selection.
+  syncRev(); syncAds(); syncDisc();
 
   buildRevRibbons();
   buildRevCharts();
@@ -2176,7 +2192,6 @@ function init(){
   // AFTER the buttons build.
   updateStickyOffsets();
 }
-buildMonthSelector();
 init();
 
 // Back-to-top button: appears past 300px scroll, smooth-scrolls on click.
