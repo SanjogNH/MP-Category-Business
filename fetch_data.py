@@ -76,6 +76,7 @@ def save_csv(rows: list[list], filepath: str):
 # ── Validate schema ────────────────────────────────────────────────────────
 EXPECTED_HEADERS = {
     config.TAB_SALES: [
+        "Report Month",
         "Platform", "MTD Updated Till (Date)", "SKU", "Short Name", "Category",
         "Planned Quantity", "Planned MRP Revenue", "Planned SP Revenue",
         "MTD Actual Quantity", "MTD Actual MRP Revenue", "MTD Actual SP Revenue",
@@ -83,6 +84,7 @@ EXPECTED_HEADERS = {
         "Last 3month Units", "Last 3month SP Revenue",
     ],
     config.TAB_ADS: [
+        "Report Month",
         "Platform", "Time", "SKU", "Gross Clicks", "Gross Units",
         "Gross Sales", "Ad Spend", "Ad Impressions", "Ad Clicks",
         "Ad Units", "Ad Sales",
