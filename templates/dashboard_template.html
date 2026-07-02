@@ -462,7 +462,22 @@ tr.subtotal .ab .bp{font-weight:700}
 </div>
 </div>
 
-<script>const DATA=__DATA_PLACEHOLDER__;</script>
+<script>
+let DATA=__DATA_PLACEHOLDER__;
+// ── Payload shape compatibility ───────────────────────────────────────────
+// build_dashboard.py emits a MONTH-KEYED payload: {months, latest, labels,
+// by_month:{ '<YYYY-MM>': {cat_summary, cat_plat_summary, ...} }}. The rest of
+// this dashboard reads the artifacts flat (DATA.cat_summary, DATA.summary, …).
+// Resolve to the latest month's slice so those flat reads work. If a build ever
+// emits a flat single-month object (has cat_summary directly), leave it as-is.
+if(DATA && DATA.by_month && !DATA.cat_summary){
+  const m = DATA.latest
+         || (Array.isArray(DATA.months) && DATA.months.length ? DATA.months[DATA.months.length-1] : null)
+         || Object.keys(DATA.by_month)[0];
+  const slice = (m && DATA.by_month[m]) ? DATA.by_month[m] : {};
+  DATA = Object.assign({__months:DATA.months, __latest:m, __labels:DATA.labels}, slice);
+}
+</script>
 <script>
 // ══════════════════════════════════════════════════
 // GLOBALS
