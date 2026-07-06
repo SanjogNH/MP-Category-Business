@@ -7,6 +7,22 @@ on:
     - cron: '30 7 * * *'    # 01:00 PM IST
   workflow_dispatch:          # Manual trigger from GitHub UI anytime
 
+# Permissions the jobs need:
+#   contents: write  -> to commit the refreshed HTML back to the repo
+#   pages:    write  -> to publish to GitHub Pages
+#   id-token: write  -> required by actions/deploy-pages (OIDC)
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+# Only one Pages deployment at a time. This is the fix for the intermittent
+# "Deployment failed, try again later." errors — overlapping runs now queue
+# instead of racing for the single github-pages slot.
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -15,23 +31,6 @@ jobs:
       # 1. Check out the repo
       - name: Checkout repository
         uses: actions/checkout@v4
-
-      # 1.5. Purge any stale data/ tracked in the repo, before Python runs.
-      #      Ensures every run works from a clean slate — fetch_data.py writes
-      #      fresh CSVs, calculate.py writes fresh JSONs, nothing shadowed.
-      - name: Clean stale tracked data folder
-        run: |
-          git config user.name  "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          if git ls-files data/ | grep -q .; then
-            echo "Removing tracked data/ files from index"
-            git rm -r --cached data/ || true
-            rm -rf data/
-            git commit -m "One-shot: untrack stale data/ (regenerated per run)" || true
-            git push || true
-          else
-            echo "data/ already untracked — nothing to do"
-          fi
 
       # 2. Set up Python
       - name: Set up Python
@@ -59,20 +58,37 @@ jobs:
       - name: Build dashboard
         run: python build_dashboard.py
 
-      # 8. Commit and push the new dashboard.html
+      # 8. Commit and push the new dashboard HTML (keeps it versioned in the repo)
       - name: Commit dashboard
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          echo "=== File info ==="
-          ls -la nh_category_intel.html || echo "FILE MISSING at repo root"
-          md5sum nh_category_intel.html || true
-          grep -o '"fetched_at":"[^"]*"' nh_category_intel.html | head -1 || true
-          grep -o '"total_actual_revenue":[0-9.]*' nh_category_intel.html | head -1 || true
-          echo "=== git status ==="
-          git status
           git add nh_category_intel.html
-          echo "=== staged diff summary ==="
-          git diff --staged --stat
-          git diff --staged --quiet || git commit -m "Refresh dashboard — $(date +'%d %b %Y %H:%M IST' -d '+5 hours 30 minutes')"
+          git diff --staged --quiet || git commit -m "Refresh dashboard — $(TZ='Asia/Kolkata' date +'%d %b %Y %H:%M IST')"
           git push
+
+      # 9. Assemble a clean publish folder with ONLY the public HTML.
+      #    This deliberately excludes credentials.json, the .py source and
+      #    data/ so none of that is ever served on the public site.
+      - name: Prepare site
+        run: |
+          mkdir -p _site
+          cp *.html _site/
+
+      # 10. Upload the publish folder as the Pages artifact
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  # Separate deploy job so the site publishes only after a successful build.
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
