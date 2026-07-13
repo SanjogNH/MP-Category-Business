@@ -1540,17 +1540,18 @@ function getRevCats(){
     filtered.forEach(r=>{
       if(!cats[r.Category])cats[r.Category]={
         Category:r.Category,
-        Planned_SP_Revenue:0,Prorated_Planned_SP:0,Actual_SP_Revenue:0,
-        Planned_MRP_Revenue:0,Actual_MRP_Revenue:0,
-        Planned_Qty:0,Prorated_Planned_Qty:0,Actual_Qty:0,
+        Planned_SP_Revenue:0,Prorated_Planned_SP:0,Phased_Planned_SP:0,Actual_SP_Revenue:0,
+        Planned_MRP_Revenue:0,Phased_Planned_MRP:0,Actual_MRP_Revenue:0,
+        Planned_Qty:0,Prorated_Planned_Qty:0,Phased_Planned_Qty:0,Actual_Qty:0,
         LM_Revenue:0,L3M_Revenue:0,
         LM_Prorated_Revenue:0,L3M_Prorated_Revenue:0,
         LM_MRP_Revenue:0,L3M_MRP_Revenue:0,
         Target_Stretch_Count:0
       };
       const c=cats[r.Category];
-      ['Planned_SP_Revenue','Prorated_Planned_SP','Actual_SP_Revenue',
-       'Planned_MRP_Revenue','Actual_MRP_Revenue','Planned_Qty','Prorated_Planned_Qty',
+      ['Planned_SP_Revenue','Prorated_Planned_SP','Phased_Planned_SP','Actual_SP_Revenue',
+       'Planned_MRP_Revenue','Phased_Planned_MRP','Actual_MRP_Revenue',
+       'Planned_Qty','Prorated_Planned_Qty','Phased_Planned_Qty',
        'Actual_Qty','LM_Revenue','L3M_Revenue','LM_Prorated_Revenue','L3M_Prorated_Revenue',
        'LM_MRP_Revenue','L3M_MRP_Revenue',
        'Target_Stretch_Count'].forEach(k=>c[k]+=n(r[k]));
