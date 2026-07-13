@@ -9,6 +9,7 @@ SHEET_ID = "1_dPrpqk6_8Izmick38zE_d9v_QpsebF0GzyY6WVRYrg"   # <-- your sheet ID
 
 TAB_SALES      = "Sales Data"
 TAB_ADS        = "Ads Data"
+TAB_AD_TARGET  = "Ad Target"
 TAB_GUIDELINES = "Category Guidelines"
 
 # Path to your Google service-account credentials JSON
