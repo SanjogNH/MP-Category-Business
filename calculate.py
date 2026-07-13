@@ -212,9 +212,18 @@ def load_data():
     sales = pd.read_csv(f"{config.RAW_DIR}/sales_data.csv")
     ads   = pd.read_csv(f"{config.RAW_DIR}/ads_data.csv")
     guide = pd.read_csv(f"{config.RAW_DIR}/category_guidelines.csv")
-    for df in [sales, ads, guide]: df.columns = df.columns.str.strip()
+    # Ad Target is optional: if the tab/CSV isn't present yet, fall back to an
+    # empty frame with the ads schema so the rest of the pipeline is unaffected.
+    tgt_path = f"{config.RAW_DIR}/ad_target.csv"
+    if os.path.exists(tgt_path):
+        ad_target = pd.read_csv(tgt_path)
+    else:
+        log.warning("  ad_target.csv not found — ad targets will be empty (no Target ribbon/column data).")
+        ad_target = pd.DataFrame(columns=ads.columns)
+    for df in [sales, ads, ad_target, guide]: df.columns = df.columns.str.strip()
 
     num_sales = ["Planned Quantity","Planned MRP Revenue","Planned SP Revenue",
+                 "Phased Quantity","Phased MRP Revenue","Phased SP Revenue",
                  "MTD Actual Quantity","MTD Actual MRP Revenue","MTD Actual SP Revenue",
                  "Last Month Units","Last Month SP Revenue","Last 3month Units","Last 3month SP Revenue"]
     num_ads   = ["Gross Clicks","Gross Units","Gross Sales","Ad Spend",
@@ -223,17 +232,27 @@ def load_data():
         if c in sales.columns: sales[c] = pd.to_numeric(sales[c], errors="coerce").fillna(0)
     for c in num_ads:
         if c in ads.columns: ads[c] = pd.to_numeric(ads[c], errors="coerce").fillna(0)
+        if c in ad_target.columns: ad_target[c] = pd.to_numeric(ad_target[c], errors="coerce").fillna(0)
     guide["MRP"]           = pd.to_numeric(guide["MRP"],           errors="coerce").fillna(0)
     guide["Selling Price"] = pd.to_numeric(guide["Selling Price"], errors="coerce").fillna(0)
+
+    # Backward-compat: if the sheet predates the Phased columns, treat phased
+    # target as equal to the full monthly plan (so nothing breaks; the phasing
+    # view simply mirrors the plan until the columns exist).
+    for base in ["Quantity", "MRP Revenue", "SP Revenue"]:
+        if f"Phased {base}" not in sales.columns:
+            log.warning(f"  'Phased {base}' column not found — defaulting phased = planned.")
+            sales[f"Phased {base}"] = sales[f"Planned {base}"]
 
     # ── Month dimension ────────────────────────────────────────────
     # Every row is stamped with the report batch it belongs to (YYYY-MM).
     # Guidelines are month-independent, so they are used as-is for all months.
-    sales = normalise_report_month(sales, date_col="MTD Updated Till (Date)")
-    ads   = normalise_report_month(ads,   date_col="Time")
+    sales     = normalise_report_month(sales,     date_col="MTD Updated Till (Date)")
+    ads       = normalise_report_month(ads,       date_col="Time")
+    ad_target = normalise_report_month(ad_target, date_col="Time")
 
-    log.info(f"  Sales:{len(sales):,}  Ads:{len(ads):,}  Guide:{len(guide):,}")
-    return sales, ads, guide
+    log.info(f"  Sales:{len(sales):,}  Ads:{len(ads):,}  AdTarget:{len(ad_target):,}  Guide:{len(guide):,}")
+    return sales, ads, ad_target, guide
 
 # ── sales calculations ──────────────────────────────────────────────────────
 def calc_sales(sales: pd.DataFrame, guide: pd.DataFrame, prorate_map: dict) -> pd.DataFrame:
@@ -246,6 +265,14 @@ def calc_sales(sales: pd.DataFrame, guide: pd.DataFrame, prorate_map: dict) -> p
     sales["Prorated Planned SP Revenue"]  = sales["Planned SP Revenue"]  * sales["_pf"]
     sales["Prorated Planned MRP Revenue"] = sales["Planned MRP Revenue"] * sales["_pf"]
     sales["Prorated Planned Quantity"]    = sales["Planned Quantity"]    * sales["_pf"]
+
+    # Phased target = the team's to-date phased plan, taken directly from the
+    # sheet's Phased columns (already reflects the intended demand curve, so it
+    # is NOT further pro-rated). This is the alternate target basis the Revenue
+    # tab can toggle to.
+    sales["Phased Planned SP Revenue"]  = sales["Phased SP Revenue"]
+    sales["Phased Planned MRP Revenue"] = sales["Phased MRP Revenue"]
+    sales["Phased Planned Quantity"]    = sales["Phased Quantity"]
 
     # guideline join
     gd = guide.drop_duplicates("SKU Code", keep="last").set_index("SKU Code")[["MRP","Selling Price"]].to_dict("index")
@@ -329,6 +356,9 @@ def agg_sales_by(sales, group_cols):
         Prorated_Planned_SP  =("Prorated Planned SP Revenue", "sum"),
         Prorated_Planned_MRP =("Prorated Planned MRP Revenue","sum"),
         Prorated_Planned_Qty =("Prorated Planned Quantity",   "sum"),
+        Phased_Planned_SP    =("Phased Planned SP Revenue",   "sum"),
+        Phased_Planned_MRP   =("Phased Planned MRP Revenue",  "sum"),
+        Phased_Planned_Qty   =("Phased Planned Quantity",     "sum"),
         Actual_SP_Revenue    =("MTD Actual SP Revenue",       "sum"),
         Actual_MRP_Revenue   =("MTD Actual MRP Revenue",      "sum"),
         Planned_Qty          =("Planned Quantity",            "sum"),
@@ -397,6 +427,59 @@ def agg_ads_periods(mtd, lfm, l3m, group_cols):
             if c in merged.columns: merged[c] = merged[c].apply(lambda v: pct(v))
     for c in ["ROAS_Delta_vs_LFM","TROAS_Delta_vs_LFM","CPC_Delta_vs_LFM",
               "Ad_Spend_Delta_vs_LFM","Ad_Units_Delta_vs_LFM"]:
+        if c in merged.columns: merged[c] = merged[c].apply(lambda v: pct(v))
+    return merged
+
+def _agg_ads_raw(df, sfx, group_cols):
+    """Group one ads-shaped frame and emit the 8 raw sums + derived ratios,
+    all suffixed with `sfx`. Shared by the period and target aggregators."""
+    g = df.groupby(group_cols, as_index=False).agg(
+        **{f"Ad_Spend_{sfx}":       ("Ad Spend",       "sum")},
+        **{f"Ad_Sales_{sfx}":       ("Ad Sales",       "sum")},
+        **{f"Ad_Units_{sfx}":       ("Ad Units",       "sum")},
+        **{f"Ad_Impressions_{sfx}": ("Ad Impressions", "sum")},
+        **{f"Ad_Clicks_{sfx}":      ("Ad Clicks",      "sum")},
+        **{f"Gross_Units_{sfx}":    ("Gross Units",    "sum")},
+        **{f"Gross_Sales_{sfx}":    ("Gross Sales",    "sum")},
+        **{f"Gross_Clicks_{sfx}":   ("Gross Clicks",   "sum")},
+    )
+    g[f"ROAS_{sfx}"]  = g.apply(lambda r: safe_div(r[f"Ad_Sales_{sfx}"],    r[f"Ad_Spend_{sfx}"]),            axis=1)
+    g[f"TROAS_{sfx}"] = g.apply(lambda r: safe_div(r[f"Gross_Sales_{sfx}"], r[f"Ad_Spend_{sfx}"]),            axis=1)
+    g[f"CPC_{sfx}"]   = g.apply(lambda r: safe_div(r[f"Ad_Spend_{sfx}"],    r[f"Ad_Clicks_{sfx}"]),           axis=1)
+    g[f"CPM_{sfx}"]   = g.apply(lambda r: safe_div(r[f"Ad_Spend_{sfx}"],    r[f"Ad_Impressions_{sfx}"])*1000, axis=1)
+    g[f"CTR_{sfx}"]   = g.apply(lambda r: safe_div(r[f"Ad_Clicks_{sfx}"],   r[f"Ad_Impressions_{sfx}"]),      axis=1)
+    g[f"Ad_Contribution_{sfx}"] = g.apply(lambda r: safe_div(r[f"Ad_Units_{sfx}"], r[f"Gross_Units_{sfx}"]),  axis=1)
+    g[f"CPO_{sfx}"]   = g.apply(lambda r: safe_div(r[f"Ad_Spend_{sfx}"],    r[f"Ad_Units_{sfx}"]),            axis=1)
+    return g
+
+def merge_ad_target(merged, target, group_cols):
+    """Left-merge full-month ad-target raw fields (suffix _TGT) onto an
+    already-built ads period frame. The target is the FULL-MONTH plan; the
+    dashboard pro-rates it per platform at display time (same as LFM), so we
+    emit raw monthly figures here and do NOT scale them.
+
+    Missing target rows → 0, so categories/SKUs without a target simply show a
+    zero target rather than breaking the merge.
+    """
+    if target is None or target.empty:
+        # Seed zero TGT columns so the dashboard always finds the keys.
+        for f in ["Ad_Spend","Ad_Sales","Ad_Units","Ad_Impressions","Ad_Clicks",
+                  "Gross_Units","Gross_Sales","Gross_Clicks",
+                  "ROAS","TROAS","CPC","CPM","CTR","Ad_Contribution","CPO"]:
+            merged[f"{f}_TGT"] = 0
+        for c in [f"CTR_TGT", f"Ad_Contribution_TGT"]:
+            merged[c] = merged[c].apply(lambda v: pct(v))
+        return merged
+    tg = _agg_ads_raw(target, "TGT", group_cols)
+    merged = merged.merge(tg, on=group_cols, how="left")
+    tgt_cols = [c for c in merged.columns if c.endswith("_TGT")]
+    for c in tgt_cols:
+        if merged[c].dtype == object:
+            try: merged[c] = pd.to_numeric(merged[c])
+            except: pass
+    merged[tgt_cols] = merged[tgt_cols].fillna(0)
+    # pct-ify the two rate fields to match the MTD/LFM/L3M convention
+    for c in ["CTR_TGT", "Ad_Contribution_TGT"]:
         if c in merged.columns: merged[c] = merged[c].apply(lambda v: pct(v))
     return merged
 
@@ -583,10 +666,10 @@ def weighted_discount_aggs(grp):
 def df_to_records(df): return nan_to_none(df.to_dict(orient="records"))
 
 # ── main ─────────────────────────────────────────────────────────────────────
-def process_slice(sales, ads, guide):
+def process_slice(sales, ads, ad_target, guide):
     """
     Run the full metric pipeline for ONE month's slice of sales+ads and return
-    a dict of all 13 processed artifacts (everything the dashboard needs for a
+    a dict of all processed artifacts (everything the dashboard needs for a
     single month). Guidelines are shared across months (month-independent).
     """
     prorate_map = build_prorate_map(sales)
@@ -612,8 +695,8 @@ def process_slice(sales, ads, guide):
 
     sku_detail = sales[[
         "Category","Platform","SKU","Short Name",
-        "Planned Quantity","Prorated Planned Quantity","MTD Actual Quantity","Units Attainment %",
-        "Planned SP Revenue","Prorated Planned SP Revenue","MTD Actual SP Revenue","Revenue Attainment %",
+        "Planned Quantity","Prorated Planned Quantity","Phased Planned Quantity","MTD Actual Quantity","Units Attainment %",
+        "Planned SP Revenue","Prorated Planned SP Revenue","Phased Planned SP Revenue","MTD Actual SP Revenue","Revenue Attainment %",
         "Revenue Gap","Units Gap",
         "Planned Discount %","Actual Discount %","Discount vs Plan Variance",
         "Discount vs Guideline Variance","Guideline Discount %",
@@ -637,10 +720,18 @@ def process_slice(sales, ads, guide):
     for df in [mtd, lfm, l3m]:
         df["Category"] = df["SKU"].map(sku_cat_map).fillna("Unmapped Category")
 
-    ads_by_cat      = agg_ads_periods(mtd, lfm, l3m, ["Category"])
-    ads_by_plat     = agg_ads_periods(mtd, lfm, l3m, ["Platform"])
-    ads_by_cat_plat = agg_ads_periods(mtd, lfm, l3m, ["Category","Platform"])
-    ads_sku_detail  = agg_ads_periods(mtd, lfm, l3m, ["Category","Platform","SKU"])
+    # Ad target rows (full-month plan) → same category mapping, MTD-style rows
+    # only (targets carry a date in Time, never LFM/L3M, but guard anyway).
+    tgt = ad_target.copy()
+    if not tgt.empty:
+        tgt["Time"] = tgt["Time"].astype(str).str.strip()
+        tgt = tgt[~tgt["Time"].isin(["LFM", "L3M"])].copy()
+        tgt["Category"] = tgt["SKU"].map(sku_cat_map).fillna("Unmapped Category")
+
+    ads_by_cat      = merge_ad_target(agg_ads_periods(mtd, lfm, l3m, ["Category"]),            tgt, ["Category"])
+    ads_by_plat     = merge_ad_target(agg_ads_periods(mtd, lfm, l3m, ["Platform"]),            tgt, ["Platform"])
+    ads_by_cat_plat = merge_ad_target(agg_ads_periods(mtd, lfm, l3m, ["Category","Platform"]), tgt, ["Category","Platform"])
+    ads_sku_detail  = merge_ad_target(agg_ads_periods(mtd, lfm, l3m, ["Category","Platform","SKU"]), tgt, ["Category","Platform","SKU"])
 
     summary = build_summary(sales, mtd, lfm, l3m, prorate_map)
     log.info(f"  Total prorated: {summary['total_prorated_revenue']/1e7:.2f} Cr  "
@@ -706,7 +797,7 @@ def main():
     log.info("  calculate.py  –  multi-month  (per-platform prorate + TROAS)")
     log.info("="*55)
 
-    sales, ads, guide = load_data()
+    sales, ads, ad_target, guide = load_data()
 
     # ── Discover months present in the data ────────────────────────
     months = sorted(
@@ -734,11 +825,12 @@ def main():
         log.info(f"  Processing month {m}  ({month_label(m)})")
         s_m = sales[sales[REPORT_MONTH_COL] == m].copy()
         a_m = ads[ads[REPORT_MONTH_COL] == m].copy()
-        log.info(f"    rows — sales:{len(s_m):,}  ads:{len(a_m):,}")
+        t_m = ad_target[ad_target[REPORT_MONTH_COL] == m].copy()
+        log.info(f"    rows — sales:{len(s_m):,}  ads:{len(a_m):,}  target:{len(t_m):,}")
         if s_m.empty and a_m.empty:
             log.warning(f"    {m}: no rows, skipping")
             continue
-        slice_data = process_slice(s_m, a_m, guide)
+        slice_data = process_slice(s_m, a_m, t_m, guide)
         slice_data["meta"] = meta          # keep DATA.meta working per month
         by_month[m] = slice_data
 
