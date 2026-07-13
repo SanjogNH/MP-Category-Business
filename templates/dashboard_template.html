@@ -1387,20 +1387,21 @@ function adsProrateFactor(){
 // For a category-only row (no Platform), fall back to the shared helper.
 //   • LFM volume × factor       (one full month → MTD-pace slice)
 //   • L3M volume × factor / 3   (3-month total → monthly-avg-at-pace)
-//   • TGT is NOT scaled          the team enters the ad target already updated
-//     to-date, so it is a to-date figure by definition. Pro-rating it again
-//     would double-discount it. It therefore stays identical whether the
-//     pro-rata toggle is off or on (actual and prorated target are the same).
+//   • TGT volume × factor       (full-month plan → MTD-pace slice, like LFM)
 // Ratios are not touched — they're invariant under proportional scaling.
+//
+// Actual mode (adsProRated=false) uses factor=1, so LFM/TGT pass through
+// unchanged — but L3M is STILL divided by 3. It's a 3-month total and must
+// read as a monthly average to be comparable to the single-month LFM/Target
+// columns (and to match the category table + ribbons). MTD is never touched.
 function prorateTableRow(r){
-  if(!adsProRated) return r;
-  const f = r.Platform ? platformFactor(r.Platform) : getFallbackFactor();
+  const f = adsProRated ? (r.Platform ? platformFactor(r.Platform) : getFallbackFactor()) : 1;
   const out={...r};
   ADS_RAW_FIELDS.forEach(field=>{
-    const lfmK=`${field}_LFM`, l3mK=`${field}_L3M`;
+    const lfmK=`${field}_LFM`, l3mK=`${field}_L3M`, tgtK=`${field}_TGT`;
     if(out[lfmK]!=null) out[lfmK]=n(out[lfmK])*f;
     if(out[l3mK]!=null) out[l3mK]=n(out[l3mK])*(f/3);
-    // TGT intentionally left unscaled (already a to-date figure).
+    if(out[tgtK]!=null) out[tgtK]=n(out[tgtK])*f;
   });
   return out;
 }
@@ -1654,17 +1655,16 @@ function getAdsTotals(platSet,catSet,prorate){
     out.scL3M += n(r.Ad_Clicks_L3M)     * f;
     out.guL3M += n(r.Gross_Units_L3M)   * f;
     out.gcL3M += n(r.Gross_Clicks_L3M)  * f;
-    // TGT = ad target, entered by the team already updated to-date. It is a
-    // to-date figure by definition, so it is NEVER scaled — it stays identical
-    // whether pro-rata is off or on (actual and prorated target are the same).
-    out.spTGT += n(r.Ad_Spend_TGT);
-    out.slTGT += n(r.Ad_Sales_TGT);
-    out.gsTGT += n(r.Gross_Sales_TGT);
-    out.suTGT += n(r.Ad_Units_TGT);
-    out.siTGT += n(r.Ad_Impressions_TGT);
-    out.scTGT += n(r.Ad_Clicks_TGT);
-    out.guTGT += n(r.Gross_Units_TGT);
-    out.gcTGT += n(r.Gross_Clicks_TGT);
+    // TGT = full-month ad plan; scaled by f when pro-rating (full month →
+    // MTD-pace slice, exactly like LFM). No /3.
+    out.spTGT += n(r.Ad_Spend_TGT)      * f;
+    out.slTGT += n(r.Ad_Sales_TGT)      * f;
+    out.gsTGT += n(r.Gross_Sales_TGT)   * f;
+    out.suTGT += n(r.Ad_Units_TGT)      * f;
+    out.siTGT += n(r.Ad_Impressions_TGT)* f;
+    out.scTGT += n(r.Ad_Clicks_TGT)     * f;
+    out.guTGT += n(r.Gross_Units_TGT)   * f;
+    out.gcTGT += n(r.Gross_Clicks_TGT)  * f;
   });
   return out;
 }
@@ -1984,10 +1984,19 @@ function buildAdsRibbons(){
 // ══════════════════════════════════════════════════
 function getAdsCats(){
   // Fast path: actual mode + no platform filter — Python's ads_by_cat is
-  // already pre-aggregated correctly, no per-row scaling needed.
+  // already pre-aggregated correctly, no per-platform scaling needed. The one
+  // exception is L3M: Python emits it as a 3-month TOTAL, so we divide the raw
+  // L3M volume fields by 3 here to render a monthly average — comparable to the
+  // single-month LFM/Target columns (matching the ribbons and the scaled path
+  // below). Ratios (ROAS/CTR/CPC/CPM/CVR/AOV/Ad Contrib/CPO) are invariant
+  // under ÷3, so they need no adjustment.
   let base;
   if(!adsProRated && aPlatAds.has('__ALL__')){
-    base=withCPO(DATA.ads_by_cat);
+    base=withCPO(DATA.ads_by_cat).map(c=>{
+      const o={...c};
+      ADS_RAW_FIELDS.forEach(f=>{const k=`${f}_L3M`; if(o[k]!=null) o[k]=n(o[k])/3;});
+      return o;
+    });
   } else {
     // Aggregate from ads_by_cat_plat so we still have Platform per row —
     // required for correct per-platform pro-rating when the toggle is on.
@@ -2005,16 +2014,12 @@ function getAdsCats(){
       const c=cats[r.Category];
       const f = adsProRated ? (n(info[r.Platform]?.factor) || fallback) : 1;
       ADS_RAW_KEYS.forEach(k=>{
-        // MTD never scaled. LFM scales by the platform factor (full month
+        // MTD never scaled. LFM & TGT scale by the platform factor (full month
         // → MTD-pace slice). L3M is a 3-month TOTAL, so it also gets ÷3 to
         // become a monthly-avg-at-pace figure — matching the drills & ribbons.
-        // TGT (ad target) is entered already updated to-date, so it is a
-        // to-date figure by definition and is NEVER scaled — actual and
-        // prorated target are the same.
         const isMTD=k.endsWith('_MTD');
-        const isTGT=k.endsWith('_TGT');
         const isL3M=k.endsWith('_L3M');
-        const scale=(isMTD||isTGT)?1:(isL3M? f/3 : f);
+        const scale=isMTD?1:(isL3M? f/3 : f);
         c[k]+=n(r[k])*scale;
       });
     });
@@ -2042,10 +2047,9 @@ function getAdsCats(){
 }
 
 function buildAdsCatTable(){
-  // prorateTableData is a no-op when the toggle is off; otherwise it scales
-  // the LFM/L3M volume fields so they're directly comparable to MTD-to-date.
-  // getAdsCats already applies per-platform pro-rating internally when the
-  // toggle is on, so we sort its output directly — NO prorateTableData wrap
+  // getAdsCats already applies all period scaling internally (per-platform
+  // pro-rating when the toggle is on, and the L3M ÷3 monthly-average in both
+  // modes), so we sort its output directly — NO prorateTableData wrap here
   // (that would double-scale LFM/L3M).
   const cats=getAdsCats().sort((a,b)=>n(b.Ad_Spend_MTD)-n(a.Ad_Spend_MTD));
   buildCP('ads-cat-cp',adsCatPeriods,adsCatMetrics,()=>buildAdsCatTable());
