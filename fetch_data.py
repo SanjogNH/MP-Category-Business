@@ -79,11 +79,18 @@ EXPECTED_HEADERS = {
         "Report Month",
         "Platform", "MTD Updated Till (Date)", "SKU", "Short Name", "Category",
         "Planned Quantity", "Planned MRP Revenue", "Planned SP Revenue",
+        "Phased Quantity", "Phased MRP Revenue", "Phased SP Revenue",
         "MTD Actual Quantity", "MTD Actual MRP Revenue", "MTD Actual SP Revenue",
         "Last Month Units", "Last Month SP Revenue",
         "Last 3month Units", "Last 3month SP Revenue",
     ],
     config.TAB_ADS: [
+        "Report Month",
+        "Platform", "Time", "SKU", "Gross Clicks", "Gross Units",
+        "Gross Sales", "Ad Spend", "Ad Impressions", "Ad Clicks",
+        "Ad Units", "Ad Sales",
+    ],
+    config.TAB_AD_TARGET: [
         "Report Month",
         "Platform", "Time", "SKU", "Gross Clicks", "Gross Units",
         "Gross Sales", "Ad Spend", "Ad Impressions", "Ad Clicks",
@@ -117,6 +124,7 @@ def main():
     tabs = {
         config.TAB_SALES:      f"{config.RAW_DIR}/sales_data.csv",
         config.TAB_ADS:        f"{config.RAW_DIR}/ads_data.csv",
+        config.TAB_AD_TARGET:  f"{config.RAW_DIR}/ad_target.csv",
         config.TAB_GUIDELINES: f"{config.RAW_DIR}/category_guidelines.csv",
     }
 
