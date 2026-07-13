@@ -15,6 +15,7 @@
   --gn:#059669;--gn2:#ECFDF5;
   --am:#D97706;--am2:#FFFBEB;
   --rd:#DC2626;--rd2:#FEF2F2;
+  --pu:#7C3AED;--pu2:#F5F3FF;
   --nav:52px;
   --subtotal-top:148px;   /* recomputed by JS based on actual fbar height */
 }
@@ -124,10 +125,10 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--tx);font-si
 .ribbon{background:var(--sf);border:1px solid var(--bd);border-radius:10px;box-shadow:0 1px 3px rgba(0,0,0,.06);overflow:hidden}
 .ribbon-hdr{display:flex;align-items:center;gap:8px;padding:10px 16px;border-bottom:1px solid var(--bd)}
 .ribbon-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
-.ribbon-dot.mtd{background:var(--bl)}.ribbon-dot.lm{background:var(--am)}.ribbon-dot.l3m{background:var(--gn)}
+.ribbon-dot.mtd{background:var(--bl)}.ribbon-dot.lm{background:var(--am)}.ribbon-dot.l3m{background:var(--gn)}.ribbon-dot.tgt{background:var(--pu)}
 .ribbon-title{font-size:11px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--mu)}
 .ribbon-accent{flex:1;height:2px;border-radius:1px}
-.ribbon-accent.mtd{background:var(--bl)}.ribbon-accent.lm{background:var(--am)}.ribbon-accent.l3m{background:var(--gn)}
+.ribbon-accent.mtd{background:var(--bl)}.ribbon-accent.lm{background:var(--am)}.ribbon-accent.l3m{background:var(--gn)}.ribbon-accent.tgt{background:var(--pu)}
 .ribbon-body{display:flex;flex-wrap:nowrap;overflow-x:auto}
 .rm{flex:1;min-width:120px;padding:12px 16px;border-right:1px solid var(--bd)}
 .rm:last-child{border-right:none}
@@ -227,6 +228,13 @@ tr.subtotal .ab .bp{font-weight:700}
 .dpc{font-size:14px;color:var(--mu);cursor:pointer;line-height:1}
 .dpc:hover{color:var(--rd)}
 .dpb{padding:14px}
+/* Accordion: a collapsible section header/bar. `.collapsed` = the level's body
+   is hidden and the bar is a tappable "expand me" affordance. */
+.acc-bar{cursor:pointer;user-select:none;transition:background .12s}
+.acc-bar:hover{background:var(--sf2)}
+.ttbar.acc-bar.collapsed,.dph.acc-bar.collapsed{background:var(--sf2);border-bottom:1px dashed var(--bd2)}
+.acc-bar .tt::after,.acc-bar .dpt::after{content:'▸';margin-left:8px;font-size:10px;color:var(--mu);transition:transform .12s;display:inline-block}
+.acc-bar:not(.collapsed) .tt::after,.acc-bar:not(.collapsed) .dpt::after{transform:rotate(90deg)}
 
 /* ── COLUMN PICKER ───────────────── */
 .cpick{display:flex;align-items:center;gap:6px;padding:8px 14px;border-bottom:1px solid var(--bd);flex-wrap:wrap;background:var(--sf2)}
@@ -273,32 +281,37 @@ tr.subtotal .ab .bp{font-weight:700}
 <div id="page-revenue" class="page active">
   <div class="fbar">
     <div class="fbar-row"><div id="rev-chf"></div><div id="rev-pf"></div><div id="rev-cf"></div></div>
+    <div class="fbar-row" style="margin-top:6px;align-items:center;gap:6px">
+      <span class="cpick-lbl">Target basis:</span>
+      <span id="rev-basis-phased" class="cchip view on" onclick="setRevBasis(true)">Phased</span>
+      <span id="rev-basis-pro" class="cchip view" onclick="setRevBasis(false)">Time-pro-rated</span>
+    </div>
   </div>
   <div class="rstack" id="rev-ribbons"></div>
   <div class="bc" id="rev-bc"><span class="bi act" onclick="revReset()">All Categories</span></div>
   <div class="sh"><span class="sh-lbl">A</span><span class="sh-title">Category Scorecard</span><div class="sh-div"></div></div>
   <div class="cgrid" id="rev-charts"></div>
   <div class="tw">
-    <div class="ttbar"><span class="tt">All Categories — click a row to drill into platforms</span>
-      <input class="si" placeholder="Search category…" oninput="fT('rev-ct',this.value)"/></div>
-    <div class="ts"><table id="rev-ct">
+    <div class="ttbar acc-bar" id="rev-ttbar" onclick="accSet('rev','cat')"><span class="tt">All Categories — click a row to drill into platforms</span>
+      <input class="si" placeholder="Search category…" onclick="event.stopPropagation()" oninput="fT('rev-ct',this.value)"/></div>
+    <div id="rev-cwrap"><div class="ts"><table id="rev-ct">
       <thead><tr>
         <th onclick="sT('rev-ct',0)" style="min-width:140px">Category</th>
         <th onclick="sT('rev-ct',1)" class="r" style="min-width:110px">Monthly Target</th>
-        <th onclick="sT('rev-ct',2)" class="r" style="min-width:110px">Prorated Target</th>
+        <th onclick="sT('rev-ct',2)" id="rev-ct-tgt-h" class="r" style="min-width:110px">Prorated Target</th>
         <th onclick="sT('rev-ct',3)" class="r" style="min-width:110px">Actual Revenue</th>
-        <th onclick="sT('rev-ct',4)" style="min-width:120px">Attainment vs Pace</th>
+        <th onclick="sT('rev-ct',4)" id="rev-ct-att-h" style="min-width:120px">Attainment vs Pace</th>
         <th onclick="sT('rev-ct',5)" class="r" style="min-width:100px">Revenue Gap</th>
         <th onclick="sT('rev-ct',6)" class="r" style="min-width:90px">Units Gap</th>
         <th onclick="sT('rev-ct',7)" class="r" style="min-width:90px">Actual Disc%</th>
         <th onclick="sT('rev-ct',8)" style="min-width:90px">Status</th>
       </tr></thead>
       <tbody id="rev-cb"></tbody>
-    </table></div>
+    </table></div></div>
   </div>
 
   <div class="dp" id="rev-pp" style="display:none">
-    <div class="dph" onclick="tB('rev-pb')">
+    <div class="dph acc-bar" id="rev-pph" onclick="accSet('rev','plat')">
       <span class="dpt" id="rev-pt">Platform Breakdown</span>
       <span class="dpc" onclick="event.stopPropagation();cD('rev-pp',()=>cD('rev-sp'))">✕</span>
     </div>
@@ -307,7 +320,7 @@ tr.subtotal .ab .bp{font-weight:700}
         <thead><tr>
           <th onclick="sT('rev-platt',0)" style="min-width:120px">Platform</th>
           <th onclick="sT('rev-platt',1)" class="r" style="min-width:110px">Monthly Target</th>
-          <th onclick="sT('rev-platt',2)" class="r" style="min-width:110px">Prorated Target</th>
+          <th onclick="sT('rev-platt',2)" id="rev-platt-tgt-h" class="r" style="min-width:110px">Prorated Target</th>
           <th onclick="sT('rev-platt',3)" class="r" style="min-width:110px">Actual Revenue</th>
           <th onclick="sT('rev-platt',4)" style="min-width:120px">Attainment</th>
           <th onclick="sT('rev-platt',5)" class="r" style="min-width:100px">Revenue Gap</th>
@@ -322,7 +335,7 @@ tr.subtotal .ab .bp{font-weight:700}
   </div>
 
   <div class="dp" id="rev-sp" style="display:none">
-    <div class="dph" onclick="tB('rev-sb')">
+    <div class="dph acc-bar" id="rev-sph" onclick="accSet('rev','sku')">
       <span class="dpt" id="rev-st">SKU Detail</span>
       <span class="dpc" onclick="event.stopPropagation();cD('rev-sp')">✕</span>
     </div>
@@ -332,10 +345,10 @@ tr.subtotal .ab .bp{font-weight:700}
           <th onclick="sT('rev-skut',0)" style="min-width:130px">SKU</th>
           <th onclick="sT('rev-skut',1)" style="min-width:150px">Name</th>
           <th onclick="sT('rev-skut',2)" class="r" style="min-width:80px">Plan Qty</th>
-          <th onclick="sT('rev-skut',3)" class="r" style="min-width:90px">Prorated Qty</th>
+          <th onclick="sT('rev-skut',3)" id="rev-skut-tgtq-h" class="r" style="min-width:90px">Prorated Qty</th>
           <th onclick="sT('rev-skut',4)" class="r" style="min-width:80px">Actual Qty</th>
           <th onclick="sT('rev-skut',5)" style="min-width:110px">Units Attain%</th>
-          <th onclick="sT('rev-skut',6)" class="r" style="min-width:100px">Prorated Rev</th>
+          <th onclick="sT('rev-skut',6)" id="rev-skut-tgtr-h" class="r" style="min-width:100px">Prorated Rev</th>
           <th onclick="sT('rev-skut',7)" class="r" style="min-width:100px">Actual Rev</th>
           <th onclick="sT('rev-skut',8)" style="min-width:110px">Rev Attain%</th>
           <th onclick="sT('rev-skut',9)" class="r" style="min-width:100px">Revenue Gap</th>
@@ -361,16 +374,18 @@ tr.subtotal .ab .bp{font-weight:700}
   <div class="bc" id="ads-bc"><span class="bi act" onclick="adsReset()">All Categories</span></div>
   <div class="sh"><span class="sh-lbl">B</span><span class="sh-title">Category-Level Ads Performance</span><div class="sh-div"></div></div>
   <div class="tw">
-    <div class="ttbar"><span class="tt">Categories — click to drill into platforms</span>
-      <input class="si" placeholder="Search…" oninput="fT('ads-ct',this.value)"/></div>
-    <div class="cpick" id="ads-cat-cp"></div>
-    <div class="ts"><table id="ads-ct">
-      <thead id="ads-ct-h"></thead><tbody id="ads-cb"></tbody>
-    </table></div>
+    <div class="ttbar acc-bar" id="ads-ttbar" onclick="accSet('ads','cat')"><span class="tt">Categories — click to drill into platforms</span>
+      <input class="si" placeholder="Search…" onclick="event.stopPropagation()" oninput="fT('ads-ct',this.value)"/></div>
+    <div id="ads-cwrap">
+      <div class="cpick" id="ads-cat-cp"></div>
+      <div class="ts"><table id="ads-ct">
+        <thead id="ads-ct-h"></thead><tbody id="ads-cb"></tbody>
+      </table></div>
+    </div>
   </div>
 
   <div class="dp" id="ads-pp" style="display:none">
-    <div class="dph" onclick="tB('ads-pb')">
+    <div class="dph acc-bar" id="ads-pph" onclick="accSet('ads','plat')">
       <span class="dpt" id="ads-pt">Platform Ads</span>
       <span class="dpc" onclick="event.stopPropagation();cD('ads-pp',()=>cD('ads-sp'))">✕</span>
     </div>
@@ -381,7 +396,7 @@ tr.subtotal .ab .bp{font-weight:700}
   </div>
 
   <div class="dp" id="ads-sp" style="display:none">
-    <div class="dph" onclick="tB('ads-sb')">
+    <div class="dph acc-bar" id="ads-sph" onclick="accSet('ads','sku')">
       <span class="dpt" id="ads-st">SKU Ads Detail</span>
       <span class="dpc" onclick="event.stopPropagation();cD('ads-sp')">✕</span>
     </div>
@@ -403,9 +418,9 @@ tr.subtotal .ab .bp{font-weight:700}
   <div class="bc" id="disc-bc"><span class="bi act" onclick="discReset()">All Categories</span></div>
   <div class="sh"><span class="sh-lbl">B</span><span class="sh-title">Category Discount Audit — sorted by planned revenue</span><div class="sh-div"></div></div>
   <div class="tw">
-    <div class="ttbar"><span class="tt">Categories — click to drill</span>
-      <input class="si" placeholder="Search…" oninput="fT('disc-ct',this.value)"/></div>
-    <div class="ts"><table id="disc-ct">
+    <div class="ttbar acc-bar" id="disc-ttbar" onclick="accSet('disc','cat')"><span class="tt">Categories — click to drill</span>
+      <input class="si" placeholder="Search…" onclick="event.stopPropagation()" oninput="fT('disc-ct',this.value)"/></div>
+    <div id="disc-cwrap"><div class="ts"><table id="disc-ct">
       <thead><tr>
         <th onclick="sT('disc-ct',0)" style="min-width:140px">Category</th>
         <th onclick="sT('disc-ct',1)" class="r" style="min-width:110px">Planned Revenue</th>
@@ -418,11 +433,11 @@ tr.subtotal .ab .bp{font-weight:700}
         <th onclick="sT('disc-ct',8)" class="r" style="min-width:60px">SKUs</th>
       </tr></thead>
       <tbody id="disc-cb"></tbody>
-    </table></div>
+    </table></div></div>
   </div>
 
   <div class="dp" id="disc-pp" style="display:none">
-    <div class="dph" onclick="tB('disc-pb')">
+    <div class="dph acc-bar" id="disc-pph" onclick="accSet('disc','plat')">
       <span class="dpt" id="disc-pt">Platform Discount</span>
       <span class="dpc" onclick="event.stopPropagation();cD('disc-pp',()=>cD('disc-sp'))">✕</span>
     </div>
@@ -442,7 +457,7 @@ tr.subtotal .ab .bp{font-weight:700}
   </div>
 
   <div class="dp" id="disc-sp" style="display:none">
-    <div class="dph" onclick="tB('disc-sb')">
+    <div class="dph acc-bar" id="disc-sph" onclick="accSet('disc','sku')">
       <span class="dpt" id="disc-st">SKU Price Detail</span>
       <span class="dpc" onclick="event.stopPropagation();cD('disc-sp')">✕</span>
     </div>
@@ -513,6 +528,45 @@ let adsSelPlat=null;
 // directly comparable. Ratios (ROAS, CTR, CPC, CPM, CVR, AOV, CPO, Ad Contrib%)
 // are invariant under proration and stay unchanged.
 let adsProRated=false;
+// Revenue tab target basis. true = compare actuals against the team's PHASED
+// to-date plan (the primary/default lens); false = against the linear
+// time-pro-rated plan. Switches the target column, gap, attainment, flags,
+// ribbons and the bar chart across the whole Revenue tab.
+let revPhased=true;
+// Active target field names for the current basis. Aggregate-level frames
+// (cat_summary / cat_plat_summary) use snake_case; sku_detail uses the raw
+// sheet-style column names.
+function revTgtKeys(){
+  return revPhased
+    ? {sp:'Phased_Planned_SP',   qty:'Phased_Planned_Qty'}
+    : {sp:'Prorated_Planned_SP', qty:'Prorated_Planned_Qty'};
+}
+function revTgtKeysSku(){
+  return revPhased
+    ? {sp:'Phased Planned SP Revenue',   qty:'Phased Planned Quantity'}
+    : {sp:'Prorated Planned SP Revenue', qty:'Prorated Planned Quantity'};
+}
+function revTgtLabel(){ return revPhased ? 'Phased' : 'Prorated'; }
+function revAttLabel(){ return revPhased ? 'vs Phased' : 'vs Pace'; }
+// Recompute the basis-dependent fields (target, gap, attainment, flag) on a set
+// of aggregate rows so the table/ribbons reflect the toggle. Exposes _TgtSP /
+// _TgtQty for display and overrides the precomputed prorated fields in-place.
+function applyRevBasis(rows){
+  const K=revTgtKeys();
+  const critT=n(DATA.summary?.attainment_critical_pct)||70;
+  const warnT=n(DATA.summary?.attainment_warning_pct)||85;
+  return rows.map(r=>{
+    const o={...r};
+    o._TgtSP =n(r[K.sp]);
+    o._TgtQty=n(r[K.qty]);
+    o.Revenue_Attainment=o._TgtSP >0 ? n(r.Actual_SP_Revenue)/o._TgtSP *100 : 0;
+    o.Units_Attainment  =o._TgtQty>0 ? n(r.Actual_Qty)       /o._TgtQty*100 : 0;
+    o.Revenue_Gap=n(r.Actual_SP_Revenue)-o._TgtSP;
+    o.Units_Gap  =n(r.Actual_Qty)       -o._TgtQty;
+    o.Revenue_Flag=o.Revenue_Attainment<critT?'critical':o.Revenue_Attainment<warnT?'warning':'good';
+    return o;
+  });
+}
 // Ads-table column picker state: 2 Sets per table — periods × metrics.
 // Visible columns = (selected periods) × (selected metrics). Default = MTD × Ad Spend.
 let adsCatPeriods =new Set(['MTD']), adsCatMetrics =new Set(['Ad_Spend']);
@@ -568,7 +622,37 @@ function showPage(nm,btn){
 function tB(id){const e=document.getElementById(id);if(e)e.style.display=e.style.display==='none'?'block':'none'}
 function cD(id,cb){const e=document.getElementById(id);if(e)e.style.display='none';if(cb)cb()}
 function show(id){const e=document.getElementById(id);if(e)e.style.display='block'}
-function scroll(id){setTimeout(()=>{const e=document.getElementById(id);if(e)e.scrollIntoView({behavior:'smooth',block:'nearest'})},50)}
+// Bring an element's header near the top of the viewport, but only when it's
+// actually off-screen — avoids the old "page lurches down" feeling on every
+// drill. ~58px clears the sticky nav.
+function scroll(id){setTimeout(()=>{
+  const e=document.getElementById(id);if(!e)return;
+  const top=e.getBoundingClientRect().top;
+  if(top<58||top>window.innerHeight-100){
+    window.scrollTo({top:window.scrollY+e.getBoundingClientRect().top-58,behavior:'smooth'});
+  }
+},60)}
+
+// ── Accordion drill navigation ─────────────────────────────────────
+// One level expanded at a time. Levels: 'cat' (master table), 'plat', 'sku'.
+// Deeper levels collapse their parent's body to a thin clickable bar (the
+// section header / ttbar stays visible); clicking a collapsed bar re-expands
+// that level. Shared by the Revenue, Ads and Discount tabs via a prefix.
+//   tab prefix → 'rev' | 'ads' | 'disc'
+//   master body wrapper : `${tab}-cwrap`   (added in HTML)
+//   platform panel body : `${tab}-pb`  (inside `.dp` `${tab}-pp`)
+//   sku panel body      : `${tab}-sb`  (inside `.dp` `${tab}-sp`)
+function accSet(tab, level){
+  const vis=(id,on)=>{const e=document.getElementById(id);if(e)e.style.display=on?'':'none';};
+  vis(`${tab}-cwrap`, level==='cat');
+  vis(`${tab}-pb`,    level==='plat');
+  vis(`${tab}-sb`,    level==='sku');
+  // Mark the collapsed section headers so they read as tappable bars.
+  const mark=(id,collapsed)=>{const e=document.getElementById(id);if(e)e.classList.toggle('collapsed',collapsed);};
+  mark(`${tab}-ttbar`, level!=='cat');
+  mark(`${tab}-pph`,   level!=='plat');
+  mark(`${tab}-sph`,   level!=='sku');
+}
 function setBc(id,html){const e=document.getElementById(id);if(e)e.innerHTML=html}
 
 // Sort & Filter
@@ -651,10 +735,15 @@ function buildPF(cid,state,cb){
 // NOTE: 'minutes' and 'firstclub' are seeded ahead of appearing in the data —
 // adjust these strings if the sheet uses different spellings.
 const QC_PLATFORMS=new Set(['blinkit','zepto','instamart','big basket','minutes','firstclub']);
-const CHANNELS=['Quick-commerce','Marketplace'];
+// D2C is its own channel (own website/app), distinct from marketplaces. Matched
+// case-insensitively; add spellings here if the sheet varies.
+const D2C_PLATFORMS=new Set(['d2c']);
+const CHANNELS=['Quick-commerce','Marketplace','D2C'];
 function channelOf(p){
-  return QC_PLATFORMS.has(String(p==null?'':p).trim().toLowerCase())
-    ? 'Quick-commerce' : 'Marketplace';
+  const key=String(p==null?'':p).trim().toLowerCase();
+  if(D2C_PLATFORMS.has(key)) return 'D2C';
+  if(QC_PLATFORMS.has(key))  return 'Quick-commerce';
+  return 'Marketplace';
 }
 // Effective platform allow-list = (platform-dropdown picks) ∩ (channel picks).
 // '__ALL__' in either layer means "no constraint from that layer"; an empty
@@ -966,11 +1055,12 @@ const ADS_METRIC_AGG={
 // ── Revenue: Category master (rev-ct) ───────────────────────────
 function subtotalRevCat(rows){
   const sum=k=>rows.reduce((a,r)=>a+n(r[k]),0);
+  const K=revTgtKeys();
   const tPlan=sum('Planned_SP_Revenue');
-  const tPro =sum('Prorated_Planned_SP');
+  const tPro =sum(K.sp);
   const tAct =sum('Actual_SP_Revenue');
   const tMRP =sum('Actual_MRP_Revenue');
-  const tProQ=sum('Prorated_Planned_Qty');
+  const tProQ=sum(K.qty);
   const tActQ=sum('Actual_Qty');
   const att=tPro>0?tAct/tPro*100:0;
   const gap=tAct-tPro;
@@ -992,10 +1082,11 @@ function subtotalRevCat(rows){
 // ── Revenue: Platform drill (rev-platt) ─────────────────────────
 function subtotalRevPlat(rows){
   const sum=k=>rows.reduce((a,r)=>a+n(r[k]),0);
+  const K=revTgtKeys();
   const tPlan=sum('Planned_SP_Revenue');
-  const tPro =sum('Prorated_Planned_SP');
+  const tPro =sum(K.sp);
   const tAct =sum('Actual_SP_Revenue');
-  const tProQ=sum('Prorated_Planned_Qty');
+  const tProQ=sum(K.qty);
   const tActQ=sum('Actual_Qty');
   const tPlMRP=sum('Planned_MRP_Revenue');
   const tAcMRP=sum('Actual_MRP_Revenue');
@@ -1027,12 +1118,13 @@ function subtotalRevPlat(rows){
 // per-cat & per-plat Python aggregations give. Same trick on LM Growth %.
 function subtotalRevSku(rows){
   const sum=k=>rows.reduce((a,r)=>a+n(r[k]),0);
+  const Ks=revTgtKeysSku();
   const tPlQ=sum('Planned Quantity');
-  const tPrQ=sum('Prorated Planned Quantity');
+  const tPrQ=sum(Ks.qty);
   const tAcQ=sum('MTD Actual Quantity');
-  const tPrR=sum('Prorated Planned SP Revenue');
+  const tPrR=sum(Ks.sp);
   const tAcR=sum('MTD Actual SP Revenue');
-  const tGap=sum('Revenue Gap');
+  const tGap=tAcR-tPrR;
   const uAtt=tPrQ>0?tAcQ/tPrQ*100:0;
   const rAtt=tPrR>0?tAcR/tPrR*100:0;
   let pMRP=0,pSP=0,aMRP=0,aSP=0;
@@ -1075,21 +1167,31 @@ function subtotalRevSku(rows){
 // period) cells + Status. Same order, same metric/period sequence.
 function buildAdsSubtotalBuilder(periodSet,metricSet){
   return function(rows){
-    const periods=ADS_PERIODS.filter(p=>periodSet.has(p));
+    const chips=ADS_PERIOD_CHIPS.filter(p=>periodSet.has(p.k));
     const metrics=ADS_METRICS.filter(m=>metricSet.has(m.k));
-    let cells=`<td><b>Subtotal (${rows.length})</b></td>`;
-    metrics.forEach(m=>periods.forEach(p=>{
+    // Roll a (metric, raw-period) pair up to a single subtotal value.
+    const rollup=(m,pk)=>{
       const cfg=ADS_METRIC_AGG[m.k]||{type:'sum'};
-      let val;
-      if(cfg.type==='sum'){
-        val=rows.reduce((a,r)=>a+n(r[`${m.k}_${p}`]),0);
+      if(cfg.type==='sum') return rows.reduce((a,r)=>a+n(r[`${m.k}_${pk}`]),0);
+      const num=rows.reduce((a,r)=>a+n(r[`${cfg.num}_${pk}`]),0);
+      const den=rows.reduce((a,r)=>a+n(r[`${cfg.den}_${pk}`]),0);
+      return den>0 ? num/den*(cfg.scale||1) : null;
+    };
+    let cells=`<td><b>Subtotal (${rows.length})</b></td>`;
+    metrics.forEach(m=>chips.forEach(p=>{
+      if(p.k==='DTGT'){
+        const a=rollup(m,'MTD'), b=rollup(m,'TGT');
+        const val=(a==null||b==null)?null:a-b;
+        const dv=val==null?'':val;
+        const col=val==null?'':(val>=0?'var(--gn)':'var(--rd)');
+        const fmtStr=val==null?'—':m.f(val);
+        const txt=(val==null||fmtStr==='—')?'—':(val>=0?'+':'')+fmtStr;
+        cells+=`<td class="r mn" data-val="${dv}" style="color:${col}"><b>${txt}</b></td>`;
       } else {
-        const num=rows.reduce((a,r)=>a+n(r[`${cfg.num}_${p}`]),0);
-        const den=rows.reduce((a,r)=>a+n(r[`${cfg.den}_${p}`]),0);
-        val=den>0 ? num/den*(cfg.scale||1) : null;
+        const val=rollup(m,p.k);
+        const dv=val==null?'':val;
+        cells+=`<td class="r mn" data-val="${dv}"><b>${val==null?'—':m.f(val)}</b></td>`;
       }
-      const dv=val==null?'':val;
-      cells+=`<td class="r mn" data-val="${dv}"><b>${val==null?'—':m.f(val)}</b></td>`;
     }));
     cells+=`<td>${badge(adsSubtotalFlag(rows))}</td>`;
     return `<tr class="subtotal">${cells}</tr>`;
@@ -1206,7 +1308,17 @@ const ADS_METRICS=[
   {k:'Ad_Contribution', l:'Ad Contrib%',    f:v=>fp(v)},
   {k:'Total_AOV',       l:'Total AOV',      f:v=>fc(v)},
 ];
-const ADS_PERIODS=['MTD','LFM','L3M'];
+const ADS_PERIODS=['MTD','LFM','L3M','TGT'];
+// Picker/column chips: raw data-bearing periods plus one derived "Δ vs Target"
+// column (DTGT = MTD − Target, computed at render). `k` is the Set token stored
+// in period selections; `l` is the display label.
+const ADS_PERIOD_CHIPS=[
+  {k:'MTD',  l:'MTD'},
+  {k:'LFM',  l:'LFM'},
+  {k:'L3M',  l:'L3M'},
+  {k:'TGT',  l:'Target'},
+  {k:'DTGT', l:'Δ vs Target'},
+];
 // Canonical raw fields the Python aggregator emits per period. Used to build
 // the platform-filtered category roll-up so it can never drift out of sync
 // with what Python produces (previous bug: only a subset were summed for
@@ -1219,7 +1331,7 @@ ADS_RAW_FIELDS.forEach(f=>ADS_PERIODS.forEach(p=>ADS_RAW_KEYS.push(`${f}_${p}`))
 function withCPO(arr){
   return arr.map(r=>{
     const o={...r};
-    ['MTD','LFM','L3M'].forEach(s=>{
+    ADS_PERIODS.forEach(s=>{
       o[`CPO_${s}`]       =n(r[`Ad_Units_${s}`])>0     ? n(r[`Ad_Spend_${s}`]) /n(r[`Ad_Units_${s}`])         : null;
       o[`Ad_CVR_${s}`]    =n(r[`Ad_Clicks_${s}`])>0    ? n(r[`Ad_Units_${s}`]) /n(r[`Ad_Clicks_${s}`])*100    : null;
       o[`Gross_CVR_${s}`] =n(r[`Gross_Clicks_${s}`])>0 ? n(r[`Gross_Units_${s}`])/n(r[`Gross_Clicks_${s}`])*100 : null;
@@ -1275,15 +1387,17 @@ function adsProrateFactor(){
 // For a category-only row (no Platform), fall back to the shared helper.
 //   • LFM volume × factor       (one full month → MTD-pace slice)
 //   • L3M volume × factor / 3   (3-month total → monthly-avg-at-pace)
+//   • TGT volume × factor       (full-month plan → MTD-pace slice, like LFM)
 // Ratios are not touched — they're invariant under proportional scaling.
 function prorateTableRow(r){
   if(!adsProRated) return r;
   const f = r.Platform ? platformFactor(r.Platform) : getFallbackFactor();
   const out={...r};
   ADS_RAW_FIELDS.forEach(field=>{
-    const lfmK=`${field}_LFM`, l3mK=`${field}_L3M`;
+    const lfmK=`${field}_LFM`, l3mK=`${field}_L3M`, tgtK=`${field}_TGT`;
     if(out[lfmK]!=null) out[lfmK]=n(out[lfmK])*f;
     if(out[l3mK]!=null) out[l3mK]=n(out[l3mK])*(f/3);
+    if(out[tgtK]!=null) out[tgtK]=n(out[tgtK])*f;
   });
   return out;
 }
@@ -1307,14 +1421,14 @@ function buildCP(cid,periodSet,metricSet,cb){
   const pLbl=document.createElement('span');
   pLbl.className='cpick-lbl';pLbl.textContent='Period:';
   r1.appendChild(pLbl);
-  ADS_PERIODS.forEach(p=>{
+  ADS_PERIOD_CHIPS.forEach(p=>{
     const c=document.createElement('span');
-    c.className='cchip period'+(periodSet.has(p)?' on':'');
-    c.textContent=p;
+    c.className='cchip period'+(periodSet.has(p.k)?' on':'');
+    c.textContent=p.l;
     c.onclick=()=>{
-      periodSet.has(p)?periodSet.delete(p):periodSet.add(p);
+      periodSet.has(p.k)?periodSet.delete(p.k):periodSet.add(p.k);
       if(!periodSet.size)periodSet.add('MTD');
-      c.classList.toggle('on',periodSet.has(p));
+      c.classList.toggle('on',periodSet.has(p.k));
       cb();
     };
     r1.appendChild(c);
@@ -1365,12 +1479,24 @@ function buildCP(cid,periodSet,metricSet,cb){
 
 function renderAdsTable(tid,hid,bid,data,periodSet,metricSet,gkey){
   // Build columns metric-major (so all periods of one metric are adjacent),
-  // preserving the canonical ADS_PERIODS / ADS_METRICS order regardless of
-  // click sequence.
-  const periods=ADS_PERIODS.filter(p=>periodSet.has(p));
+  // preserving the canonical ADS_PERIOD_CHIPS / ADS_METRICS order regardless of
+  // click sequence. 'DTGT' is a derived column = MTD − Target (absolute),
+  // computed per row at render; it follows the Actual/Pro-rated toggle because
+  // the Target raw fields are already scaled upstream.
+  const chips=ADS_PERIOD_CHIPS.filter(p=>periodSet.has(p.k));
   const metrics=ADS_METRICS.filter(m=>metricSet.has(m.k));
   const cols=[];
-  metrics.forEach(m=>periods.forEach(p=>cols.push({key:`${m.k}_${p}`,label:`${m.l} ${p}`,fmt:m.f})));
+  metrics.forEach(m=>chips.forEach(p=>{
+    if(p.k==='DTGT'){
+      cols.push({
+        delta:true, mk:m.k, label:`${m.l} Δ vs Tgt`, fmt:m.f,
+        val:r=>{const a=r[`${m.k}_MTD`], b=r[`${m.k}_TGT`];
+                return (a==null||b==null)?null:n(a)-n(b);}
+      });
+    } else {
+      cols.push({key:`${m.k}_${p.k}`,label:`${m.l} ${p.l}`,fmt:m.f});
+    }
+  }));
 
   const thead=document.getElementById(hid);
   thead.innerHTML=`<tr>
@@ -1383,9 +1509,17 @@ function renderAdsTable(tid,hid,bid,data,periodSet,metricSet,gkey){
     const tr=document.createElement('tr');tr.classList.add('cl');
     let cells=`<td class="mn" style="font-size:10.5px">${r[gkey]||''}</td>`;
     cols.forEach(c=>{
-      const raw=r[c.key];
+      const raw=c.delta?c.val(r):r[c.key];
       const missing=(raw===undefined||raw===null);
-      cells+=`<td class="r mn" data-val="${missing?'':n(raw)}">${missing?'—':c.fmt(raw)}</td>`;
+      if(c.delta){
+        const v=missing?0:n(raw);
+        const fmtStr=missing?'—':c.fmt(raw);
+        const col=v>=0?'var(--gn)':'var(--rd)';
+        const txt=(missing||fmtStr==='—')?'—':(v>=0?'+':'')+fmtStr;
+        cells+=`<td class="r mn" data-val="${missing?'':v}" style="color:${col}">${txt}</td>`;
+      } else {
+        cells+=`<td class="r mn" data-val="${missing?'':n(raw)}">${missing?'—':c.fmt(raw)}</td>`;
+      }
     });
     cells+=`<td>${badge(r.ROAS_Flag||'good')}</td>`;
     tr.innerHTML=cells;
@@ -1435,13 +1569,16 @@ function getRevCats(){
   // Category filter — applied AFTER platform aggregation so the per-category
   // numbers still match the user's platform selection.
   if(!aCatRev.has('__ALL__')) out=out.filter(c=>aCatRev.has(c.Category));
-  return out;
+  // Recompute target/gap/attainment/flag on the active basis (phased vs pace).
+  return applyRevBasis(out);
 }
 
 function getRevTotals(){
   const cats=getRevCats();
   const tPlan    = cats.reduce((a,c)=>a+n(c.Planned_SP_Revenue),0);
   const tPro     = cats.reduce((a,c)=>a+n(c.Prorated_Planned_SP),0);
+  const tPhased  = cats.reduce((a,c)=>a+n(c.Phased_Planned_SP),0);
+  const tTgt     = revPhased ? tPhased : tPro;   // active target basis
   const tAct     = cats.reduce((a,c)=>a+n(c.Actual_SP_Revenue),0);
   const tLM      = cats.reduce((a,c)=>a+n(c.LM_Revenue),0);
   const tL3M     = cats.reduce((a,c)=>a+n(c.L3M_Revenue),0);
@@ -1453,8 +1590,8 @@ function getRevTotals(){
   const disc     = tMRP>0    ? (tMRP    - tAct  ) / tMRP    * 100 : 0;
   const lmDisc   = tLMMRP>0  ? (tLMMRP  - tLM     ) / tLMMRP  * 100 : 0;
   const l3mDisc  = tL3MMRP>0 ? (tL3MMRP - tL3M/3 ) / tL3MMRP * 100 : 0;  // L3M_Revenue is 3-month total, L3M_MRP is monthly avg
-  return{tPlan,tPro,tAct,tLM,tL3M,tLMPro,tL3MPro,disc,lmDisc,l3mDisc,
-    attMTD: tPro>0?tAct/tPro*100:0,
+  return{tPlan,tPro,tPhased,tTgt,tAct,tLM,tL3M,tLMPro,tL3MPro,disc,lmDisc,l3mDisc,
+    attMTD: tTgt>0?tAct/tTgt*100:0,
     attLM:  tLMPro>0?tAct/tLMPro*100:0,
     attL3M: tL3MPro>0?tAct/tL3MPro*100:0
   };
@@ -1481,6 +1618,7 @@ function getAdsTotals(platSet,catSet,prorate){
     spMTD:0, slMTD:0, gsMTD:0, suMTD:0, siMTD:0, scMTD:0, guMTD:0, gcMTD:0,
     spLFM:0, slLFM:0, gsLFM:0, suLFM:0, siLFM:0, scLFM:0, guLFM:0, gcLFM:0,
     spL3M:0, slL3M:0, gsL3M:0, suL3M:0, siL3M:0, scL3M:0, guL3M:0, gcL3M:0,
+    spTGT:0, slTGT:0, gsTGT:0, suTGT:0, siTGT:0, scTGT:0, guTGT:0, gcTGT:0,
   };
   src.forEach(r=>{
     const f = prorate ? (n((DATA.prorate_info||{})[r.Platform]?.factor) || fallback) : 1;
@@ -1512,6 +1650,16 @@ function getAdsTotals(platSet,catSet,prorate){
     out.scL3M += n(r.Ad_Clicks_L3M)     * f;
     out.guL3M += n(r.Gross_Units_L3M)   * f;
     out.gcL3M += n(r.Gross_Clicks_L3M)  * f;
+    // TGT = full-month ad plan; scaled by f when pro-rating (full month →
+    // MTD-pace slice, exactly like LFM). No /3.
+    out.spTGT += n(r.Ad_Spend_TGT)      * f;
+    out.slTGT += n(r.Ad_Sales_TGT)      * f;
+    out.gsTGT += n(r.Gross_Sales_TGT)   * f;
+    out.suTGT += n(r.Ad_Units_TGT)      * f;
+    out.siTGT += n(r.Ad_Impressions_TGT)* f;
+    out.scTGT += n(r.Ad_Clicks_TGT)     * f;
+    out.guTGT += n(r.Gross_Units_TGT)   * f;
+    out.gcTGT += n(r.Gross_Clicks_TGT)  * f;
   });
   return out;
 }
@@ -1557,10 +1705,10 @@ function buildRevRibbons(){
 
   document.getElementById('rev-ribbons').innerHTML=
     mkRibbon('mtd','MTD — Current Month',[
-      ['Monthly Target',     fc(rv.tPlan),  `Full month plan`,       ''],
-      ['Prorated Target',    fc(rv.tPro),   `Day ${s.median_elapsed_day}/${s.total_days} pace`,''],
-      ['Actual Revenue',     fc(rv.tAct),   'As of today',           attMTDcls],
-      ['Attainment vs Pace', fp(rv.attMTD), '',                      attMTDcls],
+      ['Monthly Target',            fc(rv.tPlan),  `Full month plan`,       ''],
+      [`${revTgtLabel()} Target`,   fc(rv.tTgt),   revPhased?`Plan to date (phased)`:`Day ${s.median_elapsed_day}/${s.total_days} pace`,''],
+      ['Actual Revenue',            fc(rv.tAct),   'As of today',           attMTDcls],
+      [`Attainment ${revAttLabel()}`, fp(rv.attMTD), '',                    attMTDcls],
       ['Actual Disc%',       fp(rv.disc),   '',                      ''],
       ['ROAS',               fr(roasMTD),   'Ad sales / Ad spend',   ''],
       ['TROAS',              fr(troasMTD),  'Gross sales / Ad spend',''],
@@ -1595,15 +1743,15 @@ function buildRevCharts(){
   const cats=getRevCats().sort((a,b)=>n(b.Planned_SP_Revenue)-n(a.Planned_SP_Revenue)).slice(0,12);
   const flags=getRevCats().reduce((acc,c)=>{acc[c.Revenue_Flag]=(acc[c.Revenue_Flag]||0)+1;return acc},{});
   document.getElementById('rev-charts').innerHTML=`
-    <div class="cbox"><div class="cbox-t">Revenue by Category — Prorated Target vs Actual</div><div class="cbox-c"><canvas id="rc-bar"></canvas></div></div>
-    <div class="cbox"><div class="cbox-t">Category Status vs Pace</div><div class="cbox-c"><canvas id="rc-donut"></canvas></div></div>`;
+    <div class="cbox"><div class="cbox-t">Revenue by Category — ${revTgtLabel()} Target vs Actual</div><div class="cbox-c"><canvas id="rc-bar"></canvas></div></div>
+    <div class="cbox"><div class="cbox-t">Category Status ${revAttLabel()}</div><div class="cbox-c"><canvas id="rc-donut"></canvas></div></div>`;
   if(rcBar)rcBar.destroy();
   rcBar=new Chart(document.getElementById('rc-bar'),{
     type:'bar',
     data:{
       labels:cats.map(c=>c.Category),
       datasets:[
-        {label:'Prorated Target',data:cats.map(c=>n(c.Prorated_Planned_SP)),backgroundColor:'#BFDBFE',borderRadius:3},
+        {label:`${revTgtLabel()} Target`,data:cats.map(c=>n(c._TgtSP)),backgroundColor:'#BFDBFE',borderRadius:3},
         {label:'Actual',data:cats.map(c=>n(c.Actual_SP_Revenue)),backgroundColor:'#2563EB',borderRadius:3}
       ]
     },
@@ -1634,7 +1782,7 @@ function buildRevCatTable(){
     tr.innerHTML=`
       <td>${c.Category}</td>
       <td class="r mn" data-val="${n(c.Planned_SP_Revenue)}">${fc(c.Planned_SP_Revenue)}</td>
-      <td class="r mn" data-val="${n(c.Prorated_Planned_SP)}">${fc(c.Prorated_Planned_SP)}</td>
+      <td class="r mn" data-val="${n(c._TgtSP)}">${fc(c._TgtSP)}</td>
       <td class="r mn" data-val="${n(c.Actual_SP_Revenue)}">${fc(c.Actual_SP_Revenue)}</td>
       <td data-val="${att}">${abar(att)}</td>
       <td class="r mn" data-val="${n(c.Revenue_Gap)}" style="color:${n(c.Revenue_Gap)>=0?'var(--gn)':'var(--rd)'}">${fc(c.Revenue_Gap)}</td>
@@ -1653,8 +1801,8 @@ function buildRevCatTable(){
 function drillRevCat(cat,quiet){
   revSelCat=cat;cD('rev-sp');
   setBc('rev-bc',`<span class="bi" onclick="revReset()">All Categories</span><span class="bs">›</span><span class="bi act">${cat}</span>`);
-  const rows=DATA.cat_plat_summary
-    .filter(r=>r.Category===cat&&(aPlatRev.has('__ALL__')||aPlatRev.has(r.Platform)))
+  const rows=applyRevBasis(DATA.cat_plat_summary
+    .filter(r=>r.Category===cat&&(aPlatRev.has('__ALL__')||aPlatRev.has(r.Platform))))
     .sort((a,b)=>n(b.Planned_SP_Revenue)-n(a.Planned_SP_Revenue));
   const tb=document.getElementById('rev-platb');tb.innerHTML='';
   tb.insertAdjacentHTML('beforeend',subtotalRevPlat(rows));
@@ -1665,7 +1813,7 @@ function drillRevCat(cat,quiet){
     tr.innerHTML=`
       <td>${r.Platform}</td>
       <td class="r mn" data-val="${n(r.Planned_SP_Revenue)}">${fc(r.Planned_SP_Revenue)}</td>
-      <td class="r mn" data-val="${n(r.Prorated_Planned_SP)}">${fc(r.Prorated_Planned_SP)}</td>
+      <td class="r mn" data-val="${n(r._TgtSP)}">${fc(r._TgtSP)}</td>
       <td class="r mn" data-val="${n(r.Actual_SP_Revenue)}">${fc(r.Actual_SP_Revenue)}</td>
       <td data-val="${att}">${abar(att)}</td>
       <td class="r mn" data-val="${n(r.Revenue_Gap)}" style="color:${n(r.Revenue_Gap)>=0?'var(--gn)':'var(--rd)'}">${fc(r.Revenue_Gap)}</td>
@@ -1678,30 +1826,36 @@ function drillRevCat(cat,quiet){
   });
   registerTable('rev-platt',rows,subtotalRevPlat);
   document.getElementById('rev-pt').textContent=`Platform Breakdown — ${cat}`;
-  show('rev-pp');show('rev-pb');if(!quiet)scroll('rev-pp');
+  show('rev-pp');accSet('rev','plat');if(!quiet)scroll('rev-pph');
 }
 
 function drillRevPlat(cat,plat){
   setBc('rev-bc',`<span class="bi" onclick="revReset()">All</span><span class="bs">›</span><span class="bi" onclick="drillRevCat('${cat}')">${cat}</span><span class="bs">›</span><span class="bi act">${plat}</span>`);
+  const Ks=revTgtKeysSku();
   const skus=DATA.sku_detail
     .filter(r=>r.Category===cat&&r.Platform===plat)
-    .sort((a,b)=>n(b['Prorated Planned SP Revenue'])-n(a['Prorated Planned SP Revenue']));
+    .sort((a,b)=>n(b[Ks.sp])-n(a[Ks.sp]));
   const tb=document.getElementById('rev-skub');tb.innerHTML='';
   tb.insertAdjacentHTML('beforeend',subtotalRevSku(skus));
   skus.forEach((s,i)=>{
     const tr=document.createElement('tr');
     tr.dataset.idx=i;
+    // Active-basis (phased vs pace) per-SKU target, attainment and gap.
+    const tgtQ=n(s[Ks.qty]), tgtSP=n(s[Ks.sp]);
+    const uAtt=tgtQ>0 ? n(s['MTD Actual Quantity'])   /tgtQ *100 : 0;
+    const rAtt=tgtSP>0? n(s['MTD Actual SP Revenue']) /tgtSP*100 : 0;
+    const rGap=n(s['MTD Actual SP Revenue'])-tgtSP;
     tr.innerHTML=`
       <td class="mn" style="font-size:10px">${s.SKU}</td>
       <td style="max-width:150px;overflow:hidden;text-overflow:ellipsis" title="${s['Short Name']}">${s['Short Name']}</td>
       <td class="r mn" data-val="${n(s['Planned Quantity'])}">${fn(s['Planned Quantity'])}</td>
-      <td class="r mn" data-val="${n(s['Prorated Planned Quantity'])}">${fn(s['Prorated Planned Quantity'])}</td>
+      <td class="r mn" data-val="${tgtQ}">${fn(tgtQ)}</td>
       <td class="r mn" data-val="${n(s['MTD Actual Quantity'])}">${fn(s['MTD Actual Quantity'])}</td>
-      <td data-val="${n(s['Units Attainment %'])}">${abar(s['Units Attainment %'])}</td>
-      <td class="r mn" data-val="${n(s['Prorated Planned SP Revenue'])}">${fc(s['Prorated Planned SP Revenue'])}</td>
+      <td data-val="${uAtt}">${abar(uAtt)}</td>
+      <td class="r mn" data-val="${tgtSP}">${fc(tgtSP)}</td>
       <td class="r mn" data-val="${n(s['MTD Actual SP Revenue'])}">${fc(s['MTD Actual SP Revenue'])}</td>
-      <td data-val="${n(s['Revenue Attainment %'])}">${abar(s['Revenue Attainment %'])}</td>
-      <td class="r mn" data-val="${n(s['Revenue Gap'])}" style="color:${n(s['Revenue Gap'])>=0?'var(--gn)':'var(--rd)'}">${fc(s['Revenue Gap'])}</td>
+      <td data-val="${rAtt}">${abar(rAtt)}</td>
+      <td class="r mn" data-val="${rGap}" style="color:${rGap>=0?'var(--gn)':'var(--rd)'}">${fc(rGap)}</td>
       <td class="r" data-val="${n(s['Planned Discount %'])}">${fp(s['Planned Discount %'])}</td>
       <td class="r" data-val="${n(s['Actual Discount %'])}">${fp(s['Actual Discount %'])}</td>
       <td data-val="${n(s['LM Revenue Growth %'])}">${dc(s['LM Revenue Growth %'])}</td>
@@ -1710,14 +1864,40 @@ function drillRevPlat(cat,plat){
   });
   registerTable('rev-skut',skus,subtotalRevSku);
   document.getElementById('rev-st').textContent=`SKU Detail — ${cat} / ${plat}`;
-  show('rev-sp');show('rev-sb');scroll('rev-sp');
+  show('rev-sp');accSet('rev','sku');scroll('rev-sph');
 }
 
-function revReset(){revSelCat=null;cD('rev-pp',()=>cD('rev-sp'));setBc('rev-bc','<span class="bi act" onclick="revReset()">All Categories</span>')}
+function revReset(){revSelCat=null;cD('rev-pp',()=>cD('rev-sp'));accSet('rev','cat');setBc('rev-bc','<span class="bi act" onclick="revReset()">All Categories</span>')}
+
+// Relabel the target-basis-dependent table headers (Phased vs Prorated).
+function revRelabelHeaders(){
+  const lbl=revTgtLabel();
+  const set=(id,txt)=>{const e=document.getElementById(id);if(e)e.textContent=txt;};
+  set('rev-ct-tgt-h',   `${lbl} Target`);
+  set('rev-ct-att-h',   `Attainment ${revAttLabel()}`);
+  set('rev-platt-tgt-h',`${lbl} Target`);
+  set('rev-skut-tgtq-h',`${lbl} Qty`);
+  set('rev-skut-tgtr-h',`${lbl} Rev`);
+}
+
+// Flip the Revenue target basis (Phased ↔ Time-pro-rated) and re-render the
+// whole tab: ribbons, charts, category table and any open drill.
+function setRevBasis(phased){
+  if(revPhased===phased) return;
+  revPhased=phased;
+  const ph=document.getElementById('rev-basis-phased');
+  const pr=document.getElementById('rev-basis-pro');
+  if(ph)ph.classList.toggle('on',phased);
+  if(pr)pr.classList.toggle('on',!phased);
+  revRelabelHeaders();
+  revRefresh();
+}
+
 function revRefresh(){
   // If the currently-drilled category got filtered out, close the drill so the
   // user doesn't see stale platform-breakdown rows for an invisible parent.
   if(revSelCat&&!aCatRev.has('__ALL__')&&!aCatRev.has(revSelCat)) revReset();
+  revRelabelHeaders();
   buildRevRibbons();buildRevCharts();buildRevCatTable();
   if(revSelCat)drillRevCat(revSelCat,true);
   updateStickyOffsets();
@@ -1735,6 +1915,8 @@ function buildAdsRibbons(){
   const rMTD=ad.spMTD>0?ad.slMTD/ad.spMTD:0, tMTD=ad.spMTD>0?ad.gsMTD/ad.spMTD:0;
   const rLFM=ad.spLFM>0?ad.slLFM/ad.spLFM:0, tLFM=ad.spLFM>0?ad.gsLFM/ad.spLFM:0;
   const rL3M=ad.spL3M>0?ad.slL3M/ad.spL3M:0, tL3M=ad.spL3M>0?ad.gsL3M/ad.spL3M:0;
+  const rTGT=ad.spTGT>0?ad.slTGT/ad.spTGT:0, tTGT=ad.spTGT>0?ad.gsTGT/ad.spTGT:0;
+  const cpoTGT=ad.suTGT>0?ad.spTGT/ad.suTGT:0;
   const cpoMTD=ad.suMTD>0?ad.spMTD/ad.suMTD:0;
   const cpoLFM=ad.suLFM>0?ad.spLFM/ad.suLFM:0;
   const cpoL3M=ad.suL3M>0?ad.spL3M/ad.suL3M:0;
@@ -1742,6 +1924,18 @@ function buildAdsRibbons(){
   const adcMTD=ad.guMTD>0?ad.suMTD/ad.guMTD*100:0;
 
   document.getElementById('ads-ribbons').innerHTML=
+    mkRibbon('tgt','Target — Full-Month Plan'+(adsProRated?' — Pro-rated to MTD pace':''),[
+      ['Ad Spend',      fc(ad.spTGT),                                          'Full-month plan',         ''],
+      ['Ad Sales',      fc(ad.slTGT),                                          'Attributed to ads',       ''],
+      ['Ad Impressions',fL(ad.siTGT),                                          'Planned impressions',     ''],
+      ['Ad CVR',        ad.scTGT>0?fp(ad.suTGT/ad.scTGT*100):'—',             'Ad units / Ad clicks',    ''],
+      ['Gross CVR',     ad.gcTGT>0?fp(ad.guTGT/ad.gcTGT*100):'—',             'Gross units / Gross clks',''],
+      ['ROAS',          fr(rTGT),                                              'Ad sales / Ad spend',     ''],
+      ['TROAS',         fr(tTGT),                                              'Gross sales / Ad spend',  ''],
+      ['Cost/Order',    fc(cpoTGT),                                            'Spend / Ad units',        ''],
+      ['CTR%',          ad.siTGT>0?fp(ad.scTGT/ad.siTGT*100):'—',             'Ad clicks / Impressions', ''],
+      ['Ad Contrib%',   ad.guTGT>0?fp(ad.suTGT/ad.guTGT*100):'—',             'Ad units / Gross',        ''],
+    ])+
     mkRibbon('mtd','MTD — Current Month',[
       ['Ad Spend',      fc(ad.spMTD),                                          'Current month to date',   ''],
       ['Ad Sales',      fc(ad.slMTD),                                          'Attributed to ads',       ''],
@@ -1806,11 +2000,13 @@ function getAdsCats(){
       const c=cats[r.Category];
       const f = adsProRated ? (n(info[r.Platform]?.factor) || fallback) : 1;
       ADS_RAW_KEYS.forEach(k=>{
-        // MTD never scaled; LFM/L3M scaled by this row's platform factor
-        // when pro-rating so the aggregate reflects each platform's real
-        // elapsed-days window.
+        // MTD never scaled. LFM & TGT scale by the platform factor (full month
+        // → MTD-pace slice). L3M is a 3-month TOTAL, so it also gets ÷3 to
+        // become a monthly-avg-at-pace figure — matching the drills & ribbons.
         const isMTD=k.endsWith('_MTD');
-        c[k]+=n(r[k])*(isMTD?1:f);
+        const isL3M=k.endsWith('_L3M');
+        const scale=isMTD?1:(isL3M? f/3 : f);
+        c[k]+=n(r[k])*scale;
       });
     });
     const roasDrop=n(DATA.summary?.roas_drop_warning)||0.2;
@@ -1879,7 +2075,7 @@ function drillAdsCat(cat,quiet){
   buildCP('ads-plat-cp',adsPlatPeriods,adsPlatMetrics,renderPlat);
   renderPlat();
   document.getElementById('ads-pt').textContent=`Platform Ads — ${cat}`;
-  show('ads-pp');show('ads-pb');if(!quiet)scroll('ads-pp');
+  show('ads-pp');accSet('ads','plat');if(!quiet)scroll('ads-pph');
 }
 
 function rewirePlat(cat){
@@ -1912,12 +2108,13 @@ function drillAdsPlat(cat,plat){
   buildCP('ads-sku-cp',adsSkuPeriods,adsSkuMetrics,renderSku);
   renderSku();
   document.getElementById('ads-st').textContent=`SKU Ads — ${cat} / ${plat}`;
-  show('ads-sp');show('ads-sb');scroll('ads-sp');
+  show('ads-sp');accSet('ads','sku');scroll('ads-sph');
 }
 
 function adsReset(){
   adsSelCat=null; adsSelPlat=null;
   cD('ads-pp',()=>cD('ads-sp'));
+  accSet('ads','cat');
   setBc('ads-bc','<span class="bi act" onclick="adsReset()">All Categories</span>');
 }
 function adsRefresh(){
@@ -2125,7 +2322,7 @@ function drillDiscCat(cat,quiet){
   });
   registerTable('disc-platt',rows,subtotalDiscPlat);
   document.getElementById('disc-pt').textContent=`Platform Discount — ${cat}`;
-  show('disc-pp');show('disc-pb');if(!quiet)scroll('disc-pp');
+  show('disc-pp');accSet('disc','plat');if(!quiet)scroll('disc-pph');
 }
 
 function drillDiscPlat(cat,plat){
@@ -2152,10 +2349,10 @@ function drillDiscPlat(cat,plat){
   });
   registerTable('disc-skut',skus,subtotalDiscSku);
   document.getElementById('disc-st').textContent=`SKU Price — ${cat} / ${plat}`;
-  show('disc-sp');show('disc-sb');scroll('disc-sp');
+  show('disc-sp');accSet('disc','sku');scroll('disc-sph');
 }
 
-function discReset(){discSelCat=null;cD('disc-pp',()=>cD('disc-sp'));setBc('disc-bc','<span class="bi act" onclick="discReset()">All Categories</span>')}
+function discReset(){discSelCat=null;cD('disc-pp',()=>cD('disc-sp'));accSet('disc','cat');setBc('disc-bc','<span class="bi act" onclick="discReset()">All Categories</span>')}
 function discRefresh(){
   if(discSelCat&&!aCatDisc.has('__ALL__')&&!aCatDisc.has(discSelCat)) discReset();
   buildDiscRibbons();buildDiscCatTable();
@@ -2239,10 +2436,12 @@ function init(){
   // ── Filter dropdowns ──────────────────────────────────────────
   PLAT_UNIVERSE=plats.slice();
 
-  // Channel badge = summed platform exposure per channel (same lens as platform).
-  const chanRevLookup={'Quick-commerce':0,'Marketplace':0};
+  // Channel badge = summed platform exposure per channel (same lens as
+  // platform). Seed every channel from CHANNELS so new channels (e.g. D2C)
+  // are never silently dropped.
+  const chanRevLookup=Object.fromEntries(CHANNELS.map(c=>[c,0]));
   Object.entries(platRevLookup).forEach(([p,v])=>chanRevLookup[channelOf(p)]+=n(v));
-  const chanAdsLookup={'Quick-commerce':0,'Marketplace':0};
+  const chanAdsLookup=Object.fromEntries(CHANNELS.map(c=>[c,0]));
   Object.entries(platAdsLookup).forEach(([p,v])=>chanAdsLookup[channelOf(p)]+=n(v));
   const chanDiscLookup=chanRevLookup;
 
@@ -2270,6 +2469,7 @@ function init(){
   // Reconcile once so the effective sets match the initial (all) selection.
   syncRev(); syncAds(); syncDisc();
 
+  revRelabelHeaders();
   buildRevRibbons();
   buildRevCharts();
   buildRevCatTable();
