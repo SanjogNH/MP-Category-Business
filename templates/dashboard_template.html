@@ -1387,17 +1387,20 @@ function adsProrateFactor(){
 // For a category-only row (no Platform), fall back to the shared helper.
 //   • LFM volume × factor       (one full month → MTD-pace slice)
 //   • L3M volume × factor / 3   (3-month total → monthly-avg-at-pace)
-//   • TGT volume × factor       (full-month plan → MTD-pace slice, like LFM)
+//   • TGT is NOT scaled          the team enters the ad target already updated
+//     to-date, so it is a to-date figure by definition. Pro-rating it again
+//     would double-discount it. It therefore stays identical whether the
+//     pro-rata toggle is off or on (actual and prorated target are the same).
 // Ratios are not touched — they're invariant under proportional scaling.
 function prorateTableRow(r){
   if(!adsProRated) return r;
   const f = r.Platform ? platformFactor(r.Platform) : getFallbackFactor();
   const out={...r};
   ADS_RAW_FIELDS.forEach(field=>{
-    const lfmK=`${field}_LFM`, l3mK=`${field}_L3M`, tgtK=`${field}_TGT`;
+    const lfmK=`${field}_LFM`, l3mK=`${field}_L3M`;
     if(out[lfmK]!=null) out[lfmK]=n(out[lfmK])*f;
     if(out[l3mK]!=null) out[l3mK]=n(out[l3mK])*(f/3);
-    if(out[tgtK]!=null) out[tgtK]=n(out[tgtK])*f;
+    // TGT intentionally left unscaled (already a to-date figure).
   });
   return out;
 }
@@ -1651,16 +1654,17 @@ function getAdsTotals(platSet,catSet,prorate){
     out.scL3M += n(r.Ad_Clicks_L3M)     * f;
     out.guL3M += n(r.Gross_Units_L3M)   * f;
     out.gcL3M += n(r.Gross_Clicks_L3M)  * f;
-    // TGT = full-month ad plan; scaled by f when pro-rating (full month →
-    // MTD-pace slice, exactly like LFM). No /3.
-    out.spTGT += n(r.Ad_Spend_TGT)      * f;
-    out.slTGT += n(r.Ad_Sales_TGT)      * f;
-    out.gsTGT += n(r.Gross_Sales_TGT)   * f;
-    out.suTGT += n(r.Ad_Units_TGT)      * f;
-    out.siTGT += n(r.Ad_Impressions_TGT)* f;
-    out.scTGT += n(r.Ad_Clicks_TGT)     * f;
-    out.guTGT += n(r.Gross_Units_TGT)   * f;
-    out.gcTGT += n(r.Gross_Clicks_TGT)  * f;
+    // TGT = ad target, entered by the team already updated to-date. It is a
+    // to-date figure by definition, so it is NEVER scaled — it stays identical
+    // whether pro-rata is off or on (actual and prorated target are the same).
+    out.spTGT += n(r.Ad_Spend_TGT);
+    out.slTGT += n(r.Ad_Sales_TGT);
+    out.gsTGT += n(r.Gross_Sales_TGT);
+    out.suTGT += n(r.Ad_Units_TGT);
+    out.siTGT += n(r.Ad_Impressions_TGT);
+    out.scTGT += n(r.Ad_Clicks_TGT);
+    out.guTGT += n(r.Gross_Units_TGT);
+    out.gcTGT += n(r.Gross_Clicks_TGT);
   });
   return out;
 }
@@ -2001,12 +2005,16 @@ function getAdsCats(){
       const c=cats[r.Category];
       const f = adsProRated ? (n(info[r.Platform]?.factor) || fallback) : 1;
       ADS_RAW_KEYS.forEach(k=>{
-        // MTD never scaled. LFM & TGT scale by the platform factor (full month
+        // MTD never scaled. LFM scales by the platform factor (full month
         // → MTD-pace slice). L3M is a 3-month TOTAL, so it also gets ÷3 to
         // become a monthly-avg-at-pace figure — matching the drills & ribbons.
+        // TGT (ad target) is entered already updated to-date, so it is a
+        // to-date figure by definition and is NEVER scaled — actual and
+        // prorated target are the same.
         const isMTD=k.endsWith('_MTD');
+        const isTGT=k.endsWith('_TGT');
         const isL3M=k.endsWith('_L3M');
-        const scale=isMTD?1:(isL3M? f/3 : f);
+        const scale=(isMTD||isTGT)?1:(isL3M? f/3 : f);
         c[k]+=n(r[k])*scale;
       });
     });
