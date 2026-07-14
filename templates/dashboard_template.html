@@ -207,9 +207,9 @@ tr.subtotal .ab .bp{font-weight:700}
    subtotal row both pin to the top of THIS box (not the viewport). */
 .tsx{overflow:auto;max-height:70vh;border-radius:0 0 10px 10px;position:relative}
 .tsx thead th{position:sticky;top:0;z-index:6}
-/* subtotal pins directly under the (variable-height) sticky header; --ads-thead-h
-   is measured per table in renderAdsTable(). */
-.tsx tr.subtotal td{top:var(--ads-thead-h,31px);z-index:5;box-shadow:0 2px 0 var(--bd2)}
+/* subtotal pins directly under the (variable-height) sticky header; --thead-h
+   is measured per pane by syncStickyHeads() / renderAdsTable(). */
+.tsx tr.subtotal td{top:var(--thead-h,31px);z-index:5;box-shadow:0 2px 0 var(--bd2)}
 /* first column of each metric group gets a coloured left edge to separate groups */
 .tsx th.mgs,.tsx td.mgs{border-left:2px solid var(--mgs-ac,var(--bd2))}
 
@@ -309,7 +309,7 @@ tr.subtotal .ab .bp{font-weight:700}
   <div class="tw">
     <div class="ttbar acc-bar" id="rev-ttbar" onclick="accSet('rev','cat')"><span class="tt">All Categories — click a row to drill into platforms</span>
       <input class="si" placeholder="Search category…" onclick="event.stopPropagation()" oninput="fT('rev-ct',this.value)"/></div>
-    <div id="rev-cwrap"><div class="ts"><table id="rev-ct">
+    <div id="rev-cwrap"><div class="tsx"><table id="rev-ct">
       <thead><tr>
         <th onclick="sT('rev-ct',0)" style="min-width:140px">Category</th>
         <th onclick="sT('rev-ct',1)" class="r" style="min-width:110px">Monthly Target</th>
@@ -331,7 +331,7 @@ tr.subtotal .ab .bp{font-weight:700}
       <span class="dpc" onclick="event.stopPropagation();cD('rev-pp',()=>cD('rev-sp'))">✕</span>
     </div>
     <div class="dpb" id="rev-pb">
-      <div class="ts"><table id="rev-platt">
+      <div class="tsx"><table id="rev-platt">
         <thead><tr>
           <th onclick="sT('rev-platt',0)" style="min-width:120px">Platform</th>
           <th onclick="sT('rev-platt',1)" class="r" style="min-width:110px">Monthly Target</th>
@@ -355,7 +355,7 @@ tr.subtotal .ab .bp{font-weight:700}
       <span class="dpc" onclick="event.stopPropagation();cD('rev-sp')">✕</span>
     </div>
     <div class="dpb" id="rev-sb">
-      <div class="ts"><table id="rev-skut">
+      <div class="tsx"><table id="rev-skut">
         <thead><tr>
           <th onclick="sT('rev-skut',0)" style="min-width:130px">SKU</th>
           <th onclick="sT('rev-skut',1)" style="min-width:150px">Name</th>
@@ -435,7 +435,7 @@ tr.subtotal .ab .bp{font-weight:700}
   <div class="tw">
     <div class="ttbar acc-bar" id="disc-ttbar" onclick="accSet('disc','cat')"><span class="tt">Categories — click to drill</span>
       <input class="si" placeholder="Search…" onclick="event.stopPropagation()" oninput="fT('disc-ct',this.value)"/></div>
-    <div id="disc-cwrap"><div class="ts"><table id="disc-ct">
+    <div id="disc-cwrap"><div class="tsx"><table id="disc-ct">
       <thead><tr>
         <th onclick="sT('disc-ct',0)" style="min-width:140px">Category</th>
         <th onclick="sT('disc-ct',1)" class="r" style="min-width:110px">Planned Revenue</th>
@@ -457,7 +457,7 @@ tr.subtotal .ab .bp{font-weight:700}
       <span class="dpc" onclick="event.stopPropagation();cD('disc-pp',()=>cD('disc-sp'))">✕</span>
     </div>
     <div class="dpb" id="disc-pb">
-      <div class="ts"><table id="disc-platt">
+      <div class="tsx"><table id="disc-platt">
         <thead><tr>
           <th onclick="sT('disc-platt',0)" style="min-width:120px">Platform</th>
           <th onclick="sT('disc-platt',1)" class="r" style="min-width:110px">Guideline Disc%</th>
@@ -477,7 +477,7 @@ tr.subtotal .ab .bp{font-weight:700}
       <span class="dpc" onclick="event.stopPropagation();cD('disc-sp')">✕</span>
     </div>
     <div class="dpb" id="disc-sb">
-      <div class="ts"><table id="disc-skut">
+      <div class="tsx"><table id="disc-skut">
         <thead><tr>
           <th onclick="sT('disc-skut',0)" style="min-width:130px">SKU</th>
           <th onclick="sT('disc-skut',1)" style="min-width:160px">Name</th>
@@ -979,7 +979,20 @@ function buildCF(cid,state,items,cb,revLookup,label){
 // Because chips can wrap (especially with many categories), the fbar's actual
 // height is variable, so we measure it whenever the active page or filter set
 // changes and write the result into --subtotal-top.
+// Measure each scroll pane's rendered header height and expose it as --thead-h
+// on that pane, so the sticky subtotal row pins flush beneath the sticky header.
+// Panes that are hidden (un-drilled) measure 0 → left untouched so the CSS
+// fallback (31px, correct for the single-line static headers) applies.
+function syncStickyHeads(){
+  document.querySelectorAll('.tsx').forEach(p=>{
+    const th=p.querySelector('thead');
+    if(!th)return;
+    const h=th.getBoundingClientRect().height;
+    if(h)p.style.setProperty('--thead-h',Math.round(h)+'px');
+  });
+}
 function updateStickyOffsets(){
+  syncStickyHeads();
   const active=document.querySelector('.page.active');
   if(!active)return;
   const fbar=active.querySelector('.fbar');
@@ -1193,12 +1206,13 @@ function buildAdsSubtotalBuilder(periodSet,metricSet){
       return den>0 ? num/den*(cfg.scale||1) : null;
     };
     let cells=`<td><b>Subtotal (${rows.length})</b></td>`;
+    const doTint = metrics.length>=2 && chips.length>=2;
     metrics.forEach(m=>{
-      const [bg,ac]=adsMetricColor(m.k);
+      const [bg,ac]= doTint ? adsMetricColor(m.k) : [null,null];
       chips.forEach((p,pi)=>{
-        const first=pi===0;
+        const first=doTint && pi===0;
         const cls=`r mn${first?' mgs':''}`;
-        const bgS=`background:${bg}`+(first?`;--mgs-ac:${ac}`:'');
+        const bgS=(bg?`background:${bg}`:'')+(first?`;--mgs-ac:${ac}`:'');
         if(p.k==='DTGT'){
           const a=rollup(m,'MTD'), b=rollup(m,'TGT');
           const val=(a==null||b==null)?null:a-b;
@@ -1530,10 +1544,13 @@ function renderAdsTable(tid,hid,bid,data,periodSet,metricSet,gkey){
   const chips=ADS_PERIOD_CHIPS.filter(p=>periodSet.has(p.k));
   const metrics=ADS_METRICS.filter(m=>metricSet.has(m.k));
   const cols=[];
+  // Colour-grouping only helps when there are ≥2 metrics AND each metric spans
+  // ≥2 columns; otherwise the tint adds noise, so render plain.
+  const doTint = metrics.length>=2 && chips.length>=2;
   metrics.forEach(m=>{
-    const [bg,ac]=adsMetricColor(m.k);   // one theme for the whole metric group
+    const [bg,ac]= doTint ? adsMetricColor(m.k) : [null,null];  // one theme per metric group
     chips.forEach((p,pi)=>{
-      const base={mk:m.k, bg, ac, first:pi===0};  // first=leftmost period of this metric
+      const base={mk:m.k, bg, ac, first:doTint && pi===0};  // first=leftmost period of this metric
       if(p.k==='DTGT'){
         cols.push({...base,
           delta:true, label:`${m.l} Δ vs Tgt`, fmt:m.f,
@@ -1547,7 +1564,7 @@ function renderAdsTable(tid,hid,bid,data,periodSet,metricSet,gkey){
   });
 
   // per-column style: metric tint background + accented left edge at group start
-  const cst=c=>`min-width:90px;background:${c.bg}`+(c.first?`;--mgs-ac:${c.ac}`:'');
+  const cst=c=>`min-width:90px`+(c.bg?`;background:${c.bg}`:'')+(c.first?`;--mgs-ac:${c.ac}`:'');
   const thead=document.getElementById(hid);
   thead.innerHTML=`<tr>
     <th onclick="sT('${tid}',0)" style="min-width:120px">${gkey}</th>
@@ -1562,7 +1579,7 @@ function renderAdsTable(tid,hid,bid,data,periodSet,metricSet,gkey){
       const raw=c.delta?c.val(r):r[c.key];
       const missing=(raw===undefined||raw===null);
       const cls=`r mn${c.first?' mgs':''}`;
-      const bgS=`background:${c.bg}`+(c.first?`;--mgs-ac:${c.ac}`:'');
+      const bgS=(c.bg?`background:${c.bg}`:'')+(c.first?`;--mgs-ac:${c.ac}`:'');
       if(c.delta){
         const v=missing?0:n(raw);
         const fmtStr=missing?'—':c.fmt(raw);
@@ -1582,7 +1599,7 @@ function renderAdsTable(tid,hid,bid,data,periodSet,metricSet,gkey){
   const pane=document.getElementById(tid).closest('.tsx');
   if(pane){
     const hh=thead.getBoundingClientRect().height||31;
-    pane.style.setProperty('--ads-thead-h',Math.round(hh)+'px');
+    pane.style.setProperty('--thead-h',Math.round(hh)+'px');
   }
 }
 
