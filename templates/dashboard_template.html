@@ -198,6 +198,21 @@ tr.subtotal td.mn{font-size:11.5px}
 tr.subtotal td b{font-weight:700}
 tr.subtotal .ab .bp{font-weight:700}
 
+/* ── ADS SCROLL PANE ──────────────────
+   The Ads tables carry a wide, user-driven (metric × period) column set, so
+   instead of the page-level sticky used elsewhere they get a SELF-CONTAINED
+   scroll box: horizontal overflow is trapped here (no more whole-page sideways
+   scroll), and vertical scrolling happens inside the box so the metric-picker
+   ribbon sitting just above it never scrolls out of reach. Header row and
+   subtotal row both pin to the top of THIS box (not the viewport). */
+.tsx{overflow:auto;max-height:70vh;border-radius:0 0 10px 10px;position:relative}
+.tsx thead th{position:sticky;top:0;z-index:6}
+/* subtotal pins directly under the (variable-height) sticky header; --ads-thead-h
+   is measured per table in renderAdsTable(). */
+.tsx tr.subtotal td{top:var(--ads-thead-h,31px);z-index:5;box-shadow:0 2px 0 var(--bd2)}
+/* first column of each metric group gets a coloured left edge to separate groups */
+.tsx th.mgs,.tsx td.mgs{border-left:2px solid var(--mgs-ac,var(--bd2))}
+
 /* ── BADGES & TAGS ───────────────── */
 .badge{display:inline-flex;align-items:center;gap:3px;padding:2px 8px;border-radius:20px;font-size:10px;font-weight:600}
 .badge.good{background:var(--gn2);color:var(--gn)}
@@ -378,7 +393,7 @@ tr.subtotal .ab .bp{font-weight:700}
       <input class="si" placeholder="Search…" onclick="event.stopPropagation()" oninput="fT('ads-ct',this.value)"/></div>
     <div id="ads-cwrap">
       <div class="cpick" id="ads-cat-cp"></div>
-      <div class="ts"><table id="ads-ct">
+      <div class="tsx"><table id="ads-ct">
         <thead id="ads-ct-h"></thead><tbody id="ads-cb"></tbody>
       </table></div>
     </div>
@@ -391,7 +406,7 @@ tr.subtotal .ab .bp{font-weight:700}
     </div>
     <div class="dpb" id="ads-pb">
       <div class="cpick" id="ads-plat-cp"></div>
-      <div class="ts"><table id="ads-pt-t"><thead id="ads-pt-h"></thead><tbody id="ads-pb-r"></tbody></table></div>
+      <div class="tsx"><table id="ads-pt-t"><thead id="ads-pt-h"></thead><tbody id="ads-pb-r"></tbody></table></div>
     </div>
   </div>
 
@@ -402,7 +417,7 @@ tr.subtotal .ab .bp{font-weight:700}
     </div>
     <div class="dpb" id="ads-sb">
       <div class="cpick" id="ads-sku-cp"></div>
-      <div class="ts"><table id="ads-st-t"><thead id="ads-st-h"></thead><tbody id="ads-sb-r"></tbody></table></div>
+      <div class="tsx"><table id="ads-st-t"><thead id="ads-st-h"></thead><tbody id="ads-sb-r"></tbody></table></div>
     </div>
   </div>
 </div>
@@ -1178,21 +1193,27 @@ function buildAdsSubtotalBuilder(periodSet,metricSet){
       return den>0 ? num/den*(cfg.scale||1) : null;
     };
     let cells=`<td><b>Subtotal (${rows.length})</b></td>`;
-    metrics.forEach(m=>chips.forEach(p=>{
-      if(p.k==='DTGT'){
-        const a=rollup(m,'MTD'), b=rollup(m,'TGT');
-        const val=(a==null||b==null)?null:a-b;
-        const dv=val==null?'':val;
-        const col=val==null?'':(val>=0?'var(--gn)':'var(--rd)');
-        const fmtStr=val==null?'—':m.f(val);
-        const txt=(val==null||fmtStr==='—')?'—':(val>=0?'+':'')+fmtStr;
-        cells+=`<td class="r mn" data-val="${dv}" style="color:${col}"><b>${txt}</b></td>`;
-      } else {
-        const val=rollup(m,p.k);
-        const dv=val==null?'':val;
-        cells+=`<td class="r mn" data-val="${dv}"><b>${val==null?'—':m.f(val)}</b></td>`;
-      }
-    }));
+    metrics.forEach(m=>{
+      const [bg,ac]=adsMetricColor(m.k);
+      chips.forEach((p,pi)=>{
+        const first=pi===0;
+        const cls=`r mn${first?' mgs':''}`;
+        const bgS=`background:${bg}`+(first?`;--mgs-ac:${ac}`:'');
+        if(p.k==='DTGT'){
+          const a=rollup(m,'MTD'), b=rollup(m,'TGT');
+          const val=(a==null||b==null)?null:a-b;
+          const dv=val==null?'':val;
+          const col=val==null?'':(val>=0?'var(--gn)':'var(--rd)');
+          const fmtStr=val==null?'—':m.f(val);
+          const txt=(val==null||fmtStr==='—')?'—':(val>=0?'+':'')+fmtStr;
+          cells+=`<td class="${cls}" data-val="${dv}" style="${bgS};color:${col}"><b>${txt}</b></td>`;
+        } else {
+          const val=rollup(m,p.k);
+          const dv=val==null?'':val;
+          cells+=`<td class="${cls}" data-val="${dv}" style="${bgS}"><b>${val==null?'—':m.f(val)}</b></td>`;
+        }
+      });
+    });
     cells+=`<td>${badge(adsSubtotalFlag(rows))}</td>`;
     return `<tr class="subtotal">${cells}</tr>`;
   };
@@ -1481,6 +1502,25 @@ function buildCP(cid,periodSet,metricSet,cb){
   el.appendChild(r2);
 }
 
+// ── PER-METRIC COLOUR THEME ──────────────────────────────
+// Every period column of a metric (MTD / LFM / L3M / Target / Δ) shares one
+// tint so the eye can group them at a glance. Colour is keyed to the metric's
+// FIXED position in ADS_METRICS (not selection order), so a given metric always
+// gets the same colour regardless of which others are on screen. Each pair is
+// [very-light cell background, stronger left-edge accent for the group start].
+const ADS_TINT=[
+  ['#EFF6FF','#93C5FD'],['#ECFDF5','#6EE7B7'],['#FFFBEB','#FCD34D'],
+  ['#F5F3FF','#C4B5FD'],['#FEF2F2','#FCA5A5'],['#F0FDFA','#5EEAD4'],
+  ['#FDF2F8','#F9A8D4'],['#F7FEE7','#A3E635'],['#FFF7ED','#FDBA74'],
+  ['#EEF2FF','#A5B4FC'],['#F0F9FF','#7DD3FC'],['#FEFCE8','#FDE68A'],
+  ['#F1F5F9','#CBD5E1'],['#ECFEFF','#67E8F9'],
+];
+function adsMetricColor(mk){
+  const i=ADS_METRICS.findIndex(m=>m.k===mk);
+  const j=i<0?0:i%ADS_TINT.length;
+  return ADS_TINT[j];   // [bg, accent]
+}
+
 function renderAdsTable(tid,hid,bid,data,periodSet,metricSet,gkey){
   // Build columns metric-major (so all periods of one metric are adjacent),
   // preserving the canonical ADS_PERIOD_CHIPS / ADS_METRICS order regardless of
@@ -1490,22 +1530,28 @@ function renderAdsTable(tid,hid,bid,data,periodSet,metricSet,gkey){
   const chips=ADS_PERIOD_CHIPS.filter(p=>periodSet.has(p.k));
   const metrics=ADS_METRICS.filter(m=>metricSet.has(m.k));
   const cols=[];
-  metrics.forEach(m=>chips.forEach(p=>{
-    if(p.k==='DTGT'){
-      cols.push({
-        delta:true, mk:m.k, label:`${m.l} Δ vs Tgt`, fmt:m.f,
-        val:r=>{const a=r[`${m.k}_MTD`], b=r[`${m.k}_TGT`];
-                return (a==null||b==null)?null:n(a)-n(b);}
-      });
-    } else {
-      cols.push({key:`${m.k}_${p.k}`,label:`${m.l} ${p.l}`,fmt:m.f});
-    }
-  }));
+  metrics.forEach(m=>{
+    const [bg,ac]=adsMetricColor(m.k);   // one theme for the whole metric group
+    chips.forEach((p,pi)=>{
+      const base={mk:m.k, bg, ac, first:pi===0};  // first=leftmost period of this metric
+      if(p.k==='DTGT'){
+        cols.push({...base,
+          delta:true, label:`${m.l} Δ vs Tgt`, fmt:m.f,
+          val:r=>{const a=r[`${m.k}_MTD`], b=r[`${m.k}_TGT`];
+                  return (a==null||b==null)?null:n(a)-n(b);}
+        });
+      } else {
+        cols.push({...base, key:`${m.k}_${p.k}`, label:`${m.l} ${p.l}`, fmt:m.f});
+      }
+    });
+  });
 
+  // per-column style: metric tint background + accented left edge at group start
+  const cst=c=>`min-width:90px;background:${c.bg}`+(c.first?`;--mgs-ac:${c.ac}`:'');
   const thead=document.getElementById(hid);
   thead.innerHTML=`<tr>
     <th onclick="sT('${tid}',0)" style="min-width:120px">${gkey}</th>
-    ${cols.map((c,i)=>`<th onclick="sT('${tid}',${i+1})" class="r" style="min-width:90px">${c.label}</th>`).join('')}
+    ${cols.map((c,i)=>`<th onclick="sT('${tid}',${i+1})" class="r${c.first?' mgs':''}" style="${cst(c)}">${c.label}</th>`).join('')}
     <th style="min-width:80px">Status</th>
   </tr>`;
   const tbody=document.getElementById(bid);tbody.innerHTML='';
@@ -1515,20 +1561,29 @@ function renderAdsTable(tid,hid,bid,data,periodSet,metricSet,gkey){
     cols.forEach(c=>{
       const raw=c.delta?c.val(r):r[c.key];
       const missing=(raw===undefined||raw===null);
+      const cls=`r mn${c.first?' mgs':''}`;
+      const bgS=`background:${c.bg}`+(c.first?`;--mgs-ac:${c.ac}`:'');
       if(c.delta){
         const v=missing?0:n(raw);
         const fmtStr=missing?'—':c.fmt(raw);
         const col=v>=0?'var(--gn)':'var(--rd)';
         const txt=(missing||fmtStr==='—')?'—':(v>=0?'+':'')+fmtStr;
-        cells+=`<td class="r mn" data-val="${missing?'':v}" style="color:${col}">${txt}</td>`;
+        cells+=`<td class="${cls}" data-val="${missing?'':v}" style="${bgS};color:${col}">${txt}</td>`;
       } else {
-        cells+=`<td class="r mn" data-val="${missing?'':n(raw)}">${missing?'—':c.fmt(raw)}</td>`;
+        cells+=`<td class="${cls}" data-val="${missing?'':n(raw)}" style="${bgS}">${missing?'—':c.fmt(raw)}</td>`;
       }
     });
     cells+=`<td>${badge(r.ROAS_Flag||'good')}</td>`;
     tr.innerHTML=cells;
     tbody.appendChild(tr);
   });
+  // Sticky subtotal must pin flush under the sticky header; measure the header's
+  // real rendered height and expose it to CSS on the scroll pane (.tsx).
+  const pane=document.getElementById(tid).closest('.tsx');
+  if(pane){
+    const hh=thead.getBoundingClientRect().height||31;
+    pane.style.setProperty('--ads-thead-h',Math.round(hh)+'px');
+  }
 }
 
 // ══════════════════════════════════════════════════
