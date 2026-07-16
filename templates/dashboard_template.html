@@ -671,25 +671,64 @@ function accSet(tab, level){
 function setBc(id,html){const e=document.getElementById(id);if(e)e.innerHTML=html}
 
 // Sort & Filter
-let SS={};
-function sT(tid,col){
+let SS={};              // tid+'_'+col -> asc bool (per-column direction memory)
+let SORT_ACTIVE={};     // tid -> {col, asc}: the column currently governing a table.
+                        // Persisted so a filter / metric / period change (which
+                        // rebuilds the <tbody>) can re-apply the user's chosen sort
+                        // instead of snapping back to the default data order.
+
+// Apply the stored sort for a table to its current DOM rows. No-op if the user
+// hasn't chosen a sort, or if the sorted column no longer exists (e.g. a metric
+// toggle removed it) — in that case we clear the choice and fall back to the
+// builder's default order.
+function applySort(tid){
   const t=document.getElementById(tid);if(!t)return;
-  const tb=t.querySelector('tbody');
+  const tb=t.querySelector('tbody');if(!tb)return;
+  const ths=t.querySelectorAll('thead th');
+  ths.forEach(th=>th.classList.remove('sa','sd'));
+  const a=SORT_ACTIVE[tid];
+  if(!a)return;                                            // nothing chosen → default order
+  if(a.col>=ths.length){delete SORT_ACTIVE[tid];return;}   // sorted column gone → reset
+  const asc=a.asc, col=a.col;
   // Subtotal is the first child by construction — pull it out before sorting
   // data rows, then re-insert at the top so it never gets shuffled into the body.
   const sub=tb.querySelector('tr.subtotal');
   const rows=Array.from(tb.querySelectorAll('tr:not(.subtotal)'));
-  const k=tid+'_'+col;const asc=SS[k]!==true;SS[k]=asc;
-  rows.sort((a,b)=>{
-    const av=a.cells[col]?.dataset.val??a.cells[col]?.textContent??'';
-    const bv=b.cells[col]?.dataset.val??b.cells[col]?.textContent??'';
-    const an=parseFloat(av),bn=parseFloat(bv);
-    if(!isNaN(an)&&!isNaN(bn))return asc?an-bn:bn-an;
-    return asc?av.localeCompare(bv):bv.localeCompare(av);
+  rows.sort((x,y)=>{
+    const xv=x.cells[col]?.dataset.val??x.cells[col]?.textContent??'';
+    const yv=y.cells[col]?.dataset.val??y.cells[col]?.textContent??'';
+    const xn=parseFloat(xv),yn=parseFloat(yv);
+    if(!isNaN(xn)&&!isNaN(yn))return asc?xn-yn:yn-xn;
+    return asc?xv.localeCompare(yv):yv.localeCompare(xv);
   });
   rows.forEach(r=>tb.appendChild(r));
   if(sub)tb.insertBefore(sub,tb.firstChild);
-  t.querySelectorAll('thead th').forEach((th,i)=>{th.classList.remove('sa','sd');if(i===col)th.classList.add(asc?'sa':'sd')});
+  if(ths[col])ths[col].classList.add(asc?'sa':'sd');
+}
+
+// Header click: toggle direction for that column, record it as the table's active
+// sort, then apply.
+function sT(tid,col){
+  const k=tid+'_'+col;const asc=SS[k]!==true;SS[k]=asc;
+  SORT_ACTIVE[tid]={col,asc};
+  applySort(tid);
+}
+
+// Re-apply the active sort automatically whenever a table's <tbody> is rebuilt by a
+// filter / metric / period change. The observer callback runs after the builder has
+// finished synchronously (rows, subtotal and row click-handlers all in place), so
+// reordering here is safe. We disconnect around applySort so our own row moves don't
+// retrigger the observer.
+function watchSort(tid){
+  const t=document.getElementById(tid);if(!t)return;
+  const tb=t.querySelector('tbody');if(!tb)return;
+  const obs=new MutationObserver(()=>{
+    if(!SORT_ACTIVE[tid])return;
+    obs.disconnect();
+    applySort(tid);
+    obs.observe(tb,{childList:true});
+  });
+  obs.observe(tb,{childList:true});
 }
 function fT(tid,q){
   const t=document.getElementById(tid);if(!t)return;
@@ -2565,6 +2604,10 @@ function init(){
   buildAdsCatTable();
   buildDiscRibbons();
   buildDiscCatTable();
+  // Keep each table's chosen column-sort sticky across filter / metric / period
+  // changes (builders rebuild the <tbody>, which would otherwise reset the sort).
+  ['rev-ct','rev-platt','rev-skut','ads-ct','ads-pt-t','ads-st-t','disc-ct','disc-platt','disc-skut']
+    .forEach(watchSort);
   // First sticky-offset measurement — the filter bar is a single row now
   // (both filters side by side), so its rendered height must be measured
   // AFTER the buttons build.
