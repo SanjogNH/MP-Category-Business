@@ -83,7 +83,10 @@ def discount_flag(var):
     return "good"
 
 def roas_flag(mtd, lfm):
-    if lfm and lfm > 0 and (lfm - mtd) / lfm > config.ROAS_DROP_WARNING: return "warning"
+    if not (lfm and lfm > 0): return "good"
+    drop = (lfm - mtd) / lfm
+    if drop > config.ROAS_DROP_CRITICAL: return "critical"
+    if drop > config.ROAS_DROP_WARNING:  return "warning"
     return "good"
 
 def root_cause(units_att, disc_var):
@@ -571,6 +574,7 @@ def build_summary(sales, ads_mtd, ads_lfm, ads_l3m, prorate_map):
         "attainment_critical_pct": round(config.ATTAINMENT_CRITICAL * 100, 1),
         "attainment_warning_pct":  round(config.ATTAINMENT_WARNING * 100, 1),
         "roas_drop_warning":       config.ROAS_DROP_WARNING,
+        "roas_drop_critical":      config.ROAS_DROP_CRITICAL,
         "discount_critical":       config.DISCOUNT_CRITICAL,
         "discount_warning":        config.DISCOUNT_WARNING,
         # ads MTD
