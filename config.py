@@ -34,8 +34,9 @@ DISCOUNT_WARNING  = 0.03     # +3–5 pp above guideline → 🟡
 # Target reasonableness: flag if plan > LM and L3M run-rate by this factor
 TARGET_STRETCH_FACTOR = 1.30  # 130%
 
-# Ads: ROAS drop threshold vs LFM
-ROAS_DROP_WARNING = 0.20      # >20% drop → 🟡
+# Ads: ROAS drop thresholds vs LFM
+ROAS_DROP_WARNING  = 0.05     # >5% drop  → 🟡 Watch
+ROAS_DROP_CRITICAL = 0.20     # >20% drop → 🔴 Critical
 
 # ── Display ────────────────────────────────────
 CURRENCY_SYMBOL = "₹"
