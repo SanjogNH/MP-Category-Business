@@ -1041,8 +1041,11 @@ function adsSubtotalFlag(rows){
   const sm=(k)=>rows.reduce((a,r)=>a+n(r[k]),0);
   const rMTD=sm('Ad_Spend_MTD')>0?sm('Ad_Sales_MTD')/sm('Ad_Spend_MTD'):0;
   const rLFM=sm('Ad_Spend_LFM')>0?sm('Ad_Sales_LFM')/sm('Ad_Spend_LFM'):0;
-  const drop=n(DATA.summary?.roas_drop_warning)||0.2;
-  return rLFM>0&&(rLFM-rMTD)/rLFM>drop?'warning':'good';
+  if(!(rLFM>0)) return 'good';
+  const drop=(rLFM-rMTD)/rLFM;
+  const critT=n(DATA.summary?.roas_drop_critical)||0.2;
+  const warnT=n(DATA.summary?.roas_drop_warning)||0.05;
+  return drop>critT?'critical':drop>warnT?'warning':'good';
 }
 
 // ══════════════════════════════════════════════════
@@ -1422,22 +1425,21 @@ function adsProrateFactor(){
 // For a category-only row (no Platform), fall back to the shared helper.
 //   • LFM volume × factor       (one full month → MTD-pace slice)
 //   • L3M volume × factor / 3   (3-month total → monthly-avg-at-pace)
-//   • TGT volume — NOT scaled   (already an MTD-level target; treated like MTD)
+//   • TGT volume × factor       (full-month plan → MTD-pace slice, like LFM)
 // Ratios are not touched — they're invariant under proportional scaling.
 //
-// Actual mode (adsProRated=false) uses factor=1, so LFM passes through
+// Actual mode (adsProRated=false) uses factor=1, so LFM/TGT pass through
 // unchanged — but L3M is STILL divided by 3. It's a 3-month total and must
 // read as a monthly average to be comparable to the single-month LFM/Target
-// columns (and to match the category table + ribbons). MTD and TGT are never
-// touched in either mode.
+// columns (and to match the category table + ribbons). MTD is never touched.
 function prorateTableRow(r){
   const f = adsProRated ? (r.Platform ? platformFactor(r.Platform) : getFallbackFactor()) : 1;
   const out={...r};
   ADS_RAW_FIELDS.forEach(field=>{
-    const lfmK=`${field}_LFM`, l3mK=`${field}_L3M`;
+    const lfmK=`${field}_LFM`, l3mK=`${field}_L3M`, tgtK=`${field}_TGT`;
     if(out[lfmK]!=null) out[lfmK]=n(out[lfmK])*f;
     if(out[l3mK]!=null) out[l3mK]=n(out[l3mK])*(f/3);
-    // TGT intentionally left unscaled — it's already an MTD-level figure.
+    if(out[tgtK]!=null) out[tgtK]=n(out[tgtK])*f;
   });
   return out;
 }
@@ -1728,18 +1730,16 @@ function getAdsTotals(platSet,catSet,prorate){
     out.scL3M += n(r.Ad_Clicks_L3M)     * f;
     out.guL3M += n(r.Gross_Units_L3M)   * f;
     out.gcL3M += n(r.Gross_Clicks_L3M)  * f;
-    // TGT = MTD-level ad target (a to-date figure maintained daily), NOT a
-    // full-month plan. It is already at pace, so it is NEVER pro-rated —
-    // treated exactly like MTD. The Target ribbon/column is therefore
-    // identical under the Actual and Pro-rated toggle.
-    out.spTGT += n(r.Ad_Spend_TGT);
-    out.slTGT += n(r.Ad_Sales_TGT);
-    out.gsTGT += n(r.Gross_Sales_TGT);
-    out.suTGT += n(r.Ad_Units_TGT);
-    out.siTGT += n(r.Ad_Impressions_TGT);
-    out.scTGT += n(r.Ad_Clicks_TGT);
-    out.guTGT += n(r.Gross_Units_TGT);
-    out.gcTGT += n(r.Gross_Clicks_TGT);
+    // TGT = full-month ad plan; scaled by f when pro-rating (full month →
+    // MTD-pace slice, exactly like LFM). No /3.
+    out.spTGT += n(r.Ad_Spend_TGT)      * f;
+    out.slTGT += n(r.Ad_Sales_TGT)      * f;
+    out.gsTGT += n(r.Gross_Sales_TGT)   * f;
+    out.suTGT += n(r.Ad_Units_TGT)      * f;
+    out.siTGT += n(r.Ad_Impressions_TGT)* f;
+    out.scTGT += n(r.Ad_Clicks_TGT)     * f;
+    out.guTGT += n(r.Gross_Units_TGT)   * f;
+    out.gcTGT += n(r.Gross_Clicks_TGT)  * f;
   });
   return out;
 }
@@ -2004,10 +2004,10 @@ function buildAdsRibbons(){
   const adcMTD=ad.guMTD>0?ad.suMTD/ad.guMTD*100:0;
 
   document.getElementById('ads-ribbons').innerHTML=
-    mkRibbon('tgt','Target — MTD Plan',[
-      ['Ad Spend',      fc(ad.spTGT),                                          'MTD target',              ''],
+    mkRibbon('tgt','Target — Full-Month Plan'+(adsProRated?' — Pro-rated to MTD pace':''),[
+      ['Ad Spend',      fc(ad.spTGT),                                          'Full-month plan',         ''],
       ['Ad Sales',      fc(ad.slTGT),                                          'Attributed to ads',       ''],
-      ['Ad Impressions',fL(ad.siTGT),                                          'Target impressions',      ''],
+      ['Ad Impressions',fL(ad.siTGT),                                          'Planned impressions',     ''],
       ['Ad CVR',        ad.scTGT>0?fp(ad.suTGT/ad.scTGT*100):'—',             'Ad units / Ad clicks',    ''],
       ['Gross CVR',     ad.gcTGT>0?fp(ad.guTGT/ad.gcTGT*100):'—',             'Gross units / Gross clks',''],
       ['ROAS',          fr(rTGT),                                              'Ad sales / Ad spend',     ''],
@@ -2089,14 +2089,12 @@ function getAdsCats(){
       const c=cats[r.Category];
       const f = adsProRated ? (n(info[r.Platform]?.factor) || fallback) : 1;
       ADS_RAW_KEYS.forEach(k=>{
-        // MTD never scaled. TGT never scaled either — it's an MTD-level target,
-        // not a full-month plan. LFM scales by the platform factor (full month
-        // → MTD-pace slice). L3M is a 3-month TOTAL, so it gets f/3 to become a
-        // monthly-avg-at-pace figure — matching the drills & ribbons.
+        // MTD never scaled. LFM & TGT scale by the platform factor (full month
+        // → MTD-pace slice). L3M is a 3-month TOTAL, so it also gets ÷3 to
+        // become a monthly-avg-at-pace figure — matching the drills & ribbons.
         const isMTD=k.endsWith('_MTD');
-        const isTGT=k.endsWith('_TGT');
         const isL3M=k.endsWith('_L3M');
-        const scale=(isMTD||isTGT)?1:(isL3M? f/3 : f);
+        const scale=isMTD?1:(isL3M? f/3 : f);
         c[k]+=n(r[k])*scale;
       });
     });
