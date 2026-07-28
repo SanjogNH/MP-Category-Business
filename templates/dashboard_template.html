@@ -749,6 +749,12 @@ function sT(tid,col){
 function watchSort(tid){
   const t=document.getElementById(tid);if(!t)return;
   const tb=t.querySelector('tbody');if(!tb)return;
+  // init() re-runs on every month switch and re-calls watchSort for each table.
+  // Drop any previous observer for this table before attaching a fresh one — else
+  // observers accumulate, and once a sort is active they re-trigger EACH OTHER on
+  // the next rebuild (each one's re-sort mutates the <tbody>, waking the others):
+  // an infinite mutation cascade that freezes the tab, worsening per month change.
+  if(SORT_OBS[tid]){SORT_OBS[tid].disconnect();delete SORT_OBS[tid];}
   const obs=new MutationObserver(()=>{
     if(!SORT_ACTIVE[tid])return;
     obs.disconnect();
