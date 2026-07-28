@@ -273,6 +273,32 @@ tr.subtotal .ab .bp{font-weight:700}
 
 ::-webkit-scrollbar{width:4px;height:4px}
 ::-webkit-scrollbar-thumb{background:var(--bd2);border-radius:3px}
+
+/* ── FREEZE FIRST COLUMN ──────────────
+   The identifier column (Category / Platform / SKU) stays pinned while the
+   table scrolls sideways, so the reader always knows which row they're on.
+   Backgrounds are opaque so scrolled cells never bleed through, and z-index
+   is layered: header-corner > subtotal-corner > body-first-cell > peers. */
+.tsx table td:first-child,.tsx table th:first-child{position:sticky;left:0;box-shadow:1px 0 0 var(--bd)}
+.tsx table td:first-child{z-index:3;background:var(--sf)}
+.tsx thead th:first-child{z-index:8;background:var(--sf2)}
+.tsx tr.subtotal td:first-child{z-index:6;background:var(--sf2)}
+.tsx tbody tr:hover td:first-child{background:var(--sf2)}
+.tsx tbody tr.cl:hover td:first-child{background:var(--bl2)}
+
+/* ── CLOSE THE GAP UNDER THE FIXED NAV ──
+   The filter bar sticks 8px below the fixed nav; without this the scrolled page
+   showed through that 8px sliver. A fixed strip in the nav's own layer paints it. */
+.nav::after{content:"";position:absolute;left:0;right:0;top:100%;height:8px;background:var(--bg);pointer-events:none}
+
+/* ── SHOW-MORE (row cap) ─────────────── */
+.showmore{display:none;padding:7px 14px;border-top:1px solid var(--bd);background:var(--sf);border-radius:0 0 10px 10px;text-align:center}
+.showmore.on{display:block}
+.showmore button{background:none;border:none;color:var(--bl);font-size:11px;font-weight:600;cursor:pointer;font-family:inherit;padding:4px 12px;border-radius:6px;letter-spacing:.2px}
+.showmore button:hover{background:var(--bl2)}
+
+/* ── OPTIONAL REVENUE EXTRA COLUMNS ──── */
+td.xd{color:var(--tx2)}
 </style>
 </head>
 <body>
@@ -309,7 +335,7 @@ tr.subtotal .ab .bp{font-weight:700}
   <div class="tw">
     <div class="ttbar acc-bar" id="rev-ttbar" onclick="accSet('rev','cat')"><span class="tt">All Categories — click a row to drill into platforms</span>
       <input class="si" placeholder="Search category…" onclick="event.stopPropagation()" oninput="fT('rev-ct',this.value)"/></div>
-    <div id="rev-cwrap"><div class="tsx"><table id="rev-ct">
+    <div id="rev-cwrap"><div class="cpick" id="rev-xcp"><span class="cpick-lbl">Optional columns</span></div><div class="tsx"><table id="rev-ct">
       <thead><tr>
         <th onclick="sT('rev-ct',0)" style="min-width:140px">Category</th>
         <th onclick="sT('rev-ct',1)" class="r" style="min-width:110px">Monthly Target</th>
@@ -735,10 +761,7 @@ function sT(tid,col){
   const obs=SORT_OBS[tid];
   if(obs)obs.disconnect();
   applySort(tid);
-  if(obs){
-    const tb=document.getElementById(tid)?.querySelector('tbody');
-    if(tb)obs.observe(tb,{childList:true});
-  }
+  applyView(tid);   // re-cap the new top rows; applyView re-attaches the observer
 }
 
 // Re-apply the active sort automatically whenever a table's <tbody> is rebuilt by a
@@ -756,23 +779,95 @@ function watchSort(tid){
   // an infinite mutation cascade that freezes the tab, worsening per month change.
   if(SORT_OBS[tid]){SORT_OBS[tid].disconnect();delete SORT_OBS[tid];}
   const obs=new MutationObserver(()=>{
-    if(!SORT_ACTIVE[tid])return;
+    // Fires after any builder rebuilds the <tbody>. Re-apply the active sort (if
+    // any), then always re-apply the search + 10-row cap. applyView disconnects
+    // and re-observes around its own subtotal swap, so no re-entrancy.
     obs.disconnect();
-    applySort(tid);
-    // Re-query the tbody in case a builder replaced the element wholesale
-    // (re-observing the old detached node would silently stop re-sorting).
-    const cur=document.getElementById(tid)?.querySelector('tbody');
-    if(cur)obs.observe(cur,{childList:true});
+    if(SORT_ACTIVE[tid]) applySort(tid);
+    applyView(tid);
   });
   SORT_OBS[tid]=obs;
   obs.observe(tb,{childList:true});
 }
 function fT(tid,q){
-  const t=document.getElementById(tid);if(!t)return;
-  const lq=q.toLowerCase();
-  t.querySelectorAll('tbody tr:not(.subtotal)').forEach(r=>r.style.display=r.textContent.toLowerCase().includes(lq)?'':'none');
-  // Search reshapes the visible set → subtotal must reflect only what's on screen.
+  TQ[tid]=(q||'').toLowerCase();
+  CAP_OPEN[tid]=false;      // a new search starts from the capped view again
+  applyView(tid);
+}
+
+// ══════════════════════════════════════════════════
+// SCROLL PRESERVATION
+// ══════════════════════════════════════════════════
+// A filter change tears down and rebuilds the tables. When a selection empties a
+// table the page briefly shrinks and the browser snaps scroll to the top; picking
+// a new value then leaves the user stranded up top. We remember the user's last
+// genuine scroll position and restore it after each refresh so the page holds
+// still. _progScroll guards the listener from recording our own restore (or the
+// transient clamp caused by an intermediate empty render).
+let _prefScroll=0,_progScroll=false;
+window.addEventListener('scroll',()=>{ if(!_progScroll)_prefScroll=window.scrollY; },{passive:true});
+function preserveScroll(fn){
+  _progScroll=true;
+  try{ fn(); }
+  finally{
+    requestAnimationFrame(()=>{
+      window.scrollTo(0,_prefScroll);
+      requestAnimationFrame(()=>{ _progScroll=false; });
+    });
+  }
+}
+
+// ══════════════════════════════════════════════════
+// ROW CAP + SEARCH  (single visibility authority per table)
+// ══════════════════════════════════════════════════
+// Each table shows the first ROW_CAP rows that pass the current search; a
+// "Show all (N)" toggle reveals the rest. Sorting and search run over the FULL
+// row set (the cap is display-only), and the subtotal is recomputed over every
+// search-passing row — never just the visible 10 — so the totals stay honest.
+const ROW_CAP=10;
+let CAP_OPEN={};   // tid -> expanded?
+let TQ={};         // tid -> lowercased search query
+function applyView(tid){
+  const t=document.getElementById(tid); if(!t)return;
+  const tb=t.querySelector('tbody'); if(!tb)return;
+  // recomputeSubtotal swaps the subtotal <tr> (a childList mutation); mute this
+  // table's sort observer around the whole pass so it can't re-enter.
+  const obs=SORT_OBS[tid]; if(obs)obs.disconnect();
+  const q=TQ[tid]||'', open=!!CAP_OPEN[tid];
+  let shown=0, matches=0;
+  tb.querySelectorAll('tr:not(.subtotal)').forEach(tr=>{
+    const pass = !q || tr.textContent.toLowerCase().includes(q);
+    tr.classList.toggle('nomatch',!pass);   // 'nomatch' = excluded from subtotal
+    if(pass){
+      matches++;
+      const capped = !open && shown>=ROW_CAP;
+      tr.classList.toggle('capped',capped);
+      tr.style.display = capped ? 'none' : '';
+      if(!capped) shown++;
+    } else {
+      tr.classList.remove('capped');
+      tr.style.display='none';
+    }
+  });
   recomputeSubtotal(tid);
+  updateShowMore(tid,matches,open);
+  if(obs){const cur=document.getElementById(tid)?.querySelector('tbody'); if(cur)obs.observe(cur,{childList:true});}
+}
+// Lazily create / update the "Show all (N)" control just below the scroll pane.
+function updateShowMore(tid,matches,open){
+  const t=document.getElementById(tid); if(!t)return;
+  const pane=t.closest('.tsx'); if(!pane)return;
+  let ctl=document.getElementById(tid+'__more');
+  if(!ctl){
+    ctl=document.createElement('div'); ctl.id=tid+'__more'; ctl.className='showmore';
+    const b=document.createElement('button'); b.type='button';
+    b.onclick=()=>{ CAP_OPEN[tid]=!CAP_OPEN[tid]; applyView(tid); };
+    ctl.appendChild(b);
+    pane.parentNode.insertBefore(ctl,pane.nextSibling);
+  }
+  const btn=ctl.querySelector('button');
+  if(matches>ROW_CAP){ ctl.classList.add('on'); btn.textContent = open ? '▲ Show less' : `▾ Show all ${matches}`; }
+  else ctl.classList.remove('on');
 }
 
 // ══════════════════════════════════════════════════
@@ -1092,7 +1187,9 @@ function recomputeSubtotal(tid){
   const tbody=t.querySelector('tbody');if(!tbody)return;
   const visible=[];
   tbody.querySelectorAll('tr:not(.subtotal)').forEach(tr=>{
-    if(tr.style.display==='none')return;
+    // Exclude only rows filtered out by SEARCH ('nomatch'); rows hidden purely
+    // by the 10-row display cap ('capped') must still count toward the subtotal.
+    if(tr.classList.contains('nomatch'))return;
     const idx=parseInt(tr.dataset.idx,10);
     if(!isNaN(idx)&&meta.rows[idx])visible.push(meta.rows[idx]);
   });
@@ -1183,6 +1280,7 @@ function subtotalRevCat(rows){
     <td class="r mn" data-val="${uGap}" style="color:${uGap>=0?'var(--gn)':'var(--rd)'}"><b>${fn(uGap)}</b></td>
     <td class="r" data-val="${disc}"><b>${fp(disc)}</b></td>
     <td>${badge(attFlag(att))}</td>
+    ${revExtraSubtotalCells(rows)}
   </tr>`;
 }
 
@@ -1215,6 +1313,7 @@ function subtotalRevPlat(rows){
     <td class="r" data-val="${dvpPp}">${dc(dvpPp)}</td>
     <td>${tStretch>0?`<span class="tag stretch">⚑ ${tStretch}</span>`:`<span class="badge good">✓ Normal</span>`}</td>
     <td>${badge(attFlag(att))}</td>
+    ${revExtraSubtotalCells(rows)}
   </tr>`;
 }
 
@@ -1296,7 +1395,10 @@ function buildAdsSubtotalBuilder(periodSet,metricSet){
           const a=rollup(m,'MTD'), b=rollup(m,'TGT');
           const val=(a==null||b==null)?null:a-b;
           const dv=val==null?'':val;
-          const col=val==null?'':(val>=0?'var(--gn)':'var(--rd)');
+          // Same lower-is-better inversion as the body rows (CPO/CPC/CPM).
+          const lowerBetter=(m.k==='CPO'||m.k==='CPC'||m.k==='CPM');
+          const good=lowerBetter ? val<=0 : val>=0;
+          const col=val==null?'':(good?'var(--gn)':'var(--rd)');
           const fmtStr=val==null?'—':m.f(val);
           const txt=(val==null||fmtStr==='—')?'—':(val>=0?'+':'')+fmtStr;
           cells+=`<td class="${cls}" data-val="${dv}" style="${bgS};color:${col}"><b>${txt}</b></td>`;
@@ -1418,7 +1520,7 @@ const ADS_METRICS=[
   {k:'ROAS',            l:'Ad ROAS',        f:v=>fr(v)},
   {k:'Gross_CVR',       l:'Gross CVR',      f:v=>fp(v)},
   {k:'TROAS',           l:'TROAS',          f:v=>fr(v)},
-  {k:'CPO',             l:'Total CPO',      f:v=>fc(v)},
+  {k:'CPO',             l:'Ad CPO',         f:v=>fc(v)},
   {k:'Ad_Contribution', l:'Ad Contrib%',    f:v=>fp(v)},
   {k:'Total_AOV',       l:'Total AOV',      f:v=>fc(v)},
 ];
@@ -1664,7 +1766,12 @@ function renderAdsTable(tid,hid,bid,data,periodSet,metricSet,gkey){
       if(c.delta){
         const v=missing?0:n(raw);
         const fmtStr=missing?'—':c.fmt(raw);
-        const col=v>=0?'var(--gn)':'var(--rd)';
+        // Cost-per metrics are "lower is better", so a positive Δ vs Target is BAD
+        // (over target) → red, and a negative Δ is good → green. All other metrics
+        // keep the usual "higher is better" mapping.
+        const lowerBetter=(c.mk==='CPO'||c.mk==='CPC'||c.mk==='CPM');
+        const good=lowerBetter ? v<=0 : v>=0;
+        const col=good?'var(--gn)':'var(--rd)';
         const txt=(missing||fmtStr==='—')?'—':(v>=0?'+':'')+fmtStr;
         cells+=`<td class="${cls}" data-val="${missing?'':v}" style="${bgS};color:${col}">${txt}</td>`;
       } else {
@@ -1946,11 +2053,13 @@ function buildRevCatTable(){
       <td class="r mn" data-val="${n(c.Revenue_Gap)}" style="color:${n(c.Revenue_Gap)>=0?'var(--gn)':'var(--rd)'}">${fc(c.Revenue_Gap)}</td>
       <td class="r mn" data-val="${n(c.Units_Gap)}" style="color:${n(c.Units_Gap)>=0?'var(--gn)':'var(--rd)'}">${fn(c.Units_Gap)}</td>
       <td class="r" data-val="${n(c.Actual_Discount_Pct)}">${fp(c.Actual_Discount_Pct)}</td>
-      <td>${badge(c.Revenue_Flag)}</td>`;
+      <td>${badge(c.Revenue_Flag)}</td>
+      ${revExtraCellsHTML(c)}`;
     tr.onclick=()=>drillRevCat(c.Category);
     tb.appendChild(tr);
   });
   registerTable('rev-ct',cats,subtotalRevCat);
+  revSyncExtraHead('rev-ct');
 }
 
 // ══════════════════════════════════════════════════
@@ -1978,11 +2087,13 @@ function drillRevCat(cat,quiet){
       <td class="r mn" data-val="${n(r.Units_Gap)}" style="color:${n(r.Units_Gap)>=0?'var(--gn)':'var(--rd)'}">${fn(r.Units_Gap)}</td>
       <td class="r" data-val="${n(r.Discount_vs_Plan)}">${dc(r.Discount_vs_Plan)}</td>
       <td>${n(r.Target_Stretch_Count)>0?'<span class="tag stretch">⚑ Stretch</span>':'<span class="badge good">✓ Normal</span>'}</td>
-      <td>${badge(r.Revenue_Flag)}</td>`;
+      <td>${badge(r.Revenue_Flag)}</td>
+      ${revExtraCellsHTML(r)}`;
     tr.onclick=()=>drillRevPlat(cat,r.Platform);
     tb.appendChild(tr);
   });
   registerTable('rev-platt',rows,subtotalRevPlat);
+  revSyncExtraHead('rev-platt');
   document.getElementById('rev-pt').textContent=`Platform Breakdown — ${cat}`;
   show('rev-pp');accSet('rev','plat');if(!quiet)scroll('rev-pph');
 }
@@ -2038,6 +2149,68 @@ function revRelabelHeaders(){
   set('rev-skut-tgtr-h',`${lbl} Rev`);
 }
 
+// ══════════════════════════════════════════════════
+// REVENUE — OPTIONAL COLUMNS (LFM / L3M / Δ vs target)
+// ══════════════════════════════════════════════════
+// Toggleable analytical columns appended AFTER the base columns of the Category
+// and Platform tables (append-only, so existing sort indices never shift).
+//   LFM      = last full month's actual revenue
+//   L3M      = 3-month average, monthly (÷3 — same basis as the ribbon)
+//   Δ vs LFM = Monthly Target − LFM   (is the target set right vs last month?)
+//   Δ vs L3M = Monthly Target − L3M   (… vs the 3-month run-rate?)
+// The Δ columns compare the TARGET against recent actuals — a target-sanity read
+// — so they're coloured neutral (grey), not green/red, to avoid implying that the
+// gap itself is "good" or "bad". Monthly Target = Planned_SP_Revenue.
+const REV_EXTRA_COLS=[
+  {k:'LFM',  l:'LFM',        delta:false, get:r=>n(r.LM_Revenue)},
+  {k:'L3M',  l:'L3M / mo',   delta:false, get:r=>n(r.L3M_Revenue)/3},
+  {k:'DLFM', l:'Δ Tgt vs LFM', delta:true, get:r=>n(r.Planned_SP_Revenue)-n(r.LM_Revenue)},
+  {k:'DL3M', l:'Δ Tgt vs L3M', delta:true, get:r=>n(r.Planned_SP_Revenue)-n(r.L3M_Revenue)/3},
+];
+let revExtra=new Set();          // active extra-column keys
+function revExtraActive(){ return REV_EXTRA_COLS.filter(c=>revExtra.has(c.k)); }
+// Data-row cells for one row object (appended to each <tr> by the builders).
+function revExtraCellsHTML(r){
+  return revExtraActive().map(c=>{
+    const v=c.get(r), bad=isNaN(v);
+    const txt=bad?'—':(c.delta&&v>0?'+':'')+fc(v);
+    return `<td class="r mn xcol${c.delta?' xd':''}" data-val="${bad?'':v}">${txt}</td>`;
+  }).join('');
+}
+// Matching subtotal cells: Σ of each column across the (search-filtered) rows.
+function revExtraSubtotalCells(rows){
+  return revExtraActive().map(c=>{
+    const v=rows.reduce((a,r)=>a+n(c.get(r)),0);
+    const txt=(c.delta&&v>0?'+':'')+fc(v);
+    return `<td class="r mn xcol${c.delta?' xd':''}" data-val="${v}"><b>${txt}</b></td>`;
+  }).join('');
+}
+// (Re)build the extra <th> cells on a table's header, wiring each to sort on its
+// real column index (= current header length, since we only ever append).
+function revSyncExtraHead(tid){
+  const t=document.getElementById(tid); if(!t)return;
+  const tr=t.querySelector('thead tr'); if(!tr)return;
+  tr.querySelectorAll('th.xcol').forEach(e=>e.remove());
+  let idx=tr.querySelectorAll('th').length;
+  revExtraActive().forEach(c=>{
+    const th=document.createElement('th');
+    th.className='r xcol'; th.style.minWidth='105px'; th.textContent=c.l;
+    const my=idx++; th.onclick=()=>sT(tid,my);
+    tr.appendChild(th);
+  });
+}
+function buildRevExtraPicker(){
+  const el=document.getElementById('rev-xcp'); if(!el)return;
+  el.querySelectorAll('.cchip').forEach(e=>e.remove());
+  REV_EXTRA_COLS.forEach(c=>{
+    const s=document.createElement('span');
+    s.className='cchip'+(revExtra.has(c.k)?' on':'');
+    s.textContent=c.l;
+    s.onclick=()=>{ revExtra.has(c.k)?revExtra.delete(c.k):revExtra.add(c.k); buildRevExtraPicker(); revRefresh(); };
+    el.appendChild(s);
+  });
+}
+
 // Flip the Revenue target basis (Phased ↔ Time-pro-rated) and re-render the
 // whole tab: ribbons, charts, category table and any open drill.
 function setRevBasis(phased){
@@ -2051,7 +2224,7 @@ function setRevBasis(phased){
   revRefresh();
 }
 
-function revRefresh(){
+function revRefresh(){ preserveScroll(()=>{
   // If the currently-drilled category got filtered out, close the drill so the
   // user doesn't see stale platform-breakdown rows for an invisible parent.
   if(revSelCat&&!aCatRev.has('__ALL__')&&!aCatRev.has(revSelCat)) revReset();
@@ -2059,7 +2232,7 @@ function revRefresh(){
   buildRevRibbons();buildRevCharts();buildRevCatTable();
   if(revSelCat)drillRevCat(revSelCat,true);
   updateStickyOffsets();
-}
+}); }
 
 // ══════════════════════════════════════════════════
 // ADS — RIBBONS (STACKED VERTICALLY)
@@ -2285,7 +2458,7 @@ function adsReset(){
   accSet('ads','cat');
   setBc('ads-bc','<span class="bi act" onclick="adsReset()">All Categories</span>');
 }
-function adsRefresh(){
+function adsRefresh(){ preserveScroll(()=>{
   // If the currently-drilled category got filtered out, close the drill first.
   if(adsSelCat&&!aCatAds.has('__ALL__')&&!aCatAds.has(adsSelCat)) adsReset();
   buildAdsRibbons();
@@ -2297,7 +2470,7 @@ function adsRefresh(){
     if(savedPlat) drillAdsPlat(adsSelCat,savedPlat);
   }
   updateStickyOffsets();
-}
+}); }
 
 // ══════════════════════════════════════════════════
 // DISCOUNT — DATA HELPERS (platform-filter-aware)
@@ -2521,12 +2694,12 @@ function drillDiscPlat(cat,plat){
 }
 
 function discReset(){discSelCat=null;cD('disc-pp',()=>cD('disc-sp'));accSet('disc','cat');setBc('disc-bc','<span class="bi act" onclick="discReset()">All Categories</span>')}
-function discRefresh(){
+function discRefresh(){ preserveScroll(()=>{
   if(discSelCat&&!aCatDisc.has('__ALL__')&&!aCatDisc.has(discSelCat)) discReset();
   buildDiscRibbons();buildDiscCatTable();
   if(discSelCat)drillDiscCat(discSelCat,true);
   updateStickyOffsets();
-}
+}); }
 
 // ══════════════════════════════════════════════════
 // MONTH SELECTOR
@@ -2560,6 +2733,7 @@ function switchMonth(m){
   aCatRev =new Set(['__ALL__']); aCatAds =new Set(['__ALL__']); aCatDisc =new Set(['__ALL__']);
   revSelCat=null; adsSelCat=null; discSelCat=null; adsSelPlat=null;
   adsProRated=false;
+  revExtra=new Set();
   adsCatPeriods =new Set(['MTD']); adsCatMetrics =new Set(['Ad_Spend']);
   adsPlatPeriods=new Set(['MTD']); adsPlatMetrics=new Set(['Ad_Spend']);
   adsSkuPeriods =new Set(['MTD']); adsSkuMetrics =new Set(['Ad_Spend']);
@@ -2574,6 +2748,7 @@ function switchMonth(m){
 // ══════════════════════════════════════════════════
 function init(){
   document.getElementById('lu').textContent=DATA.meta?.fetched_at||'—';
+  CAP_OPEN={}; TQ={};   // fresh row-cap / search state on (re)init
 
   // ── Filter lookups ─────────────────────────────────────────────
   // Every dropdown row shows a small numeric badge and is sorted by that
@@ -2641,6 +2816,7 @@ function init(){
   buildRevRibbons();
   buildRevCharts();
   buildRevCatTable();
+  buildRevExtraPicker();
   buildAdsRibbons();
   buildAdsCatTable();
   buildDiscRibbons();
@@ -2649,6 +2825,9 @@ function init(){
   // changes (builders rebuild the <tbody>, which would otherwise reset the sort).
   ['rev-ct','rev-platt','rev-skut','ads-ct','ads-pt-t','ads-st-t','disc-ct','disc-platt','disc-skut']
     .forEach(watchSort);
+  // Apply the initial 10-row cap to the top-level tables built above (their
+  // rebuilds happened before the observers were attached, so cap them now).
+  ['rev-ct','ads-ct','disc-ct'].forEach(applyView);
   // First sticky-offset measurement — the filter bar is a single row now
   // (both filters side by side), so its rendered height must be measured
   // AFTER the buttons build.
