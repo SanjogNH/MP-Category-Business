@@ -672,6 +672,10 @@ function setBc(id,html){const e=document.getElementById(id);if(e)e.innerHTML=htm
 
 // Sort & Filter
 let SS={};              // tid+'_'+col -> asc bool (per-column direction memory)
+let SORT_OBS={};        // tid -> MutationObserver, so a manual header click can
+                        // suppress the watcher while it sorts (otherwise the click's
+                        // own DOM change re-triggers the watcher → the table sorts
+                        // TWICE per click, doubling reflow cost on large tables).
 let SORT_ACTIVE={};     // tid -> {col, asc}: the column currently governing a table.
                         // Persisted so a filter / metric / period change (which
                         // rebuilds the <tbody>) can re-apply the user's chosen sort
@@ -694,15 +698,29 @@ function applySort(tid){
   // data rows, then re-insert at the top so it never gets shuffled into the body.
   const sub=tb.querySelector('tr.subtotal');
   const rows=Array.from(tb.querySelectorAll('tr:not(.subtotal)'));
-  rows.sort((x,y)=>{
-    const xv=x.cells[col]?.dataset.val??x.cells[col]?.textContent??'';
-    const yv=y.cells[col]?.dataset.val??y.cells[col]?.textContent??'';
-    const xn=parseFloat(xv),yn=parseFloat(yv);
-    if(!isNaN(xn)&&!isNaN(yn))return asc?xn-yn:yn-xn;
-    return asc?xv.localeCompare(yv):yv.localeCompare(xv);
+  // Read each row's sort key ONCE up front. The old comparator did two DOM
+  // reads (cells[col].dataset.val) on every comparison — O(N log N) DOM hits.
+  const keyed=rows.map(r=>{
+    const c=r.cells[col];
+    const raw=c?(c.dataset.val??c.textContent??''):'';
+    const num=parseFloat(raw);
+    return {r, raw, num, isNum:!isNaN(num)};
   });
-  rows.forEach(r=>tb.appendChild(r));
-  if(sub)tb.insertBefore(sub,tb.firstChild);
+  keyed.sort((x,y)=>{
+    if(x.isNum&&y.isNum)return asc?x.num-y.num:y.num-x.num;
+    return asc?String(x.raw).localeCompare(y.raw):String(y.raw).localeCompare(x.raw);
+  });
+  // Reorder OFF the live DOM: detach <tbody>, rebuild its rows inside a
+  // DocumentFragment, then reattach once. This forces a single reflow instead
+  // of one per moved row — the fix for the freeze when sorting large, sticky
+  // tables (the SKU-level views can be thousands of rows).
+  const parent=tb.parentNode, next=tb.nextSibling;
+  if(parent)parent.removeChild(tb);
+  const frag=document.createDocumentFragment();
+  if(sub)frag.appendChild(sub);
+  keyed.forEach(k=>frag.appendChild(k.r));
+  tb.appendChild(frag);
+  if(parent)parent.insertBefore(tb,next);
   if(ths[col])ths[col].classList.add(asc?'sa':'sd');
 }
 
@@ -711,7 +729,16 @@ function applySort(tid){
 function sT(tid,col){
   const k=tid+'_'+col;const asc=SS[k]!==true;SS[k]=asc;
   SORT_ACTIVE[tid]={col,asc};
+  // Suppress this table's watcher while we sort, then reconnect. Without this
+  // the sort below mutates the <tbody>, the watcher fires, and the table sorts
+  // a second time — pure wasted work (a full extra reflow) on every click.
+  const obs=SORT_OBS[tid];
+  if(obs)obs.disconnect();
   applySort(tid);
+  if(obs){
+    const tb=document.getElementById(tid)?.querySelector('tbody');
+    if(tb)obs.observe(tb,{childList:true});
+  }
 }
 
 // Re-apply the active sort automatically whenever a table's <tbody> is rebuilt by a
@@ -726,8 +753,12 @@ function watchSort(tid){
     if(!SORT_ACTIVE[tid])return;
     obs.disconnect();
     applySort(tid);
-    obs.observe(tb,{childList:true});
+    // Re-query the tbody in case a builder replaced the element wholesale
+    // (re-observing the old detached node would silently stop re-sorting).
+    const cur=document.getElementById(tid)?.querySelector('tbody');
+    if(cur)obs.observe(cur,{childList:true});
   });
+  SORT_OBS[tid]=obs;
   obs.observe(tb,{childList:true});
 }
 function fT(tid,q){
