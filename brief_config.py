@@ -35,9 +35,16 @@ TEAMS = [
 # Platforms that appear ONLY in the master brief (never in a team email, never in "REST")
 MASTER_ONLY = ["D2C"]
 
+# Platforms shown in the executive brief for information only: a grey row in the platform
+# scorecard, left out of headline numbers, ads, categories and focus sections
+INFO_ONLY = ["D2C"]
+
 # ── Tasks per tab ──────────────────────────────
 MAX_TASKS_PER_TAB = 5          # managers see at most this many new/follow-up tasks per tab
-MASTER_MAX_PER_TAB = 10        # business-wide top list in the master brief
+MASTER_MAX_ATTENTION = 5       # executive brief: items that got worse / keep failing follow-ups
+SCORECARD_MIN_SHARE = 0.01     # platforms under 1% of revenue are grouped as "Others" in the scorecards
+TOP_CATEGORIES = 10            # executive brief: top categories by revenue, and categories furthest behind
+FOCUS_PLATFORMS_PER_CATEGORY = 3   # platforms shown under each category that is behind
 MAX_WAITING_SHOWN = 5          # "Give it time" items shown per tab
 
 # ── Patience ───────────────────────────────────
