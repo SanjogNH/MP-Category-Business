@@ -6,6 +6,12 @@ on:
     - cron: '30 6 * * *'    # 12:00 PM IST
     - cron: '30 7 * * *'    # 01:00 PM IST
   workflow_dispatch:          # Manual trigger from GitHub UI anytime
+    inputs:
+      brief_mode:
+        description: "Morning brief: off = refresh only, test = send all briefs to TEST_RECIPIENT, send = real send"
+        type: choice
+        options: [off, test, send]
+        default: "off"
 
 # Permissions the jobs need:
 #   contents: write  -> to commit the refreshed HTML back to the repo
@@ -58,12 +64,36 @@ jobs:
       - name: Build dashboard
         run: python build_dashboard.py
 
+      # 7b. Morning brief — only on the 11 AM run, or when triggered manually with test/send.
+      #     continue-on-error: a brief problem never blocks the dashboard refresh.
+      - name: Morning brief
+        if: github.event.schedule == '30 5 * * *' || (github.event_name == 'workflow_dispatch' && inputs.brief_mode != 'off')
+        continue-on-error: true
+        env:
+          BRIEF_MODE: ${{ github.event_name == 'schedule' && 'send' || inputs.brief_mode }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GMAIL_USER: ${{ secrets.GMAIL_USER }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+          TEST_RECIPIENT: ${{ secrets.TEST_RECIPIENT }}
+        run: python brief.py
+
+      # 7c. Keep a copy of the email previews for 7 days (Actions → run → Artifacts)
+      - name: Save brief previews
+        if: always() && hashFiles('brief_output/*.html') != ''
+        uses: actions/upload-artifact@v4
+        with:
+          name: morning-brief-previews
+          path: brief_output/
+          retention-days: 7
+
       # 8. Commit and push the new dashboard HTML (keeps it versioned in the repo)
+      #    plus the brief's memory of what it has already raised.
       - name: Commit dashboard
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add nh_category_intel.html
+          if [ -d agent_state ]; then git add agent_state; fi
           git diff --staged --quiet || git commit -m "Refresh dashboard — $(TZ='Asia/Kolkata' date +'%d %b %Y %H:%M IST')"
           git push
 
