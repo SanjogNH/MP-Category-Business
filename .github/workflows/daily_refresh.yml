@@ -10,7 +10,7 @@ on:
       brief_mode:
         description: "Morning brief: off = refresh only, test = send all briefs to TEST_RECIPIENT, send = real send"
         type: choice
-        options: [off, test, send]
+        options: ["off", "test", "send"]
         default: "off"
 
 # Permissions the jobs need:
@@ -67,10 +67,13 @@ jobs:
       # 7b. Morning brief — only on the 11 AM run, or when triggered manually with test/send.
       #     continue-on-error: a brief problem never blocks the dashboard refresh.
       - name: Morning brief
-        if: github.event.schedule == '30 5 * * *' || (github.event_name == 'workflow_dispatch' && inputs.brief_mode != 'off')
+        # Real send only on the FIRST attempt of the 11 AM schedule (a "Re-run" of it does not send).
+        # Manual runs send only when brief_mode is exactly "test" or "send".
+        if: (github.event.schedule == '30 5 * * *' && github.run_attempt == '1') || (github.event_name == 'workflow_dispatch' && (inputs.brief_mode == 'test' || inputs.brief_mode == 'send'))
         continue-on-error: true
         env:
           BRIEF_MODE: ${{ github.event_name == 'schedule' && 'send' || inputs.brief_mode }}
+          BRIEF_FORCE: ${{ github.event_name == 'workflow_dispatch' && inputs.brief_mode == 'send' && 'yes' || 'no' }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           GMAIL_USER: ${{ secrets.GMAIL_USER }}
           GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
