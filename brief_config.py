@@ -14,7 +14,7 @@ MASTER = {
 }
 
 TEAMS = [
-    {"name": "Quick commerce", "emails": ["garima@nathabit.in", "arman@nathabit.in"],
+    {"name": "Quick commerce", "emails": ["garima.garg@nathabit.in", "arman@nathabit.in"],
      "platforms": ["Blinkit", "Zepto", "Big Basket"]},
     {"name": "Instamart", "emails": ["mayank.gangwani@nathabit.in"],
      "platforms": ["Instamart"]},
