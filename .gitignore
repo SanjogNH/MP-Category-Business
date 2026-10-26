@@ -17,3 +17,6 @@ Thumbs.db
 # Editor files
 .vscode/
 .idea/
+
+# Morning brief email previews (uploaded as a workflow artifact instead)
+brief_output/
