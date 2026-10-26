@@ -37,6 +37,8 @@ log = logging.getLogger(__name__)
 IST = dt.timezone(dt.timedelta(hours=5, minutes=30))
 TODAY = dt.datetime.now(IST).date()
 MODE = os.environ.get("BRIEF_MODE", "dry").strip().lower()
+if MODE not in ("dry", "test", "send"):
+    MODE = "dry"  # anything unexpected (e.g. "off", "false", blank) never sends
 SEV_RANK = {"critical": 0, "warning": 1}
 TAB_TITLES = {"revenue": "📊 Revenue", "ads": "📣 Ads Intelligence", "discount": "🏷️ Price & Discount"}
 
@@ -860,6 +862,7 @@ def render_sections(sec, s, focus, excluded_here=(), info_rows=(), show_owner=Tr
 
 
 def main():
+    global MODE
     log.info(f"brief.py – mode={MODE}")
     month, label, d = load_latest()
     s = d["summary"]
@@ -877,6 +880,10 @@ def main():
     flagged_keys = {c["key"] for lst in cands.values() for c in lst}
 
     state = load_state(month)
+    if MODE == "send" and state.get("last_sent") == TODAY.isoformat() and os.environ.get("BRIEF_FORCE") != "yes":
+        log.warning("  Real briefs were already sent today; switching to dry run (no emails). "
+                    "To send again on purpose, run the workflow manually with brief_mode = send.")
+        MODE = "dry"
     os.makedirs(bc.OUTPUT_DIR, exist_ok=True)
     sub = f"Data as of {as_of} · {label} · {TODAY.strftime('%a %d %b %Y')}"
     shown = {}  # key -> item shown as a task today (for memory)
@@ -1002,6 +1009,7 @@ def main():
                         "first_raised": first, "last_actioned": TODAY.isoformat(), "status_today": c["status"],
                         "times_raised": (prev.get("times_raised", 1) + (prev["last_actioned"] != TODAY.isoformat())) if prev else 1,
                         "metric_at_raise": prev["metric_at_raise"] if prev else c["metric"], "metric_last": c["metric"]}
+        state["last_sent"] = TODAY.isoformat()
         os.makedirs(os.path.dirname(bc.STATE_FILE), exist_ok=True)
         with open(bc.STATE_FILE, "w") as f:
             json.dump(state, f, indent=1, ensure_ascii=False)
