@@ -1,8 +1,8 @@
 {
  "wbr": "2026-11-02",
  "manager": "kush",
- "sent_at": "2026-10-27T14:13:22.829259+05:30",
- "message_id": "<179309061058.2370.17345225296760710043@nathabit.in>",
+ "sent_at": "2026-10-27T14:28:52.912926+05:30",
+ "message_id": "<179309154142.2373.12379672134352651755@nathabit.in>",
  "subject": "WBR prep · Mon 2 Nov 4 pm · Kush [WBR-20261102-kush]",
  "query_window": [
   "2026-10-20",
@@ -27,7 +27,11 @@
     "discount": "16.1%",
     "guideline": "15.1%",
     "discount_vs_guideline": "+1.0 pp",
-    "sku_drivers": "Ubtan Tikta Face Wash (−₹1.4 L); Masoor Dal Tikta Face Wash (−₹9,942)"
+    "sku_drivers": "Ubtan Tikta Face Wash (−₹1.4 L); Masoor Dal Tikta Face Wash (−₹9,942)",
+    "ad_plan_for_the_days": "₹13,478",
+    "spend_vs_ad_plan": "134%",
+    "ad_spend_as_pct_of_sales": "6.5%",
+    "platform_ad_spend_as_pct_of_sales": "7.9%"
    },
    "text": "Face Wash on Nykaa did ₹2.8 L against a ₹4.3 L target (65.1%, gap −₹1.5 L), +18.4% vs the previous week. What is driving the gap?"
   },
@@ -49,35 +53,17 @@
     "discount": "20.1%",
     "guideline": "20.8%",
     "discount_vs_guideline": "−0.7 pp",
-    "sku_drivers": "Hibiscus Amla Winter Hair Oil - 100 ml (−₹25,541); Hibiscus Amla Summer Hair Oil - 200 ml (−₹23,726)"
+    "sku_drivers": "Hibiscus Amla Winter Hair Oil - 100 ml (−₹25,541); Hibiscus Amla Summer Hair Oil - 200 ml (−₹23,726)",
+    "ad_plan_for_the_days": "₹19,648",
+    "spend_vs_ad_plan": "195%",
+    "ad_spend_as_pct_of_sales": "14.2%",
+    "platform_ad_spend_as_pct_of_sales": "7.9%"
    },
    "text": "Dasabuti Hair Oil on Nykaa did ₹2.7 L against a ₹3.7 L target (72.2%, gap −₹1.0 L), +7.7% vs the previous week. What is driving the gap?"
   },
   {
    "id": "Q3",
-   "kind": "revenue",
-   "category": "Nutrimask",
-   "platform": "Nykaa",
-   "facts": {
-    "week": "20 Oct – 26 Oct",
-    "week_revenue": "₹67,776",
-    "week_target": "₹1.2 L",
-    "attainment": "58.7%",
-    "gap": "−₹47,726",
-    "vs_previous_week": "+48.7%",
-    "ad_spend": "₹3,828",
-    "roas": "1.91",
-    "roas_previous_week": "0.70",
-    "discount": "22.5%",
-    "guideline": "16.9%",
-    "discount_vs_guideline": "+5.6 pp",
-    "sku_drivers": "Five Oil Hibiscus NutriMask - Pack of 3 (−₹19,660); Crushed Tri-Leaf NutriMask - Pack of 3 (−₹16,732)"
-   },
-   "text": "Nutrimask on Nykaa did ₹67,776 against a ₹1.2 L target (58.7%, gap −₹47,726), +48.7% vs the previous week. What is driving the gap?"
-  },
-  {
-   "id": "Q4",
-   "kind": "ads",
+   "kind": "spend",
    "category": "Comb",
    "platform": "Nykaa",
    "facts": {
@@ -93,12 +79,71 @@
     "discount": "18.5%",
     "guideline": "15.8%",
     "discount_vs_guideline": "+2.6 pp",
-    "sku_drivers": "Neem Comb - Dual Tooth (−₹22,631); Neem Comb - Wide Tooth (−₹8,968)"
+    "sku_drivers": "Neem Comb - Dual Tooth (−₹22,631); Neem Comb - Wide Tooth (−₹8,968)",
+    "ad_plan_for_the_days": "₹20,249",
+    "spend_vs_ad_plan": "151%",
+    "ad_spend_as_pct_of_sales": "18.8%",
+    "platform_ad_spend_as_pct_of_sales": "7.9%",
+    "why_flagged": "over ad plan, high spend for the sales, ROAS falling"
    },
-   "text": "Ads for Comb on Nykaa: ROAS fell to 1.25 from 1.76 the previous week on ₹30,652 spend. What changed, and is the spend still justified?"
+   "text": "Comb on Nykaa is at 81.2% of target on ₹30,652 of ad spend (151% of the ad plan; ads at 18.8% of sales vs 7.9% for Nykaa overall; ROAS 1.25 vs 1.76 the week before). Is this spend earning its keep, or can some of it be pulled back?"
+  },
+  {
+   "id": "Q4",
+   "kind": "spend",
+   "category": "Henna",
+   "platform": "Nykaa",
+   "facts": {
+    "week": "20 Oct – 26 Oct",
+    "week_revenue": "₹3.5 L",
+    "week_target": "₹3.6 L",
+    "attainment": "96.9%",
+    "gap": "−₹11,101",
+    "vs_previous_week": "+13.0%",
+    "ad_spend": "₹26,410",
+    "roas": "3.25",
+    "roas_previous_week": "3.17",
+    "discount": "16.1%",
+    "guideline": "15.4%",
+    "discount_vs_guideline": "+0.7 pp",
+    "sku_drivers": "Henna Paste - Pack of 2 (−₹64,219); Henna Touch-Up Paste  - Pack of 2 (₹2,477)",
+    "ad_plan_for_the_days": "₹13,681",
+    "spend_vs_ad_plan": "193%",
+    "ad_spend_as_pct_of_sales": "7.6%",
+    "platform_ad_spend_as_pct_of_sales": "7.9%",
+    "why_flagged": "over ad plan"
+   },
+   "text": "Henna on Nykaa is at 96.9% of target on ₹26,410 of ad spend (193% of the ad plan; ads at 7.6% of sales vs 7.9% for Nykaa overall; ROAS 3.25 vs 3.17 the week before). Is this spend earning its keep, or can some of it be pulled back?"
   },
   {
    "id": "Q5",
+   "kind": "spend",
+   "category": "Facial Oil",
+   "platform": "Nykaa",
+   "facts": {
+    "week": "20 Oct – 26 Oct",
+    "week_revenue": "₹1.6 L",
+    "week_target": "₹1.6 L",
+    "attainment": "99.5%",
+    "gap": "−₹805",
+    "vs_previous_week": "+18.4%",
+    "ad_spend": "₹25,108",
+    "roas": "1.74",
+    "roas_previous_week": "1.78",
+    "discount": "16.6%",
+    "guideline": "15.3%",
+    "discount_vs_guideline": "+1.3 pp",
+    "sku_drivers": "Patchouli Manjistha Mukhalaya 30 ml (−₹9,253); Turmeric Rosehip Mukhalaya 30 ml (−₹8,471)",
+    "ad_plan_for_the_days": "₹18,552",
+    "spend_vs_ad_plan": "135%",
+    "ad_spend_as_pct_of_sales": "15.7%",
+    "platform_ad_spend_as_pct_of_sales": "7.9%",
+    "why_flagged": "over ad plan, high spend for the sales"
+   },
+   "text": "Facial Oil on Nykaa is at 99.5% of target on ₹25,108 of ad spend (135% of the ad plan; ads at 15.7% of sales vs 7.9% for Nykaa overall; ROAS 1.74 vs 1.78 the week before). Is this spend earning its keep, or can some of it be pulled back?"
+  },
+  {
+   "id": "Q6",
    "kind": "discount",
    "category": "Skin Malai",
    "platform": "Nykaa",
@@ -115,13 +160,17 @@
     "discount": "22.4%",
     "guideline": "15.7%",
     "discount_vs_guideline": "+6.6 pp",
-    "sku_drivers": "Multi-Nut Skin Malai - 200ml - Single Pack (−₹3,929); Fig Rose Skin Malai - 120 ml - Pack of 2 (−₹261)"
+    "sku_drivers": "Multi-Nut Skin Malai - 200ml - Single Pack (−₹3,929); Fig Rose Skin Malai - 120 ml - Pack of 2 (−₹261)",
+    "ad_plan_for_the_days": "₹5,714",
+    "spend_vs_ad_plan": "103%",
+    "ad_spend_as_pct_of_sales": "4.9%",
+    "platform_ad_spend_as_pct_of_sales": "7.9%"
    },
    "text": "Skin Malai on Nykaa ran a 22.4% discount against a 15.7% guideline (+6.6 pp). Why, and what is it buying us in volume?"
   }
  ],
  "own_ids": [
-  "<179309061058.2370.17345225296760710043@nathabit.in>"
+  "<179309154142.2373.12379672134352651755@nathabit.in>"
  ],
  "snapshot_accounts": [
   {
