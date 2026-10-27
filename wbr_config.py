@@ -34,12 +34,20 @@ SATURDAYS_OFF = []                # e.g. ["2026-11-21"] if the 3rd Saturday is d
 QUERY_DAYS_BEFORE = 4             # Thu for Monday WBRs, Fri for Tuesday WBRs
 REPLY_DEADLINE = "6 pm"           # on the working day before the WBR
 
-# Questions
+# Questions — revenue first if the gap is material; spare slots go to the biggest rupee problems
 MAX_QUESTIONS = 6
-REVENUE_QUESTIONS = 3             # biggest weekly gaps (category × platform)
+REVENUE_QUESTIONS = 3             # at most this many revenue questions
+REVENUE_MIN_GAP = 50_000          # a revenue question needs at least ₹50k behind the weekly target…
+REVENUE_MAX_ATTAINMENT = 95       # …and attainment below 95%
 MIN_WEEK_TARGET = 25_000          # ignore category × platform rows with a smaller weekly target
-MIN_WEEK_AD_SPEND = 25_000        # ads question only above this weekly spend
-ROAS_DROP_FOR_QUESTION = 20       # % drop in ROAS week-on-week
+
+SPEND_QUESTIONS = 3               # at most this many spend questions (at least 1 whenever one qualifies)
+MIN_WEEK_AD_SPEND = 25_000        # spend questions only above this weekly ad spend
+SPEND_OVER_PLAN_PCT = 120         # flag: spend above 120% of the ad plan for the days covered
+SPEND_SHARE_MULTIPLE = 1.5        # flag: ad spend as % of sales above 1.5× the platform's own average
+ROAS_DROP_FOR_QUESTION = 20       # flag: ROAS down 20%+ vs the previous week
+
+DISCOUNT_QUESTIONS = 2
 DISCOUNT_PP_FOR_QUESTION = 5      # pp above guideline for the week
 
 # Business snapshot table (managers fill it in and reply): Target and Estimated achievement for the month
