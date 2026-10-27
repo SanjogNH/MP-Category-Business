@@ -1,0 +1,121 @@
+{
+ "wbr": "2026-11-02",
+ "manager": "mayank",
+ "sent_at": "2026-10-27T14:13:22.829259+05:30",
+ "message_id": "<179309061330.2370.9602263254913831728@nathabit.in>",
+ "subject": "WBR prep · Mon 2 Nov 5 pm · Mayank [WBR-20261102-mayank]",
+ "query_window": [
+  "2026-10-20",
+  "2026-10-26"
+ ],
+ "questions": [
+  {
+   "id": "Q1",
+   "kind": "revenue",
+   "category": "Dasabuti Hair Oil",
+   "platform": "Instamart",
+   "facts": {
+    "week": "20 Oct – 26 Oct",
+    "week_revenue": "₹1.4 L",
+    "week_target": "₹1.9 L",
+    "attainment": "70.2%",
+    "gap": "−₹57,388",
+    "vs_previous_week": "+15.4%",
+    "ad_spend": "₹82,475",
+    "roas": "1.55",
+    "roas_previous_week": "1.37",
+    "discount": "22.5%",
+    "guideline": "6.8%",
+    "discount_vs_guideline": "+15.7 pp",
+    "sku_drivers": "Hibiscus Amla Summer Hair Oil - 100 ml - QC (−₹29,047); Crushed Tri-Leaf Summer Hair Oil 100 ml - QC (−₹25,908)"
+   },
+   "text": "Dasabuti Hair Oil on Instamart did ₹1.4 L against a ₹1.9 L target (70.2%, gap −₹57,388), +15.4% vs the previous week. What is driving the gap?"
+  },
+  {
+   "id": "Q2",
+   "kind": "revenue",
+   "category": "Face Wash",
+   "platform": "Instamart",
+   "facts": {
+    "week": "20 Oct – 26 Oct",
+    "week_revenue": "₹1.4 L",
+    "week_target": "₹1.8 L",
+    "attainment": "77.7%",
+    "gap": "−₹40,444",
+    "vs_previous_week": "−16.8%",
+    "ad_spend": "₹94,009",
+    "roas": "1.61",
+    "roas_previous_week": "1.09",
+    "discount": "8.5%",
+    "guideline": "3.5%",
+    "discount_vs_guideline": "+5.0 pp",
+    "sku_drivers": "Brightening Ubtan Face Wash - QC (−₹26,404); Kali Mitti Face Wash - 100g - QC (−₹10,900)"
+   },
+   "text": "Face Wash on Instamart did ₹1.4 L against a ₹1.8 L target (77.7%, gap −₹40,444), −16.8% vs the previous week. What is driving the gap?"
+  },
+  {
+   "id": "Q3",
+   "kind": "revenue",
+   "category": "Henna",
+   "platform": "Instamart",
+   "facts": {
+    "week": "20 Oct – 26 Oct",
+    "week_revenue": "₹5.0 L",
+    "week_target": "₹5.4 L",
+    "attainment": "93.3%",
+    "gap": "−₹36,077",
+    "vs_previous_week": "+5.9%",
+    "ad_spend": "₹22,976",
+    "roas": "3.17",
+    "roas_previous_week": "3.20",
+    "discount": "5.4%",
+    "guideline": "3.5%",
+    "discount_vs_guideline": "+1.9 pp",
+    "sku_drivers": "Henna Paste - Pack of 2 - QC (−₹36,077)"
+   },
+   "text": "Henna on Instamart did ₹5.0 L against a ₹5.4 L target (93.3%, gap −₹36,077), +5.9% vs the previous week. What is driving the gap?"
+  },
+  {
+   "id": "Q4",
+   "kind": "discount",
+   "category": "Soap",
+   "platform": "Instamart",
+   "facts": {
+    "week": "20 Oct – 26 Oct",
+    "week_revenue": "₹2.5 L",
+    "week_target": "₹2.7 L",
+    "attainment": "94.3%",
+    "gap": "−₹15,414",
+    "vs_previous_week": "+1.0%",
+    "ad_spend": "₹1.4 L",
+    "roas": "1.54",
+    "roas_previous_week": "1.34",
+    "discount": "16.1%",
+    "guideline": "4.7%",
+    "discount_vs_guideline": "+11.4 pp",
+    "sku_drivers": "Lavender 75g - Pack of 3 - QC (−₹23,291); Healing Turmeric & Oats - QC (−₹6,509)"
+   },
+   "text": "Soap on Instamart ran a 16.1% discount against a 4.7% guideline (+11.4 pp). Why, and what is it buying us in volume?"
+  }
+ ],
+ "own_ids": [
+  "<179309061330.2370.9602263254913831728@nathabit.in>"
+ ],
+ "snapshot_accounts": [
+  {
+   "name": "Instamart",
+   "plats": [
+    "Instamart"
+   ],
+   "metrics": [
+    "Primary",
+    "Secondary",
+    "Discounting %",
+    "Spend",
+    "Availability"
+   ]
+  }
+ ],
+ "reminder_sent": false,
+ "pack_sent": false
+}

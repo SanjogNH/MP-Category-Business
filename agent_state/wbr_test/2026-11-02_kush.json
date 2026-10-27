@@ -1,0 +1,143 @@
+{
+ "wbr": "2026-11-02",
+ "manager": "kush",
+ "sent_at": "2026-10-27T14:13:22.829259+05:30",
+ "message_id": "<179309061058.2370.17345225296760710043@nathabit.in>",
+ "subject": "WBR prep · Mon 2 Nov 4 pm · Kush [WBR-20261102-kush]",
+ "query_window": [
+  "2026-10-20",
+  "2026-10-26"
+ ],
+ "questions": [
+  {
+   "id": "Q1",
+   "kind": "revenue",
+   "category": "Face Wash",
+   "platform": "Nykaa",
+   "facts": {
+    "week": "20 Oct – 26 Oct",
+    "week_revenue": "₹2.8 L",
+    "week_target": "₹4.3 L",
+    "attainment": "65.1%",
+    "gap": "−₹1.5 L",
+    "vs_previous_week": "+18.4%",
+    "ad_spend": "₹18,030",
+    "roas": "1.81",
+    "roas_previous_week": "2.40",
+    "discount": "16.1%",
+    "guideline": "15.1%",
+    "discount_vs_guideline": "+1.0 pp",
+    "sku_drivers": "Ubtan Tikta Face Wash (−₹1.4 L); Masoor Dal Tikta Face Wash (−₹9,942)"
+   },
+   "text": "Face Wash on Nykaa did ₹2.8 L against a ₹4.3 L target (65.1%, gap −₹1.5 L), +18.4% vs the previous week. What is driving the gap?"
+  },
+  {
+   "id": "Q2",
+   "kind": "revenue",
+   "category": "Dasabuti Hair Oil",
+   "platform": "Nykaa",
+   "facts": {
+    "week": "20 Oct – 26 Oct",
+    "week_revenue": "₹2.7 L",
+    "week_target": "₹3.7 L",
+    "attainment": "72.2%",
+    "gap": "−₹1.0 L",
+    "vs_previous_week": "+7.7%",
+    "ad_spend": "₹38,222",
+    "roas": "1.28",
+    "roas_previous_week": "2.18",
+    "discount": "20.1%",
+    "guideline": "20.8%",
+    "discount_vs_guideline": "−0.7 pp",
+    "sku_drivers": "Hibiscus Amla Winter Hair Oil - 100 ml (−₹25,541); Hibiscus Amla Summer Hair Oil - 200 ml (−₹23,726)"
+   },
+   "text": "Dasabuti Hair Oil on Nykaa did ₹2.7 L against a ₹3.7 L target (72.2%, gap −₹1.0 L), +7.7% vs the previous week. What is driving the gap?"
+  },
+  {
+   "id": "Q3",
+   "kind": "revenue",
+   "category": "Nutrimask",
+   "platform": "Nykaa",
+   "facts": {
+    "week": "20 Oct – 26 Oct",
+    "week_revenue": "₹67,776",
+    "week_target": "₹1.2 L",
+    "attainment": "58.7%",
+    "gap": "−₹47,726",
+    "vs_previous_week": "+48.7%",
+    "ad_spend": "₹3,828",
+    "roas": "1.91",
+    "roas_previous_week": "0.70",
+    "discount": "22.5%",
+    "guideline": "16.9%",
+    "discount_vs_guideline": "+5.6 pp",
+    "sku_drivers": "Five Oil Hibiscus NutriMask - Pack of 3 (−₹19,660); Crushed Tri-Leaf NutriMask - Pack of 3 (−₹16,732)"
+   },
+   "text": "Nutrimask on Nykaa did ₹67,776 against a ₹1.2 L target (58.7%, gap −₹47,726), +48.7% vs the previous week. What is driving the gap?"
+  },
+  {
+   "id": "Q4",
+   "kind": "ads",
+   "category": "Comb",
+   "platform": "Nykaa",
+   "facts": {
+    "week": "20 Oct – 26 Oct",
+    "week_revenue": "₹1.6 L",
+    "week_target": "₹2.0 L",
+    "attainment": "81.2%",
+    "gap": "−₹37,719",
+    "vs_previous_week": "+14.0%",
+    "ad_spend": "₹30,652",
+    "roas": "1.25",
+    "roas_previous_week": "1.76",
+    "discount": "18.5%",
+    "guideline": "15.8%",
+    "discount_vs_guideline": "+2.6 pp",
+    "sku_drivers": "Neem Comb - Dual Tooth (−₹22,631); Neem Comb - Wide Tooth (−₹8,968)"
+   },
+   "text": "Ads for Comb on Nykaa: ROAS fell to 1.25 from 1.76 the previous week on ₹30,652 spend. What changed, and is the spend still justified?"
+  },
+  {
+   "id": "Q5",
+   "kind": "discount",
+   "category": "Skin Malai",
+   "platform": "Nykaa",
+   "facts": {
+    "week": "20 Oct – 26 Oct",
+    "week_revenue": "₹1.2 L",
+    "week_target": "₹94,826",
+    "attainment": "127.3%",
+    "gap": "₹25,850",
+    "vs_previous_week": "+71.6%",
+    "ad_spend": "₹5,876",
+    "roas": "1.92",
+    "roas_previous_week": "2.11",
+    "discount": "22.4%",
+    "guideline": "15.7%",
+    "discount_vs_guideline": "+6.6 pp",
+    "sku_drivers": "Multi-Nut Skin Malai - 200ml - Single Pack (−₹3,929); Fig Rose Skin Malai - 120 ml - Pack of 2 (−₹261)"
+   },
+   "text": "Skin Malai on Nykaa ran a 22.4% discount against a 15.7% guideline (+6.6 pp). Why, and what is it buying us in volume?"
+  }
+ ],
+ "own_ids": [
+  "<179309061058.2370.17345225296760710043@nathabit.in>"
+ ],
+ "snapshot_accounts": [
+  {
+   "name": "Nykaa",
+   "plats": [
+    "Nykaa"
+   ],
+   "metrics": [
+    "Primary",
+    "Secondary",
+    "Discounting %",
+    "Spend",
+    "SLA"
+   ]
+  }
+ ],
+ "reminder_sent": false,
+ "pack_sent": false
+}
