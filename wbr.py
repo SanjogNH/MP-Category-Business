@@ -42,7 +42,7 @@ STAGE = os.environ.get("WBR_STAGE", "").strip().lower()
 MODE = os.environ.get("WBR_MODE", "dry").strip().lower()
 if MODE not in ("dry", "test", "send"):
     MODE = "dry"
-FORCE = os.environ.get("WBR_FORCE") == "yes"
+FORCE = os.environ.get("WBR_FORCE") == "yes" or MODE == "test"  # test runs only go to you, so never block them
 ONLY = os.environ.get("WBR_MANAGER", "").strip().lower()
 DAYS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
 STATE_DIR = wc.STATE_DIR + ("_test" if MODE == "test" else "")
@@ -524,7 +524,7 @@ def run_queries(wbr_target, managers, hist, guide, names, brief_state, ad_plan):
         if not wbr_target and (wbr - TODAY).days != wc.QUERY_DAYS_BEFORE:
             continue
         if load_state(wbr, m["key"]) and not FORCE:
-            log.info(f"  {m['name']}: questions already sent for {wbr}; skipping")
+            log.info(f"  {m['name']}: questions already sent for {wbr}; skipping (tick 'resend' to send again)")
             continue
         # most recent 7 days available, per platform
         latest = max((hist.latest_till(p, TODAY.strftime("%Y-%m")) or 0) for p in m["plats"]) or TODAY.day - 1
@@ -814,7 +814,7 @@ def run_pack(wbr, managers, hist, guide, names, s, d, ad_plan):
         return
     lock = f"{STATE_DIR}/{wbr.isoformat()}_pack.lock"
     if os.path.exists(lock) and not FORCE:
-        log.info("  WBR pack already sent today; skipping")
+        log.info("  WBR pack already sent today; skipping (tick 'resend' to send again)")
         return
     todays.sort(key=lambda m: m["time"])
     rp = review_period(wbr)
