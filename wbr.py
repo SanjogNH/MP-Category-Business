@@ -198,9 +198,25 @@ def wow(cur, prev):
     return round((cur["rate"] / prev["rate"] - 1) * 100, 1) + 0.0
 
 
-def facts_for(cat, p, wk, pw):
+def week_ad_plan(ad_plan, wk, cat, p):
+    """Monthly ad budget for a category × platform, prorated to the days this week actually covers."""
+    a, b = wk.since.get(p), wk.till.get(p)
+    if not a or not b:
+        return 0
+    import calendar
+    days_in_month = calendar.monthrange(b.year, b.month)[1]
+    return (ad_plan.get((cat, p)) or 0) * ((b - a).days + 1) / days_in_month
+
+
+def spend_share(v):
+    return v["spend"] / v["rev"] * 100 if v and v.get("rev") else None
+
+
+def facts_for(cat, p, wk, pw, ad_plan=None):
     """Human-readable facts for one category × platform (also used to judge answers)."""
     m, mp = Week.metrics(wk.cp.get((cat, p))), Week.metrics(pw.cp.get((cat, p)))
+    plan_w = week_ad_plan(ad_plan or {}, wk, cat, p)
+    share, pshare = spend_share(wk.cp.get((cat, p))), spend_share(wk.plat.get(p))
     skus = sorted([(k, v) for k, v in wk.sku.items() if k[0] == p and v["cat"] == cat and v["plan"]],
                   key=lambda kv: kv[1]["rev"] - kv[1]["plan"])[:2]
     f = {
@@ -214,6 +230,10 @@ def facts_for(cat, p, wk, pw):
         "discount": pct(m.get("disc")), "guideline": pct(m.get("guide")),
         "discount_vs_guideline": "–" if m.get("disc_vs_guide") is None else f"{round(m['disc_vs_guide'], 1) + 0.0:+.1f} pp".replace("-", "−").replace("+0.0", "0.0"),
         "sku_drivers": "; ".join(f"{v['name']} ({inr(v['rev'] - v['plan'])})" for _, v in skus) or "–",
+        "ad_plan_for_the_days": inr(plan_w) if plan_w else "no ad plan",
+        "spend_vs_ad_plan": pct(m["spend"] / plan_w * 100, 0) if plan_w and m.get("spend") else "–",
+        "ad_spend_as_pct_of_sales": pct(share),
+        "platform_ad_spend_as_pct_of_sales": pct(pshare),
     }
     return f, m, mp
 
@@ -242,7 +262,7 @@ def claude(system, payload, max_tokens=3000):
 
 QUERY_PROMPT = """You draft pre-WBR questions that the Head of Marketplaces at Nat Habit (an Indian personal-care brand) sends to a growth manager.
 
-For each item you get the data facts. Write one question per item: 1–2 sentences, quoting the 2–3 most telling figures exactly as given, ending with a clear ask. Tone: direct, respectful, curious, never accusatory. Don't ask for reason/action/date in every question; the email already asks for that.
+For each item you get the data facts and its kind: "revenue" (behind target), "spend" (ad spend over plan, out of line with the platform's norm, or losing efficiency — often while revenue is on target; why_flagged says which), "discount" (above guideline), "persistent". Write one question per item: 1–2 sentences, quoting the 2–3 most telling figures exactly as given, ending with a clear ask. Tone: direct, respectful, curious, never accusatory. Don't ask for reason/action/date in every question; the email already asks for that.
 
 Reply with ONLY JSON: {"questions": {"<id>": "..."}}. No markdown fences."""
 
@@ -258,7 +278,7 @@ For each question:
   Not aligned = the explanation contradicts the data (e.g. says discount was reduced but discount vs guideline rose), or the action does not address the cause.
 - "why": one sentence citing the specific figures that support the verdict.
 - "ask": one sharp question for the head to ask in the WBR.
-Levers by cause: units gap → stock, buy-box, listing visibility, ad coverage; discount above guideline with weak volume → pricing/coupons/deals; ROAS drop → targeting, bids, creative, wasted spend; plans far above run-rate → re-planning.
+Levers by cause: units gap → stock, buy-box, listing visibility, ad coverage; spend over plan or high for the sales → cut wasted keywords/campaigns, lower bids, shift budget to better-ROAS categories (hitting revenue does not by itself justify overspend); discount above guideline with weak volume → pricing/coupons/deals; ROAS drop → targeting, bids, creative, wasted spend; plans far above run-rate → re-planning.
 You also get the manager's business snapshot for the month (Target and Estimated achievement for Primary, Secondary, Discounting %, Spend, SLA/Availability) next to the dashboard's plan and run-rate, with flags. Weigh it: an estimate well above run-rate with no action to close the gap is optimistic; targets that differ from the dashboard plan need explaining.
 Also give "summary" (one sentence on how this manager's week went, how convincing the answers were, and whether the month estimate is credible) and "press" (the 2 most important points to press on, each max 15 words).
 Use only the figures given, exactly as written. Actions take a few days to show; don't penalise a sound action just because results haven't moved yet.
@@ -410,64 +430,95 @@ def tag_for(wbr, key):
 # ══════════════════════════════════════════════
 #  Stage 1: queries
 # ══════════════════════════════════════════════
-def pick_questions(m, wk, pw, brief_state):
+def pick_questions(m, wk, pw, brief_state, ad_plan):
+    """Revenue questions only where the gap is material; spare slots go to the biggest rupee problems
+    in spend and discounting, so a manager who is on target but overspending still gets asked."""
     plats = m["plats"]
-    cands = []
+    # 1. material revenue gaps
+    rev = []
     for (cat, p), v in wk.cp.items():
         if p not in plats or v["plan"] < wc.MIN_WEEK_TARGET:
             continue
         mm = Week.metrics(v)
-        if mm["gap"] is not None and mm["gap"] < 0:
-            cands.append(("revenue", cat, p, mm["gap"]))
-    cands.sort(key=lambda c: c[3])
-    chosen = cands[: wc.REVENUE_QUESTIONS]
+        if mm["gap"] is not None and mm["gap"] <= -wc.REVENUE_MIN_GAP and mm["att"] < wc.REVENUE_MAX_ATTAINMENT:
+            rev.append(("revenue", cat, p, -mm["gap"]))
+    rev.sort(key=lambda c: -c[3])
+    chosen = rev[: wc.REVENUE_QUESTIONS]
     used = {(c[1], c[2]) for c in chosen}
-    # ads: biggest week-on-week ROAS drop with meaningful spend
-    ads = []
+
+    # 2. spend: over plan, out of line with the platform, or losing efficiency → rupees of excess spend
+    spend = []
     for (cat, p), v in wk.cp.items():
         if p not in plats or (cat, p) in used or v["spend"] < wc.MIN_WEEK_AD_SPEND:
             continue
+        excess, why = 0, []
+        plan_w = week_ad_plan(ad_plan, wk, cat, p)
+        if plan_w and v["spend"] > plan_w * wc.SPEND_OVER_PLAN_PCT / 100:
+            excess = max(excess, v["spend"] - plan_w)
+            why.append("over ad plan")
+        pv = wk.plat.get(p)
+        if pv and pv["rev"] and v["rev"]:
+            norm = pv["spend"] / pv["rev"]
+            if norm and v["spend"] / v["rev"] > norm * wc.SPEND_SHARE_MULTIPLE:
+                excess = max(excess, v["spend"] - v["rev"] * norm)
+                why.append("high spend for the sales")
         mm, mp = Week.metrics(v), Week.metrics(pw.cp.get((cat, p)))
         if mm.get("roas") and mp.get("roas") and (mp["roas"] - mm["roas"]) / mp["roas"] * 100 >= wc.ROAS_DROP_FOR_QUESTION:
-            ads.append(("ads", cat, p, -v["spend"] * (mp["roas"] - mm["roas"])))
-    ads.sort(key=lambda c: c[3])
-    chosen += ads[:1]
-    used |= {(c[1], c[2]) for c in ads[:1]}
-    # discount: most rupees given beyond guideline this week
+            excess = max(excess, v["spend"] * (1 - mm["roas"] / mp["roas"]))
+            why.append("ROAS falling")
+        if excess > 0:
+            spend.append(("spend", cat, p, excess, why))
+
+    # 3. discounting beyond guideline → rupees given away
     disc = []
     for (cat, p), v in wk.cp.items():
         if p not in plats or (cat, p) in used:
             continue
         mm = Week.metrics(v)
         if mm.get("disc_vs_guide") is not None and mm["disc_vs_guide"] >= wc.DISCOUNT_PP_FOR_QUESTION:
-            disc.append(("discount", cat, p, -v["mrp"] * mm["disc_vs_guide"] / 100))
-    disc.sort(key=lambda c: c[3])
-    chosen += disc[:1]
-    used |= {(c[1], c[2]) for c in disc[:1]}
-    # persistent: daily-brief items raised 2+ times without improving
-    for k, v in (brief_state.get("items") or {}).items():
+            disc.append(("discount", cat, p, v["mrp"] * mm["disc_vs_guide"] / 100, []))
+
+    # 4. fill the spare slots by rupees at stake (at least one spend question if any qualifies)
+    spend.sort(key=lambda c: -c[3])
+    disc.sort(key=lambda c: -c[3])
+    caps = {"spend": wc.SPEND_QUESTIONS, "discount": wc.DISCOUNT_QUESTIONS}
+    taken = {"spend": 0, "discount": 0}
+    pool = sorted(spend + disc, key=lambda c: -c[3])
+    if spend and len(chosen) < wc.MAX_QUESTIONS:
+        chosen.append(spend[0]); used.add((spend[0][1], spend[0][2])); taken["spend"] = 1
+    for c in pool:
         if len(chosen) >= wc.MAX_QUESTIONS:
             break
-        if v.get("platform") in plats and v.get("times_raised", 1) >= 2:
-            chosen.append(("persistent", v["tab"], v["platform"], v["name"]))
-            break
-    return chosen[: wc.MAX_QUESTIONS]
+        if (c[1], c[2]) in used or taken[c[0]] >= caps[c[0]]:
+            continue
+        chosen.append(c); used.add((c[1], c[2])); taken[c[0]] += 1
+
+    # 5. something the daily brief keeps flagging without improvement
+    if len(chosen) < wc.MAX_QUESTIONS:
+        for k, v in (brief_state.get("items") or {}).items():
+            if v.get("platform") in plats and v.get("times_raised", 1) >= 2:
+                chosen.append(("persistent", v["tab"], v["platform"], v["name"]))
+                break
+    order = {"revenue": 0, "spend": 1, "discount": 2, "persistent": 3}
+    return sorted(chosen, key=lambda c: order[c[0]])
 
 
 def fallback_question(kind, f, cat, p):
     if kind == "revenue":
         return (f"{cat} on {p} did {f['week_revenue']} against a {f['week_target']} target ({f['attainment']}, gap {f['gap']}), "
                 f"{f['vs_previous_week']} vs the previous week. What is driving the gap?")
-    if kind == "ads":
-        return (f"Ads for {cat} on {p}: ROAS fell to {f['roas']} from {f['roas_previous_week']} the previous week on "
-                f"{f['ad_spend']} spend. What changed, and is the spend still justified?")
+    if kind in ("spend", "ads"):
+        return (f"{cat} on {p} is at {f['attainment']} of target on {f['ad_spend']} of ad spend "
+                f"({f['spend_vs_ad_plan']} of the ad plan; ads at {f['ad_spend_as_pct_of_sales']} of sales vs "
+                f"{f['platform_ad_spend_as_pct_of_sales']} for {p} overall; ROAS {f['roas']} vs {f['roas_previous_week']} "
+                f"the week before). Is this spend earning its keep, or can some of it be pulled back?")
     if kind == "discount":
         return (f"{cat} on {p} ran a {f['discount']} discount against a {f['guideline']} guideline "
                 f"({f['discount_vs_guideline']}). Why, and what is it buying us in volume?")
     return f"{cat} on {p} has been flagged repeatedly in the daily brief without improving. What is blocking it?"
 
 
-def run_queries(wbr_target, managers, hist, guide, names, brief_state):
+def run_queries(wbr_target, managers, hist, guide, names, brief_state, ad_plan):
     for m in managers:
         wbr = wbr_target or next_wbr(m, TODAY + dt.timedelta(days=wc.QUERY_DAYS_BEFORE))
         if not wbr_target and (wbr - TODAY).days != wc.QUERY_DAYS_BEFORE:
@@ -481,17 +532,20 @@ def run_queries(wbr_target, managers, hist, guide, names, brief_state):
         start = end - dt.timedelta(days=6)
         wk = Week(hist, m["plats"], start, end, guide, names)
         pw = Week(hist, m["plats"], start - dt.timedelta(days=7), end - dt.timedelta(days=7), guide, names)
-        picks = pick_questions(m, wk, pw, brief_state)
+        picks = pick_questions(m, wk, pw, brief_state, ad_plan)
         if not picks:
             log.info(f"  {m['name']}: nothing material to ask; skipping")
             continue
         qs = []
-        for i, (kind, cat, p, _) in enumerate(picks, 1):
+        for i, pick in enumerate(picks, 1):
+            kind, cat, p, _ = pick[:4]
             if kind == "persistent":
                 qs.append({"id": f"Q{i}", "kind": kind, "category": cat, "platform": p,
                            "facts": {"item": _, "note": "raised 2+ times in the daily brief without improving"}})
                 continue
-            f, _, _ = facts_for(cat, p, wk, pw)
+            f, _, _ = facts_for(cat, p, wk, pw, ad_plan)
+            if kind == "spend":
+                f["why_flagged"] = ", ".join(pick[4])
             qs.append({"id": f"Q{i}", "kind": kind, "category": cat, "platform": p, "facts": f})
         out = claude(QUERY_PROMPT, {"manager": m["name"], "items": qs}) or {}
         for q in qs:
@@ -753,7 +807,7 @@ def vbadge(v):
     return f'<span style="{VERDICT_STYLE.get(v, VERDICT_STYLE["Not evaluated"])};padding:1px 7px;border-radius:10px;font-size:11px;font-weight:bold">{e(v)}</span>'
 
 
-def run_pack(wbr, managers, hist, guide, names, s, d):
+def run_pack(wbr, managers, hist, guide, names, s, d, ad_plan):
     todays = [m for m in managers if DAYS.index(m["day"]) == wbr.weekday()]
     if not todays:
         log.info(f"  No WBRs on {wbr}")
@@ -777,7 +831,7 @@ def run_pack(wbr, managers, hist, guide, names, s, d):
                                 set(st.get("own_ids") or [st.get("message_id")])) if st else []
         for q in qs:  # same metrics for the official review period
             if q["kind"] != "persistent":
-                q["review_period_facts"] = facts_for(q["category"], q["platform"], wk, pw)[0]
+                q["review_period_facts"] = facts_for(q["category"], q["platform"], wk, pw, ad_plan)[0]
         accounts = st.get("snapshot_accounts") or [{"name": a["name"], "plats": a["plats"], "metrics": metric_labels(a)}
                                                    for a in m["accounts"]]
         snap_rows = snapshot_rows(m, read_snapshot(replies, accounts), d, wbr.strftime("%Y-%m")) if replies else []
@@ -934,6 +988,10 @@ def main():
     guide = {(r["Platform"], r["SKU"]): r["Guideline_Discount_Pct"] for r in d["discount_sku"]
              if r.get("Has_Guideline") and r.get("Guideline_Discount_Pct") is not None}
     names = {(r["Platform"], r["SKU"]): r.get("Short Name") or r["SKU"] for r in d["sku_detail"]}
+    ad_plan = {}
+    for r in d["ads_sku_detail"]:  # monthly ad budget per category × platform
+        k = (r["Category"], r["Platform"])
+        ad_plan[k] = ad_plan.get(k, 0) + (r.get("Ad_Spend_TGT") or 0)
     override = os.environ.get("WBR_DATE", "").strip()
     wbr_for = os.environ.get("WBR_FOR", "").strip().lower()
     wbr_target = dt.date.fromisoformat(override) if override else None
@@ -950,11 +1008,11 @@ def main():
     except Exception:
         brief_state = {}
     if STAGE == "queries":
-        run_queries(wbr_target, managers, hist, guide, names, brief_state)
+        run_queries(wbr_target, managers, hist, guide, names, brief_state, ad_plan)
     elif STAGE == "reminder":
         run_reminders(wbr_target, managers)
     else:
-        run_pack(wbr_target or TODAY, managers, hist, guide, names, d["summary"], d)
+        run_pack(wbr_target or TODAY, managers, hist, guide, names, d["summary"], d, ad_plan)
     log.info("✅ Done")
 
 
