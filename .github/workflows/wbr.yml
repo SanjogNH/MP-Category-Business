@@ -1,0 +1,125 @@
+name: WBR Agent
+
+on:
+  # Backup only: GitHub's own scheduler is often late, so the primary trigger is cron-job.org (exact times,
+  # via workflow_dispatch below). These fire 45 min after the primary; the once-per-WBR lock skips them if the
+  # primary already sent, and the cut-offs stop anything going out too late.
+  schedule:
+    - cron: '15 6 * * 4,5'    # Thu & Fri 11:45 AM IST – questions
+    - cron: '15 11 * * 5'     # Fri 4:45 PM IST – reminder (Monday WBRs)
+    - cron: '15 6 * * 1'      # Mon 11:45 AM IST – reminder (Tuesday WBRs)
+    - cron: '15 5 * * 1,2'    # Mon & Tue 10:45 AM IST – WBR pack
+  # Primary (cron-job.org at exact times) and manual runs: Actions → WBR Agent → Run workflow
+  workflow_dispatch:
+    inputs:
+      stage:
+        description: "What to run"
+        type: choice
+        options: ["queries", "reminder", "pack", "backfill"]
+        default: "queries"
+      wbr_for:
+        description: "Which WBRs (the agent works out the date and review period)"
+        type: choice
+        options: ["Monday WBRs", "Tuesday WBRs"]
+        default: "Monday WBRs"
+      mode:
+        description: "send = real emails · test = everything to you only · off = nothing sent"
+        type: choice
+        options: ["send", "test", "off"]
+        default: "send"
+      resend:
+        description: "Tick only to send again something that already went out this week"
+        type: boolean
+        default: false
+      manager:
+        description: "Optional: only this manager (harsh, garima, kush, mayank, anika, ketan)"
+        required: false
+        default: ""
+      wbr_date:
+        description: "Optional, for testing: a specific WBR date (YYYY-MM-DD) instead of the next one"
+        required: false
+        default: ""
+
+permissions:
+  contents: write
+
+concurrency:
+  group: wbr
+  cancel-in-progress: false
+
+jobs:
+  wbr:
+    runs-on: ubuntu-latest
+    steps:
+      # Full history (without file contents until needed) so past dashboard versions can be read for snapshots
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          filter: blob:none
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Write Google credentials
+        run: echo '${{ secrets.GOOGLE_CREDENTIALS }}' > credentials.json
+
+      # Fresh numbers straight from the sheet (the dashboard itself is not rebuilt here)
+      - name: Fetch data
+        run: python fetch_data.py
+
+      - name: Calculate metrics
+        run: python calculate.py
+
+      # Fills in any missing daily snapshots from the repo's past dashboard versions (skips days already saved)
+      - name: Backfill snapshots
+        continue-on-error: true
+        run: python snapshots.py backfill 45
+
+      - name: Run WBR stage
+        if: github.event_name == 'schedule' || inputs.stage != 'backfill'
+        env:
+          WBR_STAGE: >-
+            ${{ github.event.schedule == '15 6 * * 4,5' && 'queries'
+             || github.event.schedule == '15 11 * * 5' && 'reminder'
+             || github.event.schedule == '15 6 * * 1' && 'reminder'
+             || github.event.schedule == '15 5 * * 1,2' && 'pack'
+             || inputs.stage }}
+          # A "Re-run" of an earlier run never sends; start a fresh run instead.
+          WBR_MODE: ${{ github.run_attempt != '1' && 'off' || github.event_name == 'schedule' && 'send' || inputs.mode }}
+          WBR_FORCE: ${{ github.event_name == 'workflow_dispatch' && inputs.resend && 'yes' || 'no' }}
+          # Backup runs that start too late don't send: pack by 12:00, questions/reminders by 20:00 (IST)
+          WBR_NOT_AFTER: >-
+            ${{ github.event.schedule == '15 5 * * 1,2' && '12:00'
+             || github.event_name == 'schedule' && '20:00' || '' }}
+          WBR_FOR: ${{ inputs.wbr_for }}
+          WBR_DATE: ${{ inputs.wbr_date }}
+          WBR_MANAGER: ${{ inputs.manager }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GMAIL_USER: ${{ secrets.GMAIL_USER }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+          TEST_RECIPIENT: ${{ secrets.TEST_RECIPIENT }}
+        run: python wbr.py
+
+      - name: Save previews
+        if: always() && hashFiles('wbr_output/*.html') != ''
+        uses: actions/upload-artifact@v4
+        with:
+          name: wbr-previews
+          path: wbr_output/
+          retention-days: 14
+
+      # Keep what was asked, reminders and packs (and any backfilled snapshots) in the repo
+      - name: Commit agent state
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          if [ -d agent_state ]; then git add agent_state; fi
+          git diff --staged --quiet && exit 0
+          git commit -m "WBR agent — $(TZ='Asia/Kolkata' date +'%d %b %Y %H:%M IST')"
+          for i in 1 2 3; do git pull --rebase && git push && break; sleep 5; done
