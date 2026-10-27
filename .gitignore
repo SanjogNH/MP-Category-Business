@@ -20,3 +20,4 @@ Thumbs.db
 
 # Morning brief email previews (uploaded as a workflow artifact instead)
 brief_output/
+wbr_output/
