@@ -474,7 +474,7 @@ def fmt_row(r):
         "roas": f2(r["roas"]), "roas_lm": f2(r["roas_lm"]), "troas": f2(r["troas"]),
         "cpc_chg": spct(r["cpc_chg"]), "ad_contrib": pct(r["ad_contrib"], 0),
         "spend_vs_tgt": pct(r["spend_vs_tgt"], 0),
-        "disc_vs_guideline": "–" if r["disc_vs_guideline"] is None else f"{r['disc_vs_guideline']:+.1f} pp".replace("-", "−"),
+        "disc_vs_guideline": "–" if r["disc_vs_guideline"] is None else f"{round(r['disc_vs_guideline'], 1) + 0.0:+.1f} pp".replace("-", "−").replace("+0.0", "0.0"),
     }
 
 
@@ -880,6 +880,10 @@ def main():
     flagged_keys = {c["key"] for lst in cands.values() for c in lst}
 
     state = load_state(month)
+    cutoff = os.environ.get("BRIEF_NOT_AFTER", "").strip()
+    if MODE == "send" and cutoff and dt.datetime.now(IST).strftime("%H:%M") > cutoff:
+        log.warning(f"  Started after the {cutoff} cut-off for the backup run; no emails sent.")
+        MODE = "dry"
     if MODE == "send" and state.get("last_sent") == TODAY.isoformat() and os.environ.get("BRIEF_FORCE") != "yes":
         log.warning("  Real briefs were already sent today; switching to dry run (no emails). "
                     "To send again on purpose, run the workflow manually with brief_mode = send.")
