@@ -2,7 +2,7 @@ name: Refresh Dashboard
 
 on:
   schedule:
-    - cron: '30 5 * * *'    # 11:00 AM IST (UTC+5:30)
+    - cron: '30 5 * * *'    # 11:00 AM IST (UTC+5:30) – dashboard refresh; morning brief backup (primary: cron-job.org)
     - cron: '30 6 * * *'    # 12:00 PM IST
     - cron: '30 7 * * *'    # 01:00 PM IST
   workflow_dispatch:          # Manual trigger from GitHub UI anytime
@@ -12,6 +12,10 @@ on:
         type: choice
         options: ["off", "test", "send"]
         default: "off"
+      resend:
+        description: "Tick only to send the brief again on a day it already went out"
+        type: boolean
+        default: false
 
 # Permissions the jobs need:
 #   contents: write  -> to commit the refreshed HTML back to the repo
@@ -60,6 +64,11 @@ jobs:
       - name: Calculate metrics
         run: python calculate.py
 
+      # 6b. Save today's snapshot of month-to-date numbers (used by the WBR agent for weekly figures)
+      - name: Save snapshot
+        continue-on-error: true
+        run: python snapshots.py save
+
       # 7. Build dashboard HTML
       - name: Build dashboard
         run: python build_dashboard.py
@@ -73,7 +82,9 @@ jobs:
         continue-on-error: true
         env:
           BRIEF_MODE: ${{ github.event_name == 'schedule' && 'send' || inputs.brief_mode }}
-          BRIEF_FORCE: ${{ github.event_name == 'workflow_dispatch' && inputs.brief_mode == 'send' && 'yes' || 'no' }}
+          BRIEF_FORCE: ${{ github.event_name == 'workflow_dispatch' && inputs.resend && 'yes' || 'no' }}
+          # The 11 AM schedule is only a backup for cron-job.org; if GitHub starts it after 2 PM, no brief is sent.
+          BRIEF_NOT_AFTER: ${{ github.event_name == 'schedule' && '14:00' || '' }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           GMAIL_USER: ${{ secrets.GMAIL_USER }}
           GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
@@ -97,8 +108,9 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add nh_category_intel.html
           if [ -d agent_state ]; then git add agent_state; fi
-          git diff --staged --quiet || git commit -m "Refresh dashboard — $(TZ='Asia/Kolkata' date +'%d %b %Y %H:%M IST')"
-          git push
+          git diff --staged --quiet && exit 0
+          git commit -m "Refresh dashboard — $(TZ='Asia/Kolkata' date +'%d %b %Y %H:%M IST')"
+          for i in 1 2 3; do git pull --rebase && git push && break; sleep 5; done
 
       # 9. Assemble a clean publish folder with ONLY the public HTML.
       #    This deliberately excludes credentials.json, the .py source and
