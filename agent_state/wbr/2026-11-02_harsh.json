@@ -1,0 +1,187 @@
+{
+ "wbr": "2026-11-02",
+ "manager": "harsh",
+ "sent_at": "2026-10-29T11:01:15.386894+05:30",
+ "message_id": "<179325187888.2461.2667970748763649794@nathabit.in>",
+ "subject": "WBR prep · Mon 2 Nov 12:30 pm · Harsh [WBR-20261102-harsh]",
+ "query_window": [
+  "2026-10-22",
+  "2026-10-28"
+ ],
+ "questions": [
+  {
+   "id": "Q1",
+   "kind": "revenue",
+   "category": "Baby Pure Oils",
+   "platform": "First Cry",
+   "facts": {
+    "week": "22 Oct – 28 Oct",
+    "week_revenue": "₹1,998",
+    "week_target": "₹1.0 L",
+    "attainment": "1.9%",
+    "gap": "−₹1.0 L",
+    "vs_previous_week": "−71.4%",
+    "ad_spend": "₹16,528",
+    "roas": "1.08",
+    "roas_previous_week": "0.96",
+    "discount": "20.0%",
+    "guideline": "20.0%",
+    "discount_vs_guideline": "0.0 pp",
+    "sku_drivers": "Pure Virgin Coconut Baby Oil - 200 ml (−₹47,432); Pure Almond Baby Oil - 100 ml (−₹23,008)",
+    "ad_plan_for_the_days": "no ad plan",
+    "spend_vs_ad_plan": "–",
+    "ad_spend_as_pct_of_sales": "827.2%",
+    "platform_ad_spend_as_pct_of_sales": "18.5%"
+   },
+   "text": "Baby Pure Oils on First Cry did ₹1,998 against a ₹1.0 L target (1.9%, gap −₹1.0 L), −71.4% vs the previous week. What is driving the gap?"
+  },
+  {
+   "id": "Q2",
+   "kind": "revenue",
+   "category": "Shampoo",
+   "platform": "First Cry",
+   "facts": {
+    "week": "22 Oct – 28 Oct",
+    "week_revenue": "₹82,476",
+    "week_target": "₹1.8 L",
+    "attainment": "45.0%",
+    "gap": "−₹1.0 L",
+    "vs_previous_week": "+59.3%",
+    "ad_spend": "₹11,626",
+    "roas": "6.71",
+    "roas_previous_week": "5.50",
+    "discount": "15.6%",
+    "guideline": "16.1%",
+    "discount_vs_guideline": "−0.5 pp",
+    "sku_drivers": "Trileaf Rosemary Shampoo - 250g (−₹36,516); Neem Beracyl Dandruff Shampoo - 250g (−₹31,238)",
+    "ad_plan_for_the_days": "no ad plan",
+    "spend_vs_ad_plan": "–",
+    "ad_spend_as_pct_of_sales": "14.1%",
+    "platform_ad_spend_as_pct_of_sales": "18.5%"
+   },
+   "text": "Shampoo on First Cry did ₹82,476 against a ₹1.8 L target (45.0%, gap −₹1.0 L), +59.3% vs the previous week. What is driving the gap?"
+  },
+  {
+   "id": "Q3",
+   "kind": "revenue",
+   "category": "Baby Scalp Oil",
+   "platform": "First Cry",
+   "facts": {
+    "week": "22 Oct – 28 Oct",
+    "week_revenue": "₹42,342",
+    "week_target": "₹1.3 L",
+    "attainment": "32.2%",
+    "gap": "−₹89,080",
+    "vs_previous_week": "+39.3%",
+    "ad_spend": "₹23,932",
+    "roas": "1.57",
+    "roas_previous_week": "0.82",
+    "discount": "16.8%",
+    "guideline": "15.2%",
+    "discount_vs_guideline": "+1.6 pp",
+    "sku_drivers": "Brahmi Summer Baby Scalp Oil - 110 ml (−₹55,602); Brahmi Winter Baby Scalp Oil - 110 ml (−₹33,478)",
+    "ad_plan_for_the_days": "no ad plan",
+    "spend_vs_ad_plan": "–",
+    "ad_spend_as_pct_of_sales": "56.5%",
+    "platform_ad_spend_as_pct_of_sales": "18.5%"
+   },
+   "text": "Baby Scalp Oil on First Cry did ₹42,342 against a ₹1.3 L target (32.2%, gap −₹89,080), +39.3% vs the previous week. What is driving the gap?"
+  },
+  {
+   "id": "Q4",
+   "kind": "discount",
+   "category": "Netraa",
+   "platform": "Cred",
+   "facts": {
+    "week": "22 Oct – 28 Oct",
+    "week_revenue": "₹84,592",
+    "week_target": "₹0",
+    "attainment": "–",
+    "gap": "–",
+    "vs_previous_week": "+2499.6%",
+    "ad_spend": "no ads",
+    "roas": "–",
+    "roas_previous_week": "–",
+    "discount": "74.3%",
+    "guideline": "15.2%",
+    "discount_vs_guideline": "+59.1 pp",
+    "sku_drivers": "–",
+    "ad_plan_for_the_days": "no ad plan",
+    "spend_vs_ad_plan": "–",
+    "ad_spend_as_pct_of_sales": "0.0%",
+    "platform_ad_spend_as_pct_of_sales": "0.0%"
+   },
+   "text": "Netraa on Cred ran a 74.3% discount against a 15.2% guideline (+59.1 pp). Why, and what is it buying us in volume?"
+  },
+  {
+   "id": "Q5",
+   "kind": "discount",
+   "category": "Henna Combo",
+   "platform": "Cred",
+   "facts": {
+    "week": "22 Oct – 28 Oct",
+    "week_revenue": "₹54,450",
+    "week_target": "₹0",
+    "attainment": "–",
+    "gap": "–",
+    "vs_previous_week": "+158.3%",
+    "ad_spend": "no ads",
+    "roas": "–",
+    "roas_previous_week": "–",
+    "discount": "70.7%",
+    "guideline": "17.7%",
+    "discount_vs_guideline": "+53.0 pp",
+    "sku_drivers": "–",
+    "ad_plan_for_the_days": "no ad plan",
+    "spend_vs_ad_plan": "–",
+    "ad_spend_as_pct_of_sales": "0.0%",
+    "platform_ad_spend_as_pct_of_sales": "0.0%"
+   },
+   "text": "Henna Combo on Cred ran a 70.7% discount against a 17.7% guideline (+53.0 pp). Why, and what is it buying us in volume?"
+  },
+  {
+   "id": "Q6",
+   "kind": "persistent",
+   "category": "ads",
+   "platform": "First Cry",
+   "facts": {
+    "item": "Pure Gulab Jal - Single Pack",
+    "note": "raised 2+ times in the daily brief without improving"
+   },
+   "text": "Pure Gulab Jal - Single Pack on First Cry has been flagged repeatedly in the daily brief without improving. What is blocking it?"
+  }
+ ],
+ "own_ids": [
+  "<179325187888.2461.2667970748763649794@nathabit.in>"
+ ],
+ "snapshot_accounts": [
+  {
+   "name": "First Cry",
+   "plats": [
+    "First Cry"
+   ],
+   "metrics": [
+    "Primary",
+    "Secondary",
+    "Discounting %",
+    "Spend",
+    "SLA"
+   ]
+  },
+  {
+   "name": "Cred",
+   "plats": [
+    "Cred"
+   ],
+   "metrics": [
+    "Primary",
+    "Secondary",
+    "Discounting %",
+    "Spend",
+    "SLA"
+   ]
+  }
+ ],
+ "reminder_sent": false,
+ "pack_sent": false
+}

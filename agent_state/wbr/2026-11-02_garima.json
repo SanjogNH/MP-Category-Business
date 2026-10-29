@@ -1,0 +1,217 @@
+{
+ "wbr": "2026-11-02",
+ "manager": "garima",
+ "sent_at": "2026-10-29T11:01:15.386894+05:30",
+ "message_id": "<179325188079.2461.6293887211481546388@nathabit.in>",
+ "subject": "WBR prep · Mon 2 Nov 3 pm · Garima [WBR-20261102-garima]",
+ "query_window": [
+  "2026-10-22",
+  "2026-10-28"
+ ],
+ "questions": [
+  {
+   "id": "Q1",
+   "kind": "revenue",
+   "category": "Face Wash",
+   "platform": "Blinkit",
+   "facts": {
+    "week": "22 Oct – 27 Oct",
+    "week_revenue": "₹8.4 L",
+    "week_target": "₹10.4 L",
+    "attainment": "81.4%",
+    "gap": "−₹1.9 L",
+    "vs_previous_week": "−3.3%",
+    "ad_spend": "₹87,186",
+    "roas": "7.42",
+    "roas_previous_week": "11.03",
+    "discount": "4.8%",
+    "guideline": "2.1%",
+    "discount_vs_guideline": "+2.7 pp",
+    "sku_drivers": "Brightening Ubtan Face Wash - QC (−₹2.4 L); Bitter Neem Gel Face Wash - QC (₹50,826)",
+    "ad_plan_for_the_days": "₹59,001",
+    "spend_vs_ad_plan": "148%",
+    "ad_spend_as_pct_of_sales": "10.3%",
+    "platform_ad_spend_as_pct_of_sales": "6.6%"
+   },
+   "text": "Face Wash on Blinkit did ₹8.4 L against a ₹10.4 L target (81.4%, gap −₹1.9 L), −3.3% vs the previous week. What is driving the gap?"
+  },
+  {
+   "id": "Q2",
+   "kind": "revenue",
+   "category": "Loofah",
+   "platform": "Blinkit",
+   "facts": {
+    "week": "22 Oct – 27 Oct",
+    "week_revenue": "₹3.0 L",
+    "week_target": "₹4.0 L",
+    "attainment": "74.4%",
+    "gap": "−₹1.0 L",
+    "vs_previous_week": "−7.9%",
+    "ad_spend": "₹44,458",
+    "roas": "4.73",
+    "roas_previous_week": "5.88",
+    "discount": "5.3%",
+    "guideline": "4.9%",
+    "discount_vs_guideline": "+0.4 pp",
+    "sku_drivers": "Sun Dried Loofah - Pack of 2 - QC (−₹1.0 L)",
+    "ad_plan_for_the_days": "₹28,658",
+    "spend_vs_ad_plan": "155%",
+    "ad_spend_as_pct_of_sales": "15.0%",
+    "platform_ad_spend_as_pct_of_sales": "6.6%"
+   },
+   "text": "Loofah on Blinkit did ₹3.0 L against a ₹4.0 L target (74.4%, gap −₹1.0 L), −7.9% vs the previous week. What is driving the gap?"
+  },
+  {
+   "id": "Q3",
+   "kind": "revenue",
+   "category": "Face Wash",
+   "platform": "Zepto",
+   "facts": {
+    "week": "22 Oct – 28 Oct",
+    "week_revenue": "₹1.9 L",
+    "week_target": "₹2.5 L",
+    "attainment": "75.6%",
+    "gap": "−₹60,098",
+    "vs_previous_week": "+3.9%",
+    "ad_spend": "₹28,921",
+    "roas": "2.10",
+    "roas_previous_week": "2.66",
+    "discount": "3.3%",
+    "guideline": "2.2%",
+    "discount_vs_guideline": "+1.0 pp",
+    "sku_drivers": "Brightening Ubtan Face Wash - QC (−₹64,765); Bitter Neem Gel Face Wash - QC (₹4,667)",
+    "ad_plan_for_the_days": "₹63,226",
+    "spend_vs_ad_plan": "46%",
+    "ad_spend_as_pct_of_sales": "15.5%",
+    "platform_ad_spend_as_pct_of_sales": "29.3%"
+   },
+   "text": "Face Wash on Zepto did ₹1.9 L against a ₹2.5 L target (75.6%, gap −₹60,098), +3.9% vs the previous week. What is driving the gap?"
+  },
+  {
+   "id": "Q4",
+   "kind": "spend",
+   "category": "Soap",
+   "platform": "Zepto",
+   "facts": {
+    "week": "22 Oct – 28 Oct",
+    "week_revenue": "₹1.5 L",
+    "week_target": "₹1.5 L",
+    "attainment": "100.5%",
+    "gap": "₹693",
+    "vs_previous_week": "−0.1%",
+    "ad_spend": "₹1.4 L",
+    "roas": "1.16",
+    "roas_previous_week": "1.21",
+    "discount": "4.5%",
+    "guideline": "10.9%",
+    "discount_vs_guideline": "−6.4 pp",
+    "sku_drivers": "Tomato Basil Soap 125g Pack of 2 - QC (−₹40,633); Himalayan Lavender Soap 125g - QC (₹11,146)",
+    "ad_plan_for_the_days": "₹1.5 L",
+    "spend_vs_ad_plan": "99%",
+    "ad_spend_as_pct_of_sales": "95.6%",
+    "platform_ad_spend_as_pct_of_sales": "29.3%",
+    "why_flagged": "high spend for the sales"
+   },
+   "text": "Soap on Zepto is at 100.5% of target on ₹1.4 L of ad spend (99% of the ad plan; ads at 95.6% of sales vs 29.3% for Zepto overall; ROAS 1.16 vs 1.21 the week before). Is this spend earning its keep, or can some of it be pulled back?"
+  },
+  {
+   "id": "Q5",
+   "kind": "spend",
+   "category": "Lepa",
+   "platform": "Zepto",
+   "facts": {
+    "week": "22 Oct – 28 Oct",
+    "week_revenue": "₹59,062",
+    "week_target": "₹91,285",
+    "attainment": "64.7%",
+    "gap": "−₹32,223",
+    "vs_previous_week": "−4.7%",
+    "ad_spend": "₹83,869",
+    "roas": "1.31",
+    "roas_previous_week": "1.13",
+    "discount": "2.4%",
+    "guideline": "3.4%",
+    "discount_vs_guideline": "−1.0 pp",
+    "sku_drivers": "Tamarind Kasturi - QC (−₹18,074); Chandan Nagakesar - QC (−₹14,149)",
+    "ad_plan_for_the_days": "₹61,186",
+    "spend_vs_ad_plan": "137%",
+    "ad_spend_as_pct_of_sales": "142.0%",
+    "platform_ad_spend_as_pct_of_sales": "29.3%",
+    "why_flagged": "over ad plan, high spend for the sales"
+   },
+   "text": "Lepa on Zepto is at 64.7% of target on ₹83,869 of ad spend (137% of the ad plan; ads at 142.0% of sales vs 29.3% for Zepto overall; ROAS 1.31 vs 1.13 the week before). Is this spend earning its keep, or can some of it be pulled back?"
+  },
+  {
+   "id": "Q6",
+   "kind": "discount",
+   "category": "Indigo Powder",
+   "platform": "Blinkit",
+   "facts": {
+    "week": "22 Oct – 27 Oct",
+    "week_revenue": "₹5.3 L",
+    "week_target": "₹5.3 L",
+    "attainment": "100.6%",
+    "gap": "₹3,161",
+    "vs_previous_week": "+13.4%",
+    "ad_spend": "₹14,442",
+    "roas": "10.22",
+    "roas_previous_week": "9.71",
+    "discount": "12.4%",
+    "guideline": "2.3%",
+    "discount_vs_guideline": "+10.1 pp",
+    "sku_drivers": "HUFA Pigment Indigo Powder - 85g - QC (₹3,161)",
+    "ad_plan_for_the_days": "₹16,857",
+    "spend_vs_ad_plan": "86%",
+    "ad_spend_as_pct_of_sales": "2.7%",
+    "platform_ad_spend_as_pct_of_sales": "6.6%"
+   },
+   "text": "Indigo Powder on Blinkit ran a 12.4% discount against a 2.3% guideline (+10.1 pp). Why, and what is it buying us in volume?"
+  }
+ ],
+ "own_ids": [
+  "<179325188079.2461.6293887211481546388@nathabit.in>"
+ ],
+ "snapshot_accounts": [
+  {
+   "name": "Blinkit",
+   "plats": [
+    "Blinkit"
+   ],
+   "metrics": [
+    "Primary",
+    "Secondary",
+    "Discounting %",
+    "Spend",
+    "Availability"
+   ]
+  },
+  {
+   "name": "Zepto",
+   "plats": [
+    "Zepto"
+   ],
+   "metrics": [
+    "Primary",
+    "Secondary",
+    "Discounting %",
+    "Spend",
+    "Availability"
+   ]
+  },
+  {
+   "name": "Big Basket",
+   "plats": [
+    "Big Basket"
+   ],
+   "metrics": [
+    "Primary",
+    "Secondary",
+    "Discounting %",
+    "Spend",
+    "Availability"
+   ]
+  }
+ ],
+ "reminder_sent": false,
+ "pack_sent": false
+}

@@ -1,0 +1,164 @@
+{
+ "wbr": "2026-11-02",
+ "manager": "kush",
+ "sent_at": "2026-10-29T11:01:15.386894+05:30",
+ "message_id": "<179325188299.2461.3929800796639840653@nathabit.in>",
+ "subject": "WBR prep · Mon 2 Nov 4 pm · Kush [WBR-20261102-kush]",
+ "query_window": [
+  "2026-10-22",
+  "2026-10-28"
+ ],
+ "questions": [
+  {
+   "id": "Q1",
+   "kind": "revenue",
+   "category": "Face Wash",
+   "platform": "Nykaa",
+   "facts": {
+    "week": "22 Oct – 28 Oct",
+    "week_revenue": "₹3.2 L",
+    "week_target": "₹4.3 L",
+    "attainment": "74.9%",
+    "gap": "−₹1.1 L",
+    "vs_previous_week": "+46.4%",
+    "ad_spend": "₹18,259",
+    "roas": "1.91",
+    "roas_previous_week": "2.15",
+    "discount": "16.0%",
+    "guideline": "15.1%",
+    "discount_vs_guideline": "+0.9 pp",
+    "sku_drivers": "Ubtan Tikta Face Wash (−₹97,158); Masoor Dal Tikta Face Wash (−₹9,351)",
+    "ad_plan_for_the_days": "₹14,515",
+    "spend_vs_ad_plan": "126%",
+    "ad_spend_as_pct_of_sales": "5.7%",
+    "platform_ad_spend_as_pct_of_sales": "6.7%"
+   },
+   "text": "Face Wash on Nykaa did ₹3.2 L against a ₹4.3 L target (74.9%, gap −₹1.1 L), +46.4% vs the previous week. What is driving the gap?"
+  },
+  {
+   "id": "Q2",
+   "kind": "revenue",
+   "category": "Dasabuti Hair Oil",
+   "platform": "Nykaa",
+   "facts": {
+    "week": "22 Oct – 28 Oct",
+    "week_revenue": "₹2.8 L",
+    "week_target": "₹3.7 L",
+    "attainment": "75.9%",
+    "gap": "−₹89,999",
+    "vs_previous_week": "+12.7%",
+    "ad_spend": "₹34,032",
+    "roas": "1.27",
+    "roas_previous_week": "2.10",
+    "discount": "19.7%",
+    "guideline": "20.8%",
+    "discount_vs_guideline": "−1.0 pp",
+    "sku_drivers": "Hibiscus Amla Winter Hair Oil - 100 ml (−₹22,894); Hibiscus Amla Summer Hair Oil - 200 ml (−₹21,155)",
+    "ad_plan_for_the_days": "₹21,160",
+    "spend_vs_ad_plan": "161%",
+    "ad_spend_as_pct_of_sales": "12.0%",
+    "platform_ad_spend_as_pct_of_sales": "6.7%"
+   },
+   "text": "Dasabuti Hair Oil on Nykaa did ₹2.8 L against a ₹3.7 L target (75.9%, gap −₹89,999), +12.7% vs the previous week. What is driving the gap?"
+  },
+  {
+   "id": "Q3",
+   "kind": "spend",
+   "category": "Comb",
+   "platform": "Nykaa",
+   "facts": {
+    "week": "22 Oct – 28 Oct",
+    "week_revenue": "₹1.8 L",
+    "week_target": "₹2.0 L",
+    "attainment": "89.7%",
+    "gap": "−₹20,747",
+    "vs_previous_week": "+35.9%",
+    "ad_spend": "₹27,214",
+    "roas": "1.26",
+    "roas_previous_week": "1.56",
+    "discount": "18.6%",
+    "guideline": "15.9%",
+    "discount_vs_guideline": "+2.7 pp",
+    "sku_drivers": "Neem Comb - Dual Tooth (−₹17,318); Neem Comb Combo Dual + Wide + Fine (−₹6,338)",
+    "ad_plan_for_the_days": "₹21,807",
+    "spend_vs_ad_plan": "125%",
+    "ad_spend_as_pct_of_sales": "15.1%",
+    "platform_ad_spend_as_pct_of_sales": "6.7%",
+    "why_flagged": "over ad plan, high spend for the sales"
+   },
+   "text": "Comb on Nykaa is at 89.7% of target on ₹27,214 of ad spend (125% of the ad plan; ads at 15.1% of sales vs 6.7% for Nykaa overall; ROAS 1.26 vs 1.56 the week before). Is this spend earning its keep, or can some of it be pulled back?"
+  },
+  {
+   "id": "Q4",
+   "kind": "discount",
+   "category": "Skin Malai",
+   "platform": "Nykaa",
+   "facts": {
+    "week": "22 Oct – 28 Oct",
+    "week_revenue": "₹1.5 L",
+    "week_target": "₹94,826",
+    "attainment": "159.2%",
+    "gap": "₹56,134",
+    "vs_previous_week": "+118.3%",
+    "ad_spend": "₹5,128",
+    "roas": "1.87",
+    "roas_previous_week": "2.08",
+    "discount": "22.5%",
+    "guideline": "15.7%",
+    "discount_vs_guideline": "+6.8 pp",
+    "sku_drivers": "Multi-Nut & Double Cocoa Skin Malai - 120 ml - Combo Pack (−₹750); Fig Rose Skin Malai - 120 ml - Pack of 2 (−₹261)",
+    "ad_plan_for_the_days": "₹6,153",
+    "spend_vs_ad_plan": "83%",
+    "ad_spend_as_pct_of_sales": "3.4%",
+    "platform_ad_spend_as_pct_of_sales": "6.7%"
+   },
+   "text": "Skin Malai on Nykaa ran a 22.5% discount against a 15.7% guideline (+6.8 pp). Why, and what is it buying us in volume?"
+  },
+  {
+   "id": "Q5",
+   "kind": "discount",
+   "category": "Indigo Powder",
+   "platform": "Nykaa",
+   "facts": {
+    "week": "22 Oct – 28 Oct",
+    "week_revenue": "₹77,290",
+    "week_target": "₹77,698",
+    "attainment": "99.5%",
+    "gap": "−₹408",
+    "vs_previous_week": "+32.8%",
+    "ad_spend": "₹4,092",
+    "roas": "1.35",
+    "roas_previous_week": "1.43",
+    "discount": "26.0%",
+    "guideline": "17.0%",
+    "discount_vs_guideline": "+9.0 pp",
+    "sku_drivers": "HUFA Pigment Indigo Powder - 170g (−₹15,363); HUFA Pigment Indigo Powder - 85g (₹4,463)",
+    "ad_plan_for_the_days": "₹4,398",
+    "spend_vs_ad_plan": "93%",
+    "ad_spend_as_pct_of_sales": "5.3%",
+    "platform_ad_spend_as_pct_of_sales": "6.7%"
+   },
+   "text": "Indigo Powder on Nykaa ran a 26.0% discount against a 17.0% guideline (+9.0 pp). Why, and what is it buying us in volume?"
+  }
+ ],
+ "own_ids": [
+  "<179325188299.2461.3929800796639840653@nathabit.in>"
+ ],
+ "snapshot_accounts": [
+  {
+   "name": "Nykaa",
+   "plats": [
+    "Nykaa"
+   ],
+   "metrics": [
+    "Primary",
+    "Secondary",
+    "Discounting %",
+    "Spend",
+    "SLA"
+   ]
+  }
+ ],
+ "reminder_sent": false,
+ "pack_sent": false
+}
