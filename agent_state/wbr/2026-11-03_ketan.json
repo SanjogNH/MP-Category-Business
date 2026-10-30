@@ -1,0 +1,190 @@
+{
+ "wbr": "2026-11-03",
+ "manager": "ketan",
+ "sent_at": "2026-10-30T11:01:01.670965+05:30",
+ "message_id": "<179333826695.2243.3478628217173524373@nathabit.in>",
+ "subject": "WBR prep · Tue 3 Nov 3 pm · Ketan [WBR-20261103-ketan]",
+ "query_window": [
+  "2026-10-22",
+  "2026-10-28"
+ ],
+ "questions": [
+  {
+   "id": "Q1",
+   "kind": "revenue",
+   "category": "Shampoo Combo",
+   "platform": "Amazon",
+   "facts": {
+    "week": "22 Oct – 28 Oct",
+    "week_revenue": "₹4.9 L",
+    "week_target": "₹8.3 L",
+    "attainment": "59.0%",
+    "gap": "−₹3.4 L",
+    "vs_previous_week": "0.0%",
+    "ad_spend": "₹1.3 L",
+    "roas": "3.76",
+    "roas_previous_week": "3.42",
+    "discount": "24.0%",
+    "guideline": "20.4%",
+    "discount_vs_guideline": "+3.6 pp",
+    "sku_drivers": "Five Oil Hibiscus Shampoo - 250g +  Five Oil Hibiscus Conditioner - 150g (−₹2.0 L); Trileaf Rosemary Shampoo - 250g + Trileaf Rosemary Conditioner - 150g (−₹77,556)",
+    "ad_plan_for_the_days": "₹1.8 L",
+    "spend_vs_ad_plan": "71%",
+    "ad_spend_as_pct_of_sales": "26.6%",
+    "platform_ad_spend_as_pct_of_sales": "17.5%"
+   },
+   "text": "Shampoo Combo on Amazon did ₹4.9 L against a ₹8.3 L target (59.0%, gap −₹3.4 L), 0.0% vs the previous week. What is driving the gap?"
+  },
+  {
+   "id": "Q2",
+   "kind": "revenue",
+   "category": "Shampoo",
+   "platform": "Amazon",
+   "facts": {
+    "week": "22 Oct – 28 Oct",
+    "week_revenue": "₹8.5 L",
+    "week_target": "₹11.2 L",
+    "attainment": "75.6%",
+    "gap": "−₹2.7 L",
+    "vs_previous_week": "−9.3%",
+    "ad_spend": "₹56,070",
+    "roas": "1.90",
+    "roas_previous_week": "2.30",
+    "discount": "28.7%",
+    "guideline": "19.6%",
+    "discount_vs_guideline": "+9.2 pp",
+    "sku_drivers": "Neem Beracyl Dandruff Shampoo - 250g (−₹1.8 L); Trileaf Rosemary Shampoo - 250g (−₹96,501)",
+    "ad_plan_for_the_days": "₹80,444",
+    "spend_vs_ad_plan": "70%",
+    "ad_spend_as_pct_of_sales": "6.6%",
+    "platform_ad_spend_as_pct_of_sales": "17.5%"
+   },
+   "text": "Shampoo on Amazon did ₹8.5 L against a ₹11.2 L target (75.6%, gap −₹2.7 L), −9.3% vs the previous week. What is driving the gap?"
+  },
+  {
+   "id": "Q3",
+   "kind": "revenue",
+   "category": "CP Hair Oil",
+   "platform": "Amazon",
+   "facts": {
+    "week": "22 Oct – 28 Oct",
+    "week_revenue": "₹3.9 L",
+    "week_target": "₹5.9 L",
+    "attainment": "66.6%",
+    "gap": "−₹2.0 L",
+    "vs_previous_week": "+13.2%",
+    "ad_spend": "₹1.8 L",
+    "roas": "1.34",
+    "roas_previous_week": "1.39",
+    "discount": "24.1%",
+    "guideline": "15.2%",
+    "discount_vs_guideline": "+8.9 pp",
+    "sku_drivers": "Castor Oil - 200 ml (−₹1.1 L); Neem Oil - 200 ml (−₹46,609)",
+    "ad_plan_for_the_days": "₹2.2 L",
+    "spend_vs_ad_plan": "84%",
+    "ad_spend_as_pct_of_sales": "46.4%",
+    "platform_ad_spend_as_pct_of_sales": "17.5%"
+   },
+   "text": "CP Hair Oil on Amazon did ₹3.9 L against a ₹5.9 L target (66.6%, gap −₹2.0 L), +13.2% vs the previous week. What is driving the gap?"
+  },
+  {
+   "id": "Q4",
+   "kind": "spend",
+   "category": "Nourishing Jal",
+   "platform": "Amazon",
+   "facts": {
+    "week": "22 Oct – 28 Oct",
+    "week_revenue": "₹89,145",
+    "week_target": "₹1.1 L",
+    "attainment": "84.8%",
+    "gap": "−₹15,969",
+    "vs_previous_week": "−0.4%",
+    "ad_spend": "₹96,506",
+    "roas": "0.79",
+    "roas_previous_week": "0.95",
+    "discount": "36.7%",
+    "guideline": "15.2%",
+    "discount_vs_guideline": "+21.5 pp",
+    "sku_drivers": "Hibiscus Jal - 200ml (−₹6,907); Methi Jal - 200ml (−₹6,456)",
+    "ad_plan_for_the_days": "₹65,801",
+    "spend_vs_ad_plan": "147%",
+    "ad_spend_as_pct_of_sales": "108.3%",
+    "platform_ad_spend_as_pct_of_sales": "17.5%",
+    "why_flagged": "over ad plan, high spend for the sales"
+   },
+   "text": "Nourishing Jal on Amazon is at 84.8% of target on ₹96,506 of ad spend (147% of the ad plan; ads at 108.3% of sales vs 17.5% for Amazon overall; ROAS 0.79 vs 0.95 the week before). Is this spend earning its keep, or can some of it be pulled back?"
+  },
+  {
+   "id": "Q5",
+   "kind": "discount",
+   "category": "Soap",
+   "platform": "Amazon",
+   "facts": {
+    "week": "22 Oct – 28 Oct",
+    "week_revenue": "₹6.0 L",
+    "week_target": "₹7.3 L",
+    "attainment": "82.8%",
+    "gap": "−₹1.3 L",
+    "vs_previous_week": "−0.2%",
+    "ad_spend": "₹56,058",
+    "roas": "3.84",
+    "roas_previous_week": "4.11",
+    "discount": "33.0%",
+    "guideline": "18.4%",
+    "discount_vs_guideline": "+14.6 pp",
+    "sku_drivers": "Lavender Soap 125g - Pack of 2 (−₹61,612); Tomato Basil Soap 125g - Pack of 2 (−₹36,729)",
+    "ad_plan_for_the_days": "₹59,356",
+    "spend_vs_ad_plan": "94%",
+    "ad_spend_as_pct_of_sales": "9.3%",
+    "platform_ad_spend_as_pct_of_sales": "17.5%"
+   },
+   "text": "Soap on Amazon ran a 33.0% discount against a 18.4% guideline (+14.6 pp). Why, and what is it buying us in volume?"
+  },
+  {
+   "id": "Q6",
+   "kind": "discount",
+   "category": "Henna",
+   "platform": "Amazon",
+   "facts": {
+    "week": "22 Oct – 28 Oct",
+    "week_revenue": "₹14.2 L",
+    "week_target": "₹15.7 L",
+    "attainment": "90.2%",
+    "gap": "−₹1.5 L",
+    "vs_previous_week": "+12.3%",
+    "ad_spend": "₹82,209",
+    "roas": "5.76",
+    "roas_previous_week": "5.37",
+    "discount": "21.6%",
+    "guideline": "16.1%",
+    "discount_vs_guideline": "+5.5 pp",
+    "sku_drivers": "Henna Paste - Pack of 2 (−₹1.3 L); Henna Paste - Pack of 4 (−₹43,588)",
+    "ad_plan_for_the_days": "₹87,577",
+    "spend_vs_ad_plan": "94%",
+    "ad_spend_as_pct_of_sales": "5.8%",
+    "platform_ad_spend_as_pct_of_sales": "17.5%"
+   },
+   "text": "Henna on Amazon ran a 21.6% discount against a 16.1% guideline (+5.5 pp). Why, and what is it buying us in volume?"
+  }
+ ],
+ "own_ids": [
+  "<179333826695.2243.3478628217173524373@nathabit.in>"
+ ],
+ "snapshot_accounts": [
+  {
+   "name": "Amazon",
+   "plats": [
+    "Amazon"
+   ],
+   "metrics": [
+    "Primary",
+    "Secondary",
+    "Discounting %",
+    "Spend",
+    "SLA"
+   ]
+  }
+ ],
+ "reminder_sent": false,
+ "pack_sent": false
+}
