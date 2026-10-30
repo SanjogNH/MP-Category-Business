@@ -152,6 +152,7 @@
   }
  ],
  "own_ids": [
+  "<179335625966.2228.4093223983920742851@nathabit.in>",
   "<179325187888.2461.2667970748763649794@nathabit.in>"
  ],
  "snapshot_accounts": [
@@ -182,6 +183,6 @@
    ]
   }
  ],
- "reminder_sent": false,
+ "reminder_sent": "2026-10-30T16:00:56.758326+05:30",
  "pack_sent": false
 }
