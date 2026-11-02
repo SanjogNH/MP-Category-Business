@@ -33,7 +33,30 @@
     "ad_spend_as_pct_of_sales": "827.2%",
     "platform_ad_spend_as_pct_of_sales": "18.5%"
    },
-   "text": "Baby Pure Oils on First Cry did ₹1,998 against a ₹1.0 L target (1.9%, gap −₹1.0 L), −71.4% vs the previous week. What is driving the gap?"
+   "text": "Baby Pure Oils on First Cry did ₹1,998 against a ₹1.0 L target (1.9%, gap −₹1.0 L), −71.4% vs the previous week. What is driving the gap?",
+   "review_period_facts": {
+    "week": "23 Oct – 30 Oct",
+    "week_revenue": "₹2,997",
+    "week_target": "₹1.2 L",
+    "attainment": "2.5%",
+    "gap": "−₹1.2 L",
+    "vs_previous_week": "−43.8%",
+    "ad_spend": "₹17,845",
+    "roas": "1.10",
+    "roas_previous_week": "1.06",
+    "discount": "20.0%",
+    "guideline": "20.0%",
+    "discount_vs_guideline": "0.0 pp",
+    "sku_drivers": "Pure Virgin Coconut Baby Oil - 200 ml (−₹54,208); Pure Almond Baby Oil - 100 ml (−₹26,294)",
+    "ad_plan_for_the_days": "no ad plan",
+    "spend_vs_ad_plan": "–",
+    "ad_spend_as_pct_of_sales": "595.4%",
+    "platform_ad_spend_as_pct_of_sales": "17.2%"
+   },
+   "verdict": "Not evaluated",
+   "answer": "",
+   "why": "",
+   "ask": ""
   },
   {
    "id": "Q2",
@@ -59,7 +82,30 @@
     "ad_spend_as_pct_of_sales": "14.1%",
     "platform_ad_spend_as_pct_of_sales": "18.5%"
    },
-   "text": "Shampoo on First Cry did ₹82,476 against a ₹1.8 L target (45.0%, gap −₹1.0 L), +59.3% vs the previous week. What is driving the gap?"
+   "text": "Shampoo on First Cry did ₹82,476 against a ₹1.8 L target (45.0%, gap −₹1.0 L), +59.3% vs the previous week. What is driving the gap?",
+   "review_period_facts": {
+    "week": "23 Oct – 30 Oct",
+    "week_revenue": "₹1.1 L",
+    "week_target": "₹2.1 L",
+    "attainment": "50.2%",
+    "gap": "−₹1.0 L",
+    "vs_previous_week": "+62.3%",
+    "ad_spend": "₹15,552",
+    "roas": "5.35",
+    "roas_previous_week": "9.35",
+    "discount": "15.7%",
+    "guideline": "16.2%",
+    "discount_vs_guideline": "−0.5 pp",
+    "sku_drivers": "Trileaf Rosemary Shampoo - 250g (−₹41,732); Neem Beracyl Dandruff Shampoo - 250g (−₹35,700)",
+    "ad_plan_for_the_days": "no ad plan",
+    "spend_vs_ad_plan": "–",
+    "ad_spend_as_pct_of_sales": "14.8%",
+    "platform_ad_spend_as_pct_of_sales": "17.2%"
+   },
+   "verdict": "Not evaluated",
+   "answer": "",
+   "why": "",
+   "ask": ""
   },
   {
    "id": "Q3",
@@ -85,7 +131,30 @@
     "ad_spend_as_pct_of_sales": "56.5%",
     "platform_ad_spend_as_pct_of_sales": "18.5%"
    },
-   "text": "Baby Scalp Oil on First Cry did ₹42,342 against a ₹1.3 L target (32.2%, gap −₹89,080), +39.3% vs the previous week. What is driving the gap?"
+   "text": "Baby Scalp Oil on First Cry did ₹42,342 against a ₹1.3 L target (32.2%, gap −₹89,080), +39.3% vs the previous week. What is driving the gap?",
+   "review_period_facts": {
+    "week": "23 Oct – 30 Oct",
+    "week_revenue": "₹45,961",
+    "week_target": "₹1.5 L",
+    "attainment": "30.6%",
+    "gap": "−₹1.0 L",
+    "vs_previous_week": "+12.1%",
+    "ad_spend": "₹25,760",
+    "roas": "1.56",
+    "roas_previous_week": "0.77",
+    "discount": "16.8%",
+    "guideline": "15.2%",
+    "discount_vs_guideline": "+1.6 pp",
+    "sku_drivers": "Brahmi Summer Baby Scalp Oil - 110 ml (−₹63,545); Brahmi Winter Baby Scalp Oil - 110 ml (−₹40,691)",
+    "ad_plan_for_the_days": "no ad plan",
+    "spend_vs_ad_plan": "–",
+    "ad_spend_as_pct_of_sales": "56.0%",
+    "platform_ad_spend_as_pct_of_sales": "17.2%"
+   },
+   "verdict": "Not evaluated",
+   "answer": "",
+   "why": "",
+   "ask": ""
   },
   {
    "id": "Q4",
@@ -111,7 +180,30 @@
     "ad_spend_as_pct_of_sales": "0.0%",
     "platform_ad_spend_as_pct_of_sales": "0.0%"
    },
-   "text": "Netraa on Cred ran a 74.3% discount against a 15.2% guideline (+59.1 pp). Why, and what is it buying us in volume?"
+   "text": "Netraa on Cred ran a 74.3% discount against a 15.2% guideline (+59.1 pp). Why, and what is it buying us in volume?",
+   "review_period_facts": {
+    "week": "23 Oct – 30 Oct",
+    "week_revenue": "₹81,285",
+    "week_target": "₹0",
+    "attainment": "–",
+    "gap": "–",
+    "vs_previous_week": "+1073.1%",
+    "ad_spend": "no ads",
+    "roas": "–",
+    "roas_previous_week": "–",
+    "discount": "74.3%",
+    "guideline": "15.2%",
+    "discount_vs_guideline": "+59.1 pp",
+    "sku_drivers": "–",
+    "ad_plan_for_the_days": "no ad plan",
+    "spend_vs_ad_plan": "–",
+    "ad_spend_as_pct_of_sales": "0.0%",
+    "platform_ad_spend_as_pct_of_sales": "0.0%"
+   },
+   "verdict": "Not evaluated",
+   "answer": "",
+   "why": "",
+   "ask": ""
   },
   {
    "id": "Q5",
@@ -137,7 +229,30 @@
     "ad_spend_as_pct_of_sales": "0.0%",
     "platform_ad_spend_as_pct_of_sales": "0.0%"
    },
-   "text": "Henna Combo on Cred ran a 70.7% discount against a 17.7% guideline (+53.0 pp). Why, and what is it buying us in volume?"
+   "text": "Henna Combo on Cred ran a 70.7% discount against a 17.7% guideline (+53.0 pp). Why, and what is it buying us in volume?",
+   "review_period_facts": {
+    "week": "23 Oct – 30 Oct",
+    "week_revenue": "₹62,448",
+    "week_target": "₹0",
+    "attainment": "–",
+    "gap": "–",
+    "vs_previous_week": "+162.8%",
+    "ad_spend": "no ads",
+    "roas": "–",
+    "roas_previous_week": "–",
+    "discount": "70.7%",
+    "guideline": "17.7%",
+    "discount_vs_guideline": "+53.0 pp",
+    "sku_drivers": "–",
+    "ad_plan_for_the_days": "no ad plan",
+    "spend_vs_ad_plan": "–",
+    "ad_spend_as_pct_of_sales": "0.0%",
+    "platform_ad_spend_as_pct_of_sales": "0.0%"
+   },
+   "verdict": "Not evaluated",
+   "answer": "",
+   "why": "",
+   "ask": ""
   },
   {
    "id": "Q6",
@@ -148,7 +263,11 @@
     "item": "Pure Gulab Jal - Single Pack",
     "note": "raised 2+ times in the daily brief without improving"
    },
-   "text": "Pure Gulab Jal - Single Pack on First Cry has been flagged repeatedly in the daily brief without improving. What is blocking it?"
+   "text": "Pure Gulab Jal - Single Pack on First Cry has been flagged repeatedly in the daily brief without improving. What is blocking it?",
+   "verdict": "Not evaluated",
+   "answer": "",
+   "why": "",
+   "ask": ""
   }
  ],
  "own_ids": [
@@ -184,5 +303,13 @@
   }
  ],
  "reminder_sent": "2026-10-30T16:00:56.758326+05:30",
- "pack_sent": false
+ "pack_sent": "2026-11-02T10:01:06.333170+05:30",
+ "replies": [
+  {
+   "from": "harsh.kalani@nathabit.in",
+   "date": "Sun, 1 Nov 2026 14:44:10 +0530",
+   "text": "Hi Sir,\n\nPlease find my inputs for the upcoming QBE below.\n\n*1. Baby Pure Oil*\nAround 90% of the sales come from the Outright (OR) model. As per the OR\ndata, we are on track with the target.\n\n*2. Shampoo – Hibiscus Trileaf & Anti-Dandruff (250 ml)*\nBoth are selling through the OR model. There is a gap in Hibiscus 250 ml\nbecause of an EAN mismatch, so I am not able to fulfil those orders. To\ncover this, I have started selling through a live DF FCID and am running\nads on it.\n\n*3. Baby Scalp Oil*\nThis is fully sold through the OR model, and we are in line with the target\nhere as well.\n\n*4. Netraa Cream*\nThis product has a low COGS (-20), and we are making 25% CM2 on it.\n\n*5. Henna Combo*\nThis product is currently running with low visibility.\n\n*6. Flora Jal*\nI have listed it in two categories on FirstCry, Toner and Facial Spray, to\ngain more market share. One of these FCIDs is listed on the OR model, which\nis why there is a gap.\n\n*Summary Numbers*\n\n*FirstCry* (Target / Estimated Achievement)\nPrimary (₹ L): – / 46.42\nSecondary (₹ L): 54 / 49.68\nDiscounting (%): 19.5% / 19.5%\nSpend (₹ L): 13 / 12\nSLA (%): – / –\n\n*CRED* (Target / Estimated Achievement)\nPrimary (₹ L): 32 / 24\nSecondary (₹ L): 32 / 24\nDiscounting (%): 70% / 63%\nSpend (₹ L): 4.8 / 3.6\nSLA (%): – / –\n\nPlease let me know if you need any more details.\n\n Regards,\nHarsh Kalani",
+   "full": "Hi Sir,\n Please find my inputs for the upcoming QBE below.\n 1. Baby Pure Oil \nAround 90% of the sales come from the Outright (OR) model. As per the OR data, we are on track with the target.\n 2. Shampoo – Hibiscus Trileaf & Anti-Dandruff (250 ml) \nBoth are selling through the OR model. There is a gap in Hibiscus 250 ml because of an EAN mismatch, so I am not able to fulfil those orders. To cover this, I have started selling through a live DF FCID and am running ads on it.\n 3. Baby Scalp Oil \nThis is fully sold through the OR model, and we are in line with the target here as well.\n 4. Netraa Cream \nThis product has a low COGS (-20), and we are making 25% CM2 on it.\n 5. Henna Combo \nThis product is currently running with low visibility.\n 6. Flora Jal \nI have listed it in two categories on FirstCry, Toner and Facial Spray, to gain more market share. One of these FCIDs is listed on the OR model, which is why there is a gap.\n Summary Numbers \n FirstCry (Target / Estimated Achievement)\nPrimary (₹ L): – / 46.42\nSecondary (₹ L): 54 / 49.68\nDiscounting (%): 19.5% / 19.5%\nSpend (₹ L): 13 / 12\nSLA (%): – / –\n CRED (Target / Estimated Achievement)\nPrimary (₹ L): 32 / 24\nSecondary (₹ L): 32 / 24\nDiscounting (%): 70% / 63%\nSpend (₹ L): 4.8 / 3.6\nSLA (%): – / –\n Please let me know if you need any more details.\n Regards,\nHarsh Kalani \n On Fri, 30 Oct 2026 at 16:01, Sanjog < sanjog@nathabit.in > wrote:\n Hi Harsh,\n A quick reminder on the WBR questions below, ahead of Mon 2 Nov at 12:30 pm. A short reply by Fri 30 Oct, 6 pm would really help me prepare.\n Thanks,\nSanjog"
+  }
+ ]
 }

@@ -33,7 +33,30 @@
     "ad_spend_as_pct_of_sales": "52.4%",
     "platform_ad_spend_as_pct_of_sales": "29.2%"
    },
-   "text": "Dasabuti Hair Oil on Instamart did ₹1.4 L against a ₹1.9 L target (71.7%, gap −₹54,540), +21.0% vs the previous week. What is driving the gap?"
+   "text": "Dasabuti Hair Oil on Instamart did ₹1.4 L against a ₹1.9 L target (71.7%, gap −₹54,540), +21.0% vs the previous week. What is driving the gap?",
+   "review_period_facts": {
+    "week": "23 Oct – 30 Oct",
+    "week_revenue": "₹1.5 L",
+    "week_target": "₹2.2 L",
+    "attainment": "69.1%",
+    "gap": "−₹67,958",
+    "vs_previous_week": "+14.8%",
+    "ad_spend": "₹67,313",
+    "roas": "1.99",
+    "roas_previous_week": "1.33",
+    "discount": "20.9%",
+    "guideline": "6.8%",
+    "discount_vs_guideline": "+14.1 pp",
+    "sku_drivers": "Hibiscus Amla Summer Hair Oil - 100 ml - QC (−₹36,196); Crushed Tri-Leaf Summer Hair Oil 100 ml - QC (−₹26,125)",
+    "ad_plan_for_the_days": "₹84,912",
+    "spend_vs_ad_plan": "79%",
+    "ad_spend_as_pct_of_sales": "44.2%",
+    "platform_ad_spend_as_pct_of_sales": "25.6%"
+   },
+   "verdict": "Not evaluated",
+   "answer": "",
+   "why": "",
+   "ask": ""
   },
   {
    "id": "Q2",
@@ -60,7 +83,30 @@
     "platform_ad_spend_as_pct_of_sales": "29.2%",
     "why_flagged": "over ad plan, high spend for the sales"
    },
-   "text": "Conditioner on Instamart is at 75.6% of target on ₹78,982 of ad spend (138% of the ad plan; ads at 89.6% of sales vs 29.2% for Instamart overall; ROAS 1.32 vs 1.00 the week before). Is this spend earning its keep, or can some of it be pulled back?"
+   "text": "Conditioner on Instamart is at 75.6% of target on ₹78,982 of ad spend (138% of the ad plan; ads at 89.6% of sales vs 29.2% for Instamart overall; ROAS 1.32 vs 1.00 the week before). Is this spend earning its keep, or can some of it be pulled back?",
+   "review_period_facts": {
+    "week": "23 Oct – 30 Oct",
+    "week_revenue": "₹1.0 L",
+    "week_target": "₹1.3 L",
+    "attainment": "77.0%",
+    "gap": "−₹30,616",
+    "vs_previous_week": "−6.8%",
+    "ad_spend": "₹70,974",
+    "roas": "1.69",
+    "roas_previous_week": "0.96",
+    "discount": "15.5%",
+    "guideline": "4.4%",
+    "discount_vs_guideline": "+11.1 pp",
+    "sku_drivers": "Trileaf Rosemary Conditioner - QC (−₹24,446); Five Oil Hibiscus Conditioner - QC (−₹7,111)",
+    "ad_plan_for_the_days": "₹69,927",
+    "spend_vs_ad_plan": "101%",
+    "ad_spend_as_pct_of_sales": "69.1%",
+    "platform_ad_spend_as_pct_of_sales": "25.6%"
+   },
+   "verdict": "Not evaluated",
+   "answer": "",
+   "why": "",
+   "ask": ""
   },
   {
    "id": "Q3",
@@ -87,7 +133,30 @@
     "platform_ad_spend_as_pct_of_sales": "29.2%",
     "why_flagged": "high spend for the sales"
    },
-   "text": "Shampoo on Instamart is at 94.5% of target on ₹1.3 L of ad spend (100% of the ad plan; ads at 44.9% of sales vs 29.2% for Instamart overall; ROAS 1.45 vs 1.37 the week before). Is this spend earning its keep, or can some of it be pulled back?"
+   "text": "Shampoo on Instamart is at 94.5% of target on ₹1.3 L of ad spend (100% of the ad plan; ads at 44.9% of sales vs 29.2% for Instamart overall; ROAS 1.45 vs 1.37 the week before). Is this spend earning its keep, or can some of it be pulled back?",
+   "review_period_facts": {
+    "week": "23 Oct – 30 Oct",
+    "week_revenue": "₹3.4 L",
+    "week_target": "₹3.6 L",
+    "attainment": "94.8%",
+    "gap": "−₹18,523",
+    "vs_previous_week": "−4.0%",
+    "ad_spend": "₹1.3 L",
+    "roas": "1.61",
+    "roas_previous_week": "1.33",
+    "discount": "9.7%",
+    "guideline": "8.5%",
+    "discount_vs_guideline": "+1.2 pp",
+    "sku_drivers": "Trileaf Rosemary Shampoo - QC (−₹34,717); Five Oil Hibiscus Shampoo - QC (−₹1,691)",
+    "ad_plan_for_the_days": "₹1.6 L",
+    "spend_vs_ad_plan": "79%",
+    "ad_spend_as_pct_of_sales": "37.8%",
+    "platform_ad_spend_as_pct_of_sales": "25.6%"
+   },
+   "verdict": "Not evaluated",
+   "answer": "",
+   "why": "",
+   "ask": ""
   },
   {
    "id": "Q4",
@@ -114,7 +183,30 @@
     "platform_ad_spend_as_pct_of_sales": "29.2%",
     "why_flagged": "high spend for the sales"
    },
-   "text": "Face Wash on Instamart is at 78.3% of target on ₹75,118 of ad spend (92% of the ad plan; ads at 53.0% of sales vs 29.2% for Instamart overall; ROAS 1.98 vs 1.04 the week before). Is this spend earning its keep, or can some of it be pulled back?"
+   "text": "Face Wash on Instamart is at 78.3% of target on ₹75,118 of ad spend (92% of the ad plan; ads at 53.0% of sales vs 29.2% for Instamart overall; ROAS 1.98 vs 1.04 the week before). Is this spend earning its keep, or can some of it be pulled back?",
+   "review_period_facts": {
+    "week": "23 Oct – 30 Oct",
+    "week_revenue": "₹1.6 L",
+    "week_target": "₹2.1 L",
+    "attainment": "75.4%",
+    "gap": "−₹50,920",
+    "vs_previous_week": "−12.3%",
+    "ad_spend": "₹69,997",
+    "roas": "2.36",
+    "roas_previous_week": "1.03",
+    "discount": "7.5%",
+    "guideline": "3.6%",
+    "discount_vs_guideline": "+3.8 pp",
+    "sku_drivers": "Brightening Ubtan Face Wash - QC (−₹35,693); Kali Mitti Face Wash - 100g - QC (−₹11,782)",
+    "ad_plan_for_the_days": "₹99,896",
+    "spend_vs_ad_plan": "70%",
+    "ad_spend_as_pct_of_sales": "44.8%",
+    "platform_ad_spend_as_pct_of_sales": "25.6%"
+   },
+   "verdict": "Not evaluated",
+   "answer": "",
+   "why": "",
+   "ask": ""
   },
   {
    "id": "Q5",
@@ -140,7 +232,30 @@
     "ad_spend_as_pct_of_sales": "0.0%",
     "platform_ad_spend_as_pct_of_sales": "29.2%"
    },
-   "text": "Indigo Powder on Instamart ran a 18.6% discount against a 2.3% guideline (+16.3 pp). Why, and what is it buying us in volume?"
+   "text": "Indigo Powder on Instamart ran a 18.6% discount against a 2.3% guideline (+16.3 pp). Why, and what is it buying us in volume?",
+   "review_period_facts": {
+    "week": "23 Oct – 30 Oct",
+    "week_revenue": "₹1.3 L",
+    "week_target": "₹1.2 L",
+    "attainment": "113.5%",
+    "gap": "₹15,664",
+    "vs_previous_week": "+27.5%",
+    "ad_spend": "no ads",
+    "roas": "–",
+    "roas_previous_week": "–",
+    "discount": "18.2%",
+    "guideline": "2.3%",
+    "discount_vs_guideline": "+15.9 pp",
+    "sku_drivers": "HUFA Pigment Indigo Powder - 85g - QC (₹15,664)",
+    "ad_plan_for_the_days": "no ad plan",
+    "spend_vs_ad_plan": "–",
+    "ad_spend_as_pct_of_sales": "0.0%",
+    "platform_ad_spend_as_pct_of_sales": "25.6%"
+   },
+   "verdict": "Not evaluated",
+   "answer": "",
+   "why": "",
+   "ask": ""
   },
   {
    "id": "Q6",
@@ -166,7 +281,30 @@
     "ad_spend_as_pct_of_sales": "7.4%",
     "platform_ad_spend_as_pct_of_sales": "29.2%"
    },
-   "text": "Malai Lotion on Instamart ran a 13.6% discount against a 5.8% guideline (+7.8 pp). Why, and what is it buying us in volume?"
+   "text": "Malai Lotion on Instamart ran a 13.6% discount against a 5.8% guideline (+7.8 pp). Why, and what is it buying us in volume?",
+   "review_period_facts": {
+    "week": "23 Oct – 30 Oct",
+    "week_revenue": "₹46,399",
+    "week_target": "₹20,788",
+    "attainment": "223.2%",
+    "gap": "₹25,611",
+    "vs_previous_week": "+77.7%",
+    "ad_spend": "₹3,281",
+    "roas": "6.07",
+    "roas_previous_week": "7.42",
+    "discount": "12.6%",
+    "guideline": "5.8%",
+    "discount_vs_guideline": "+6.8 pp",
+    "sku_drivers": "Multi-Nut Malai Lotion - QC (₹21,074)",
+    "ad_plan_for_the_days": "₹6,243",
+    "spend_vs_ad_plan": "53%",
+    "ad_spend_as_pct_of_sales": "7.1%",
+    "platform_ad_spend_as_pct_of_sales": "25.6%"
+   },
+   "verdict": "Not evaluated",
+   "answer": "",
+   "why": "",
+   "ask": ""
   }
  ],
  "own_ids": [
@@ -188,5 +326,13 @@
   }
  ],
  "reminder_sent": false,
- "pack_sent": false
+ "pack_sent": "2026-11-02T10:01:06.333170+05:30",
+ "replies": [
+  {
+   "from": "mayank.gangwani@nathabit.in",
+   "date": "Fri, 30 Oct 2026 13:34:24 +0530",
+   "text": "Hi Sir,\n\n1.     Dasabuti hair oil: The plan is 147% of LM, this was taken basis the\ncentral marketing push we saw in Sept. But the push/effect has now toned\ndown and sales are back to normal levels. OSA wise we are fine, even with\nadditional segmented discounts it was not possible to get LM level sales.\nAlso, a big part of the gap comes from Castor coconut, it was a really long\nfight to get it configured for 99 store according to the plan. All is\nsorted in that segment now.\n\n2.     The spend is higher given two reasons: Higher CPMs and lower OSA of\nRosemary conditioner. One nuance here is that shampoo, hair oil, and\nnutrimask spends can also be attributed to conditioners as banner spends\nare split amongst the whole hair care category. All in all the problem\ncentre is Rosemary conditioner, the PO qty has reduced by 90% for it. The\nsame has been highlighted to Instamart and is being resolved. Regarding AD\nspends, pulling the spends is not the best way forward as I mentioned the\nspends attribution is split among the SKUs.\n\n3.     Shampoo category is underperforming due to lower units of rosemary\nshampoo. Now Hibiscus shampoo saw higher discounting due to QIM sale and\nBBD. Rosemary ran at it’s normal price all month and it’s OSA has actually\nimproved v/s LM. As for the AD spends, pulling the spends is not the best\nway forward as I mentioned the spends attribution is split among the SKUs.\nThe way forward is to balance the importance amongst the category and split\nthe AD or discount related push amongst all three shampoos.\n\n4.     Yes the spends is earning it’s keep, our Kali mitti face wash and\nAnti acne face wash are not matured on the platform yet. As such the spends\nis under the plan/target. The spends planned were basis the coverage of the\nnewly launched Anti acne facewash. The spends are essential to build the RR\nof the SKUs on platform.\n\n5.     The guideline discount is incorrect, the MRP is 300 and QCOM sp is\n264 i.e the guideline is actually 12% . A few deals were additionally run\nto defend the MS of it against Attar ayurveda.\n\n6.     Malai lotion (MNS) sales is up by 71%  (discs were up by 8%) the\ndiscounts were a concious choice to push for better POD availability and WH\norders. This was done in plan with winter SKU plans.\n\n\n\n*Instamart*\n\n*Target*\n\n*Estimated achievement*\n\n*Primary* (₹ L)\n\n 1.5cr\n\n1.5cr\n\n*Secondary* (₹ L)\n\n 1.01cr\n\n1.01cr\n\n*Discounting %* (%)\n\n 6.82%\n\n7.0% (BBD and QIM)\n\n*Spend* (₹ L)\n\n 0.25Cr\n\n0.25Cr\n\n*Availability* (%)\n\n 71%\n\n70%",
+   "full": "Hi Sir, \n 1. \r\n Dasabuti hair oil: The plan is 147% of LM, this was\r\ntaken basis the central marketing push we saw in Sept. But the push/effect has\r\nnow toned down and sales are back to normal levels. OSA wise we are fine, even\r\nwith additional segmented discounts it was not possible to get LM level sales. Also,\r\na big part of the gap comes from Castor coconut, it was a really long fight to\r\nget it configured for 99 store according to the plan. All is sorted in that\r\nsegment now. \n 2. \r\n The spend is higher given two reasons: Higher CPMs\r\nand lower OSA of Rosemary conditioner. One nuance here is that shampoo, hair\r\noil, and nutrimask spends can also be attributed to conditioners as banner\r\nspends are split amongst the whole hair care category. All in all the problem\r\ncentre is Rosemary conditioner, the PO qty has reduced by 90% for it. The same\r\nhas been highlighted to Instamart and is being resolved. Regarding AD spends,\r\npulling the spends is not the best way forward as I mentioned the spends attribution\r\nis split among the SKUs.\n 3. \r\n Shampoo category is underperforming due to lower\r\nunits of rosemary shampoo. Now Hibiscus shampoo saw higher discounting due to\r\nQIM sale and BBD. Rosemary ran at it’s normal price all month and it’s OSA has\r\nactually improved v/s LM. As for the AD spends, pulling the spends is not the\r\nbest way forward as I mentioned the spends attribution is split among the SKUs.\r\nThe way forward is to balance the importance amongst the category and split the\r\nAD or discount related push amongst all three shampoos.\n 4. \r\n Yes the spends is earning it’s keep, our Kali\r\nmitti face wash and Anti acne face wash are not matured on the platform yet. As\r\nsuch the spends is under the plan/target. The spends planned were basis the\r\ncoverage of the newly launched Anti acne facewash. The spends are essential to\r\nbuild the RR of the SKUs on platform.\n 5. \r\n The guideline discount is incorrect, the MRP is 300\r\nand QCOM sp is 264 i.e the guideline is actually 12% . A few deals were additionally\r\nrun to defend the MS of it against Attar ayurveda.\n 6. \r\n Malai lotion (MNS) sales is up by 71% (discs were up by 8%) the discounts were a\r\nconcious choice to push for better POD availability and WH orders. This was done\r\nin plan with winter SKU plans. \n Instamart \n | \r\n Target \n | \r\n Estimated\r\n achievement \n | \r\n Primary (₹ L) \n | \r\n 1.5cr \n | \r\n 1.5cr \n | \r\n Secondary (₹ L) \n | \r\n 1.01cr \n | \r\n 1.01cr \n | \r\n Discounting\r\n % (%) \n | \r\n 6.82% \n | \r\n 7.0%\r\n (BBD and QIM) \n | \r\n Spend (₹ L) \n | \r\n 0.25Cr \n | \r\n 0.25Cr \n | \r\n Availability (%) \n | \r\n 71% \n | \r\n 70% \n | \r\n On Thu, 29 Oct 2026 at 11:01, Sanjog < sanjog@nathabit.in > wrote:\n Hi Mayank,\n Ahead of our WBR on Mon 2 Nov at 5 pm (review period 24 Oct – 30 Oct), I’d like your view on the points below. Please reply to this email by Fri 30 Oct, 6 pm .\n For each question, please cover: (1) the reason , (2) the action you have taken or will take , and (3) when you expect it to show in the numbers . Short answers are fine; just keep the Q numbers. Please also fill in the business snapshot table at the end.\n Q1 | Dasabuti Hair Oil on Instamart did ₹1.4 L against a ₹1.9 L target (71.7%, gap −₹54,540), +21.0% vs the previous week. What is driving the gap? | \n Q2 | Conditioner on Instamart is at 75.6% of target on ₹78,982 of ad spend (138% of the ad plan; ads at 89.6% of sales vs 29.2% for Instamart overall; ROAS 1.32 vs 1.00 the week before). Is this spend earning its keep, or can some of it be pulled back? | \n Q3 | Shampoo on Instamart is at 94.5% of target on ₹1.3 L of ad spend (100% of the ad plan; ads at 44.9% of sales vs 29.2% for Instamart overall; ROAS 1.45 vs 1.37 the week before). Is this spend earning its keep, or can some of it be pulled back? | \n Q4 | Face Wash on Instamart is at 78.3% of target on ₹75,118 of ad spend (92% of the ad plan; ads at 53.0% of sales vs 29.2% for Instamart overall; ROAS 1.98 vs 1.04 the week before). Is this spend earning its keep, or can some of it be pulled back? | \n Q5 | Indigo Powder on Instamart ran a 18.6% discount against a 2.3% guideline (+16.3 pp). Why, and what is it buying us in volume? | \n Q6 | Malai Lotion on Instamart ran a 13.6% discount against a 5.8% guideline (+7.8 pp). Why, and what is it buying us in volume? | \n Business snapshot · November 2026\n Please fill in the table below for November 2026 and include it in your reply (copy into your reply, or type into the quoted table). ₹ values in lakh.\n Instamart | Target | Estimated achievement | \n Primary (₹ L) | | | \n Secondary (₹ L) | | | \n Discounting % (%) | | | \n Spend (₹ L) | | | \n Availability (%) | | | \n Figures are for 22 Oct – 28 Oct (Instamart till Wed 28 Oct), from the Category Intelligence dashboard. Targets are prorated to the days covered.\n Thanks,\nSanjog\n Prepared automatically from the dashboard on Sanjog’s behalf. Your reply goes to Sanjog.\n -- \n Best regards, Mayank Gangwani\n Nat Habit"
+  }
+ ]
 }
