@@ -71,7 +71,7 @@
    "status_today": "new",
    "times_raised": 1,
    "metric_at_raise": 0.6758954303922403,
-   "metric_last": 0.6758954303922403
+   "metric_last": 0.7762553991498785
   },
   "ads|Blinkit|BL-HR-SHO-HA-100": {
    "tab": "ads",
@@ -509,49 +509,37 @@
    "tab": "revenue",
    "platform": "Myntra",
    "name": "Ubtan Tikta Face Wash",
-   "sev": "critical",
-   "first_raised": "2026-11-03",
-   "last_actioned": "2026-11-03",
-   "status_today": "new",
-   "times_raised": 1,
-   "metric_at_raise": 45.4,
-   "metric_last": 45.4
-  },
-  "revenue|Myntra|FC-FW-BUPA2-100": {
-   "tab": "revenue",
-   "platform": "Myntra",
-   "name": "Brightening Ubtan Face Wash - Pack of 2",
-   "sev": "critical",
-   "first_raised": "2026-11-03",
-   "last_actioned": "2026-11-03",
-   "status_today": "new",
-   "times_raised": 1,
-   "metric_at_raise": 59.7,
-   "metric_last": 59.7
-  },
-  "revenue|Myntra|HR-HE-RT2-060": {
-   "tab": "revenue",
-   "platform": "Myntra",
-   "name": "Henna Touch-Up Paste  - Pack of 2",
    "sev": "warning",
    "first_raised": "2026-11-03",
    "last_actioned": "2026-11-03",
    "status_today": "new",
    "times_raised": 1,
-   "metric_at_raise": 78.2,
-   "metric_last": 78.2
+   "metric_at_raise": 45.4,
+   "metric_last": 73.2
+  },
+  "revenue|Myntra|FC-FW-BUPA2-100": {
+   "tab": "revenue",
+   "platform": "Myntra",
+   "name": "Brightening Ubtan Face Wash - Pack of 2",
+   "sev": "warning",
+   "first_raised": "2026-11-03",
+   "last_actioned": "2026-11-03",
+   "status_today": "new",
+   "times_raised": 1,
+   "metric_at_raise": 59.7,
+   "metric_last": 79.9
   },
   "discount|Myntra|FC-FW-BUPA-100": {
    "tab": "discount",
    "platform": "Myntra",
    "name": "Ubtan Tikta Face Wash",
-   "sev": "critical",
+   "sev": "warning",
    "first_raised": "2026-11-03",
    "last_actioned": "2026-11-03",
    "status_today": "new",
    "times_raised": 1,
    "metric_at_raise": 5.4,
-   "metric_last": 5.4
+   "metric_last": 3.5
   },
   "revenue|Nykaa|HR-HIP-IP-170": {
    "tab": "revenue",
@@ -720,6 +708,18 @@
    "times_raised": 1,
    "metric_at_raise": 50.9,
    "metric_last": 50.9
+  },
+  "ads|Zepto|BL-FC-KL-CN-040": {
+   "tab": "ads",
+   "platform": "Zepto",
+   "name": "Chandan Nagakesar - QC",
+   "sev": "critical",
+   "first_raised": "2026-11-03",
+   "last_actioned": "2026-11-03",
+   "status_today": "new",
+   "times_raised": 1,
+   "metric_at_raise": 0.7381441604339607,
+   "metric_last": 0.7381441604339607
   }
  },
  "last_sent": "2026-11-03"
