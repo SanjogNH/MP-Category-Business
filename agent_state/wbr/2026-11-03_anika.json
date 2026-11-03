@@ -53,10 +53,10 @@
     "ad_spend_as_pct_of_sales": "0.0%",
     "platform_ad_spend_as_pct_of_sales": "3.7%"
    },
-   "verdict": "Not evaluated",
-   "answer": "",
-   "why": "",
-   "ask": ""
+   "verdict": "Partly aligned",
+   "answer": "Gap is traffic-led: clicks fell from 9.8L to 6.7L because influencer spend was cut, while conversion held (CVR 5.8% MTD vs 5.5% last month).",
+   "why": "A traffic story is plausible for 20.7% attainment (₹12.5 L vs ₹60.3 L, no ads). But no recovery action was given, and discount is 11.5% vs a 16.4% guideline (−4.9 pp), which went unmentioned.",
+   "ask": "What is the plan, with dates, to restore traffic on Ubtan Tikta and the QC SKU, and will you use the 4.9 pp discount headroom or ads?"
   },
   {
    "id": "Q2",
@@ -102,10 +102,10 @@
     "ad_spend_as_pct_of_sales": "0.1%",
     "platform_ad_spend_as_pct_of_sales": "3.7%"
    },
-   "verdict": "Not evaluated",
-   "answer": "",
-   "why": "",
-   "ask": ""
+   "verdict": "Partly aligned",
+   "answer": "Gap is traffic-led: clicks fell from 4.37L to 1.52L on lower influencer spend, while CVR rose to 6.4% MTD.",
+   "why": "Traffic is plausible at 12.8% attainment (₹2.9 L vs ₹22.2 L). But discount is 26.9% vs an 18.5% guideline (+8.3 pp) and still buys no volume, ad spend is only ₹315 (0.1% of sales vs 3.7% for the platform), and no action was given.",
+   "ask": "Why is discount 8.3 pp above guideline on a category at 12.8% of target, and what will you restart on traffic and by when?"
   },
   {
    "id": "Q3",
@@ -151,10 +151,10 @@
     "ad_spend_as_pct_of_sales": "1.4%",
     "platform_ad_spend_as_pct_of_sales": "4.0%"
    },
-   "verdict": "Not evaluated",
-   "answer": "",
-   "why": "",
-   "ask": ""
+   "verdict": "Not aligned",
+   "answer": "Gap is traffic-led: reduced influencer spend lowered impressions and clicks on Meesho.",
+   "why": "Revenue grew +37.7% vs the previous week (₹30.6 L, 54.5% attainment), which contradicts a traffic collapse. The reply ignores discount at 34.6% vs a 15.5% guideline (+19.1 pp) and ad spend of ₹43,585 vs a ₹2,160 plan (2018%), and gives no action.",
+   "ask": "Sales are up 37.7% with discount 19.1 pp over guideline and ads at 2018% of plan. What is actually driving the growth, and what is the plan to close the ₹25.5 L gap?"
   },
   {
    "id": "Q4",
@@ -201,10 +201,10 @@
     "ad_spend_as_pct_of_sales": "9.5%",
     "platform_ad_spend_as_pct_of_sales": "4.0%"
    },
-   "verdict": "Not evaluated",
-   "answer": "",
-   "why": "",
-   "ask": ""
+   "verdict": "Aligned",
+   "answer": "Spend was cut late October: pack of 1 reduced to a ₹500 budget and pack of 2 paused. ROI was 26 and 7.6 respectively, demand is seasonal, and spend continues like this till Diwali, then stops.",
+   "why": "Ad spend of ₹47,445 was 9.5% of sales vs 4.0% for the platform, and 549% of plan. The reply cuts spend, pauses a campaign and gives a timeline.",
+   "ask": "The dashboard drivers are Pack of 3 and Pack of 2, not Pack of 1. Which campaigns did you cut, and how much of the 138.9% attainment comes from the 47.5% discount vs ads?"
   },
   {
    "id": "Q5",
@@ -250,10 +250,10 @@
     "ad_spend_as_pct_of_sales": "1.0%",
     "platform_ad_spend_as_pct_of_sales": "4.0%"
    },
-   "verdict": "Not evaluated",
-   "answer": "",
-   "why": "",
-   "ask": ""
+   "verdict": "Partly aligned",
+   "answer": "Event pricing was shared with Meesho in September and matched Flipkart and Amazon. NLTB and variants sold at higher than planned discounts. Selling prices went back to September levels for November.",
+   "why": "Resetting prices fits a discount of 44.5% vs an 18.2% guideline (+26.3 pp). But the reply quotes 37.6% vs 31.2%, which does not match the dashboard, and it never says what volume the discount bought (24.1% attainment, ₹6.2 L vs ₹25.8 L).",
+   "ask": "Why do your 37.6% vs 31.2% figures differ from the dashboard's 44.5% vs 18.2%? What did the discount buy, and what will November discount and sales be after the reset?"
   },
   {
    "id": "Q6",
@@ -299,10 +299,10 @@
     "ad_spend_as_pct_of_sales": "9.2%",
     "platform_ad_spend_as_pct_of_sales": "4.0%"
    },
-   "verdict": "Not evaluated",
-   "answer": "",
-   "why": "",
-   "ask": ""
+   "verdict": "Not aligned",
+   "answer": "Shampoo discount was 28.7% vs 32.0% planned, 3.3 pp below plan, so less was spent on discounting than budgeted.",
+   "why": "The dashboard shows discount at 33.0% vs a 20.0% guideline (+13.0 pp), the opposite of 'below plan'. Ad spend is also 9.2% of sales vs 4.0% for the platform, and attainment is 95.9%.",
+   "ask": "The dashboard shows 33.0% vs a 20.0% guideline, +13.0 pp. Where do 28.7% and 32.0% come from, and what is the plan to bring discount down?"
   }
  ],
  "own_ids": [
@@ -386,7 +386,7 @@
   }
  ],
  "reminder_sent": "2026-11-02T11:01:10.756539+05:30",
- "pack_sent": "2026-11-03T12:30:16.923621+05:30",
+ "pack_sent": "2026-11-03T13:10:16.217387+05:30",
  "replies": [
   {
    "from": "anika@nathabit.in",

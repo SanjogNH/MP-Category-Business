@@ -55,8 +55,8 @@
    },
    "verdict": "No answer",
    "answer": "",
-   "why": "",
-   "ask": ""
+   "why": "No reply received; Shampoo Combo stays at 59.2% of target (₹4.9 L vs ₹8.3 L, gap −₹3.4 L) with discount +1.0 pp over guideline and Five Oil Hibiscus combo −₹1.9 L.",
+   "ask": "Why is the Five Oil Hibiscus combo ₹1.9 L short, and what are you doing about stock, buy-box or listing visibility this week?"
   },
   {
    "id": "Q2",
@@ -104,8 +104,8 @@
    },
    "verdict": "No answer",
    "answer": "",
-   "why": "",
-   "ask": ""
+   "why": "No reply received; Shampoo is at 72.0% of target (₹8.0 L vs ₹11.2 L), down −7.4% WoW, with discount +5.8 pp over guideline and ROAS 1.96 vs 2.22.",
+   "ask": "A 25.4% discount against a 19.6% guideline isn't lifting volume, so what will you change on pricing, coupons or Neem Beracyl?"
   },
   {
    "id": "Q3",
@@ -153,8 +153,8 @@
    },
    "verdict": "No answer",
    "answer": "",
-   "why": "",
-   "ask": ""
+   "why": "No reply received; CP Hair Oil is at 67.6% of target (₹4.0 L vs ₹5.9 L) with ads at 43.0% of sales vs 17.1% for Amazon and ROAS 1.45.",
+   "ask": "Why spend 43.0% of sales on ads at ROAS 1.45 while Castor Oil 200 ml is still ₹1.1 L short?"
   },
   {
    "id": "Q4",
@@ -203,8 +203,8 @@
    },
    "verdict": "No answer",
    "answer": "",
-   "why": "",
-   "ask": ""
+   "why": "No reply received; Nourishing Jal has ads at 87.8% of sales (₹81,366 spend) on ROAS 0.88, with a 29.4% discount (+14.2 pp over guideline), yet it is still at 88.2% of target.",
+   "ask": "Which campaigns and keywords are you cutting from Nourishing Jal, and by how much, given ROAS 0.88?"
   },
   {
    "id": "Q5",
@@ -252,8 +252,8 @@
    },
    "verdict": "No answer",
    "answer": "",
-   "why": "",
-   "ask": ""
+   "why": "No reply received; Soap ran a 32.5% discount (+14.1 pp over guideline) yet is at only 80.2% of target (₹5.8 L vs ₹7.3 L), −0.4% WoW.",
+   "ask": "What volume did the extra 14.1 pp of discount buy on Soap, and when do you bring it back to 18.4%?"
   },
   {
    "id": "Q6",
@@ -301,8 +301,8 @@
    },
    "verdict": "No answer",
    "answer": "",
-   "why": "",
-   "ask": ""
+   "why": "No reply received; Henna discount is 21.1% (+5.1 pp over guideline) with 90.6% attainment (₹14.2 L vs ₹15.7 L), +13.3% WoW, but ROAS fell to 5.18 from 5.57.",
+   "ask": "Is the +5.1 pp Henna discount driving the +13.3% growth, and can you trim it without losing volume?"
   }
  ],
  "own_ids": [
@@ -325,6 +325,6 @@
   }
  ],
  "reminder_sent": "2026-11-02T11:01:10.756539+05:30",
- "pack_sent": "2026-11-03T12:30:16.923621+05:30",
+ "pack_sent": "2026-11-03T13:10:16.217387+05:30",
  "replies": []
 }
