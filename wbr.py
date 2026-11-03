@@ -30,7 +30,7 @@ from email.utils import make_msgid, formataddr, parseaddr
 import config
 import wbr_config as wc
 import snapshots as snap
-from brief import inr, pct, spct, e, CSS, TD, TH, table, _att_style, _roas_style, _disc_style
+from brief import inr, pct, spct, e, CSS, TD, TH, table, _att_style, _roas_style, _disc_style, claude_client, why
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s  %(levelname)-8s  %(message)s", datefmt="%H:%M:%S")
 log = logging.getLogger("wbr")
@@ -247,7 +247,7 @@ def claude(system, payload, max_tokens=3000):
         return None
     try:
         import anthropic
-        msg = anthropic.Anthropic().messages.create(
+        msg = claude_client().messages.create(
             model=os.environ.get("WBR_MODEL", wc.MODEL), max_tokens=max_tokens, system=system,
             messages=[{"role": "user", "content": json.dumps(payload, ensure_ascii=False, default=str)}])
         text = "".join(b.text for b in msg.content if b.type == "text").strip()
@@ -256,7 +256,7 @@ def claude(system, payload, max_tokens=3000):
         log.info("  ✓ Claude OK")
         return out
     except Exception as ex:
-        log.warning(f"  Claude failed ({ex}); using rule-based wording")
+        log.warning(f"  Claude failed ({why(ex)}); using rule-based wording")
         return None
 
 
