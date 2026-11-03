@@ -242,22 +242,31 @@ def facts_for(cat, p, wk, pw, ad_plan=None):
 #  Claude
 # ══════════════════════════════════════════════
 def claude(system, payload, max_tokens=3000):
+    """Asks Claude for JSON. Allows long replies, and retries once with a request for shorter wording
+    if a reply comes back cut off or isn't valid JSON."""
     if not os.environ.get("ANTHROPIC_API_KEY"):
         log.warning("  No ANTHROPIC_API_KEY set; using rule-based wording")
         return None
-    try:
-        import anthropic
-        msg = claude_client().messages.create(
-            model=os.environ.get("WBR_MODEL", wc.MODEL), max_tokens=max_tokens, system=system,
-            messages=[{"role": "user", "content": json.dumps(payload, ensure_ascii=False, default=str)}])
-        text = "".join(b.text for b in msg.content if b.type == "text").strip()
-        text = text.removeprefix("```json").removeprefix("```").removesuffix("```").strip()
-        out = json.loads(text)
-        log.info("  ✓ Claude OK")
-        return out
-    except Exception as ex:
-        log.warning(f"  Claude failed ({why(ex)}); using rule-based wording")
-        return None
+    content = json.dumps(payload, ensure_ascii=False, default=str)
+    attempts = [(max(max_tokens, 8000), system),
+                (16000, system + "\n\nKeep every text field to one short sentence. Reply with complete, valid JSON only.")]
+    for n, (tokens, sys_prompt) in enumerate(attempts, 1):
+        try:
+            msg = claude_client().messages.create(
+                model=os.environ.get("WBR_MODEL", wc.MODEL), max_tokens=tokens, system=sys_prompt,
+                messages=[{"role": "user", "content": content}])
+            text = "".join(b.text for b in msg.content if b.type == "text").strip()
+            text = text.removeprefix("```json").removeprefix("```").removesuffix("```").strip()
+            out = json.loads(text)
+            log.info("  ✓ Claude OK" + (" (on retry)" if n > 1 else ""))
+            return out
+        except json.JSONDecodeError as ex:
+            log.warning(f"  Claude reply incomplete (stop: {getattr(msg, 'stop_reason', '?')}, {ex}); "
+                        + ("retrying with shorter wording" if n < len(attempts) else "using rule-based wording"))
+        except Exception as ex:
+            log.warning(f"  Claude failed ({why(ex)}); using rule-based wording")
+            return None
+    return None
 
 
 QUERY_PROMPT = """You draft pre-WBR questions that the Head of Marketplaces at Nat Habit (an Indian personal-care brand) sends to a growth manager.
