@@ -318,7 +318,7 @@ Tone rules (important):
 - "followup" items: the manager was asked about this some days ago and it has not improved yet. Ask them to take a second look, without blame.
 - "escalated" items: got clearly worse since first raised; say so plainly and calmly.
 - "new" items: just state the lever.
-- Never invent numbers or compute new ones. Use only the figures given, exactly as written, and only when helpful.
+- Never invent numbers or compute new ones. Use only the figures given, exactly as written, and only when helpful. If ROAS and ad spend show "–" or "no ads" everywhere, ad data is not yet available: say nothing about ads.
 
 Reply with ONLY a JSON object: {"focus": [...], "actions": {"<id>": "...", ...}}. No markdown fences."""
 
@@ -344,14 +344,40 @@ def fallback_wording(items):
     return {"intro": "", "actions": acts}
 
 
+def claude_client():
+    """Claude client with the API key cleaned of stray spaces, line breaks or quotes from pasting.
+    (A key with a hidden trailing newline fails as an invalid header and shows up as 'Connection error.')"""
+    import anthropic
+    raw = os.environ.get("ANTHROPIC_API_KEY", "")
+    key = "".join(raw.split()).strip("\"'")
+    if key != raw:
+        log.warning("  ANTHROPIC_API_KEY had extra spaces, line breaks or quotes; cleaned. Re-save the secret to tidy it.")
+    return anthropic.Anthropic(api_key=key, timeout=90, max_retries=2)
+
+
+def why(ex):
+    """The real reason behind a failed Claude call (the SDK often hides it behind 'Connection error.')."""
+    cause = ex.__cause__ or ex.__context__
+    return f"{type(ex).__name__}: {ex}" + (f" ← {type(cause).__name__}: {cause}" if cause else "")
+
+
+def focus_line(r, p):
+    bits = []
+    if p["f"]["roas"] != "–" or p["f"]["roas_lm"] != "–":
+        bits.append(f"ROAS {p['f']['roas']} vs {p['f']['roas_lm']}")
+    if p["f"]["disc_vs_guideline"] != "–":
+        bits.append(f"discount {p['f']['disc_vs_guideline']} vs guideline")
+    return (f"{r['name']}: {r['f']['gap']} behind to date; {p['f']['gap']} of it on {p['name']}"
+            + (f" ({', '.join(bits)})." if bits else "."))
+
+
 def fallback_focus(behind):
-    out = []
-    for r in behind[:3]:
-        if r.get("platforms"):
-            p = r["platforms"][0]
-            out.append(f"{r['name']}: {r['f']['gap']} behind to date; {p['f']['gap']} of it on {p['name']} "
-                       f"(ROAS {p['f']['roas']} vs {p['f']['roas_lm']}, discount {p['f']['disc_vs_guideline']} vs guideline).")
-    return out
+    return [focus_line(r, r["platforms"][0]) for r in behind[:3] if r.get("platforms")]
+
+
+def no_ad_data(sec):
+    """True when the sheet has no ad spend at all for this scope (e.g. early in a month)."""
+    return not any(r.get("spend") for r in sec["plat_rows"])
 
 
 def team_wording(scope_name, sec, items):
@@ -372,7 +398,7 @@ def team_wording(scope_name, sec, items):
                        "platform": i["platform"], "category": i["category"], "product": i["name"],
                        "days_since_first_raised": i.get("days_since"), "facts": i["facts"]} for i in items],
         }
-        msg = anthropic.Anthropic().messages.create(
+        msg = claude_client().messages.create(
             model=os.environ.get("BRIEF_MODEL", bc.MODEL), max_tokens=4000, system=SYSTEM_PROMPT,
             messages=[{"role": "user", "content": json.dumps(payload, ensure_ascii=False)}])
         text = "".join(b.text for b in msg.content if b.type == "text").strip()
@@ -385,7 +411,7 @@ def team_wording(scope_name, sec, items):
                  f"{getattr(usage, 'output_tokens', '?')} out tokens)")
         return {"focus": focus, "actions": acts}
     except Exception as ex:
-        log.warning(f"  Claude wording failed for {scope_name[:40]} ({ex}); using rule-based wording")
+        log.warning(f"  Claude wording failed for {scope_name[:40]} ({why(ex)}); using rule-based wording")
         return fb
 
 
@@ -403,7 +429,7 @@ def claude_wording(audience, headline, items):
                        "platform": i["platform"], "category": i["category"], "product": i["name"],
                        "days_since_first_raised": i.get("days_since"), "facts": i["facts"]} for i in items],
         }
-        client = anthropic.Anthropic()
+        client = claude_client()
         msg = client.messages.create(
             model=os.environ.get("BRIEF_MODEL", bc.MODEL), max_tokens=4000, system=SYSTEM_PROMPT,
             messages=[{"role": "user", "content": json.dumps(payload, ensure_ascii=False)}],
@@ -416,7 +442,7 @@ def claude_wording(audience, headline, items):
         log.info(f"  ✓ Claude wording OK for {audience[:40]} ({getattr(getattr(msg, 'usage', None), 'input_tokens', '?')} in / {getattr(getattr(msg, 'usage', None), 'output_tokens', '?')} out tokens)")
         return out
     except Exception as e:
-        log.warning(f"  Claude wording failed for {audience} ({e}); using rule-based wording")
+        log.warning(f"  Claude wording failed for {audience} ({why(e)}); using rule-based wording")
         return fallback_wording(items)
 
 
@@ -428,7 +454,7 @@ Write:
 1. "focus": exactly 3 bullets, each ONE sentence of at most 25 words, saying where the head should focus today. Be specific: name categories, platforms and rupee figures. Connect the dots (e.g. a category's gap sitting mostly on one platform where ROAS fell or discount is far above guideline). No generic advice.
 2. "actions": for each attention item id, the lever in at most 12 words.
 
-Rules: use only the numbers given, exactly as written; never compute new ones. D2C is excluded from everything. Actions take a few days to show in the numbers; only treat something as an execution problem if it got worse or was followed up repeatedly.
+Rules: use only the numbers given, exactly as written; never compute new ones. If ROAS and ad spend show "–" or "no ads" everywhere, ad data is not yet available: say nothing about ads. D2C is excluded from everything. Actions take a few days to show in the numbers; only treat something as an execution problem if it got worse or was followed up repeatedly.
 Reply with ONLY a JSON object: {"focus": [...], "actions": {"<id>": "..."}}. No markdown fences."""
 
 
@@ -586,12 +612,7 @@ def render_focus(rows, s, what="platforms"):
 def exec_wording(kpis, plat_rows, ads_rows, cat_rows, focus_rows, attention):
     fb = fallback_wording(attention)["actions"]
     fb = {k: v.split(";")[0].split(". Worth")[0] for k, v in fb.items()}
-    focus = []
-    for r in focus_rows[:3]:
-        if r["platforms"]:
-            p = r["platforms"][0]
-            focus.append(f"{r['name']}: {r['f']['gap']} behind to date; {p['f']['gap']} of it on {p['name']} "
-                         f"(ROAS {p['f']['roas']} vs {p['f']['roas_lm']}, discount {p['f']['disc_vs_guideline']} vs guideline).")
+    focus = fallback_focus(focus_rows)
     fallback = {"focus": focus, "actions": fb}
     if not os.environ.get("ANTHROPIC_API_KEY"):
         log.warning("  No ANTHROPIC_API_KEY set; using rule-based wording (executive)")
@@ -608,7 +629,7 @@ def exec_wording(kpis, plat_rows, ads_rows, cat_rows, focus_rows, attention):
             "needs_attention": [{"id": i["id"], "tab": i["tab"], "status": i["status"], "times_raised": i.get("times_raised"),
                                  "platform": i["platform"], "product": i["name"], "facts": i["facts"]} for i in attention],
         }
-        msg = anthropic.Anthropic().messages.create(
+        msg = claude_client().messages.create(
             model=os.environ.get("BRIEF_MODEL", bc.MODEL), max_tokens=1500, system=EXEC_PROMPT,
             messages=[{"role": "user", "content": json.dumps(payload, ensure_ascii=False)}])
         text = "".join(b.text for b in msg.content if b.type == "text").strip()
@@ -621,7 +642,7 @@ def exec_wording(kpis, plat_rows, ads_rows, cat_rows, focus_rows, attention):
                  f"{getattr(usage, 'output_tokens', '?')} out tokens)")
         return {"focus": fl or focus, "actions": acts}
     except Exception as ex:
-        log.warning(f"  Claude wording failed for executive brief ({ex}); using rule-based wording")
+        log.warning(f"  Claude wording failed for executive brief ({why(ex)}); using rule-based wording")
         return fallback
 
 
@@ -842,6 +863,10 @@ def build_sections(d, scope, owner_of, tasks_by_plat, factors, group_small, sku_
 
 def render_sections(sec, s, focus, excluded_here=(), info_rows=(), show_owner=True):
     body = ""
+    if no_ad_data(sec):
+        body += ('<p style="background:#fff8c5;border:1px solid #d4a72c;border-radius:6px;padding:8px 10px;'
+                 'font-size:13px;margin:12px 0">⚠ <b>Ad data for this month isn’t in the sheet yet.</b> ROAS and ad '
+                 'spend are left out today; everything else is up to date.</p>')
     if focus:
         body += (f'<h2 style="{CSS["h2"]}">🎯 Where to focus</h2><ul style="margin:0;padding-left:20px">'
                  + "".join(f'<li style="margin:4px 0">{e(b)}</li>' for b in focus) + "</ul>")
@@ -849,9 +874,10 @@ def render_sections(sec, s, focus, excluded_here=(), info_rows=(), show_owner=Tr
         sec["plat_rows"], list(info_rows), s, show_owner)
     if excluded_here:
         body += f'<p style="{CSS["muted"]}">Awaiting data this month: {e(", ".join(sorted(excluded_here)))} (not counted as a miss).</p>'
-    body += f'<h2 style="{CSS["h2"]}">Ads scorecard</h2>' + render_ads_scorecard(sec["ads_rows"], s)
-    body += (f'<p style="{CSS["muted"]}">ROAS in brackets = last full month. Spend vs target = MTD spend against the '
-             f'ad plan prorated to date.</p>')
+    if not no_ad_data(sec):
+        body += f'<h2 style="{CSS["h2"]}">Ads scorecard</h2>' + render_ads_scorecard(sec["ads_rows"], s)
+        body += (f'<p style="{CSS["muted"]}">ROAS in brackets = last full month. Spend vs target = MTD spend against the '
+                 f'ad plan prorated to date.</p>')
     body += (f'<h2 style="{CSS["h2"]}">Top {len(sec["top_cats"])} categories by revenue</h2>'
              + render_category_scorecard(sec["top_cats"], s))
     what = "SKUs" if sec["sku_breakdown"] else "platforms"
