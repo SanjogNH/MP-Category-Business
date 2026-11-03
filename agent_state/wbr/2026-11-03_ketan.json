@@ -33,7 +33,30 @@
     "ad_spend_as_pct_of_sales": "26.6%",
     "platform_ad_spend_as_pct_of_sales": "17.5%"
    },
-   "text": "Shampoo Combo on Amazon did ₹4.9 L against a ₹8.3 L target (59.0%, gap −₹3.4 L), 0.0% vs the previous week. What is driving the gap?"
+   "text": "Shampoo Combo on Amazon did ₹4.9 L against a ₹8.3 L target (59.0%, gap −₹3.4 L), 0.0% vs the previous week. What is driving the gap?",
+   "review_period_facts": {
+    "week": "25 Oct – 30 Oct",
+    "week_revenue": "₹4.2 L",
+    "week_target": "₹7.1 L",
+    "attainment": "59.6%",
+    "gap": "−₹2.9 L",
+    "vs_previous_week": "+16.8%",
+    "ad_spend": "₹1.0 L",
+    "roas": "3.97",
+    "roas_previous_week": "3.57",
+    "discount": "21.8%",
+    "guideline": "20.4%",
+    "discount_vs_guideline": "+1.4 pp",
+    "sku_drivers": "Five Oil Hibiscus Shampoo - 250g +  Five Oil Hibiscus Conditioner - 150g (−₹1.6 L); Trileaf Rosemary Shampoo - 250g + Trileaf Rosemary Conditioner - 150g (−₹76,818)",
+    "ad_plan_for_the_days": "no ad plan",
+    "spend_vs_ad_plan": "–",
+    "ad_spend_as_pct_of_sales": "24.4%",
+    "platform_ad_spend_as_pct_of_sales": "17.1%"
+   },
+   "verdict": "No answer",
+   "answer": "",
+   "why": "",
+   "ask": ""
   },
   {
    "id": "Q2",
@@ -59,7 +82,30 @@
     "ad_spend_as_pct_of_sales": "6.6%",
     "platform_ad_spend_as_pct_of_sales": "17.5%"
    },
-   "text": "Shampoo on Amazon did ₹8.5 L against a ₹11.2 L target (75.6%, gap −₹2.7 L), −9.3% vs the previous week. What is driving the gap?"
+   "text": "Shampoo on Amazon did ₹8.5 L against a ₹11.2 L target (75.6%, gap −₹2.7 L), −9.3% vs the previous week. What is driving the gap?",
+   "review_period_facts": {
+    "week": "25 Oct – 30 Oct",
+    "week_revenue": "₹7.0 L",
+    "week_target": "₹9.6 L",
+    "attainment": "73.0%",
+    "gap": "−₹2.6 L",
+    "vs_previous_week": "−6.2%",
+    "ad_spend": "₹47,915",
+    "roas": "1.84",
+    "roas_previous_week": "2.22",
+    "discount": "25.8%",
+    "guideline": "19.6%",
+    "discount_vs_guideline": "+6.2 pp",
+    "sku_drivers": "Neem Beracyl Dandruff Shampoo - 250g (−₹1.5 L); Trileaf Rosemary Shampoo - 250g (−₹72,903)",
+    "ad_plan_for_the_days": "no ad plan",
+    "spend_vs_ad_plan": "–",
+    "ad_spend_as_pct_of_sales": "6.9%",
+    "platform_ad_spend_as_pct_of_sales": "17.1%"
+   },
+   "verdict": "No answer",
+   "answer": "",
+   "why": "",
+   "ask": ""
   },
   {
    "id": "Q3",
@@ -85,7 +131,30 @@
     "ad_spend_as_pct_of_sales": "46.4%",
     "platform_ad_spend_as_pct_of_sales": "17.5%"
    },
-   "text": "CP Hair Oil on Amazon did ₹3.9 L against a ₹5.9 L target (66.6%, gap −₹2.0 L), +13.2% vs the previous week. What is driving the gap?"
+   "text": "CP Hair Oil on Amazon did ₹3.9 L against a ₹5.9 L target (66.6%, gap −₹2.0 L), +13.2% vs the previous week. What is driving the gap?",
+   "review_period_facts": {
+    "week": "25 Oct – 30 Oct",
+    "week_revenue": "₹3.5 L",
+    "week_target": "₹5.0 L",
+    "attainment": "68.8%",
+    "gap": "−₹1.6 L",
+    "vs_previous_week": "+12.3%",
+    "ad_spend": "₹1.5 L",
+    "roas": "1.47",
+    "roas_previous_week": "1.33",
+    "discount": "22.8%",
+    "guideline": "15.2%",
+    "discount_vs_guideline": "+7.6 pp",
+    "sku_drivers": "Castor Oil - 200 ml (−₹88,137); Neem Oil - 200 ml (−₹40,404)",
+    "ad_plan_for_the_days": "no ad plan",
+    "spend_vs_ad_plan": "–",
+    "ad_spend_as_pct_of_sales": "42.7%",
+    "platform_ad_spend_as_pct_of_sales": "17.1%"
+   },
+   "verdict": "No answer",
+   "answer": "",
+   "why": "",
+   "ask": ""
   },
   {
    "id": "Q4",
@@ -112,7 +181,30 @@
     "platform_ad_spend_as_pct_of_sales": "17.5%",
     "why_flagged": "over ad plan, high spend for the sales"
    },
-   "text": "Nourishing Jal on Amazon is at 84.8% of target on ₹96,506 of ad spend (147% of the ad plan; ads at 108.3% of sales vs 17.5% for Amazon overall; ROAS 0.79 vs 0.95 the week before). Is this spend earning its keep, or can some of it be pulled back?"
+   "text": "Nourishing Jal on Amazon is at 84.8% of target on ₹96,506 of ad spend (147% of the ad plan; ads at 108.3% of sales vs 17.5% for Amazon overall; ROAS 0.79 vs 0.95 the week before). Is this spend earning its keep, or can some of it be pulled back?",
+   "review_period_facts": {
+    "week": "25 Oct – 30 Oct",
+    "week_revenue": "₹80,766",
+    "week_target": "₹90,098",
+    "attainment": "89.6%",
+    "gap": "−₹9,331",
+    "vs_previous_week": "+1.5%",
+    "ad_spend": "₹76,201",
+    "roas": "0.81",
+    "roas_previous_week": "0.90",
+    "discount": "30.1%",
+    "guideline": "15.2%",
+    "discount_vs_guideline": "+14.9 pp",
+    "sku_drivers": "Hibiscus Jal - 200ml (−₹4,297); Rosemary Jal - 200ml (−₹2,572)",
+    "ad_plan_for_the_days": "no ad plan",
+    "spend_vs_ad_plan": "–",
+    "ad_spend_as_pct_of_sales": "94.3%",
+    "platform_ad_spend_as_pct_of_sales": "17.1%"
+   },
+   "verdict": "No answer",
+   "answer": "",
+   "why": "",
+   "ask": ""
   },
   {
    "id": "Q5",
@@ -138,7 +230,30 @@
     "ad_spend_as_pct_of_sales": "9.3%",
     "platform_ad_spend_as_pct_of_sales": "17.5%"
    },
-   "text": "Soap on Amazon ran a 33.0% discount against a 18.4% guideline (+14.6 pp). Why, and what is it buying us in volume?"
+   "text": "Soap on Amazon ran a 33.0% discount against a 18.4% guideline (+14.6 pp). Why, and what is it buying us in volume?",
+   "review_period_facts": {
+    "week": "25 Oct – 30 Oct",
+    "week_revenue": "₹5.0 L",
+    "week_target": "₹6.2 L",
+    "attainment": "79.5%",
+    "gap": "−₹1.3 L",
+    "vs_previous_week": "−1.3%",
+    "ad_spend": "₹44,876",
+    "roas": "4.19",
+    "roas_previous_week": "3.69",
+    "discount": "33.1%",
+    "guideline": "18.5%",
+    "discount_vs_guideline": "+14.6 pp",
+    "sku_drivers": "Lavender Soap 125g - Pack of 2 (−₹54,138); Tomato Basil Soap 125g - Pack of 2 (−₹33,933)",
+    "ad_plan_for_the_days": "no ad plan",
+    "spend_vs_ad_plan": "–",
+    "ad_spend_as_pct_of_sales": "9.0%",
+    "platform_ad_spend_as_pct_of_sales": "17.1%"
+   },
+   "verdict": "No answer",
+   "answer": "",
+   "why": "",
+   "ask": ""
   },
   {
    "id": "Q6",
@@ -164,7 +279,30 @@
     "ad_spend_as_pct_of_sales": "5.8%",
     "platform_ad_spend_as_pct_of_sales": "17.5%"
    },
-   "text": "Henna on Amazon ran a 21.6% discount against a 16.1% guideline (+5.5 pp). Why, and what is it buying us in volume?"
+   "text": "Henna on Amazon ran a 21.6% discount against a 16.1% guideline (+5.5 pp). Why, and what is it buying us in volume?",
+   "review_period_facts": {
+    "week": "25 Oct – 30 Oct",
+    "week_revenue": "₹12.3 L",
+    "week_target": "₹13.5 L",
+    "attainment": "91.0%",
+    "gap": "−₹1.2 L",
+    "vs_previous_week": "+13.8%",
+    "ad_spend": "₹78,533",
+    "roas": "5.31",
+    "roas_previous_week": "5.57",
+    "discount": "21.5%",
+    "guideline": "16.0%",
+    "discount_vs_guideline": "+5.5 pp",
+    "sku_drivers": "Henna Paste - Pack of 2 (−₹82,166); Henna Paste - Pack of 4 (−₹52,897)",
+    "ad_plan_for_the_days": "no ad plan",
+    "spend_vs_ad_plan": "–",
+    "ad_spend_as_pct_of_sales": "6.4%",
+    "platform_ad_spend_as_pct_of_sales": "17.1%"
+   },
+   "verdict": "No answer",
+   "answer": "",
+   "why": "",
+   "ask": ""
   }
  ],
  "own_ids": [
@@ -187,5 +325,6 @@
   }
  ],
  "reminder_sent": "2026-11-02T11:01:10.756539+05:30",
- "pack_sent": false
+ "pack_sent": "2026-11-03T10:01:28.236817+05:30",
+ "replies": []
 }

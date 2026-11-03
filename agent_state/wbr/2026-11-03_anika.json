@@ -33,7 +33,30 @@
     "ad_spend_as_pct_of_sales": "0.0%",
     "platform_ad_spend_as_pct_of_sales": "3.3%"
    },
-   "text": "Face Wash on Flipkart did ₹13.8 L against a ₹60.3 L target (22.8%, gap −₹46.6 L), +2.8% vs the previous week. What is driving the gap?"
+   "text": "Face Wash on Flipkart did ₹13.8 L against a ₹60.3 L target (22.8%, gap −₹46.6 L), +2.8% vs the previous week. What is driving the gap?",
+   "review_period_facts": {
+    "week": "25 Oct – 31 Oct",
+    "week_revenue": "₹12.5 L",
+    "week_target": "₹60.3 L",
+    "attainment": "20.7%",
+    "gap": "−₹47.9 L",
+    "vs_previous_week": "−1.5%",
+    "ad_spend": "no ads",
+    "roas": "–",
+    "roas_previous_week": "–",
+    "discount": "11.5%",
+    "guideline": "16.4%",
+    "discount_vs_guideline": "−4.9 pp",
+    "sku_drivers": "Ubtan Tikta Face Wash (−₹20.8 L); Brightening Ubtan Face Wash - QC (−₹17.2 L)",
+    "ad_plan_for_the_days": "no ad plan",
+    "spend_vs_ad_plan": "–",
+    "ad_spend_as_pct_of_sales": "0.0%",
+    "platform_ad_spend_as_pct_of_sales": "3.7%"
+   },
+   "verdict": "Not evaluated",
+   "answer": "",
+   "why": "",
+   "ask": ""
   },
   {
    "id": "Q2",
@@ -59,7 +82,30 @@
     "ad_spend_as_pct_of_sales": "0.1%",
     "platform_ad_spend_as_pct_of_sales": "3.3%"
    },
-   "text": "Soap on Flipkart did ₹2.7 L against a ₹22.2 L target (12.0%, gap −₹19.6 L), −12.5% vs the previous week. What is driving the gap?"
+   "text": "Soap on Flipkart did ₹2.7 L against a ₹22.2 L target (12.0%, gap −₹19.6 L), −12.5% vs the previous week. What is driving the gap?",
+   "review_period_facts": {
+    "week": "25 Oct – 31 Oct",
+    "week_revenue": "₹2.9 L",
+    "week_target": "₹22.2 L",
+    "attainment": "12.8%",
+    "gap": "−₹19.4 L",
+    "vs_previous_week": "+3.2%",
+    "ad_spend": "₹315",
+    "roas": "54.06",
+    "roas_previous_week": "17.80",
+    "discount": "26.9%",
+    "guideline": "18.5%",
+    "discount_vs_guideline": "+8.3 pp",
+    "sku_drivers": "Tomato Basil Soap 125g - Pack of 2 (−₹12.6 L); Tomato Basil Soap 125g - Pack of 4 (−₹2.7 L)",
+    "ad_plan_for_the_days": "no ad plan",
+    "spend_vs_ad_plan": "–",
+    "ad_spend_as_pct_of_sales": "0.1%",
+    "platform_ad_spend_as_pct_of_sales": "3.7%"
+   },
+   "verdict": "Not evaluated",
+   "answer": "",
+   "why": "",
+   "ask": ""
   },
   {
    "id": "Q3",
@@ -85,7 +131,30 @@
     "ad_spend_as_pct_of_sales": "1.7%",
     "platform_ad_spend_as_pct_of_sales": "4.8%"
    },
-   "text": "Face Wash on Meesho did ₹26.2 L against a ₹43.6 L target (60.2%, gap −₹17.4 L), +39.2% vs the previous week. What is driving the gap?"
+   "text": "Face Wash on Meesho did ₹26.2 L against a ₹43.6 L target (60.2%, gap −₹17.4 L), +39.2% vs the previous week. What is driving the gap?",
+   "review_period_facts": {
+    "week": "23 Oct – 31 Oct",
+    "week_revenue": "₹31.3 L",
+    "week_target": "₹56.1 L",
+    "attainment": "55.9%",
+    "gap": "−₹24.7 L",
+    "vs_previous_week": "+41.1%",
+    "ad_spend": "₹43,585",
+    "roas": "–",
+    "roas_previous_week": "–",
+    "discount": "34.5%",
+    "guideline": "15.5%",
+    "discount_vs_guideline": "+19.0 pp",
+    "sku_drivers": "Ubtan Tikta Face Wash (−₹22.6 L); Moringa Vit-C Tikta Gel Face Wash (−₹2.8 L)",
+    "ad_plan_for_the_days": "no ad plan",
+    "spend_vs_ad_plan": "–",
+    "ad_spend_as_pct_of_sales": "1.4%",
+    "platform_ad_spend_as_pct_of_sales": "3.9%"
+   },
+   "verdict": "Not evaluated",
+   "answer": "",
+   "why": "",
+   "ask": ""
   },
   {
    "id": "Q4",
@@ -112,7 +181,30 @@
     "platform_ad_spend_as_pct_of_sales": "4.8%",
     "why_flagged": "over ad plan, high spend for the sales"
    },
-   "text": "Henna on Meesho is at 137.4% of target on ₹47,445 of ad spend (549% of the ad plan; ads at 12.3% of sales vs 4.8% for Meesho overall; ROAS – vs – the week before). Is this spend earning its keep, or can some of it be pulled back?"
+   "text": "Henna on Meesho is at 137.4% of target on ₹47,445 of ad spend (549% of the ad plan; ads at 12.3% of sales vs 4.8% for Meesho overall; ROAS – vs – the week before). Is this spend earning its keep, or can some of it be pulled back?",
+   "review_period_facts": {
+    "week": "23 Oct – 31 Oct",
+    "week_revenue": "₹5.0 L",
+    "week_target": "₹3.6 L",
+    "attainment": "139.9%",
+    "gap": "₹1.4 L",
+    "vs_previous_week": "+218.2%",
+    "ad_spend": "₹47,445",
+    "roas": "–",
+    "roas_previous_week": "–",
+    "discount": "47.5%",
+    "guideline": "14.1%",
+    "discount_vs_guideline": "+33.4 pp",
+    "sku_drivers": "Henna Paste - Pack of 3 (−₹37,274); Henna Paste - Pack of 2 (₹1,764)",
+    "ad_plan_for_the_days": "no ad plan",
+    "spend_vs_ad_plan": "–",
+    "ad_spend_as_pct_of_sales": "9.4%",
+    "platform_ad_spend_as_pct_of_sales": "3.9%"
+   },
+   "verdict": "Not evaluated",
+   "answer": "",
+   "why": "",
+   "ask": ""
   },
   {
    "id": "Q5",
@@ -138,7 +230,30 @@
     "ad_spend_as_pct_of_sales": "1.2%",
     "platform_ad_spend_as_pct_of_sales": "4.8%"
    },
-   "text": "Soap on Meesho ran a 44.6% discount against a 18.2% guideline (+26.4 pp). Why, and what is it buying us in volume?"
+   "text": "Soap on Meesho ran a 44.6% discount against a 18.2% guideline (+26.4 pp). Why, and what is it buying us in volume?",
+   "review_period_facts": {
+    "week": "23 Oct – 31 Oct",
+    "week_revenue": "₹6.3 L",
+    "week_target": "₹25.8 L",
+    "attainment": "24.6%",
+    "gap": "−₹19.5 L",
+    "vs_previous_week": "+73.7%",
+    "ad_spend": "₹6,311",
+    "roas": "–",
+    "roas_previous_week": "–",
+    "discount": "44.5%",
+    "guideline": "18.2%",
+    "discount_vs_guideline": "+26.3 pp",
+    "sku_drivers": "Tomato Basil Soap 125g - Pack of 2 (−₹13.5 L); Tomato Basil 125g - Pack of 3 (−₹4.1 L)",
+    "ad_plan_for_the_days": "no ad plan",
+    "spend_vs_ad_plan": "–",
+    "ad_spend_as_pct_of_sales": "1.0%",
+    "platform_ad_spend_as_pct_of_sales": "3.9%"
+   },
+   "verdict": "Not evaluated",
+   "answer": "",
+   "why": "",
+   "ask": ""
   },
   {
    "id": "Q6",
@@ -164,7 +279,30 @@
     "ad_spend_as_pct_of_sales": "11.3%",
     "platform_ad_spend_as_pct_of_sales": "4.8%"
    },
-   "text": "Shampoo on Meesho ran a 33.1% discount against a 20.1% guideline (+12.9 pp). Why, and what is it buying us in volume?"
+   "text": "Shampoo on Meesho ran a 33.1% discount against a 20.1% guideline (+12.9 pp). Why, and what is it buying us in volume?",
+   "review_period_facts": {
+    "week": "23 Oct – 31 Oct",
+    "week_revenue": "₹5.1 L",
+    "week_target": "₹5.2 L",
+    "attainment": "98.3%",
+    "gap": "−₹8,998",
+    "vs_previous_week": "+52.1%",
+    "ad_spend": "₹46,132",
+    "roas": "–",
+    "roas_previous_week": "–",
+    "discount": "32.9%",
+    "guideline": "20.0%",
+    "discount_vs_guideline": "+12.9 pp",
+    "sku_drivers": "Five Oil Hibiscus Shampoo - 250g (−₹48,411); Five Oil Hibiscus Shampoo - 250g - Pack of 2 (−₹27,169)",
+    "ad_plan_for_the_days": "no ad plan",
+    "spend_vs_ad_plan": "–",
+    "ad_spend_as_pct_of_sales": "9.0%",
+    "platform_ad_spend_as_pct_of_sales": "3.9%"
+   },
+   "verdict": "Not evaluated",
+   "answer": "",
+   "why": "",
+   "ask": ""
   }
  ],
  "own_ids": [
@@ -248,5 +386,13 @@
   }
  ],
  "reminder_sent": "2026-11-02T11:01:10.756539+05:30",
- "pack_sent": false
+ "pack_sent": "2026-11-03T10:01:28.236817+05:30",
+ "replies": [
+  {
+   "from": "anika@nathabit.in",
+   "date": "Mon, 2 Nov 2026 19:23:45 +0530",
+   "text": "Hi Sanjog,\n\nPlease find below:\n\nQ1. Face Wash on Flipkart - The gap is driven by lower traffic. Our clicks\nin the prev. month were 9.8L which dropped to 6.7L in the current month.\nThis is primarily attributed to reduced influencer marketing spend during\nthis period. Conversion on the traffic we did get stayed strong. Gross CVR\nwas 5.8% MTD, up from 5.5% last month and 5.3% over the last three months\n\nQ2. Soap on Flipkart - The gap is driven by lower traffic. Our clicks in\nthe prev. month were 4.37L which dropped to 1.52L in the current month.\nThis is primarily attributed to reduced influencer marketing spend during\nthis period. Conversion on the traffic we did get stayed strong. Gross CVR\nwas 6.4% MTD, up from 4.3% last month and 4.3% over the last three months\n\nQ3. Face Wash on Meesho - The gap is also traffic-led. Reduced influencer\nspend lowered impressions and clicks on Meesho\n\nQ4. Henna on Meesho (137.4% of target, Rs. 47,445 ad spend) - ROI for Henna\noperated at 26 for pack of 1, and 7.6 for pack of 2 during the period of\nOctober. Towards the end of October, we did reduce spends on Henna for pack\nof 1 and stopped for pack of 2 because we wanted to be-line with our\nallocated budget, and demand for henna is seasonal and tapers off in\nwinter, so continuing at this level would have given diminishing returns.\nWe are currently operating at a Rs. 500 budget for pack of 1 on Meesho\nwhile the pack of 2 campaign is paused. We will continue this till Diwali\nand then experiment by stopping spends altogether for Henna.\n\nQ5. Soap on Meesho (37.6% actual vs 31.2% planned) - We had shared the\nevent pricing with Meesho back in September, it was in-line with Flipkart\nand Amazon’s event pricing for the month of October. NLTB and variants were\nour biggest selling SKUs which operated at a higher than planned discount\nwhich caused the discounting to be up against planned. This has been\ncorrected for the month of November (after their Maha Diwali Sale), wherein\nwe have taken our SPs back to September levels\n\nQ6. Shampoo on Meesho (28.7% actual vs 32.0% planned) - Shampoo’s actual\ndiscount came in 3.3 pp below plan, so we spent less on discounting than\nbudgeted\n\nFlipkart Target Estimated achievement\nPrimary (? L) 348L 170L\nSecondary (? L) 553L 270L\nDiscounting % (%) 24.90% 33.90%\nSpend (? L) 15L 14.32L\nSLA (%) - 5.3\n\nFlipkart Minutes Target Estimated achievement\nPrimary (? L) - 7.26L\nSecondary (? L) - 2.86L\nDiscounting % (%) - -\nSpend (? L) - 2.5L\nAvailability (%) - -\n\nMeesho Target Estimated achievement\nPrimary (? L) 331L 221L\nSecondary (? L) 331L 221L\nDiscounting % (%) 29% 32.80%\nSpend (? L) 2L 2.5L\nSLA (%) - -\n\nMyntra Target Estimated achievement\nPrimary (? L) 47.9L 49.1L\nSecondary (? L) 63L 64.6L\nDiscounting % (%) 24.2% 24.50%\nSpend (? L) - 4.7 days\nSLA (%)\n\nOther accounts (Amala Earth, Jio Mart, Kindlife, Maccaron, Pharmeasy, Pop\nClub, Purplle, Snapdeal, Tata 1mg, Tata Cliq) Target Estimated achievement\nPrimary (? L) 15.2L 13.27L\nSecondary (? L) 15.2L 13.27L\nDiscounting % (%) - -\nSpend (? L) - -\nSLA (%) - -\nThank you!",
+   "full": "Hi Sanjog,\nPlease find below:\n Q1. Face Wash on Flipkart - The gap is driven by lower traffic. Our clicks in the prev. month were 9.8L which dropped to 6.7L in the current month. This is primarily attributed to reduced influencer marketing spend during this period. Conversion on the traffic we did get stayed strong. Gross CVR was 5.8% MTD, up from 5.5% last month and 5.3% over the last three months \n Q2. Soap on Flipkart - The gap is driven by lower traffic. Our clicks in the prev. month were 4.37L which dropped to 1.52L in the current month. This is primarily attributed to reduced influencer marketing spend during this period. Conversion on the traffic we did get stayed strong. Gross CVR was 6.4% MTD, up from 4.3% last month and 4.3% over the last three months \n Q3. Face Wash on Meesho - The gap is also traffic-led. Reduced influencer spend lowered impressions and clicks on Meesho \n Q4. Henna on Meesho (137.4% of target, Rs. 47,445 ad spend) - ROI for Henna operated at 26 for pack of 1, and 7.6 for pack of 2 during the period of October. Towards the end of October, we did reduce spends on Henna for pack of 1 and stopped for pack of 2 because we wanted to be-line with our allocated budget, and demand for henna is seasonal and tapers off in winter, so continuing at this level would have given diminishing returns. We are currently operating at a Rs. 500 budget for pack of 1 on Meesho while the pack of 2 campaign is paused. We will continue this till Diwali and then experiment by stopping spends altogether for Henna. \n Q5. Soap on Meesho (37.6% actual vs 31.2% planned) - We had shared the event pricing with Meesho back in September, it was in-line with Flipkart and Amazon’s event pricing for the month of October. NLTB and variants were our biggest selling SKUs which operated at a higher than planned discount which caused the discounting to be up against planned. This has been corrected for the month of November (after their Maha Diwali Sale), wherein we have taken our SPs back to September levels \n Q6. Shampoo on Meesho (28.7% actual vs 32.0% planned) - Shampoo’s actual discount came in 3.3 pp below plan, so we spent less on discounting than budgeted \n Flipkart | \r\n Target | \r\n Estimated achievement | \r\n Primary (? L) | \r\n 348L | \r\n 170L | \r\n Secondary (? L) | \r\n 553L | \r\n 270L | \r\n Discounting % (%) | \r\n 24.90% | \r\n 33.90% | \r\n Spend (? L) | \r\n 15L | \r\n 14.32L | \r\n SLA (%) | \r\n - | \r\n 5.3 | \r\n | \r\n | \r\n | \r\n Flipkart Minutes | \r\n Target | \r\n Estimated achievement | \r\n Primary (? L) | \r\n - | \r\n 7.26L | \r\n Secondary (? L) | \r\n - | \r\n 2.86L | \r\n Discounting % (%) | \r\n - | \r\n - | \r\n Spend (? L) | \r\n - | \r\n 2.5L | \r\n Availability (%) | \r\n - | \r\n - | \r\n | \r\n | \r\n | \r\n Meesho | \r\n Target | \r\n Estimated achievement | \r\n Primary (? L) | \r\n 331L | \r\n 221L | \r\n Secondary (? L) | \r\n 331L | \r\n 221L | \r\n Discounting % (%) | \r\n 29% | \r\n 32.80% | \r\n Spend (? L) | \r\n 2L | \r\n 2.5L | \r\n SLA (%) | \r\n - | \r\n - | \r\n | \r\n | \r\n | \r\n Myntra | \r\n Target | \r\n Estimated achievement | \r\n Primary (? L) | \r\n 47.9L | \r\n 49.1L | \r\n Secondary (? L) | \r\n 63L | \r\n 64.6L | \r\n Discounting % (%) | \r\n 24.2% | \r\n 24.50% | \r\n Spend (? L) | \r\n - | \r\n 4.7 days | \r\n SLA (%) | \r\n | \r\n | \r\n | \r\n | \r\n | \r\n Other accounts (Amala Earth,\r\n Jio Mart, Kindlife, Maccaron, Pharmeasy, Pop Club, Purplle, Snapdeal, Tata\r\n 1mg, Tata Cliq) | \r\n Target | \r\n Estimated achievement | \r\n Primary (? L) | \r\n 15.2L | \r\n 13.27L | \r\n Secondary (? L) | \r\n 15.2L | \r\n 13.27L | \r\n Discounting % (%) | \r\n - | \r\n - | \r\n Spend (? L) | \r\n - | \r\n - | \r\n SLA (%) | \r\n - | \r\n - | \r\nThank you!\n On Mon, 2 Nov 2026 at 11:01, Sanjog < sanjog@nathabit.in > wrote:\n Hi Anika,\n A quick reminder on the WBR questions below, ahead of Tue 3 Nov at 12:15 pm. A short reply by Mon 2 Nov, 6 pm would really help me prepare.\n Thanks,\nSanjog\n -- \n Best,\nAnika\nGrowth Manager, E-Commerce"
+  }
+ ]
 }
