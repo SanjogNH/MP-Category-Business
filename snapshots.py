@@ -29,7 +29,8 @@ log = logging.getLogger(__name__)
 SNAP_DIR = "agent_state/snapshots"
 KEEP_DAYS = 75
 IST = dt.timezone(dt.timedelta(hours=5, minutes=30))
-F = ["cat", "rev", "qty", "mrp", "plan", "ad_spend", "ad_sales", "ad_clicks", "gross_sales"]
+F = ["cat", "rev", "qty", "mrp", "plan", "ad_spend", "ad_sales", "ad_clicks", "gross_sales", "phased"]
+# "phased" = phased plan to date (cumulative), so a week's target = phased(end) − phased(day before start)
 
 
 # ── Build a snapshot from one month's artifacts ──────────────
@@ -46,13 +47,14 @@ def month_snapshot(m):
         plat = out.setdefault(r["Platform"], {"till": till.get(r["Platform"]), "skus": {}})
         plat["skus"][r["SKU"]] = [r["Category"], r.get("MTD Actual SP Revenue") or 0, r.get("MTD Actual Quantity") or 0,
                                   mrp.get(k, 0), r.get("Planned SP Revenue") or 0, a.get("Ad_Spend_MTD") or 0,
-                                  a.get("Ad_Sales_MTD") or 0, a.get("Ad_Clicks_MTD") or 0, a.get("Gross_Sales_MTD") or 0]
+                                  a.get("Ad_Sales_MTD") or 0, a.get("Ad_Clicks_MTD") or 0, a.get("Gross_Sales_MTD") or 0,
+                                  r.get("Phased Planned SP Revenue") or 0]
     for k, a in ads.items():  # ad-only SKUs (no sales row)
         if k in seen or a.get("Category") == "Unmapped Category":
             continue
         plat = out.setdefault(k[0], {"till": till.get(k[0]), "skus": {}})
         plat["skus"][k[1]] = [a["Category"], 0, 0, 0, 0, a.get("Ad_Spend_MTD") or 0, a.get("Ad_Sales_MTD") or 0,
-                              a.get("Ad_Clicks_MTD") or 0, a.get("Gross_Sales_MTD") or 0]
+                              a.get("Ad_Clicks_MTD") or 0, a.get("Gross_Sales_MTD") or 0, 0]
     return out
 
 
@@ -106,6 +108,20 @@ def extract_payload(html_text):
     return obj
 
 
+def is_current(path):
+    """True if the snapshot already carries every field in F (older ones lack the phased plan)."""
+    try:
+        with gzip.open(path, "rt", encoding="utf-8") as f:
+            snap = json.load(f)
+        for plats in snap["months"].values():
+            for v in plats.values():
+                for row in v["skus"].values():
+                    return len(row) >= len(F)
+    except Exception:
+        return False
+    return True
+
+
 def backfill(days=45):
     out = subprocess.run(["git", "log", f"--since={days}.days", "--format=%H %cI", "--", "nh_category_intel.html"],
                          capture_output=True, text=True, check=True).stdout.split("\n")
@@ -118,7 +134,8 @@ def backfill(days=45):
         last_per_day.setdefault(day, sha)  # git log is newest first → first seen is the day's last commit
     made = 0
     for day, sha in sorted(last_per_day.items()):
-        if os.path.exists(f"{SNAP_DIR}/{day.isoformat()}.json.gz"):
+        path = f"{SNAP_DIR}/{day.isoformat()}.json.gz"
+        if os.path.exists(path) and is_current(path):
             continue
         try:
             html = subprocess.run(["git", "show", f"{sha}:nh_category_intel.html"], capture_output=True,
@@ -190,13 +207,16 @@ class History:
             days = t_end - t0
             if days <= 0:
                 continue
+            at = lambda row, i: (row[i] or 0) if row is not None and i < len(row) else 0
             for sku, r in rows_end.items():
                 r0 = rows0.get(sku)
-                vals = [r[i] - (r0[i] if r0 else 0) for i in range(1, len(F))]
+                vals = [at(r, i) - at(r0, i) for i in range(1, len(F))]
                 cur = total.setdefault(sku, [r[0]] + [0] * (len(F) - 1))
                 for i, v in enumerate(vals, 1):
                     cur[i] += v
-                plan[sku] = plan.get(sku, 0) + (r[4] or 0) * days / ndays
+                has_phased = len(r) > 9 and (r0 is None or len(r0) > 9)
+                seg_plan = (at(r, 9) - at(r0, 9)) if has_phased else (r[4] or 0) * days / ndays
+                plan[sku] = plan.get(sku, 0) + seg_plan
             covered += days
             if eff_start is None:
                 eff_start = dt.date(a.year, a.month, t0 + 1)
