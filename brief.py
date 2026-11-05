@@ -544,7 +544,11 @@ def table(headers, rows_html):
 
 def render_platform_scorecard(rows, info_rows, s, show_owner=True):
     out = ""
+    freshest = max([r.get("till") or 0 for r in rows] or [0])
     for r in rows + info_rows:
+        stale = r.get("till") and freshest and r["till"] <= freshest - 2
+        till_cell = (f'<td style="{TD}' + (';background:#fff8c5;color:#9a6700;font-weight:bold' if stale else ';color:#59636e')
+                     + f'">{e(r.get("till_s", "–"))}</td>')
         f, grey = r["f"], r.get("info")
         st = ";color:#8c959f" if grey else ""
         name = e(r["name"]) + (' <span style="font-weight:normal">(info only)</span>' if grey else "")
@@ -555,8 +559,8 @@ def render_platform_scorecard(rows, info_rows, s, show_owner=True):
                 f'<td style="{TD}{st}">{f["gap"]}</td>'
                 f'<td style="{TD}{"" if grey else _roas_style(r, s)}{st}">{f["roas"]} <span style="color:#59636e;font-weight:normal">({f["roas_lm"]})</span></td>'
                 f'<td style="{TD}{"" if grey else _disc_style(r["disc_vs_guideline"], s)}{st}">{f["disc_vs_guideline"]}</td>'
-                f'<td style="{TD};text-align:center{st}">{r.get("tasks") or ""}</td></tr>')
-    cols = ["Platform", "Owner", "Revenue MTD", "vs pace", "Gap", "ROAS (LM)", "Disc vs guide", "Tasks"]
+                f'<td style="{TD};text-align:center{st}">{r.get("tasks") or ""}</td>' + till_cell + '</tr>')
+    cols = ["Platform", "Owner", "Revenue MTD", "vs pace", "Gap", "ROAS (LM)", "Disc vs guide", "Tasks", "Data till"]
     return table(cols if show_owner else [c for c in cols if c != "Owner"], out)
 
 
@@ -803,11 +807,29 @@ def send(to, subject, body):
 # ══════════════════════════════════════════════
 #  Main
 # ══════════════════════════════════════════════
+def till_day(d, plats):
+    days = [int((d["prorate_info"].get(p) or {}).get("day") or 0) for p in plats]
+    days = [x for x in days if x]
+    return min(days) if days else None
+
+
+def fmt_till(d, day):
+    if not day:
+        return "–"
+    try:
+        y, m = map(int, d.get("_month", "").split("-"))
+        return dt.date(y, m, day).strftime("%d %b").lstrip("0")
+    except Exception:
+        return f"day {day}"
+
+
 def build_sections(d, scope, owner_of, tasks_by_plat, factors, group_small, sku_breakdown):
     """Everything the executive-style format needs, for one set of platforms."""
     def row(name, plats, cat=None, **extra):
         r = {"name": name, **agg(d, set(plats), cat, factors), **extra}
         r["f"] = fmt_row(r)
+        r["till"] = till_day(d, plats)
+        r["till_s"] = fmt_till(d, r["till"])
         return r
 
     tot = row("Total", scope)
@@ -891,6 +913,7 @@ def main():
     global MODE
     log.info(f"brief.py – mode={MODE}")
     month, label, d = load_latest()
+    d["_month"] = month
     s = d["summary"]
     excluded = set(s.get("excluded_platforms") or [])
     all_plats = list(d["prorate_info"].keys())
@@ -996,7 +1019,8 @@ def main():
     info_rows = []
     for p in all_plats:
         if p in info_only:
-            r = {"name": p, **agg(d, {p}, None, factors), "owner": "", "info": True}
+            r = {"name": p, **agg(d, {p}, None, factors), "owner": "", "info": True,
+                 "till": till_day(d, [p]), "till_s": fmt_till(d, till_day(d, [p]))}
             r["f"] = fmt_row(r)
             info_rows.append(r)
 
