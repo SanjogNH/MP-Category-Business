@@ -57,6 +57,10 @@ ESCALATE_ATTAINMENT_DROP_PTS = 10    # revenue attainment fell 10+ points since 
 ESCALATE_ROAS_DROP_PCT = 15          # ROAS fell a further 15%+ since raised
 ESCALATE_DISCOUNT_RISE_PP = 2        # discount vs guideline rose 2+ pp since raised
 
+# ── Target basis ───────────────────────────────
+# "phased" = the plan as phased by day (managers' daily phasing); "prorated" = month plan × days elapsed ÷ days in month
+TARGET_BASIS = "phased"
+
 # ── Noise floors (skip rows too small to matter) ──
 MIN_PRORATED_PLAN = 10_000     # revenue tasks: SKU must have ≥ ₹10k prorated plan
 MIN_AD_SPEND_MTD = 10_000      # ads tasks: SKU must have ≥ ₹10k ad spend this month
