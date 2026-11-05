@@ -36,10 +36,12 @@ log = logging.getLogger(__name__)
 
 IST = dt.timezone(dt.timedelta(hours=5, minutes=30))
 TODAY = dt.datetime.now(IST).date()
-MODE = os.environ.get("BRIEF_MODE", "dry").strip().lower()
-if MODE not in ("dry", "test", "send"):
+MODE = os.environ.get("BRIEF_MODE", "dry").strip().lower().replace(" only", "")  # "me only" → "me"
+if MODE not in ("dry", "test", "send", "me"):
     MODE = "dry"  # anything unexpected (e.g. "off", "false", blank) never sends
 SEV_RANK = {"critical": 0, "warning": 1}
+PLAN_COL = "Phased_Planned_SP" if getattr(bc, "TARGET_BASIS", "phased") == "phased" else "Prorated_Planned_SP"
+BASIS_LABEL = "phased plan" if PLAN_COL == "Phased_Planned_SP" else "prorated plan"
 TAB_TITLES = {"revenue": "📊 Revenue", "ads": "📣 Ads Intelligence", "discount": "🏷️ Price & Discount"}
 
 
@@ -128,26 +130,43 @@ def team_scopes(all_platforms):
 # ══════════════════════════════════════════════
 #  Candidate action items (all flagged rows)
 # ══════════════════════════════════════════════
+def sku_plan(r, s):
+    """Plan to date on the chosen basis (phased by default), with attainment, gap and flag recomputed on it."""
+    if getattr(bc, "TARGET_BASIS", "phased") == "phased":
+        plan, qplan = r.get("Phased Planned SP Revenue") or 0, r.get("Phased Planned Quantity") or 0
+    else:
+        plan, qplan = r.get("Prorated Planned SP Revenue") or 0, r.get("Prorated Planned Quantity") or 0
+    act = r.get("MTD Actual SP Revenue") or 0
+    att = act / plan * 100 if plan else None
+    uatt = (r.get("MTD Actual Quantity") or 0) / qplan * 100 if qplan else None
+    flag = None
+    if att is not None:
+        flag = ("critical" if att < s.get("attainment_critical_pct", 70) else
+                "warning" if att < s.get("attainment_warning_pct", 85) else "ok")
+    return {"plan": plan, "att": att, "gap": act - plan, "uatt": uatt, "flag": flag}
+
+
 def revenue_candidates(d, excluded):
     items, stretch = [], []
     for r in d["sku_detail"]:
-        flag = r.get("Revenue Flag")
+        ph = sku_plan(r, d["summary"])
+        flag = ph["flag"]
         if flag not in SEV_RANK or r["Platform"] in excluded:
             continue
-        if (r.get("Prorated Planned SP Revenue") or 0) < bc.MIN_PRORATED_PLAN:
+        if ph["plan"] < bc.MIN_PRORATED_PLAN:
             continue  # unplanned / tiny-plan SKUs: 0% attainment is noise, not a miss
         it = {
             "key": f"revenue|{r['Platform']}|{r['SKU']}",
             "tab": "revenue", "sev": flag, "platform": r["Platform"], "category": r["Category"],
             "sku": r["SKU"], "name": r.get("Short Name") or r["SKU"],
-            "metric": r["Revenue Attainment %"], "root_cause": r.get("Root Cause"),
-            "rank": -(r["Revenue Gap"] or 0),
+            "metric": ph["att"], "root_cause": r.get("Root Cause"),
+            "rank": -(ph["gap"] or 0),
             "facts": {
-                "attainment_vs_pace": pct(r["Revenue Attainment %"]),
-                "units_attainment": pct(r["Units Attainment %"]),
-                "revenue_gap": inr(r["Revenue Gap"]),
+                "attainment_vs_pace": pct(ph["att"]),
+                "units_attainment": pct(ph["uatt"]),
+                "revenue_gap": inr(ph["gap"]),
                 "mtd_revenue": inr(r["MTD Actual SP Revenue"]),
-                "pace_target": inr(r["Prorated Planned SP Revenue"]),
+                "pace_target": inr(ph["plan"]),
                 "root_cause": r.get("Root Cause"),
                 "actual_discount": pct(r.get("Actual Discount %")),
                 "guideline_discount": pct(r.get("Guideline Discount %")),
@@ -462,7 +481,7 @@ def agg(d, plats, cat=None, factors=None):
     """Revenue, ads and discount numbers for a set of platforms, optionally one category."""
     keep = lambda r: r["Platform"] in plats and (cat is None or r["Category"] == cat)
     cp = [r for r in d["cat_plat_summary"] if keep(r)]
-    act, pace = sum(r["Actual_SP_Revenue"] for r in cp), sum(r["Prorated_Planned_SP"] for r in cp)
+    act, pace = sum(r["Actual_SP_Revenue"] for r in cp), sum(r[PLAN_COL] for r in cp)
     ads = [r for r in d["ads_by_cat_plat"] if keep(r)]
     a = {k: sum(r.get(k) or 0 for r in ads) for k in
          ("Ad_Spend_MTD", "Ad_Sales_MTD", "Ad_Units_MTD", "Ad_Clicks_MTD", "Gross_Units_MTD", "Gross_Sales_MTD",
@@ -560,7 +579,7 @@ def render_platform_scorecard(rows, info_rows, s, show_owner=True):
                 f'<td style="{TD}{"" if grey else _roas_style(r, s)}{st}">{f["roas"]} <span style="color:#59636e;font-weight:normal">({f["roas_lm"]})</span></td>'
                 f'<td style="{TD}{"" if grey else _disc_style(r["disc_vs_guideline"], s)}{st}">{f["disc_vs_guideline"]}</td>'
                 f'<td style="{TD};text-align:center{st}">{r.get("tasks") or ""}</td>' + till_cell + '</tr>')
-    cols = ["Platform", "Owner", "Revenue MTD", "vs pace", "Gap", "ROAS (LM)", "Disc vs guide", "Tasks", "Data till"]
+    cols = ["Platform", "Owner", "Revenue MTD", "vs plan", "Gap", "ROAS (LM)", "Disc vs guide", "Tasks", "Data till"]
     return table(cols if show_owner else [c for c in cols if c != "Owner"], out)
 
 
@@ -589,7 +608,7 @@ def render_category_scorecard(rows, s):
                 f'<td style="{TD}">{f["gap"]}</td><td style="{TD}">{f["spend"]}</td>'
                 f'<td style="{TD}{_roas_style(r, s)}">{f["roas"]} <span style="color:#59636e;font-weight:normal">({f["roas_lm"]})</span></td>'
                 f'<td style="{TD}{_disc_style(r["disc_vs_guideline"], s)}">{f["disc_vs_guideline"]}</td></tr>')
-    return table(["#", "Category", "Revenue MTD", "vs pace", "Gap", "Ad spend", "ROAS (LM)", "Disc vs guide"], out)
+    return table(["#", "Category", "Revenue MTD", "vs plan", "Gap", "Ad spend", "ROAS (LM)", "Disc vs guide"], out)
 
 
 def render_focus(rows, s, what="platforms"):
@@ -610,7 +629,7 @@ def render_focus(rows, s, what="platforms"):
                     f'<td style="{TD}">{g["spend"]}</td>'
                     f'<td style="{TD}{_roas_style(p, s)}">{g["roas"]} <span style="color:#59636e;font-weight:normal">({g["roas_lm"]})</span></td>'
                     f'<td style="{TD}{_disc_style(p["disc_vs_guideline"], s)}">{g["disc_vs_guideline"]}</td></tr>')
-    return table(["#", f"Category → {what}", "Gap to date", "vs pace", "Ad spend", "ROAS (LM)", "Disc vs guide"], out)
+    return table(["#", f"Category → {what}", "Gap to date", "vs plan", "Ad spend", "ROAS (LM)", "Disc vs guide"], out)
 
 
 def exec_wording(kpis, plat_rows, ads_rows, cat_rows, focus_rows, attention):
@@ -651,7 +670,7 @@ def exec_wording(kpis, plat_rows, ads_rows, cat_rows, focus_rows, attention):
 
 
 SHORT_FACT = {
-    "revenue": lambda f: f"{f['attainment_vs_pace']} of pace, gap {f['revenue_gap']}, {f['root_cause']}",
+    "revenue": lambda f: f"{f['attainment_vs_pace']} of plan to date, gap {f['revenue_gap']}, {f['root_cause']}",
     "ads": lambda f: f"ROAS {f['roas_mtd']} vs {f['roas_last_month']}, spend {f['ad_spend_mtd']}",
     "discount": lambda f: f"{f['actual_discount']} vs {f['guideline_discount']} guideline, {f['discount_given_beyond_guideline_mtd']} extra",
 }
@@ -678,7 +697,7 @@ def render_compact(items, actions, show_owner=None):
 def scope_headline(d, platforms):
     cp = [r for r in d["cat_plat_summary"] if r["Platform"] in platforms]
     act = sum(r["Actual_SP_Revenue"] for r in cp)
-    pace = sum(r["Prorated_Planned_SP"] for r in cp)
+    pace = sum(r[PLAN_COL] for r in cp)
     ads = [r for r in d["ads_by_plat"] if r["Platform"] in platforms]
     sp_m, sa_m = sum(r["Ad_Spend_MTD"] for r in ads), sum(r["Ad_Sales_MTD"] for r in ads)
     sp_l, sa_l = sum(r["Ad_Spend_LFM"] for r in ads), sum(r["Ad_Sales_LFM"] for r in ads)
@@ -725,7 +744,7 @@ def e(s):
 
 
 FACT_LINES = {
-    "revenue": lambda f: f"At <b>{f['attainment_vs_pace']}</b> of pace · gap <b>{f['revenue_gap']}</b> · "
+    "revenue": lambda f: f"At <b>{f['attainment_vs_pace']}</b> of plan to date · gap <b>{f['revenue_gap']}</b> · "
                          f"units {f['units_attainment']} · root cause <b>{e(f['root_cause'])}</b> · "
                          f"discount {f['actual_discount']} vs guideline {f['guideline_discount']} · vs last month {f['vs_last_month']}",
     "ads": lambda f: f"ROAS <b>{f['roas_mtd']}</b> vs {f['roas_last_month']} last month (−{f['roas_drop']}) · "
@@ -765,8 +784,8 @@ def render_tab(tab, tasks, waiting, actions):
 
 
 def render_headline(h):
-    kp = [("Attainment vs pace", h["attainment_vs_pace"]), ("Revenue MTD", h["revenue_mtd"]),
-          ("Gap to pace", h["revenue_gap"]), ("ROAS (MTD vs last month)", f'{h["roas_mtd"]} vs {h["roas_last_month"]}'),
+    kp = [("Attainment vs plan to date", h["attainment_vs_pace"]), ("Revenue MTD", h["revenue_mtd"]),
+          ("Gap to plan", h["revenue_gap"]), ("ROAS (MTD vs last month)", f'{h["roas_mtd"]} vs {h["roas_last_month"]}'),
           ("Discount vs guideline", f'{h["actual_discount"]} vs {h["guideline_discount"]}')]
     return "".join(f'<div style="{CSS["kpi"]}"><div style="{CSS["kl"]}">{e(k)}</div><b>{e(v)}</b></div>' for k, v in kp)
 
@@ -780,7 +799,7 @@ def render_email(title, sub, intro, headline_html, body_html, notes):
             f'<p style="{CSS["sub"]}">{e(sub)}</p>{headline_html}'
             + (f'<p style="margin:12px 0">{e(intro)}</p>' if intro else "")
             + body_html + note_html
-            + f'<p style="{CSS["muted"]};margin-top:24px">Basis: time-prorated target, same as the dashboard flags. '
+            + f'<p style="{CSS["muted"]};margin-top:24px">Basis: {BASIS_LABEL} to date. Ad spend vs target uses the ad plan prorated by days. '
               f'Thresholds come from the dashboard config. Items already raised wait '
               f'{bc.COOLDOWN_DAYS["revenue"]} days before being raised again, unless they get clearly worse.</p></div>')
 
@@ -788,8 +807,9 @@ def render_email(title, sub, intro, headline_html, body_html, notes):
 # ══════════════════════════════════════════════
 #  Sending
 # ══════════════════════════════════════════════
-def send(to, subject, body):
-    if MODE == "dry":
+def send(to, subject, body, master=False):
+    # "me" mode: only the executive view goes out (to its real address); team briefs are previews only
+    if MODE == "dry" or (MODE == "me" and not master):
         return
     if MODE == "test":
         subject = f"[TEST → {', '.join(to)}] {subject}"
@@ -859,13 +879,14 @@ def build_sections(d, scope, owner_of, tasks_by_plat, factors, group_small, sku_
             for k in d["sku_detail"]:
                 if k["Platform"] != p or k["Category"] != r["name"]:
                     continue
-                pace = k.get("Prorated Planned SP Revenue") or 0
-                if not pace or k["Revenue Gap"] >= 0:
+                ph = sku_plan(k, d["summary"])
+                pace = ph["plan"]
+                if not pace or ph["gap"] >= 0:
                     continue
                 a = ads_sku.get(k["SKU"], {})
                 sp = a.get("Ad_Spend_MTD") or 0
                 x = {"name": k.get("Short Name") or k["SKU"], "owner": k["SKU"], "revenue": k["MTD Actual SP Revenue"],
-                     "pace": pace, "gap": k["Revenue Gap"], "attainment": k["Revenue Attainment %"],
+                     "pace": pace, "gap": ph["gap"], "attainment": ph["att"],
                      "spend": sp, "ad_sales": a.get("Ad_Sales_MTD") or 0,
                      "roas": a.get("ROAS_MTD") or None if sp else None, "roas_lm": a.get("ROAS_LFM") or None,
                      "troas": None, "cpc_chg": None, "ad_contrib": None, "spend_vs_tgt": None,
@@ -1048,7 +1069,7 @@ def main():
     sub_x = sub + " · Marketplaces & quick commerce (D2C shown for information only)"
     out = render_email(title, sub_x, "", render_headline(sec["kpis"]), body, [])
     open(f"{bc.OUTPUT_DIR}/master.html", "w", encoding="utf-8").write(out)
-    send(bc.MASTER["emails"], f"{title} · {TODAY.strftime('%d %b')}", out)
+    send(bc.MASTER["emails"], f"{title} · {TODAY.strftime('%d %b')}", out, master=True)
 
     # ── Remember what was raised (real sends only) ──
     if MODE == "send":
