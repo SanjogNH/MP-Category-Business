@@ -1,0 +1,176 @@
+{
+ "wbr": "2026-11-09",
+ "manager": "harsh",
+ "sent_at": "2026-11-05T11:01:23.411494+05:30",
+ "message_id": "<179385669069.2524.178184137328669421@nathabit.in>",
+ "subject": "WBR prep · Mon 9 Nov 12:30 pm · Harsh [WBR-20261109-harsh]",
+ "query_window": [
+  "2026-10-29",
+  "2026-11-04"
+ ],
+ "questions": [
+  {
+   "id": "Q1",
+   "kind": "revenue",
+   "category": "Baby Scalp Oil",
+   "platform": "First Cry",
+   "facts": {
+    "week": "29 Oct – 4 Nov",
+    "week_revenue": "₹45,961",
+    "week_target": "₹1.4 L",
+    "attainment": "33.8%",
+    "gap": "−₹89,986",
+    "vs_previous_week": "+8.5%",
+    "ad_spend": "₹18,584",
+    "roas": "1.19",
+    "roas_previous_week": "1.57",
+    "discount": "16.8%",
+    "guideline": "15.2%",
+    "discount_vs_guideline": "+1.6 pp",
+    "sku_drivers": "Brahmi Summer Baby Scalp Oil - 110 ml (−₹60,127); Brahmi Winter Baby Scalp Oil - 110 ml (−₹29,859)",
+    "ad_plan_for_the_days": "no ad plan",
+    "spend_vs_ad_plan": "–",
+    "ad_spend_as_pct_of_sales": "40.4%",
+    "platform_ad_spend_as_pct_of_sales": "16.1%"
+   },
+   "text": "Harsh, Baby Scalp Oil on First Cry did ₹45,961 against a ₹1.4 L target (33.8%), even though ad spend was ₹18,584 (40.4% of sales vs the platform's 16.1%) and ROAS slipped from 1.57 to 1.19. The Summer and Winter 110 ml SKUs account for nearly all of the gap. What is holding these two back, and is the current ad spend level working for us?"
+  },
+  {
+   "id": "Q2",
+   "kind": "revenue",
+   "category": "Baby Pure Oils",
+   "platform": "First Cry",
+   "facts": {
+    "week": "29 Oct – 4 Nov",
+    "week_revenue": "₹4,995",
+    "week_target": "₹92,196",
+    "attainment": "5.4%",
+    "gap": "−₹87,201",
+    "vs_previous_week": "+150.0%",
+    "ad_spend": "₹11,245",
+    "roas": "1.19",
+    "roas_previous_week": "1.08",
+    "discount": "20.0%",
+    "guideline": "20.0%",
+    "discount_vs_guideline": "0.0 pp",
+    "sku_drivers": "Pure Virgin Coconut Baby Oil - 200 ml (−₹31,492); Pure Almond Baby Oil - 100 ml (−₹24,541)",
+    "ad_plan_for_the_days": "no ad plan",
+    "spend_vs_ad_plan": "–",
+    "ad_spend_as_pct_of_sales": "225.1%",
+    "platform_ad_spend_as_pct_of_sales": "16.1%"
+   },
+   "text": "Baby Pure Oils on First Cry reached ₹4,995 against a ₹92,196 target (5.4%), while ₹11,245 went into ads, which is 225.1% of sales vs the platform's 16.1%. The Virgin Coconut 200 ml and Almond 100 ml SKUs are the biggest shortfalls. Can you walk me through what is happening with this category and how you see the ad spend here?"
+  },
+  {
+   "id": "Q3",
+   "kind": "revenue",
+   "category": "Face Wash",
+   "platform": "First Cry",
+   "facts": {
+    "week": "29 Oct – 4 Nov",
+    "week_revenue": "₹16,084",
+    "week_target": "₹94,233",
+    "attainment": "17.1%",
+    "gap": "−₹78,149",
+    "vs_previous_week": "−1.3%",
+    "ad_spend": "no ads",
+    "roas": "–",
+    "roas_previous_week": "–",
+    "discount": "16.9%",
+    "guideline": "15.3%",
+    "discount_vs_guideline": "+1.7 pp",
+    "sku_drivers": "Ubtan Tikta Face Wash (−₹48,675); Masoor Dal Tikta Face Wash (−₹20,259)",
+    "ad_plan_for_the_days": "no ad plan",
+    "spend_vs_ad_plan": "–",
+    "ad_spend_as_pct_of_sales": "0.0%",
+    "platform_ad_spend_as_pct_of_sales": "16.1%"
+   },
+   "text": "Face Wash on First Cry did ₹16,084 against a ₹94,233 target (17.1%), with no ads running and discount at 16.9% vs the 15.3% guideline. Ubtan Tikta (−₹48,675) and Masoor Dal Tikta (−₹20,259) drive most of the gap. What do you think is holding these SKUs back, and would ad support or something else help?"
+  },
+  {
+   "id": "Q4",
+   "kind": "discount",
+   "category": "Lepa",
+   "platform": "Cred",
+   "facts": {
+    "week": "29 Oct – 4 Nov",
+    "week_revenue": "₹58,698",
+    "week_target": "₹0",
+    "attainment": "–",
+    "gap": "–",
+    "vs_previous_week": "+1088.0%",
+    "ad_spend": "no ads",
+    "roas": "–",
+    "roas_previous_week": "–",
+    "discount": "80.3%",
+    "guideline": "17.8%",
+    "discount_vs_guideline": "+62.5 pp",
+    "sku_drivers": "–",
+    "ad_plan_for_the_days": "no ad plan",
+    "spend_vs_ad_plan": "–",
+    "ad_spend_as_pct_of_sales": "0.0%",
+    "platform_ad_spend_as_pct_of_sales": "0.0%"
+   },
+   "text": "Lepa on Cred ran at an 80.3% discount against the 17.8% guideline (+62.5 pp), with revenue of ₹58,698, up 1088.0% on the previous week. Was this a planned Cred deal, and what did we get in return for the deeper discount?"
+  },
+  {
+   "id": "Q5",
+   "kind": "discount",
+   "category": "Henna Combo",
+   "platform": "Cred",
+   "facts": {
+    "week": "29 Oct – 4 Nov",
+    "week_revenue": "₹26,604",
+    "week_target": "₹0",
+    "attainment": "–",
+    "gap": "–",
+    "vs_previous_week": "−51.1%",
+    "ad_spend": "no ads",
+    "roas": "–",
+    "roas_previous_week": "–",
+    "discount": "71.1%",
+    "guideline": "17.7%",
+    "discount_vs_guideline": "+53.4 pp",
+    "sku_drivers": "–",
+    "ad_plan_for_the_days": "no ad plan",
+    "spend_vs_ad_plan": "–",
+    "ad_spend_as_pct_of_sales": "0.0%",
+    "platform_ad_spend_as_pct_of_sales": "0.0%"
+   },
+   "text": "Henna Combo on Cred sold ₹26,604 at a 71.1% discount vs the 17.7% guideline (+53.4 pp), and revenue is down 51.1% week on week. Was this discount level agreed in advance, and how are you thinking about it going forward?"
+  }
+ ],
+ "own_ids": [
+  "<179385669069.2524.178184137328669421@nathabit.in>"
+ ],
+ "snapshot_accounts": [
+  {
+   "name": "First Cry",
+   "plats": [
+    "First Cry"
+   ],
+   "metrics": [
+    "Primary",
+    "Secondary",
+    "Discounting %",
+    "Spend",
+    "SLA"
+   ]
+  },
+  {
+   "name": "Cred",
+   "plats": [
+    "Cred"
+   ],
+   "metrics": [
+    "Primary",
+    "Secondary",
+    "Discounting %",
+    "Spend",
+    "SLA"
+   ]
+  }
+ ],
+ "reminder_sent": false,
+ "pack_sent": false
+}

@@ -1,0 +1,166 @@
+{
+ "wbr": "2026-11-09",
+ "manager": "mayank",
+ "sent_at": "2026-11-05T11:01:23.411494+05:30",
+ "message_id": "<179385671321.2524.579918730235611269@nathabit.in>",
+ "subject": "WBR prep · Mon 9 Nov 5 pm · Mayank [WBR-20261109-mayank]",
+ "query_window": [
+  "2026-10-29",
+  "2026-11-04"
+ ],
+ "questions": [
+  {
+   "id": "Q1",
+   "kind": "spend",
+   "category": "Shampoo",
+   "platform": "Instamart",
+   "facts": {
+    "week": "29 Oct – 4 Nov",
+    "week_revenue": "₹3.9 L",
+    "week_target": "₹3.2 L",
+    "attainment": "122.0%",
+    "gap": "₹69,909",
+    "vs_previous_week": "+31.3%",
+    "ad_spend": "₹1.3 L",
+    "roas": "1.71",
+    "roas_previous_week": "1.45",
+    "discount": "9.6%",
+    "guideline": "8.6%",
+    "discount_vs_guideline": "+1.0 pp",
+    "sku_drivers": "Neem Beracyl Dandruff Shampoo 250ml - QC (₹13,357); Trileaf Rosemary Shampoo - QC (₹19,472)",
+    "ad_plan_for_the_days": "₹16,800",
+    "spend_vs_ad_plan": "786%",
+    "ad_spend_as_pct_of_sales": "34.0%",
+    "platform_ad_spend_as_pct_of_sales": "26.9%",
+    "why_flagged": "over ad plan"
+   },
+   "text": "Mayank, Shampoo on Instamart beat target at 122.0% (₹3.9 L vs ₹3.2 L), but ad spend was ₹1.3 L against a ₹16,800 plan (786% of plan) and 34.0% of sales vs the platform's 26.9%. ROAS did improve to 1.71 from 1.45. What drove the spend well above plan, and was it a deliberate call?"
+  },
+  {
+   "id": "Q2",
+   "kind": "spend",
+   "category": "Soap",
+   "platform": "Instamart",
+   "facts": {
+    "week": "29 Oct – 4 Nov",
+    "week_revenue": "₹3.1 L",
+    "week_target": "₹2.8 L",
+    "attainment": "110.7%",
+    "gap": "₹29,848",
+    "vs_previous_week": "−14.9%",
+    "ad_spend": "₹1.2 L",
+    "roas": "1.83",
+    "roas_previous_week": "1.59",
+    "discount": "13.5%",
+    "guideline": "4.7%",
+    "discount_vs_guideline": "+8.7 pp",
+    "sku_drivers": "Lavender 75g - Pack of 3 - QC (−₹14,923); Soothing Sandalwood - QC (₹4,746)",
+    "ad_plan_for_the_days": "₹17,578",
+    "spend_vs_ad_plan": "662%",
+    "ad_spend_as_pct_of_sales": "37.5%",
+    "platform_ad_spend_as_pct_of_sales": "26.9%",
+    "why_flagged": "over ad plan"
+   },
+   "text": "Soap on Instamart was at 110.7% of target (₹3.1 L), yet revenue fell 14.9% week on week while ad spend was ₹1.2 L against a ₹17,578 plan (662% of plan, 37.5% of sales vs the platform's 26.9%). Discount also ran 13.5% vs the 4.7% guideline. Can you walk me through what led to the spend and discount levels, and what the Lavender 75g Pack of 3 decline (−₹14,923) tells us?"
+  },
+  {
+   "id": "Q3",
+   "kind": "spend",
+   "category": "Face Wash",
+   "platform": "Instamart",
+   "facts": {
+    "week": "29 Oct – 4 Nov",
+    "week_revenue": "₹1.7 L",
+    "week_target": "₹1.8 L",
+    "attainment": "93.5%",
+    "gap": "−₹11,653",
+    "vs_previous_week": "+17.5%",
+    "ad_spend": "₹90,313",
+    "roas": "1.74",
+    "roas_previous_week": "1.98",
+    "discount": "8.1%",
+    "guideline": "4.2%",
+    "discount_vs_guideline": "+3.8 pp",
+    "sku_drivers": "Brightening Ubtan Face Wash - QC (−₹8,440); Kali Mitti Face Wash - 100g - QC (−₹2,986)",
+    "ad_plan_for_the_days": "₹9,022",
+    "spend_vs_ad_plan": "1001%",
+    "ad_spend_as_pct_of_sales": "54.2%",
+    "platform_ad_spend_as_pct_of_sales": "26.9%",
+    "why_flagged": "over ad plan, high spend for the sales"
+   },
+   "text": "Face Wash on Instamart missed target at 93.5% (₹1.7 L vs ₹1.8 L) while ad spend was ₹90,313 against a ₹9,022 plan (1001% of plan), which is 54.2% of sales vs the platform's 26.9%. ROAS also slipped to 1.74 from 1.98. What was the thinking behind this spend level, and is it paying back?"
+  },
+  {
+   "id": "Q4",
+   "kind": "discount",
+   "category": "Dasabuti Hair Oil",
+   "platform": "Instamart",
+   "facts": {
+    "week": "29 Oct – 4 Nov",
+    "week_revenue": "₹1.4 L",
+    "week_target": "₹1.6 L",
+    "attainment": "88.8%",
+    "gap": "−₹17,700",
+    "vs_previous_week": "+1.5%",
+    "ad_spend": "₹55,116",
+    "roas": "2.00",
+    "roas_previous_week": "1.73",
+    "discount": "18.5%",
+    "guideline": "6.9%",
+    "discount_vs_guideline": "+11.5 pp",
+    "sku_drivers": "Hibiscus Amla Summer Hair Oil - 100 ml - QC (−₹17,927); Crushed Tri-Leaf Summer Hair Oil 100 ml - QC (−₹9,761)",
+    "ad_plan_for_the_days": "₹6,067",
+    "spend_vs_ad_plan": "908%",
+    "ad_spend_as_pct_of_sales": "39.3%",
+    "platform_ad_spend_as_pct_of_sales": "26.9%"
+   },
+   "text": "Dasabuti Hair Oil on Instamart was at 88.8% of target (₹1.4 L vs ₹1.6 L) even with discount at 18.5% against a 6.9% guideline (+11.5 pp) and ad spend of ₹55,116 vs a ₹6,067 plan. Hibiscus Amla Summer 100 ml is the biggest gap (−₹17,927). Why is the deep discount not translating into sales, and what is your plan for it?"
+  },
+  {
+   "id": "Q5",
+   "kind": "discount",
+   "category": "Indigo Powder",
+   "platform": "Instamart",
+   "facts": {
+    "week": "29 Oct – 4 Nov",
+    "week_revenue": "₹1.3 L",
+    "week_target": "₹1.0 L",
+    "attainment": "126.7%",
+    "gap": "₹27,138",
+    "vs_previous_week": "+14.7%",
+    "ad_spend": "no ads",
+    "roas": "–",
+    "roas_previous_week": "–",
+    "discount": "11.1%",
+    "guideline": "2.3%",
+    "discount_vs_guideline": "+8.8 pp",
+    "sku_drivers": "HUFA Pigment Indigo Powder - 85g - QC (₹27,138)",
+    "ad_plan_for_the_days": "₹622",
+    "spend_vs_ad_plan": "–",
+    "ad_spend_as_pct_of_sales": "0.0%",
+    "platform_ad_spend_as_pct_of_sales": "26.9%"
+   },
+   "text": "Indigo Powder on Instamart is ahead at 126.7% of target (₹1.3 L vs ₹1.0 L) with no ads, but discount was 11.1% vs a 2.3% guideline (+8.8 pp). Is the discount what is driving the HUFA Pigment Indigo 85g sales (₹27,138 above target), and could we hold the volume with a lower discount?"
+  }
+ ],
+ "own_ids": [
+  "<179385671321.2524.579918730235611269@nathabit.in>"
+ ],
+ "snapshot_accounts": [
+  {
+   "name": "Instamart",
+   "plats": [
+    "Instamart"
+   ],
+   "metrics": [
+    "Primary",
+    "Secondary",
+    "Discounting %",
+    "Spend",
+    "Availability"
+   ]
+  }
+ ],
+ "reminder_sent": false,
+ "pack_sent": false
+}
