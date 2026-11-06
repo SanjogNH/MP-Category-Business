@@ -1,0 +1,191 @@
+{
+ "wbr": "2026-11-10",
+ "manager": "ketan",
+ "sent_at": "2026-11-06T11:01:02.231054+05:30",
+ "message_id": "<179394307814.2255.6699609595134513436@nathabit.in>",
+ "subject": "WBR prep · Tue 10 Nov 3 pm · Ketan [WBR-20261110-ketan]",
+ "query_window": [
+  "2026-10-28",
+  "2026-11-03"
+ ],
+ "questions": [
+  {
+   "id": "Q1",
+   "kind": "revenue",
+   "category": "Soap",
+   "platform": "Amazon",
+   "facts": {
+    "week": "28 Oct – 3 Nov",
+    "week_revenue": "₹5.8 L",
+    "week_target": "₹8.6 L",
+    "attainment": "67.7%",
+    "gap": "−₹2.8 L",
+    "vs_previous_week": "−2.5%",
+    "ad_spend": "₹52,207",
+    "roas": "3.65",
+    "roas_previous_week": "3.79",
+    "discount": "31.3%",
+    "guideline": "18.3%",
+    "discount_vs_guideline": "+13.0 pp",
+    "sku_drivers": "Tomato Basil Soap 125g - Pack of 2 (−₹86,700); Lavender Soap 125g - Pack of 2 (−₹43,682)",
+    "ad_plan_for_the_days": "₹6,465",
+    "spend_vs_ad_plan": "807%",
+    "ad_spend_as_pct_of_sales": "9.0%",
+    "platform_ad_spend_as_pct_of_sales": "16.1%"
+   },
+   "text": "Ketan, Soap on Amazon reached ₹5.8 L against the ₹8.6 L target (67.7%, −₹2.8 L), with Tomato Basil Pack of 2 the largest drag at −₹86,700. Discount ran at 31.3% against an 18.3% guideline. Is the discount depth linked to the shortfall, and what is your plan for Tomato Basil and Lavender?"
+  },
+  {
+   "id": "Q2",
+   "kind": "revenue",
+   "category": "Shampoo Combo",
+   "platform": "Amazon",
+   "facts": {
+    "week": "28 Oct – 3 Nov",
+    "week_revenue": "₹4.6 L",
+    "week_target": "₹7.0 L",
+    "attainment": "65.3%",
+    "gap": "−₹2.4 L",
+    "vs_previous_week": "−6.0%",
+    "ad_spend": "₹1.2 L",
+    "roas": "3.68",
+    "roas_previous_week": "3.86",
+    "discount": "18.7%",
+    "guideline": "20.4%",
+    "discount_vs_guideline": "−1.7 pp",
+    "sku_drivers": "Five Oil Hibiscus Shampoo - 250g +  Five Oil Hibiscus Conditioner - 150g (−₹1.3 L); Trileaf Rosemary Shampoo - 250g + Trileaf Rosemary Conditioner - 150g (−₹74,382)",
+    "ad_plan_for_the_days": "₹10,746",
+    "spend_vs_ad_plan": "1087%",
+    "ad_spend_as_pct_of_sales": "25.4%",
+    "platform_ad_spend_as_pct_of_sales": "16.1%"
+   },
+   "text": "Shampoo Combo on Amazon did ₹4.6 L against ₹7.0 L (65.3%, −6.0% WoW). Ad spend was ₹1.2 L, which is 25.4% of sales against the platform's 16.1%, and ROAS slipped to 3.68 from 3.86. What is driving the Five Oil Hibiscus combo's −₹1.3 L, and is the spend level working for us?"
+  },
+  {
+   "id": "Q3",
+   "kind": "revenue",
+   "category": "Henna Combo",
+   "platform": "Amazon",
+   "facts": {
+    "week": "28 Oct – 3 Nov",
+    "week_revenue": "₹4.8 L",
+    "week_target": "₹6.5 L",
+    "attainment": "73.5%",
+    "gap": "−₹1.7 L",
+    "vs_previous_week": "−7.6%",
+    "ad_spend": "₹1.1 L",
+    "roas": "2.88",
+    "roas_previous_week": "3.53",
+    "discount": "23.0%",
+    "guideline": "17.9%",
+    "discount_vs_guideline": "+5.1 pp",
+    "sku_drivers": "HUFA Pigment Indigo Powder - 85g + Henna Paste - Pack of 2 (−₹1.4 L); Henna Paste x 2 + Post-Henna Oil (−₹34,704)",
+    "ad_plan_for_the_days": "₹7,998",
+    "spend_vs_ad_plan": "1372%",
+    "ad_spend_as_pct_of_sales": "23.1%",
+    "platform_ad_spend_as_pct_of_sales": "16.1%"
+   },
+   "text": "Henna Combo on Amazon reached ₹4.8 L against ₹6.5 L (73.5%), and ROAS fell to 2.88 from 3.53 last week. Ad spend was ₹1.1 L (23.1% of sales vs 16.1% for the platform) and discount was 23.0% vs a 17.9% guideline. What changed on the Indigo Powder + Henna Paste Pack of 2 (−₹1.4 L)?"
+  },
+  {
+   "id": "Q4",
+   "kind": "spend",
+   "category": "CP Hair Oil",
+   "platform": "Amazon",
+   "facts": {
+    "week": "28 Oct – 3 Nov",
+    "week_revenue": "₹3.8 L",
+    "week_target": "₹5.3 L",
+    "attainment": "73.2%",
+    "gap": "−₹1.4 L",
+    "vs_previous_week": "+0.3%",
+    "ad_spend": "₹1.6 L",
+    "roas": "1.34",
+    "roas_previous_week": "1.32",
+    "discount": "22.7%",
+    "guideline": "15.2%",
+    "discount_vs_guideline": "+7.5 pp",
+    "sku_drivers": "Castor Oil - 200 ml (−₹84,410); Neem Oil - 200 ml (−₹36,735)",
+    "ad_plan_for_the_days": "₹14,498",
+    "spend_vs_ad_plan": "1120%",
+    "ad_spend_as_pct_of_sales": "42.2%",
+    "platform_ad_spend_as_pct_of_sales": "16.1%",
+    "why_flagged": "over ad plan, high spend for the sales"
+   },
+   "text": "CP Hair Oil on Amazon spent ₹1.6 L on ads, which is 42.2% of sales against the platform's 16.1%, with ROAS at 1.34. Revenue was ₹3.8 L against ₹5.3 L (73.2%). Can you walk me through what this spend is buying, especially on Castor Oil 200 ml (−₹84,410)?"
+  },
+  {
+   "id": "Q5",
+   "kind": "spend",
+   "category": "Comb",
+   "platform": "Amazon",
+   "facts": {
+    "week": "28 Oct – 3 Nov",
+    "week_revenue": "₹4.4 L",
+    "week_target": "₹5.2 L",
+    "attainment": "84.7%",
+    "gap": "−₹79,902",
+    "vs_previous_week": "+1.3%",
+    "ad_spend": "₹1.2 L",
+    "roas": "2.05",
+    "roas_previous_week": "1.98",
+    "discount": "20.2%",
+    "guideline": "15.9%",
+    "discount_vs_guideline": "+4.2 pp",
+    "sku_drivers": "Neem Comb - Dual Tooth (−₹32,924); Neem Comb - Wide Tooth (−₹29,757)",
+    "ad_plan_for_the_days": "₹9,400",
+    "spend_vs_ad_plan": "1282%",
+    "ad_spend_as_pct_of_sales": "27.1%",
+    "platform_ad_spend_as_pct_of_sales": "16.1%",
+    "why_flagged": "over ad plan, high spend for the sales"
+   },
+   "text": "Comb on Amazon ran ad spend of ₹1.2 L, 27.1% of sales vs the platform's 16.1%, at a ROAS of 2.05. Revenue was still ₹4.4 L against ₹5.2 L (84.7%), with discount at 20.2% vs a 15.9% guideline. Where is the ad money going across the Neem Dual Tooth and Wide Tooth combs, and what is the plan to bring it closer to the norm?"
+  },
+  {
+   "id": "Q6",
+   "kind": "discount",
+   "category": "Face Wash",
+   "platform": "Amazon",
+   "facts": {
+    "week": "28 Oct – 3 Nov",
+    "week_revenue": "₹8.9 L",
+    "week_target": "₹10.5 L",
+    "attainment": "84.6%",
+    "gap": "−₹1.6 L",
+    "vs_previous_week": "+10.2%",
+    "ad_spend": "₹1.2 L",
+    "roas": "3.71",
+    "roas_previous_week": "3.63",
+    "discount": "26.0%",
+    "guideline": "15.2%",
+    "discount_vs_guideline": "+10.8 pp",
+    "sku_drivers": "Ubtan Tikta Face Wash (−₹1.8 L); Brightening Ubtan Face Wash - Pack of 2 (−₹25,794)",
+    "ad_plan_for_the_days": "₹11,161",
+    "spend_vs_ad_plan": "1040%",
+    "ad_spend_as_pct_of_sales": "13.1%",
+    "platform_ad_spend_as_pct_of_sales": "16.1%"
+   },
+   "text": "Face Wash on Amazon grew 10.2% WoW to ₹8.9 L, but that is still 84.6% of the ₹10.5 L target (−₹1.6 L). Discount ran at 26.0% against a 15.2% guideline, with Ubtan Tikta Face Wash the largest gap at −₹1.8 L. Was the deeper discount needed to drive the growth, and how do you plan to bring it back toward guideline?"
+  }
+ ],
+ "own_ids": [
+  "<179394307814.2255.6699609595134513436@nathabit.in>"
+ ],
+ "snapshot_accounts": [
+  {
+   "name": "Amazon",
+   "plats": [
+    "Amazon"
+   ],
+   "metrics": [
+    "Primary",
+    "Secondary",
+    "Discounting %",
+    "Spend",
+    "SLA"
+   ]
+  }
+ ],
+ "reminder_sent": false,
+ "pack_sent": false
+}
