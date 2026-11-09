@@ -33,7 +33,30 @@
     "ad_spend_as_pct_of_sales": "13.8%",
     "platform_ad_spend_as_pct_of_sales": "9.5%"
    },
-   "text": "Garima, Face Wash on Blinkit reached ₹7.7 L against a ₹9.8 L target (78.1%), with Brightening Ubtan Face Wash - QC accounting for −₹2.1 L of the gap. Ad spend ran at ₹1.1 L against an ad plan of ₹8,900 for the days, and ROAS fell from 7.42 to 4.96. Discount was also 1.9 pp above guideline (3.8% vs 1.9%). What is driving the Ubtan shortfall, and what did the extra spend and discount buy us?"
+   "text": "Garima, Face Wash on Blinkit reached ₹7.7 L against a ₹9.8 L target (78.1%), with Brightening Ubtan Face Wash - QC accounting for −₹2.1 L of the gap. Ad spend ran at ₹1.1 L against an ad plan of ₹8,900 for the days, and ROAS fell from 7.42 to 4.96. Discount was also 1.9 pp above guideline (3.8% vs 1.9%). What is driving the Ubtan shortfall, and what did the extra spend and discount buy us?",
+   "review_period_facts": {
+    "week": "31 Oct – 6 Nov",
+    "week_revenue": "₹9.8 L",
+    "week_target": "₹11.0 L",
+    "attainment": "89.1%",
+    "gap": "−₹1.2 L",
+    "vs_previous_week": "+4.9%",
+    "ad_spend": "₹1.7 L",
+    "roas": "4.36",
+    "roas_previous_week": "7.67",
+    "discount": "3.2%",
+    "guideline": "1.9%",
+    "discount_vs_guideline": "+1.3 pp",
+    "sku_drivers": "Brightening Ubtan Face Wash - QC (−₹1.1 L); Bitter Neem Gel Face Wash - QC (−₹12,289)",
+    "ad_plan_for_the_days": "₹24,228",
+    "spend_vs_ad_plan": "698%",
+    "ad_spend_as_pct_of_sales": "17.2%",
+    "platform_ad_spend_as_pct_of_sales": "11.5%"
+   },
+   "verdict": "No answer",
+   "answer": "",
+   "why": "No reply on Face Wash Blinkit; in the review period the Ubtan SKU is still −₹1.1 L, spend is ₹1.7 L vs a ₹24,228 plan (698%), ROAS 4.36 vs 7.67, and discount 3.2% vs 1.9% guideline.",
+   "ask": "What is holding back Brightening Ubtan Face Wash, and why did ad spend run at 17.2% of sales (platform norm 11.5%) while ROAS fell from 7.67 to 4.36?"
   },
   {
    "id": "Q2",
@@ -59,7 +82,30 @@
     "ad_spend_as_pct_of_sales": "12.9%",
     "platform_ad_spend_as_pct_of_sales": "9.5%"
    },
-   "text": "Loofah on Blinkit closed at ₹2.9 L against ₹3.8 L (78.5%), and the whole gap of −₹80,855 sits in Sun Dried Loofah - Pack of 2 - QC. Ad spend was ₹37,895 against an ad plan of ₹3,000 for the days, which is 12.9% of sales vs the 9.5% Blinkit norm. What is holding this SKU back, and why did spend run so far past plan without lifting revenue?"
+   "text": "Loofah on Blinkit closed at ₹2.9 L against ₹3.8 L (78.5%), and the whole gap of −₹80,855 sits in Sun Dried Loofah - Pack of 2 - QC. Ad spend was ₹37,895 against an ad plan of ₹3,000 for the days, which is 12.9% of sales vs the 9.5% Blinkit norm. What is holding this SKU back, and why did spend run so far past plan without lifting revenue?",
+   "review_period_facts": {
+    "week": "31 Oct – 6 Nov",
+    "week_revenue": "₹3.5 L",
+    "week_target": "₹4.2 L",
+    "attainment": "83.4%",
+    "gap": "−₹69,777",
+    "vs_previous_week": "+3.8%",
+    "ad_spend": "₹50,907",
+    "roas": "4.27",
+    "roas_previous_week": "4.77",
+    "discount": "5.2%",
+    "guideline": "4.9%",
+    "discount_vs_guideline": "+0.3 pp",
+    "sku_drivers": "Sun Dried Loofah - Pack of 2 - QC (−₹69,777)",
+    "ad_plan_for_the_days": "₹8,167",
+    "spend_vs_ad_plan": "623%",
+    "ad_spend_as_pct_of_sales": "14.6%",
+    "platform_ad_spend_as_pct_of_sales": "11.5%"
+   },
+   "verdict": "No answer",
+   "answer": "",
+   "why": "No reply on Loofah Blinkit; the gap persists at −₹69,777 on the Pack of 2 SKU with spend ₹50,907 vs an ad plan of ₹8,167 (623%) and 14.6% of sales vs 11.5% norm.",
+   "ask": "What is blocking Sun Dried Loofah Pack of 2 (stock, buy-box, visibility), and which campaigns will you cut given ROAS of 4.27?"
   },
   {
    "id": "Q3",
@@ -85,7 +131,30 @@
     "ad_spend_as_pct_of_sales": "2.0%",
     "platform_ad_spend_as_pct_of_sales": "9.5%"
    },
-   "text": "Indigo Powder on Blinkit delivered ₹4.5 L vs ₹5.1 L (87.5%), down 15.9% on the previous week, with HUFA Pigment Indigo Powder - 85g - QC behind the −₹63,694 gap. Discount was 9.7% against a 2.3% guideline, yet revenue still fell, while ROAS rose from 7.10 to 14.85 on ₹8,865 of spend. Can you walk me through why the discount didn't convert into sales here?"
+   "text": "Indigo Powder on Blinkit delivered ₹4.5 L vs ₹5.1 L (87.5%), down 15.9% on the previous week, with HUFA Pigment Indigo Powder - 85g - QC behind the −₹63,694 gap. Discount was 9.7% against a 2.3% guideline, yet revenue still fell, while ROAS rose from 7.10 to 14.85 on ₹8,865 of spend. Can you walk me through why the discount didn't convert into sales here?",
+   "review_period_facts": {
+    "week": "31 Oct – 6 Nov",
+    "week_revenue": "₹6.0 L",
+    "week_target": "₹5.8 L",
+    "attainment": "103.6%",
+    "gap": "₹20,889",
+    "vs_previous_week": "+2.5%",
+    "ad_spend": "₹11,185",
+    "roas": "16.66",
+    "roas_previous_week": "6.68",
+    "discount": "6.7%",
+    "guideline": "2.3%",
+    "discount_vs_guideline": "+4.4 pp",
+    "sku_drivers": "HUFA Pigment Indigo Powder - 85g - QC (₹20,889)",
+    "ad_plan_for_the_days": "₹4,356",
+    "spend_vs_ad_plan": "257%",
+    "ad_spend_as_pct_of_sales": "1.9%",
+    "platform_ad_spend_as_pct_of_sales": "11.5%"
+   },
+   "verdict": "No answer",
+   "answer": "",
+   "why": "No reply on Indigo Powder; the category recovered to ₹6.0 L (103.6%) with discount down from 9.7% to 6.7%, but still 4.4 pp above the 2.3% guideline, while spend is only 1.9% of sales at ROAS 16.66.",
+   "ask": "Revenue beat target with discount falling to 6.7%; can you bring it to the 2.3% guideline, and should ad spend be scaled up given ROAS of 16.66?"
   },
   {
    "id": "Q4",
@@ -112,7 +181,30 @@
     "platform_ad_spend_as_pct_of_sales": "31.4%",
     "why_flagged": "over ad plan, ROAS falling"
    },
-   "text": "Shampoo on Zepto is ahead of target at ₹3.9 L vs ₹3.7 L (103.9%), but ad spend was ₹1.6 L against an ad plan of ₹14,321 for the days, and ROAS dropped from 2.60 to 1.21. Ad spend is 41.5% of sales vs the 31.4% Zepto norm. Where did the extra spend go, and is it worth the efficiency we lost?"
+   "text": "Shampoo on Zepto is ahead of target at ₹3.9 L vs ₹3.7 L (103.9%), but ad spend was ₹1.6 L against an ad plan of ₹14,321 for the days, and ROAS dropped from 2.60 to 1.21. Ad spend is 41.5% of sales vs the 31.4% Zepto norm. Where did the extra spend go, and is it worth the efficiency we lost?",
+   "review_period_facts": {
+    "week": "31 Oct – 6 Nov",
+    "week_revenue": "₹3.8 L",
+    "week_target": "₹3.9 L",
+    "attainment": "99.3%",
+    "gap": "−₹2,774",
+    "vs_previous_week": "+14.8%",
+    "ad_spend": "₹1.7 L",
+    "roas": "1.15",
+    "roas_previous_week": "2.22",
+    "discount": "5.8%",
+    "guideline": "8.9%",
+    "discount_vs_guideline": "−3.1 pp",
+    "sku_drivers": "Five Oil Hibiscus Shampoo - QC (−₹5,638); Trileaf Rosemary Shampoo - QC (₹2,864)",
+    "ad_plan_for_the_days": "₹28,643",
+    "spend_vs_ad_plan": "587%",
+    "ad_spend_as_pct_of_sales": "43.9%",
+    "platform_ad_spend_as_pct_of_sales": "32.8%"
+   },
+   "verdict": "No answer",
+   "answer": "",
+   "why": "No reply on Shampoo Zepto; spend is ₹1.7 L vs a ₹28,643 plan (587%), ad spend is 43.9% of sales vs 32.8% norm, ROAS fell from 2.22 to 1.15, and revenue is at 99.3% of target.",
+   "ask": "Which keywords and campaigns drove ROAS down to 1.15, and what bid cuts are you making this week?"
   },
   {
    "id": "Q5",
@@ -139,7 +231,30 @@
     "platform_ad_spend_as_pct_of_sales": "31.4%",
     "why_flagged": "over ad plan, high spend for the sales"
    },
-   "text": "Soap on Zepto is slightly ahead at ₹1.7 L vs ₹1.6 L (106.6%), but ad spend of ₹1.5 L is 86.8% of sales (platform norm is 31.4%) and ROAS is 1.04. Spend was also well over the ad plan of ₹25,832 for the days. What is the thinking behind this level of spend on Soap, and are we really making money on these sales?"
+   "text": "Soap on Zepto is slightly ahead at ₹1.7 L vs ₹1.6 L (106.6%), but ad spend of ₹1.5 L is 86.8% of sales (platform norm is 31.4%) and ROAS is 1.04. Spend was also well over the ad plan of ₹25,832 for the days. What is the thinking behind this level of spend on Soap, and are we really making money on these sales?",
+   "review_period_facts": {
+    "week": "31 Oct – 6 Nov",
+    "week_revenue": "₹1.7 L",
+    "week_target": "₹1.6 L",
+    "attainment": "103.4%",
+    "gap": "₹5,506",
+    "vs_previous_week": "+5.9%",
+    "ad_spend": "₹1.5 L",
+    "roas": "1.05",
+    "roas_previous_week": "1.21",
+    "discount": "5.3%",
+    "guideline": "10.4%",
+    "discount_vs_guideline": "−5.1 pp",
+    "sku_drivers": "Tomato Basil Soap 125g Pack of 2 - QC (−₹4,118); Healing Turmeric & Oats - QC (−₹1,786)",
+    "ad_plan_for_the_days": "₹51,663",
+    "spend_vs_ad_plan": "288%",
+    "ad_spend_as_pct_of_sales": "90.2%",
+    "platform_ad_spend_as_pct_of_sales": "32.8%"
+   },
+   "verdict": "No answer",
+   "answer": "",
+   "why": "No reply on Soap Zepto; ad spend of ₹1.5 L is 90.2% of sales (norm 32.8%) at ROAS 1.05, and spend is 288% of the ₹51,663 plan for a 103.4% attainment.",
+   "ask": "At ROAS 1.05 and 90.2% of sales in ads, what spend cut or budget shift will you make, and by when?"
   },
   {
    "id": "Q6",
@@ -166,7 +281,30 @@
     "platform_ad_spend_as_pct_of_sales": "9.5%",
     "why_flagged": "over ad plan, high spend for the sales, ROAS falling"
    },
-   "text": "Lepa on Blinkit beat target at ₹3.5 L vs ₹3.1 L (111.0%), but ad spend was ₹82,293 against an ad plan of ₹9,300 for the days, and ROAS fell from 19.22 to 6.01. Ad spend is 23.6% of sales vs the 9.5% Blinkit norm. What changed in the campaigns this week, and how much of the revenue beat do you think came from the extra spend?"
+   "text": "Lepa on Blinkit beat target at ₹3.5 L vs ₹3.1 L (111.0%), but ad spend was ₹82,293 against an ad plan of ₹9,300 for the days, and ROAS fell from 19.22 to 6.01. Ad spend is 23.6% of sales vs the 9.5% Blinkit norm. What changed in the campaigns this week, and how much of the revenue beat do you think came from the extra spend?",
+   "review_period_facts": {
+    "week": "31 Oct – 6 Nov",
+    "week_revenue": "₹4.6 L",
+    "week_target": "₹4.1 L",
+    "attainment": "114.2%",
+    "gap": "₹57,716",
+    "vs_previous_week": "+17.1%",
+    "ad_spend": "₹1.5 L",
+    "roas": "4.72",
+    "roas_previous_week": "19.11",
+    "discount": "4.6%",
+    "guideline": "3.6%",
+    "discount_vs_guideline": "+0.9 pp",
+    "sku_drivers": "Orange Kalonji 40g - QC (−₹3,844); Tamarind Kasturi - QC (−₹2,259)",
+    "ad_plan_for_the_days": "₹25,317",
+    "spend_vs_ad_plan": "578%",
+    "ad_spend_as_pct_of_sales": "31.5%",
+    "platform_ad_spend_as_pct_of_sales": "11.5%"
+   },
+   "verdict": "No answer",
+   "answer": "",
+   "why": "No reply on Lepa Blinkit; revenue beat at ₹4.6 L (114.2%) but spend is ₹1.5 L vs a ₹25,317 plan (578%), 31.5% of sales vs 11.5% norm, and ROAS dropped from 19.11 to 4.72.",
+   "ask": "What changed in the campaigns to take ROAS from 19.11 to 4.72, and how much of the beat would remain at the planned spend?"
   }
  ],
  "own_ids": [
@@ -214,5 +352,6 @@
   }
  ],
  "reminder_sent": false,
- "pack_sent": false
+ "pack_sent": "2026-11-09T10:01:09.873550+05:30",
+ "replies": []
 }

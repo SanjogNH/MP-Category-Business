@@ -33,7 +33,30 @@
     "ad_spend_as_pct_of_sales": "3.6%",
     "platform_ad_spend_as_pct_of_sales": "5.3%"
    },
-   "text": "Kush, Skin Malai on Nykaa reached only 49.7% of target (₹1.3 L vs ₹2.7 L), down 11.2% week on week, while discount ran at 22.4% against a 15.6% guideline and ROAS fell from 2.56 to 1.95. Double Cocoa and Multi-Nut 200ml singles drove most of the gap, so what is behind the miss on these two SKUs, and how much of it do you attribute to the discount level versus demand?"
+   "text": "Kush, Skin Malai on Nykaa reached only 49.7% of target (₹1.3 L vs ₹2.7 L), down 11.2% week on week, while discount ran at 22.4% against a 15.6% guideline and ROAS fell from 2.56 to 1.95. Double Cocoa and Multi-Nut 200ml singles drove most of the gap, so what is behind the miss on these two SKUs, and how much of it do you attribute to the discount level versus demand?",
+   "review_period_facts": {
+    "week": "31 Oct – 6 Nov",
+    "week_revenue": "₹1.2 L",
+    "week_target": "₹2.8 L",
+    "attainment": "42.8%",
+    "gap": "−₹1.6 L",
+    "vs_previous_week": "−25.2%",
+    "ad_spend": "₹4,875",
+    "roas": "1.64",
+    "roas_previous_week": "2.76",
+    "discount": "22.4%",
+    "guideline": "15.7%",
+    "discount_vs_guideline": "+6.8 pp",
+    "sku_drivers": "Double Cocoa Skin Malai - 200ml - Single Pack (−₹42,337); Multi-Nut Skin Malai - 200ml - Single Pack (−₹30,565)",
+    "ad_plan_for_the_days": "no ad plan",
+    "spend_vs_ad_plan": "–",
+    "ad_spend_as_pct_of_sales": "4.1%",
+    "platform_ad_spend_as_pct_of_sales": "5.3%"
+   },
+   "verdict": "No answer",
+   "answer": "",
+   "why": "No reply was received, and the review period worsened: attainment fell to 42.8% (₹1.2 L vs ₹2.8 L), revenue was −25.2% week on week, discount stayed at 22.4% vs 15.7% guideline (+6.8 pp) and ROAS dropped from 2.76 to 1.64.",
+   "ask": "Double Cocoa (−₹42,337) and Multi-Nut (−₹30,565) are driving the gap at +6.8 pp over guideline with ROAS at 1.64: what do you cut or change this week, and by when?"
   },
   {
    "id": "Q2",
@@ -59,7 +82,30 @@
     "ad_spend_as_pct_of_sales": "3.2%",
     "platform_ad_spend_as_pct_of_sales": "5.3%"
    },
-   "text": "Kush, Face Wash on Nykaa came in at ₹3.1 L against a ₹4.4 L target (71.8%), and Ubtan Tikta Face Wash alone accounts for −₹1.2 L of the gap even though ROAS improved from 1.96 to 2.46. Ad spend was only 3.2% of sales versus the platform's 5.3%, so what is holding Ubtan back, and is the lighter ad spend a factor?"
+   "text": "Kush, Face Wash on Nykaa came in at ₹3.1 L against a ₹4.4 L target (71.8%), and Ubtan Tikta Face Wash alone accounts for −₹1.2 L of the gap even though ROAS improved from 1.96 to 2.46. Ad spend was only 3.2% of sales versus the platform's 5.3%, so what is holding Ubtan back, and is the lighter ad spend a factor?",
+   "review_period_facts": {
+    "week": "31 Oct – 6 Nov",
+    "week_revenue": "₹3.1 L",
+    "week_target": "₹3.5 L",
+    "attainment": "88.7%",
+    "gap": "−₹39,495",
+    "vs_previous_week": "−7.4%",
+    "ad_spend": "₹9,951",
+    "roas": "2.05",
+    "roas_previous_week": "2.26",
+    "discount": "16.3%",
+    "guideline": "15.1%",
+    "discount_vs_guideline": "+1.2 pp",
+    "sku_drivers": "Ubtan Tikta Face Wash (−₹46,417); Masoor Dal Tikta Face Wash (−₹2,878)",
+    "ad_plan_for_the_days": "no ad plan",
+    "spend_vs_ad_plan": "–",
+    "ad_spend_as_pct_of_sales": "3.2%",
+    "platform_ad_spend_as_pct_of_sales": "5.3%"
+   },
+   "verdict": "No answer",
+   "answer": "",
+   "why": "No reply was received; the gap narrowed to 88.7% attainment (₹3.1 L vs ₹3.5 L, −₹39,495) but Ubtan Tikta is still −₹46,417 and ROAS slipped from 2.26 to 2.05, with ad spend at 3.2% of sales vs the platform's 5.3%.",
+   "ask": "Ubtan Tikta is still −₹46,417 with ad spend at 3.2% of sales vs 5.3% platform: is it stock, buy-box, visibility or ad coverage, and what are you fixing?"
   },
   {
    "id": "Q3",
@@ -85,7 +131,30 @@
     "ad_spend_as_pct_of_sales": "6.7%",
     "platform_ad_spend_as_pct_of_sales": "5.3%"
    },
-   "text": "Kush, Dasabuti Hair Oil on Nykaa grew 24.1% week on week but still reached 81.5% of target (₹3.5 L vs ₹4.3 L), a gap of −₹79,880, with discount slightly under guideline at 19.5% vs 20.5%. Ad spend is 6.7% of sales against the platform's 5.3% and ROAS is 1.81, so what is your read on whether this spend level is paying back, and what is keeping the Hibiscus Amla and Curry Sesame SKUs short?"
+   "text": "Kush, Dasabuti Hair Oil on Nykaa grew 24.1% week on week but still reached 81.5% of target (₹3.5 L vs ₹4.3 L), a gap of −₹79,880, with discount slightly under guideline at 19.5% vs 20.5%. Ad spend is 6.7% of sales against the platform's 5.3% and ROAS is 1.81, so what is your read on whether this spend level is paying back, and what is keeping the Hibiscus Amla and Curry Sesame SKUs short?",
+   "review_period_facts": {
+    "week": "31 Oct – 6 Nov",
+    "week_revenue": "₹3.4 L",
+    "week_target": "₹3.6 L",
+    "attainment": "93.7%",
+    "gap": "−₹23,020",
+    "vs_previous_week": "+10.9%",
+    "ad_spend": "₹17,901",
+    "roas": "1.97",
+    "roas_previous_week": "1.57",
+    "discount": "19.3%",
+    "guideline": "20.4%",
+    "discount_vs_guideline": "−1.1 pp",
+    "sku_drivers": "Curry Sesame Summer Hair Oil - 200 ml (−₹10,402); Crushed Tri-Leaf Winter Hair Oil - 100 ml (−₹7,140)",
+    "ad_plan_for_the_days": "no ad plan",
+    "spend_vs_ad_plan": "–",
+    "ad_spend_as_pct_of_sales": "5.2%",
+    "platform_ad_spend_as_pct_of_sales": "5.3%"
+   },
+   "verdict": "No answer",
+   "answer": "",
+   "why": "No reply was received; the category improved to 93.7% attainment (₹3.4 L vs ₹3.6 L) with ROAS up from 1.57 to 1.97 and ad spend now 5.2% of sales vs platform 5.3%, with discount −1.1 pp below guideline.",
+   "ask": "ROAS recovered to 1.97 and spend fell to ₹17,901: what changed, and is it sustainable while Curry Sesame is still −₹10,402?"
   },
   {
    "id": "Q4",
@@ -111,7 +180,30 @@
     "ad_spend_as_pct_of_sales": "4.1%",
     "platform_ad_spend_as_pct_of_sales": "5.3%"
    },
-   "text": "Kush, Soap on Nykaa ran a 25.5% discount against an 18.4% guideline (+7.1 pp), yet revenue was still 75.6% of target (₹1.2 L vs ₹1.6 L), with the Tomato Basil Pack of 2 and Pack of 4 as the main shortfalls. Revenue rose 21.1% week on week and ROAS improved from 1.21 to 1.86, so what was the thinking behind going this deep on discount, and do you see it as having worked?"
+   "text": "Kush, Soap on Nykaa ran a 25.5% discount against an 18.4% guideline (+7.1 pp), yet revenue was still 75.6% of target (₹1.2 L vs ₹1.6 L), with the Tomato Basil Pack of 2 and Pack of 4 as the main shortfalls. Revenue rose 21.1% week on week and ROAS improved from 1.21 to 1.86, so what was the thinking behind going this deep on discount, and do you see it as having worked?",
+   "review_period_facts": {
+    "week": "31 Oct – 6 Nov",
+    "week_revenue": "₹1.3 L",
+    "week_target": "₹1.4 L",
+    "attainment": "94.1%",
+    "gap": "−₹8,126",
+    "vs_previous_week": "+15.9%",
+    "ad_spend": "₹5,824",
+    "roas": "1.57",
+    "roas_previous_week": "1.65",
+    "discount": "26.0%",
+    "guideline": "18.4%",
+    "discount_vs_guideline": "+7.6 pp",
+    "sku_drivers": "Neem Basil + Turmeric Soap - Pack of 2 (−₹2,947); Orange + Sandalwood Soap - Pack of 2 (−₹2,236)",
+    "ad_plan_for_the_days": "no ad plan",
+    "spend_vs_ad_plan": "–",
+    "ad_spend_as_pct_of_sales": "4.5%",
+    "platform_ad_spend_as_pct_of_sales": "5.3%"
+   },
+   "verdict": "No answer",
+   "answer": "",
+   "why": "No reply was received; discount rose to 26.0% vs 18.4% guideline (+7.6 pp) and ROAS fell from 1.65 to 1.57, although attainment reached 94.1% (₹1.3 L vs ₹1.4 L) and revenue was +15.9%.",
+   "ask": "At +7.6 pp over guideline and ROAS 1.57, was the deep discount worth the extra revenue, and when do you bring it back toward 18.4%?"
   },
   {
    "id": "Q5",
@@ -137,7 +229,30 @@
     "ad_spend_as_pct_of_sales": "5.1%",
     "platform_ad_spend_as_pct_of_sales": "5.3%"
    },
-   "text": "Kush, Indigo Powder on Nykaa was discounted at 27.1% against a 16.9% guideline (+10.2 pp), yet revenue reached only 76.4% of target (₹76,136 vs ₹99,663) and slipped 1.5% week on week. Given the HUFA Pigment 85g and 170g packs both fell short, can you walk me through why the discount went this far above guideline and what it is delivering?"
+   "text": "Kush, Indigo Powder on Nykaa was discounted at 27.1% against a 16.9% guideline (+10.2 pp), yet revenue reached only 76.4% of target (₹76,136 vs ₹99,663) and slipped 1.5% week on week. Given the HUFA Pigment 85g and 170g packs both fell short, can you walk me through why the discount went this far above guideline and what it is delivering?",
+   "review_period_facts": {
+    "week": "31 Oct – 6 Nov",
+    "week_revenue": "₹68,670",
+    "week_target": "₹86,896",
+    "attainment": "79.0%",
+    "gap": "−₹18,226",
+    "vs_previous_week": "−12.9%",
+    "ad_spend": "₹4,020",
+    "roas": "1.55",
+    "roas_previous_week": "1.90",
+    "discount": "27.0%",
+    "guideline": "17.0%",
+    "discount_vs_guideline": "+10.0 pp",
+    "sku_drivers": "HUFA Pigment Indigo Powder - 85g (−₹15,384); HUFA Pigment Indigo Powder - 170g (−₹9,072)",
+    "ad_plan_for_the_days": "no ad plan",
+    "spend_vs_ad_plan": "–",
+    "ad_spend_as_pct_of_sales": "5.9%",
+    "platform_ad_spend_as_pct_of_sales": "5.3%"
+   },
+   "verdict": "No answer",
+   "answer": "",
+   "why": "No reply was received; discount is 27.0% vs 17.0% guideline (+10.0 pp) yet attainment is only 79.0% (₹68,670 vs ₹86,896), revenue −12.9% and ROAS fell from 1.90 to 1.55.",
+   "ask": "You are +10.0 pp over guideline and revenue fell 12.9%: what is the discount delivering, and when will you reset it?"
   }
  ],
  "own_ids": [
@@ -159,5 +274,6 @@
   }
  ],
  "reminder_sent": false,
- "pack_sent": false
+ "pack_sent": "2026-11-09T10:01:09.873550+05:30",
+ "replies": []
 }

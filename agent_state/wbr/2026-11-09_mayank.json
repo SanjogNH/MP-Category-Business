@@ -34,7 +34,30 @@
     "platform_ad_spend_as_pct_of_sales": "26.9%",
     "why_flagged": "over ad plan"
    },
-   "text": "Mayank, Shampoo on Instamart beat target at 122.0% (₹3.9 L vs ₹3.2 L), but ad spend was ₹1.3 L against a ₹16,800 plan (786% of plan) and 34.0% of sales vs the platform's 26.9%. ROAS did improve to 1.71 from 1.45. What drove the spend well above plan, and was it a deliberate call?"
+   "text": "Mayank, Shampoo on Instamart beat target at 122.0% (₹3.9 L vs ₹3.2 L), but ad spend was ₹1.3 L against a ₹16,800 plan (786% of plan) and 34.0% of sales vs the platform's 26.9%. ROAS did improve to 1.71 from 1.45. What drove the spend well above plan, and was it a deliberate call?",
+   "review_period_facts": {
+    "week": "31 Oct – 6 Nov",
+    "week_revenue": "₹3.5 L",
+    "week_target": "₹3.2 L",
+    "attainment": "109.8%",
+    "gap": "₹31,413",
+    "vs_previous_week": "+18.8%",
+    "ad_spend": "₹1.4 L",
+    "roas": "1.50",
+    "roas_previous_week": "1.61",
+    "discount": "9.5%",
+    "guideline": "8.6%",
+    "discount_vs_guideline": "+1.0 pp",
+    "sku_drivers": "Five Oil Hibiscus Shampoo - QC (₹7,254); Neem Beracyl Dandruff Shampoo 250ml - QC (₹9,040)",
+    "ad_plan_for_the_days": "₹29,400",
+    "spend_vs_ad_plan": "467%",
+    "ad_spend_as_pct_of_sales": "39.0%",
+    "platform_ad_spend_as_pct_of_sales": "29.4%"
+   },
+   "verdict": "No answer",
+   "answer": "",
+   "why": "No reply was received; in the review period ad spend was ₹1.4 L vs a ₹29,400 plan (467%), 39.0% of sales vs 29.4% for the platform, and ROAS fell to 1.50 from 1.61.",
+   "ask": "Spend is 467% of plan and 39.0% of sales while ROAS fell to 1.50. Which campaigns are you cutting, and by when?"
   },
   {
    "id": "Q2",
@@ -61,7 +84,30 @@
     "platform_ad_spend_as_pct_of_sales": "26.9%",
     "why_flagged": "over ad plan"
    },
-   "text": "Soap on Instamart was at 110.7% of target (₹3.1 L), yet revenue fell 14.9% week on week while ad spend was ₹1.2 L against a ₹17,578 plan (662% of plan, 37.5% of sales vs the platform's 26.9%). Discount also ran 13.5% vs the 4.7% guideline. Can you walk me through what led to the spend and discount levels, and what the Lavender 75g Pack of 3 decline (−₹14,923) tells us?"
+   "text": "Soap on Instamart was at 110.7% of target (₹3.1 L), yet revenue fell 14.9% week on week while ad spend was ₹1.2 L against a ₹17,578 plan (662% of plan, 37.5% of sales vs the platform's 26.9%). Discount also ran 13.5% vs the 4.7% guideline. Can you walk me through what led to the spend and discount levels, and what the Lavender 75g Pack of 3 decline (−₹14,923) tells us?",
+   "review_period_facts": {
+    "week": "31 Oct – 6 Nov",
+    "week_revenue": "₹3.0 L",
+    "week_target": "₹3.3 L",
+    "attainment": "90.4%",
+    "gap": "−₹32,151",
+    "vs_previous_week": "−15.0%",
+    "ad_spend": "₹1.1 L",
+    "roas": "1.74",
+    "roas_previous_week": "1.72",
+    "discount": "13.6%",
+    "guideline": "4.7%",
+    "discount_vs_guideline": "+8.9 pp",
+    "sku_drivers": "Tomato Basil 75g - QC (−₹38,699); Lavender 75g - Pack of 3 - QC (−₹2,978)",
+    "ad_plan_for_the_days": "₹30,761",
+    "spend_vs_ad_plan": "354%",
+    "ad_spend_as_pct_of_sales": "36.0%",
+    "platform_ad_spend_as_pct_of_sales": "29.4%"
+   },
+   "verdict": "No answer",
+   "answer": "",
+   "why": "No reply was received; attainment dropped to 90.4% (−₹32,151) with revenue down 15.0%, discount 13.6% vs a 4.7% guideline, and spend at 354% of plan (36.0% of sales).",
+   "ask": "Tomato Basil 75g lost ₹38,699 while discount sits 8.9 pp above guideline. What broke, and what is the fix and date?"
   },
   {
    "id": "Q3",
@@ -88,7 +134,30 @@
     "platform_ad_spend_as_pct_of_sales": "26.9%",
     "why_flagged": "over ad plan, high spend for the sales"
    },
-   "text": "Face Wash on Instamart missed target at 93.5% (₹1.7 L vs ₹1.8 L) while ad spend was ₹90,313 against a ₹9,022 plan (1001% of plan), which is 54.2% of sales vs the platform's 26.9%. ROAS also slipped to 1.74 from 1.98. What was the thinking behind this spend level, and is it paying back?"
+   "text": "Face Wash on Instamart missed target at 93.5% (₹1.7 L vs ₹1.8 L) while ad spend was ₹90,313 against a ₹9,022 plan (1001% of plan), which is 54.2% of sales vs the platform's 26.9%. ROAS also slipped to 1.74 from 1.98. What was the thinking behind this spend level, and is it paying back?",
+   "review_period_facts": {
+    "week": "31 Oct – 6 Nov",
+    "week_revenue": "₹1.6 L",
+    "week_target": "₹1.8 L",
+    "attainment": "87.8%",
+    "gap": "−₹21,619",
+    "vs_previous_week": "+13.5%",
+    "ad_spend": "₹95,347",
+    "roas": "1.45",
+    "roas_previous_week": "2.36",
+    "discount": "8.2%",
+    "guideline": "4.5%",
+    "discount_vs_guideline": "+3.7 pp",
+    "sku_drivers": "Brightening Ubtan Face Wash - QC (−₹18,425); Kali Mitti Face Wash - 100g - QC (−₹3,302)",
+    "ad_plan_for_the_days": "₹15,789",
+    "spend_vs_ad_plan": "604%",
+    "ad_spend_as_pct_of_sales": "61.4%",
+    "platform_ad_spend_as_pct_of_sales": "29.4%"
+   },
+   "verdict": "No answer",
+   "answer": "",
+   "why": "No reply was received; spend of ₹95,347 is 604% of plan and 61.4% of sales vs 29.4% for the platform, while ROAS collapsed to 1.45 from 2.36 and attainment fell to 87.8%.",
+   "ask": "Spend is 61.4% of sales and ROAS dropped to 1.45 from 2.36. Which keywords are you pausing this week?"
   },
   {
    "id": "Q4",
@@ -114,7 +183,30 @@
     "ad_spend_as_pct_of_sales": "39.3%",
     "platform_ad_spend_as_pct_of_sales": "26.9%"
    },
-   "text": "Dasabuti Hair Oil on Instamart was at 88.8% of target (₹1.4 L vs ₹1.6 L) even with discount at 18.5% against a 6.9% guideline (+11.5 pp) and ad spend of ₹55,116 vs a ₹6,067 plan. Hibiscus Amla Summer 100 ml is the biggest gap (−₹17,927). Why is the deep discount not translating into sales, and what is your plan for it?"
+   "text": "Dasabuti Hair Oil on Instamart was at 88.8% of target (₹1.4 L vs ₹1.6 L) even with discount at 18.5% against a 6.9% guideline (+11.5 pp) and ad spend of ₹55,116 vs a ₹6,067 plan. Hibiscus Amla Summer 100 ml is the biggest gap (−₹17,927). Why is the deep discount not translating into sales, and what is your plan for it?",
+   "review_period_facts": {
+    "week": "31 Oct – 6 Nov",
+    "week_revenue": "₹1.3 L",
+    "week_target": "₹1.7 L",
+    "attainment": "78.9%",
+    "gap": "−₹35,886",
+    "vs_previous_week": "+0.9%",
+    "ad_spend": "₹59,804",
+    "roas": "1.71",
+    "roas_previous_week": "1.99",
+    "discount": "19.4%",
+    "guideline": "6.8%",
+    "discount_vs_guideline": "+12.6 pp",
+    "sku_drivers": "Hibiscus Amla Summer Hair Oil - 100 ml - QC (−₹15,010); Crushed Tri-Leaf Summer Hair Oil 100 ml - QC (−₹13,228)",
+    "ad_plan_for_the_days": "₹10,617",
+    "spend_vs_ad_plan": "563%",
+    "ad_spend_as_pct_of_sales": "44.5%",
+    "platform_ad_spend_as_pct_of_sales": "29.4%"
+   },
+   "verdict": "No answer",
+   "answer": "",
+   "why": "No reply was received; attainment fell to 78.9% (−₹35,886) despite a 19.4% discount vs a 6.8% guideline (+12.6 pp) and spend at 563% of plan.",
+   "ask": "A 19.4% discount still gives only 78.9% attainment. Will you cut it and the ads, or is the problem stock or visibility?"
   },
   {
    "id": "Q5",
@@ -140,7 +232,30 @@
     "ad_spend_as_pct_of_sales": "0.0%",
     "platform_ad_spend_as_pct_of_sales": "26.9%"
    },
-   "text": "Indigo Powder on Instamart is ahead at 126.7% of target (₹1.3 L vs ₹1.0 L) with no ads, but discount was 11.1% vs a 2.3% guideline (+8.8 pp). Is the discount what is driving the HUFA Pigment Indigo 85g sales (₹27,138 above target), and could we hold the volume with a lower discount?"
+   "text": "Indigo Powder on Instamart is ahead at 126.7% of target (₹1.3 L vs ₹1.0 L) with no ads, but discount was 11.1% vs a 2.3% guideline (+8.8 pp). Is the discount what is driving the HUFA Pigment Indigo 85g sales (₹27,138 above target), and could we hold the volume with a lower discount?",
+   "review_period_facts": {
+    "week": "31 Oct – 6 Nov",
+    "week_revenue": "₹1.2 L",
+    "week_target": "₹1.0 L",
+    "attainment": "115.5%",
+    "gap": "₹15,826",
+    "vs_previous_week": "+2.3%",
+    "ad_spend": "no ads",
+    "roas": "–",
+    "roas_previous_week": "–",
+    "discount": "9.2%",
+    "guideline": "2.3%",
+    "discount_vs_guideline": "+6.9 pp",
+    "sku_drivers": "HUFA Pigment Indigo Powder - 85g - QC (₹15,826)",
+    "ad_plan_for_the_days": "₹1,089",
+    "spend_vs_ad_plan": "–",
+    "ad_spend_as_pct_of_sales": "0.0%",
+    "platform_ad_spend_as_pct_of_sales": "29.4%"
+   },
+   "verdict": "No answer",
+   "answer": "",
+   "why": "No reply was received; Indigo Powder is at 115.5% of target with no ads, but discount is 9.2% vs a 2.3% guideline (+6.9 pp).",
+   "ask": "Can you test a lower discount on HUFA Indigo 85g this week and tell me the volume impact?"
   }
  ],
  "own_ids": [
@@ -162,5 +277,6 @@
   }
  ],
  "reminder_sent": false,
- "pack_sent": false
+ "pack_sent": "2026-11-09T10:01:09.873550+05:30",
+ "replies": []
 }

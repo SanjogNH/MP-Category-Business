@@ -33,7 +33,30 @@
     "ad_spend_as_pct_of_sales": "40.4%",
     "platform_ad_spend_as_pct_of_sales": "16.1%"
    },
-   "text": "Harsh, Baby Scalp Oil on First Cry did ₹45,961 against a ₹1.4 L target (33.8%), even though ad spend was ₹18,584 (40.4% of sales vs the platform's 16.1%) and ROAS slipped from 1.57 to 1.19. The Summer and Winter 110 ml SKUs account for nearly all of the gap. What is holding these two back, and is the current ad spend level working for us?"
+   "text": "Harsh, Baby Scalp Oil on First Cry did ₹45,961 against a ₹1.4 L target (33.8%), even though ad spend was ₹18,584 (40.4% of sales vs the platform's 16.1%) and ROAS slipped from 1.57 to 1.19. The Summer and Winter 110 ml SKUs account for nearly all of the gap. What is holding these two back, and is the current ad spend level working for us?",
+   "review_period_facts": {
+    "week": "31 Oct – 4 Nov",
+    "week_revenue": "₹34,742",
+    "week_target": "₹98,398",
+    "attainment": "35.3%",
+    "gap": "−₹63,656",
+    "vs_previous_week": "+20.9%",
+    "ad_spend": "₹12,876",
+    "roas": "1.38",
+    "roas_previous_week": "1.56",
+    "discount": "16.8%",
+    "guideline": "15.2%",
+    "discount_vs_guideline": "+1.6 pp",
+    "sku_drivers": "Brahmi Summer Baby Scalp Oil - 110 ml (−₹44,241); Brahmi Winter Baby Scalp Oil - 110 ml (−₹19,415)",
+    "ad_plan_for_the_days": "no ad plan",
+    "spend_vs_ad_plan": "–",
+    "ad_spend_as_pct_of_sales": "37.1%",
+    "platform_ad_spend_as_pct_of_sales": "15.3%"
+   },
+   "verdict": "No answer",
+   "answer": "",
+   "why": "No reply received; review-period revenue is ₹34,742 vs ₹98,398 target (35.3%), ad spend is 37.1% of sales vs the platform's 15.3%, ROAS is 1.38 vs 1.56, and discount is +1.6 pp over guideline.",
+   "ask": "Why are the Summer and Winter 110 ml SKUs still ₹44,241 and ₹19,415 short while ads take 37.1% of sales, and which keywords or bids will you cut this week?"
   },
   {
    "id": "Q2",
@@ -59,7 +82,30 @@
     "ad_spend_as_pct_of_sales": "225.1%",
     "platform_ad_spend_as_pct_of_sales": "16.1%"
    },
-   "text": "Baby Pure Oils on First Cry reached ₹4,995 against a ₹92,196 target (5.4%), while ₹11,245 went into ads, which is 225.1% of sales vs the platform's 16.1%. The Virgin Coconut 200 ml and Almond 100 ml SKUs are the biggest shortfalls. Can you walk me through what is happening with this category and how you see the ad spend here?"
+   "text": "Baby Pure Oils on First Cry reached ₹4,995 against a ₹92,196 target (5.4%), while ₹11,245 went into ads, which is 225.1% of sales vs the platform's 16.1%. The Virgin Coconut 200 ml and Almond 100 ml SKUs are the biggest shortfalls. Can you walk me through what is happening with this category and how you see the ad spend here?",
+   "review_period_facts": {
+    "week": "31 Oct – 4 Nov",
+    "week_revenue": "₹3,996",
+    "week_target": "₹62,438",
+    "attainment": "6.4%",
+    "gap": "−₹58,442",
+    "vs_previous_week": "+113.3%",
+    "ad_spend": "₹8,300",
+    "roas": "1.30",
+    "roas_previous_week": "1.10",
+    "discount": "20.0%",
+    "guideline": "20.0%",
+    "discount_vs_guideline": "0.0 pp",
+    "sku_drivers": "Pure Almond Baby Oil - 100 ml (−₹17,968); Pure Virgin Coconut Baby Oil - 200 ml (−₹17,940)",
+    "ad_plan_for_the_days": "no ad plan",
+    "spend_vs_ad_plan": "–",
+    "ad_spend_as_pct_of_sales": "207.7%",
+    "platform_ad_spend_as_pct_of_sales": "15.3%"
+   },
+   "verdict": "No answer",
+   "answer": "",
+   "why": "No reply received; review-period revenue is ₹3,996 vs ₹62,438 target (6.4%) with ₹8,300 ad spend (207.7% of sales vs 15.3% for the platform), though ROAS improved to 1.30 from 1.10.",
+   "ask": "Why are we spending ₹8,300 to earn ₹3,996, and will you pause or restructure these campaigns by a set date?"
   },
   {
    "id": "Q3",
@@ -85,7 +131,30 @@
     "ad_spend_as_pct_of_sales": "0.0%",
     "platform_ad_spend_as_pct_of_sales": "16.1%"
    },
-   "text": "Face Wash on First Cry did ₹16,084 against a ₹94,233 target (17.1%), with no ads running and discount at 16.9% vs the 15.3% guideline. Ubtan Tikta (−₹48,675) and Masoor Dal Tikta (−₹20,259) drive most of the gap. What do you think is holding these SKUs back, and would ad support or something else help?"
+   "text": "Face Wash on First Cry did ₹16,084 against a ₹94,233 target (17.1%), with no ads running and discount at 16.9% vs the 15.3% guideline. Ubtan Tikta (−₹48,675) and Masoor Dal Tikta (−₹20,259) drive most of the gap. What do you think is holding these SKUs back, and would ad support or something else help?",
+   "review_period_facts": {
+    "week": "31 Oct – 4 Nov",
+    "week_revenue": "₹11,629",
+    "week_target": "₹71,103",
+    "attainment": "16.4%",
+    "gap": "−₹59,474",
+    "vs_previous_week": "0.0%",
+    "ad_spend": "no ads",
+    "roas": "–",
+    "roas_previous_week": "–",
+    "discount": "16.9%",
+    "guideline": "15.3%",
+    "discount_vs_guideline": "+1.7 pp",
+    "sku_drivers": "Ubtan Tikta Face Wash (−₹38,677); Masoor Dal Tikta Face Wash (−₹14,471)",
+    "ad_plan_for_the_days": "no ad plan",
+    "spend_vs_ad_plan": "–",
+    "ad_spend_as_pct_of_sales": "0.0%",
+    "platform_ad_spend_as_pct_of_sales": "15.3%"
+   },
+   "verdict": "No answer",
+   "answer": "",
+   "why": "No reply received; review-period revenue is ₹11,629 vs ₹71,103 target (16.4%) with no ads, discount at +1.7 pp over guideline, and Ubtan Tikta (−₹38,677) as the main gap.",
+   "ask": "With no ads and discount already 1.7 pp over guideline, what is your plan to recover Ubtan Tikta, and by when?"
   },
   {
    "id": "Q4",
@@ -111,7 +180,30 @@
     "ad_spend_as_pct_of_sales": "0.0%",
     "platform_ad_spend_as_pct_of_sales": "0.0%"
    },
-   "text": "Lepa on Cred ran at an 80.3% discount against the 17.8% guideline (+62.5 pp), with revenue of ₹58,698, up 1088.0% on the previous week. Was this a planned Cred deal, and what did we get in return for the deeper discount?"
+   "text": "Lepa on Cred ran at an 80.3% discount against the 17.8% guideline (+62.5 pp), with revenue of ₹58,698, up 1088.0% on the previous week. Was this a planned Cred deal, and what did we get in return for the deeper discount?",
+   "review_period_facts": {
+    "week": "31 Oct – 6 Nov",
+    "week_revenue": "₹57,804",
+    "week_target": "₹0",
+    "attainment": "–",
+    "gap": "–",
+    "vs_previous_week": "+952.1%",
+    "ad_spend": "no ads",
+    "roas": "–",
+    "roas_previous_week": "–",
+    "discount": "80.4%",
+    "guideline": "17.8%",
+    "discount_vs_guideline": "+62.6 pp",
+    "sku_drivers": "–",
+    "ad_plan_for_the_days": "no ad plan",
+    "spend_vs_ad_plan": "–",
+    "ad_spend_as_pct_of_sales": "0.0%",
+    "platform_ad_spend_as_pct_of_sales": "0.0%"
+   },
+   "verdict": "No answer",
+   "answer": "",
+   "why": "No reply received; Lepa on Cred ran at 80.4% discount vs the 17.8% guideline (+62.6 pp), with ₹57,804 revenue (+952.1% w/w) and no stated approval or return.",
+   "ask": "Who approved an 80.4% Lepa discount on Cred, and what was the margin impact and what did we gain for it?"
   },
   {
    "id": "Q5",
@@ -137,7 +229,30 @@
     "ad_spend_as_pct_of_sales": "0.0%",
     "platform_ad_spend_as_pct_of_sales": "0.0%"
    },
-   "text": "Henna Combo on Cred sold ₹26,604 at a 71.1% discount vs the 17.7% guideline (+53.4 pp), and revenue is down 51.1% week on week. Was this discount level agreed in advance, and how are you thinking about it going forward?"
+   "text": "Henna Combo on Cred sold ₹26,604 at a 71.1% discount vs the 17.7% guideline (+53.4 pp), and revenue is down 51.1% week on week. Was this discount level agreed in advance, and how are you thinking about it going forward?",
+   "review_period_facts": {
+    "week": "31 Oct – 6 Nov",
+    "week_revenue": "₹21,441",
+    "week_target": "₹0",
+    "attainment": "–",
+    "gap": "–",
+    "vs_previous_week": "−60.8%",
+    "ad_spend": "no ads",
+    "roas": "–",
+    "roas_previous_week": "–",
+    "discount": "71.2%",
+    "guideline": "17.7%",
+    "discount_vs_guideline": "+53.5 pp",
+    "sku_drivers": "–",
+    "ad_plan_for_the_days": "no ad plan",
+    "spend_vs_ad_plan": "–",
+    "ad_spend_as_pct_of_sales": "0.0%",
+    "platform_ad_spend_as_pct_of_sales": "0.0%"
+   },
+   "verdict": "No answer",
+   "answer": "",
+   "why": "No reply received; Henna Combo on Cred sold ₹21,441 at 71.2% discount vs the 17.7% guideline (+53.5 pp), and revenue fell 60.8% w/w despite the deep discount.",
+   "ask": "Was the 71.2% Henna Combo discount approved, and why did revenue fall 60.8% despite it?"
   }
  ],
  "own_ids": [
@@ -172,5 +287,6 @@
   }
  ],
  "reminder_sent": false,
- "pack_sent": false
+ "pack_sent": "2026-11-09T10:01:09.873550+05:30",
+ "replies": []
 }
