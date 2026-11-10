@@ -33,7 +33,30 @@
     "ad_spend_as_pct_of_sales": "9.0%",
     "platform_ad_spend_as_pct_of_sales": "16.1%"
    },
-   "text": "Ketan, Soap on Amazon reached ₹5.8 L against the ₹8.6 L target (67.7%, −₹2.8 L), with Tomato Basil Pack of 2 the largest drag at −₹86,700. Discount ran at 31.3% against an 18.3% guideline. Is the discount depth linked to the shortfall, and what is your plan for Tomato Basil and Lavender?"
+   "text": "Ketan, Soap on Amazon reached ₹5.8 L against the ₹8.6 L target (67.7%, −₹2.8 L), with Tomato Basil Pack of 2 the largest drag at −₹86,700. Discount ran at 31.3% against an 18.3% guideline. Is the discount depth linked to the shortfall, and what is your plan for Tomato Basil and Lavender?",
+   "review_period_facts": {
+    "week": "1 Nov – 5 Nov",
+    "week_revenue": "₹4.2 L",
+    "week_target": "₹6.8 L",
+    "attainment": "61.2%",
+    "gap": "−₹2.7 L",
+    "vs_previous_week": "+0.2%",
+    "ad_spend": "₹33,378",
+    "roas": "3.36",
+    "roas_previous_week": "3.94",
+    "discount": "27.1%",
+    "guideline": "18.1%",
+    "discount_vs_guideline": "+9.0 pp",
+    "sku_drivers": "Tomato Basil Soap 125g - Pack of 2 (−₹84,007); Tomato Basil Soap - Single Pack (−₹29,079)",
+    "ad_plan_for_the_days": "₹7,697",
+    "spend_vs_ad_plan": "434%",
+    "ad_spend_as_pct_of_sales": "8.0%",
+    "platform_ad_spend_as_pct_of_sales": "15.1%"
+   },
+   "verdict": "No answer",
+   "answer": "",
+   "why": "No reply was received; Soap attainment fell to 61.2% (₹4.2 L vs ₹6.8 L) with discount at 27.1% vs 18.1% guideline (+9.0 pp) and Tomato Basil Pack of 2 at −₹84,007.",
+   "ask": "Discount is +9.0 pp over guideline and Tomato Basil Pack of 2 is still down ₹84,007, so what is the fix and by when?"
   },
   {
    "id": "Q2",
@@ -59,7 +82,30 @@
     "ad_spend_as_pct_of_sales": "25.4%",
     "platform_ad_spend_as_pct_of_sales": "16.1%"
    },
-   "text": "Shampoo Combo on Amazon did ₹4.6 L against ₹7.0 L (65.3%, −6.0% WoW). Ad spend was ₹1.2 L, which is 25.4% of sales against the platform's 16.1%, and ROAS slipped to 3.68 from 3.86. What is driving the Five Oil Hibiscus combo's −₹1.3 L, and is the spend level working for us?"
+   "text": "Shampoo Combo on Amazon did ₹4.6 L against ₹7.0 L (65.3%, −6.0% WoW). Ad spend was ₹1.2 L, which is 25.4% of sales against the platform's 16.1%, and ROAS slipped to 3.68 from 3.86. What is driving the Five Oil Hibiscus combo's −₹1.3 L, and is the spend level working for us?",
+   "review_period_facts": {
+    "week": "1 Nov – 5 Nov",
+    "week_revenue": "₹3.2 L",
+    "week_target": "₹3.2 L",
+    "attainment": "99.8%",
+    "gap": "−₹565",
+    "vs_previous_week": "−7.8%",
+    "ad_spend": "₹81,070",
+    "roas": "3.70",
+    "roas_previous_week": "3.89",
+    "discount": "17.6%",
+    "guideline": "20.4%",
+    "discount_vs_guideline": "−2.8 pp",
+    "sku_drivers": "Neem Beracyl Shampoo + Neem Green Tea Conditioner (−₹5,269); Castor Blackseed Shampoo - 250g + Castor Black Seed Conditioner - 150g (−₹2,026)",
+    "ad_plan_for_the_days": "₹12,793",
+    "spend_vs_ad_plan": "634%",
+    "ad_spend_as_pct_of_sales": "25.2%",
+    "platform_ad_spend_as_pct_of_sales": "15.1%"
+   },
+   "verdict": "No answer",
+   "answer": "",
+   "why": "No reply was received; attainment recovered to 99.8% (₹3.2 L vs ₹3.2 L) but ad spend is still 25.2% of sales vs 15.1% for the platform, at 634% of the ad plan.",
+   "ask": "Revenue is on target, so why is spend still 25.2% of sales vs 15.1% platform, and which campaigns will you cut?"
   },
   {
    "id": "Q3",
@@ -85,7 +131,30 @@
     "ad_spend_as_pct_of_sales": "23.1%",
     "platform_ad_spend_as_pct_of_sales": "16.1%"
    },
-   "text": "Henna Combo on Amazon reached ₹4.8 L against ₹6.5 L (73.5%), and ROAS fell to 2.88 from 3.53 last week. Ad spend was ₹1.1 L (23.1% of sales vs 16.1% for the platform) and discount was 23.0% vs a 17.9% guideline. What changed on the Indigo Powder + Henna Paste Pack of 2 (−₹1.4 L)?"
+   "text": "Henna Combo on Amazon reached ₹4.8 L against ₹6.5 L (73.5%), and ROAS fell to 2.88 from 3.53 last week. Ad spend was ₹1.1 L (23.1% of sales vs 16.1% for the platform) and discount was 23.0% vs a 17.9% guideline. What changed on the Indigo Powder + Henna Paste Pack of 2 (−₹1.4 L)?",
+   "review_period_facts": {
+    "week": "1 Nov – 5 Nov",
+    "week_revenue": "₹2.9 L",
+    "week_target": "₹3.8 L",
+    "attainment": "76.8%",
+    "gap": "−₹87,878",
+    "vs_previous_week": "−21.1%",
+    "ad_spend": "₹69,344",
+    "roas": "2.73",
+    "roas_previous_week": "3.13",
+    "discount": "21.6%",
+    "guideline": "17.8%",
+    "discount_vs_guideline": "+3.8 pp",
+    "sku_drivers": "HUFA Pigment Indigo Powder - 85g + Henna Paste - Pack of 2 (−₹59,381); Henna Paste x 2 + Post-Henna Oil (−₹22,990)",
+    "ad_plan_for_the_days": "₹9,521",
+    "spend_vs_ad_plan": "728%",
+    "ad_spend_as_pct_of_sales": "23.9%",
+    "platform_ad_spend_as_pct_of_sales": "15.1%"
+   },
+   "verdict": "No answer",
+   "answer": "",
+   "why": "No reply was received; Henna Combo revenue fell 21.1% WoW to ₹2.9 L (76.8% attainment), ROAS dropped to 2.73 from 3.13 and discount is 21.6% vs 17.8% guideline.",
+   "ask": "What broke on the Indigo + Henna Paste Pack of 2 (−₹59,381), and what are you changing on bids and discount?"
   },
   {
    "id": "Q4",
@@ -112,7 +181,30 @@
     "platform_ad_spend_as_pct_of_sales": "16.1%",
     "why_flagged": "over ad plan, high spend for the sales"
    },
-   "text": "CP Hair Oil on Amazon spent ₹1.6 L on ads, which is 42.2% of sales against the platform's 16.1%, with ROAS at 1.34. Revenue was ₹3.8 L against ₹5.3 L (73.2%). Can you walk me through what this spend is buying, especially on Castor Oil 200 ml (−₹84,410)?"
+   "text": "CP Hair Oil on Amazon spent ₹1.6 L on ads, which is 42.2% of sales against the platform's 16.1%, with ROAS at 1.34. Revenue was ₹3.8 L against ₹5.3 L (73.2%). Can you walk me through what this spend is buying, especially on Castor Oil 200 ml (−₹84,410)?",
+   "review_period_facts": {
+    "week": "1 Nov – 5 Nov",
+    "week_revenue": "₹2.6 L",
+    "week_target": "₹2.8 L",
+    "attainment": "92.2%",
+    "gap": "−₹21,950",
+    "vs_previous_week": "−8.2%",
+    "ad_spend": "₹1.1 L",
+    "roas": "1.12",
+    "roas_previous_week": "1.45",
+    "discount": "22.1%",
+    "guideline": "15.2%",
+    "discount_vs_guideline": "+6.9 pp",
+    "sku_drivers": "Castor Oil - 200 ml (−₹22,844); Neem Oil - 200 ml (−₹5,181)",
+    "ad_plan_for_the_days": "₹17,260",
+    "spend_vs_ad_plan": "641%",
+    "ad_spend_as_pct_of_sales": "42.6%",
+    "platform_ad_spend_as_pct_of_sales": "15.1%"
+   },
+   "verdict": "No answer",
+   "answer": "",
+   "why": "No reply was received; ROAS fell to 1.12 from 1.45 with spend at 42.6% of sales vs 15.1% platform, 641% of ad plan, and discount +6.9 pp over guideline.",
+   "ask": "At ROAS 1.12 and 42.6% of sales, which campaigns are you cutting this week and what is the new spend cap?"
   },
   {
    "id": "Q5",
@@ -139,7 +231,30 @@
     "platform_ad_spend_as_pct_of_sales": "16.1%",
     "why_flagged": "over ad plan, high spend for the sales"
    },
-   "text": "Comb on Amazon ran ad spend of ₹1.2 L, 27.1% of sales vs the platform's 16.1%, at a ROAS of 2.05. Revenue was still ₹4.4 L against ₹5.2 L (84.7%), with discount at 20.2% vs a 15.9% guideline. Where is the ad money going across the Neem Dual Tooth and Wide Tooth combs, and what is the plan to bring it closer to the norm?"
+   "text": "Comb on Amazon ran ad spend of ₹1.2 L, 27.1% of sales vs the platform's 16.1%, at a ROAS of 2.05. Revenue was still ₹4.4 L against ₹5.2 L (84.7%), with discount at 20.2% vs a 15.9% guideline. Where is the ad money going across the Neem Dual Tooth and Wide Tooth combs, and what is the plan to bring it closer to the norm?",
+   "review_period_facts": {
+    "week": "1 Nov – 5 Nov",
+    "week_revenue": "₹3.3 L",
+    "week_target": "₹2.9 L",
+    "attainment": "112.4%",
+    "gap": "₹36,251",
+    "vs_previous_week": "+6.0%",
+    "ad_spend": "₹83,294",
+    "roas": "2.04",
+    "roas_previous_week": "2.05",
+    "discount": "19.0%",
+    "guideline": "15.9%",
+    "discount_vs_guideline": "+3.1 pp",
+    "sku_drivers": "Neem Comb Combo Dual + Wide (−₹4,716); Neem Comb - Wide Tooth (−₹1,254)",
+    "ad_plan_for_the_days": "₹11,190",
+    "spend_vs_ad_plan": "744%",
+    "ad_spend_as_pct_of_sales": "25.3%",
+    "platform_ad_spend_as_pct_of_sales": "15.1%"
+   },
+   "verdict": "No answer",
+   "answer": "",
+   "why": "No reply was received; revenue reached 112.4% of target (₹3.3 L vs ₹2.9 L) but spend is 25.3% of sales vs 15.1% platform and 744% of ad plan, with ROAS flat at 2.04.",
+   "ask": "You beat target at ROAS 2.04, so why is spend still 744% of plan, and what is the reduction schedule?"
   },
   {
    "id": "Q6",
@@ -165,7 +280,30 @@
     "ad_spend_as_pct_of_sales": "13.1%",
     "platform_ad_spend_as_pct_of_sales": "16.1%"
    },
-   "text": "Face Wash on Amazon grew 10.2% WoW to ₹8.9 L, but that is still 84.6% of the ₹10.5 L target (−₹1.6 L). Discount ran at 26.0% against a 15.2% guideline, with Ubtan Tikta Face Wash the largest gap at −₹1.8 L. Was the deeper discount needed to drive the growth, and how do you plan to bring it back toward guideline?"
+   "text": "Face Wash on Amazon grew 10.2% WoW to ₹8.9 L, but that is still 84.6% of the ₹10.5 L target (−₹1.6 L). Discount ran at 26.0% against a 15.2% guideline, with Ubtan Tikta Face Wash the largest gap at −₹1.8 L. Was the deeper discount needed to drive the growth, and how do you plan to bring it back toward guideline?",
+   "review_period_facts": {
+    "week": "1 Nov – 5 Nov",
+    "week_revenue": "₹6.0 L",
+    "week_target": "₹7.8 L",
+    "attainment": "77.3%",
+    "gap": "−₹1.8 L",
+    "vs_previous_week": "+2.7%",
+    "ad_spend": "₹73,132",
+    "roas": "4.04",
+    "roas_previous_week": "3.64",
+    "discount": "24.8%",
+    "guideline": "15.2%",
+    "discount_vs_guideline": "+9.6 pp",
+    "sku_drivers": "Ubtan Tikta Face Wash (−₹1.7 L); Brightening Ubtan Face Wash - Pack of 2 (−₹29,714)",
+    "ad_plan_for_the_days": "₹13,286",
+    "spend_vs_ad_plan": "550%",
+    "ad_spend_as_pct_of_sales": "12.1%",
+    "platform_ad_spend_as_pct_of_sales": "15.1%"
+   },
+   "verdict": "No answer",
+   "answer": "",
+   "why": "No reply was received; attainment fell to 77.3% (₹6.0 L vs ₹7.8 L) despite discount at 24.8% vs 15.2% guideline (+9.6 pp), though ROAS improved to 4.04.",
+   "ask": "A 24.8% discount still left you 77.3% to target, so what is your plan to step it down and what is the volume risk?"
   }
  ],
  "own_ids": [
@@ -188,5 +326,6 @@
   }
  ],
  "reminder_sent": "2026-11-09T11:00:56.802030+05:30",
- "pack_sent": false
+ "pack_sent": "2026-11-10T10:01:31.323065+05:30",
+ "replies": []
 }

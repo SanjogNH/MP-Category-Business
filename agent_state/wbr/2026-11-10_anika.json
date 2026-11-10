@@ -33,7 +33,30 @@
     "ad_spend_as_pct_of_sales": "0.0%",
     "platform_ad_spend_as_pct_of_sales": "2.4%"
    },
-   "text": "Anika, Face Wash on Flipkart reached ₹11.0 L against a ₹32.8 L target (33.6%), a gap of −₹21.8 L, with Ubtan Tikta Face Wash (−₹9.1 L) and Brightening Ubtan Face Wash - QC (−₹6.8 L) driving most of it. Discount was 12.0% against a 15.8% guideline and there were no ads, while the platform runs at 2.4% ad spend of sales. What is holding these two SKUs back, and is there room to use either discount or ads here?"
+   "text": "Anika, Face Wash on Flipkart reached ₹11.0 L against a ₹32.8 L target (33.6%), a gap of −₹21.8 L, with Ubtan Tikta Face Wash (−₹9.1 L) and Brightening Ubtan Face Wash - QC (−₹6.8 L) driving most of it. Discount was 12.0% against a 15.8% guideline and there were no ads, while the platform runs at 2.4% ad spend of sales. What is holding these two SKUs back, and is there room to use either discount or ads here?",
+   "review_period_facts": {
+    "week": "1 Nov – 7 Nov",
+    "week_revenue": "₹16.4 L",
+    "week_target": "₹25.9 L",
+    "attainment": "63.3%",
+    "gap": "−₹9.5 L",
+    "vs_previous_week": "+46.3%",
+    "ad_spend": "no ads",
+    "roas": "–",
+    "roas_previous_week": "–",
+    "discount": "10.6%",
+    "guideline": "13.9%",
+    "discount_vs_guideline": "−3.3 pp",
+    "sku_drivers": "Ubtan Face Wash - 150g (−₹5.3 L); Ubtan Face Wash 150g - Pack of 2 (−₹3.2 L)",
+    "ad_plan_for_the_days": "₹7,929",
+    "spend_vs_ad_plan": "–",
+    "ad_spend_as_pct_of_sales": "0.0%",
+    "platform_ad_spend_as_pct_of_sales": "0.8%"
+   },
+   "verdict": "No answer",
+   "answer": "",
+   "why": "No reply. Flipkart Face Wash reached ₹16.4 L against ₹25.9 L (63.3%, +46.3% WoW), with no ads and discount at 10.6% against a 13.9% guideline (−3.3 pp), so both levers are unused.",
+   "ask": "Ubtan Face Wash 150g (−₹5.3 L) and Pack of 2 (−₹3.2 L) are still short with no ads and discount under guideline. Why not use the ₹7,929 ad plan or move discount toward 13.9%?"
   },
   {
    "id": "Q2",
@@ -59,7 +82,30 @@
     "ad_spend_as_pct_of_sales": "0.0%",
     "platform_ad_spend_as_pct_of_sales": "0.0%"
    },
-   "text": "Face Wash on Meesho came in at ₹18.8 L against a ₹39.0 L target (48.2%), down 28.4% week on week, with Ubtan Tikta Face Wash alone at −₹18.9 L. Discount was 31.4% against a 15.5% guideline, so the deeper discount did not hold volume. What changed on this SKU last week, and what is your plan to recover it?"
+   "text": "Face Wash on Meesho came in at ₹18.8 L against a ₹39.0 L target (48.2%), down 28.4% week on week, with Ubtan Tikta Face Wash alone at −₹18.9 L. Discount was 31.4% against a 15.5% guideline, so the deeper discount did not hold volume. What changed on this SKU last week, and what is your plan to recover it?",
+   "review_period_facts": {
+    "week": "1 Nov – 7 Nov",
+    "week_revenue": "₹16.6 L",
+    "week_target": "₹30.4 L",
+    "attainment": "54.6%",
+    "gap": "−₹13.8 L",
+    "vs_previous_week": "−28.5%",
+    "ad_spend": "no ads",
+    "roas": "–",
+    "roas_previous_week": "–",
+    "discount": "26.9%",
+    "guideline": "15.5%",
+    "discount_vs_guideline": "+11.4 pp",
+    "sku_drivers": "Ubtan Tikta Face Wash (−₹13.5 L); Bitter Neem Tikta Gel Face Wash (−₹43,097)",
+    "ad_plan_for_the_days": "no ad plan",
+    "spend_vs_ad_plan": "–",
+    "ad_spend_as_pct_of_sales": "0.0%",
+    "platform_ad_spend_as_pct_of_sales": "0.0%"
+   },
+   "verdict": "No answer",
+   "answer": "",
+   "why": "No reply. Meesho Face Wash was ₹16.6 L against ₹30.4 L (54.6%), down 28.5% WoW, with discount at 26.9% against a 15.5% guideline (+11.4 pp) and Ubtan Tikta at −₹13.5 L.",
+   "ask": "You are 11.4 pp over guideline and volume still fell 28.5%. What changed on Ubtan Tikta (stock, visibility, competitor pricing), and what is your fix by when?"
   },
   {
    "id": "Q3",
@@ -85,7 +131,30 @@
     "ad_spend_as_pct_of_sales": "0.0%",
     "platform_ad_spend_as_pct_of_sales": "0.0%"
    },
-   "text": "Soap on Meesho delivered ₹4.9 L against a ₹13.6 L target (35.8%), with Tomato Basil Soap 125g - Pack of 2 (−₹6.4 L) the biggest drag. Discount ran at 37.9% against an 18.1% guideline (+19.8 pp) and there were no ads. Can you walk me through what is happening on the Tomato Basil packs despite the heavy discount?"
+   "text": "Soap on Meesho delivered ₹4.9 L against a ₹13.6 L target (35.8%), with Tomato Basil Soap 125g - Pack of 2 (−₹6.4 L) the biggest drag. Discount ran at 37.9% against an 18.1% guideline (+19.8 pp) and there were no ads. Can you walk me through what is happening on the Tomato Basil packs despite the heavy discount?",
+   "review_period_facts": {
+    "week": "1 Nov – 7 Nov",
+    "week_revenue": "₹5.2 L",
+    "week_target": "₹7.1 L",
+    "attainment": "72.8%",
+    "gap": "−₹1.9 L",
+    "vs_previous_week": "+9.3%",
+    "ad_spend": "no ads",
+    "roas": "–",
+    "roas_previous_week": "–",
+    "discount": "30.2%",
+    "guideline": "18.1%",
+    "discount_vs_guideline": "+12.1 pp",
+    "sku_drivers": "Tomato Basil Soap 125g - Pack of 2 (−₹1.5 L); Tomato Basil 125g - Pack of 3 (−₹33,415)",
+    "ad_plan_for_the_days": "no ad plan",
+    "spend_vs_ad_plan": "–",
+    "ad_spend_as_pct_of_sales": "0.0%",
+    "platform_ad_spend_as_pct_of_sales": "0.0%"
+   },
+   "verdict": "No answer",
+   "answer": "",
+   "why": "No reply. Meesho Soap reached ₹5.2 L against ₹7.1 L (72.8%, +9.3% WoW), but discount is 30.2% against an 18.1% guideline (+12.1 pp). The target also fell from ₹13.6 L to ₹7.1 L.",
+   "ask": "Why is Tomato Basil Pack of 2 (−₹1.5 L) still short at +12.1 pp discount, and why did the weekly target drop from ₹13.6 L to ₹7.1 L?"
   },
   {
    "id": "Q4",
@@ -111,7 +180,30 @@
     "ad_spend_as_pct_of_sales": "0.0%",
     "platform_ad_spend_as_pct_of_sales": "0.0%"
    },
-   "text": "Henna on Meesho is ahead of target at ₹3.6 L against ₹2.2 L (160.4%), but discount was 44.6% against a 14.1% guideline (+30.5 pp). Is this growth being bought through price, and what is the margin impact on Henna Paste Pack of 3 and Pack of 2?"
+   "text": "Henna on Meesho is ahead of target at ₹3.6 L against ₹2.2 L (160.4%), but discount was 44.6% against a 14.1% guideline (+30.5 pp). Is this growth being bought through price, and what is the margin impact on Henna Paste Pack of 3 and Pack of 2?",
+   "review_period_facts": {
+    "week": "1 Nov – 7 Nov",
+    "week_revenue": "₹2.6 L",
+    "week_target": "₹1.7 L",
+    "attainment": "147.1%",
+    "gap": "₹82,234",
+    "vs_previous_week": "−33.3%",
+    "ad_spend": "no ads",
+    "roas": "–",
+    "roas_previous_week": "–",
+    "discount": "36.5%",
+    "guideline": "14.2%",
+    "discount_vs_guideline": "+22.3 pp",
+    "sku_drivers": "Henna Paste - Pack of 2 (−₹8,589); Henna Paste - Pack of 3 (−₹2,891)",
+    "ad_plan_for_the_days": "no ad plan",
+    "spend_vs_ad_plan": "–",
+    "ad_spend_as_pct_of_sales": "0.0%",
+    "platform_ad_spend_as_pct_of_sales": "0.0%"
+   },
+   "verdict": "No answer",
+   "answer": "",
+   "why": "No reply. Meesho Henna is at 147.1% (₹2.6 L against ₹1.7 L) but revenue fell 33.3% WoW, and discount is 36.5% against a 14.2% guideline (+22.3 pp).",
+   "ask": "What is the margin on Henna Paste at 36.5% discount, and can you pull discount toward 14.2% without losing the surplus over target?"
   },
   {
    "id": "Q5",
@@ -137,7 +229,30 @@
     "ad_spend_as_pct_of_sales": "0.0%",
     "platform_ad_spend_as_pct_of_sales": "0.0%"
    },
-   "text": "Shampoo on Meesho reached ₹3.9 L against a ₹5.3 L target (72.9%), still −₹1.4 L short, while discount was 29.3% against a 19.7% guideline (+9.6 pp). Five Oil Hibiscus Shampoo - 250g (−₹1.5 L) is the main gap. Why is the discount above guideline without reaching target, and what are you planning for this SKU?"
+   "text": "Shampoo on Meesho reached ₹3.9 L against a ₹5.3 L target (72.9%), still −₹1.4 L short, while discount was 29.3% against a 19.7% guideline (+9.6 pp). Five Oil Hibiscus Shampoo - 250g (−₹1.5 L) is the main gap. Why is the discount above guideline without reaching target, and what are you planning for this SKU?",
+   "review_period_facts": {
+    "week": "1 Nov – 7 Nov",
+    "week_revenue": "₹3.4 L",
+    "week_target": "₹6.2 L",
+    "attainment": "55.1%",
+    "gap": "−₹2.8 L",
+    "vs_previous_week": "−10.7%",
+    "ad_spend": "no ads",
+    "roas": "–",
+    "roas_previous_week": "–",
+    "discount": "24.7%",
+    "guideline": "19.6%",
+    "discount_vs_guideline": "+5.1 pp",
+    "sku_drivers": "Five Oil Hibiscus Shampoo - 250g (−₹2.2 L); Neem Beracyl Dandruff Shampoo - 250g (−₹57,782)",
+    "ad_plan_for_the_days": "no ad plan",
+    "spend_vs_ad_plan": "–",
+    "ad_spend_as_pct_of_sales": "0.0%",
+    "platform_ad_spend_as_pct_of_sales": "0.0%"
+   },
+   "verdict": "No answer",
+   "answer": "",
+   "why": "No reply. Meesho Shampoo fell to ₹3.4 L against ₹6.2 L (55.1%, −10.7% WoW), so the gap widened to −₹2.8 L. Discount is 24.7% against a 19.6% guideline (+5.1 pp), and Five Oil Hibiscus is −₹2.2 L.",
+   "ask": "Discount is above guideline yet the Five Oil Hibiscus gap grew to −₹2.2 L. Is it a stock, listing or price problem, and what will you change this week?"
   },
   {
    "id": "Q6",
@@ -148,7 +263,11 @@
     "item": "Ubtan Tikta Face Wash",
     "note": "raised 2+ times in the daily brief without improving"
    },
-   "text": "Ubtan Tikta Face Wash on Meesho has been raised in the daily brief 2+ times without improving, and it was −₹18.9 L against target last week. What has been tried so far, and what will you do differently this week?"
+   "text": "Ubtan Tikta Face Wash on Meesho has been raised in the daily brief 2+ times without improving, and it was −₹18.9 L against target last week. What has been tried so far, and what will you do differently this week?",
+   "verdict": "No answer",
+   "answer": "",
+   "why": "No reply. Ubtan Tikta Face Wash on Meesho is still the main drag at −₹13.5 L in the review period, with discount at 26.9% against 15.5% and no ads, after repeated daily-brief flags.",
+   "ask": "List what you have tried on Ubtan Tikta so far. What is the one new action this week, who owns it, and what number will show it worked?"
   }
  ],
  "own_ids": [
@@ -232,5 +351,6 @@
   }
  ],
  "reminder_sent": "2026-11-09T11:00:56.802030+05:30",
- "pack_sent": false
+ "pack_sent": "2026-11-10T10:01:31.323065+05:30",
+ "replies": []
 }
