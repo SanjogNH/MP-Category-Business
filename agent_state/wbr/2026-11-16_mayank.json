@@ -1,0 +1,192 @@
+{
+ "wbr": "2026-11-16",
+ "manager": "mayank",
+ "sent_at": "2026-11-12T11:01:20.018940+05:30",
+ "message_id": "<179446150638.2493.18026420717141723938@nathabit.in>",
+ "subject": "WBR prep · Mon 16 Nov 5 pm · Mayank [WBR-20261116-mayank]",
+ "query_window": [
+  "2026-11-05",
+  "2026-11-11"
+ ],
+ "questions": [
+  {
+   "id": "Q1",
+   "kind": "revenue",
+   "category": null,
+   "platform": "Instamart",
+   "facts": {
+    "week": "5 Nov – 11 Nov",
+    "week_revenue": "₹8,316",
+    "week_target": "₹90,732",
+    "attainment": "9.2%",
+    "gap": "−₹82,416",
+    "vs_previous_week": "–",
+    "ad_spend": "₹805",
+    "roas": "1.22",
+    "roas_previous_week": "–",
+    "discount": "29.3%",
+    "guideline": "–",
+    "discount_vs_guideline": "–",
+    "sku_drivers": "Tomato Basil 75g - QC (−₹82,416)",
+    "ad_plan_for_the_days": "no ad plan",
+    "spend_vs_ad_plan": "–",
+    "ad_spend_as_pct_of_sales": "9.7%",
+    "platform_ad_spend_as_pct_of_sales": "26.4%"
+   },
+   "text": "Mayank, Instamart revenue for 5 Nov – 11 Nov was ₹8,316 against a ₹90,732 target (9.2%), with Tomato Basil 75g - QC accounting for the full −₹82,416 gap, and there was no ad plan for these days (₹805 spend, ROAS 1.22). What happened with this SKU, and was it a stock or listing issue rather than demand?"
+  },
+  {
+   "id": "Q2",
+   "kind": "revenue",
+   "category": "Dasabuti Hair Oil",
+   "platform": "Instamart",
+   "facts": {
+    "week": "5 Nov – 11 Nov",
+    "week_revenue": "₹1.2 L",
+    "week_target": "₹1.9 L",
+    "attainment": "66.7%",
+    "gap": "−₹62,096",
+    "vs_previous_week": "−11.4%",
+    "ad_spend": "₹38,322",
+    "roas": "2.07",
+    "roas_previous_week": "2.00",
+    "discount": "15.6%",
+    "guideline": "7.1%",
+    "discount_vs_guideline": "+8.5 pp",
+    "sku_drivers": "Castor Coconut 50ml - QC (−₹37,697); Crushed Tri-Leaf Summer Hair Oil 100 ml - QC (−₹13,005)",
+    "ad_plan_for_the_days": "₹16,683",
+    "spend_vs_ad_plan": "230%",
+    "ad_spend_as_pct_of_sales": "30.8%",
+    "platform_ad_spend_as_pct_of_sales": "26.4%"
+   },
+   "text": "Dasabuti Hair Oil on Instamart reached ₹1.2 L against a ₹1.9 L target (66.7%, −₹62,096) even though ad spend was ₹38,322 versus a ₹16,683 plan (230%), and discount ran 15.6% against a 7.1% guideline. Why did the extra spend and deeper discount not translate into revenue, particularly on Castor Coconut 50ml - QC (−₹37,697)?"
+  },
+  {
+   "id": "Q3",
+   "kind": "revenue",
+   "category": "Malai Lotion",
+   "platform": "Instamart",
+   "facts": {
+    "week": "5 Nov – 11 Nov",
+    "week_revenue": "₹59,197",
+    "week_target": "₹1.1 L",
+    "attainment": "52.0%",
+    "gap": "−₹54,600",
+    "vs_previous_week": "+40.1%",
+    "ad_spend": "₹83,921",
+    "roas": "1.01",
+    "roas_previous_week": "2.07",
+    "discount": "11.7%",
+    "guideline": "5.8%",
+    "discount_vs_guideline": "+5.9 pp",
+    "sku_drivers": "Fig Rose PrimaLight - QC (−₹31,146); Double Cocoa Intense Dermacare - QC (−₹26,060)",
+    "ad_plan_for_the_days": "₹19,250",
+    "spend_vs_ad_plan": "436%",
+    "ad_spend_as_pct_of_sales": "141.8%",
+    "platform_ad_spend_as_pct_of_sales": "26.4%"
+   },
+   "text": "Malai Lotion on Instamart delivered ₹59,197 against a ₹1.1 L target (52.0%), while ad spend was ₹83,921 versus a ₹19,250 plan (436%), which puts ad spend at 141.8% of sales and ROAS at 1.01 (down from 2.07). What drove the jump in spend, and what is your view on whether it should continue at this level?"
+  },
+  {
+   "id": "Q4",
+   "kind": "spend",
+   "category": "Shampoo",
+   "platform": "Instamart",
+   "facts": {
+    "week": "5 Nov – 11 Nov",
+    "week_revenue": "₹3.9 L",
+    "week_target": "₹3.2 L",
+    "attainment": "122.6%",
+    "gap": "₹72,668",
+    "vs_previous_week": "+1.7%",
+    "ad_spend": "₹1.5 L",
+    "roas": "1.62",
+    "roas_previous_week": "1.71",
+    "discount": "10.8%",
+    "guideline": "8.6%",
+    "discount_vs_guideline": "+2.2 pp",
+    "sku_drivers": "Neem Beracyl Dandruff Shampoo 250ml - QC (₹10,664); Trileaf Rosemary Shampoo - QC (₹16,573)",
+    "ad_plan_for_the_days": "₹46,200",
+    "spend_vs_ad_plan": "318%",
+    "ad_spend_as_pct_of_sales": "37.2%",
+    "platform_ad_spend_as_pct_of_sales": "26.4%",
+    "why_flagged": "over ad plan"
+   },
+   "text": "Shampoo on Instamart beat target at ₹3.9 L versus ₹3.2 L (122.6%), but ad spend was ₹1.5 L against a ₹46,200 plan (318%), or 37.2% of sales versus the platform's 26.4%, with ROAS slipping to 1.62 from 1.71. Was the overspend a deliberate push to capture the upside, and is the return justifying it?"
+  },
+  {
+   "id": "Q5",
+   "kind": "spend",
+   "category": "Soap",
+   "platform": "Instamart",
+   "facts": {
+    "week": "5 Nov – 11 Nov",
+    "week_revenue": "₹3.2 L",
+    "week_target": "₹2.9 L",
+    "attainment": "110.9%",
+    "gap": "₹31,242",
+    "vs_previous_week": "+2.8%",
+    "ad_spend": "₹1.1 L",
+    "roas": "2.07",
+    "roas_previous_week": "1.83",
+    "discount": "12.1%",
+    "guideline": "4.7%",
+    "discount_vs_guideline": "+7.4 pp",
+    "sku_drivers": "Tomato Basil Soap 125g - QC (−₹7,288); Lavender 75g - Pack of 3 - QC (−₹2,273)",
+    "ad_plan_for_the_days": "₹48,339",
+    "spend_vs_ad_plan": "223%",
+    "ad_spend_as_pct_of_sales": "33.8%",
+    "platform_ad_spend_as_pct_of_sales": "26.4%",
+    "why_flagged": "over ad plan"
+   },
+   "text": "Soap on Instamart came in at ₹3.2 L against a ₹2.9 L target (110.9%), but ad spend was ₹1.1 L versus a ₹48,339 plan (223%), and discount was 12.1% against a 4.7% guideline. Since we were already ahead of target, what was the thinking behind spending and discounting above plan here?"
+  },
+  {
+   "id": "Q6",
+   "kind": "spend",
+   "category": "Lepa",
+   "platform": "Instamart",
+   "facts": {
+    "week": "5 Nov – 11 Nov",
+    "week_revenue": "₹3.2 L",
+    "week_target": "₹1.1 L",
+    "attainment": "277.2%",
+    "gap": "₹2.0 L",
+    "vs_previous_week": "+27.7%",
+    "ad_spend": "₹55,774",
+    "roas": "2.02",
+    "roas_previous_week": "1.72",
+    "discount": "4.7%",
+    "guideline": "3.3%",
+    "discount_vs_guideline": "+1.4 pp",
+    "sku_drivers": "Tamarind Kasturi - QC (₹22,204); Chandan Nagakesar - QC (₹1.8 L)",
+    "ad_plan_for_the_days": "₹10,267",
+    "spend_vs_ad_plan": "543%",
+    "ad_spend_as_pct_of_sales": "17.5%",
+    "platform_ad_spend_as_pct_of_sales": "26.4%",
+    "why_flagged": "over ad plan"
+   },
+   "text": "Lepa on Instamart reached ₹3.2 L against a ₹1.1 L target (277.2%), with Chandan Nagakesar - QC contributing ₹1.8 L, while ad spend was ₹55,774 versus a ₹10,267 plan (543%), though still only 17.5% of sales against the platform's 26.4%. Was the higher spend a deliberate call, and should we be rebasing the plan for Lepa given this run-rate?"
+  }
+ ],
+ "own_ids": [
+  "<179446150638.2493.18026420717141723938@nathabit.in>"
+ ],
+ "snapshot_accounts": [
+  {
+   "name": "Instamart",
+   "plats": [
+    "Instamart"
+   ],
+   "metrics": [
+    "Primary",
+    "Secondary",
+    "Discounting %",
+    "Spend",
+    "Availability"
+   ]
+  }
+ ],
+ "reminder_sent": false,
+ "pack_sent": false
+}

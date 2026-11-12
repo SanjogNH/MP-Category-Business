@@ -1,0 +1,109 @@
+{
+ "wbr": "2026-11-16",
+ "manager": "harsh",
+ "sent_at": "2026-11-12T11:01:20.018940+05:30",
+ "message_id": "<179446148526.2493.2797971887373548487@nathabit.in>",
+ "subject": "WBR prep · Mon 16 Nov 12:30 pm · Harsh [WBR-20261116-harsh]",
+ "query_window": [
+  "2026-11-05",
+  "2026-11-11"
+ ],
+ "questions": [
+  {
+   "id": "Q1",
+   "kind": "discount",
+   "category": "Soap",
+   "platform": "Cred",
+   "facts": {
+    "week": "5 Nov – 11 Nov",
+    "week_revenue": "₹91,957",
+    "week_target": "₹0",
+    "attainment": "–",
+    "gap": "–",
+    "vs_previous_week": "+121.4%",
+    "ad_spend": "no ads",
+    "roas": "–",
+    "roas_previous_week": "–",
+    "discount": "62.6%",
+    "guideline": "28.6%",
+    "discount_vs_guideline": "+34.0 pp",
+    "sku_drivers": "–",
+    "ad_plan_for_the_days": "no ad plan",
+    "spend_vs_ad_plan": "–",
+    "ad_spend_as_pct_of_sales": "0.0%",
+    "platform_ad_spend_as_pct_of_sales": "0.0%"
+   },
+   "text": "Harsh, Soap on Cred ran at 62.6% discount for 5–11 Nov against a 28.6% guideline (+34.0 pp), while revenue grew +121.4% week on week to ₹91,957 with no ads. Was this a planned Cred-funded deal, and how much of the growth do you think came from the depth of the discount?"
+  },
+  {
+   "id": "Q2",
+   "kind": "discount",
+   "category": "Comb",
+   "platform": "Cred",
+   "facts": {
+    "week": "5 Nov – 11 Nov",
+    "week_revenue": "₹27,464",
+    "week_target": "₹0",
+    "attainment": "–",
+    "gap": "–",
+    "vs_previous_week": "+146.7%",
+    "ad_spend": "no ads",
+    "roas": "–",
+    "roas_previous_week": "–",
+    "discount": "71.3%",
+    "guideline": "19.6%",
+    "discount_vs_guideline": "+51.7 pp",
+    "sku_drivers": "–",
+    "ad_plan_for_the_days": "no ad plan",
+    "spend_vs_ad_plan": "–",
+    "ad_spend_as_pct_of_sales": "0.0%",
+    "platform_ad_spend_as_pct_of_sales": "0.0%"
+   },
+   "text": "Comb on Cred was at 71.3% discount versus a 19.6% guideline (+51.7 pp) for 5–11 Nov, with revenue of ₹27,464 (+146.7% vs previous week) and no ads. Can you walk me through how this discount level was agreed and whether it was intended to continue?"
+  },
+  {
+   "id": "Q3",
+   "kind": "persistent",
+   "category": "revenue",
+   "platform": "First Cry",
+   "facts": {
+    "item": "Brahmi Summer Baby Scalp Oil - 110 ml",
+    "note": "raised 2+ times in the daily brief without improving"
+   },
+   "text": "Harsh, the Brahmi Summer Baby Scalp Oil - 110 ml on First Cry has been raised 2+ times in the daily brief without improving. What do you see as the main blocker on this SKU, and what is different in your plan this time?"
+  }
+ ],
+ "own_ids": [
+  "<179446148526.2493.2797971887373548487@nathabit.in>"
+ ],
+ "snapshot_accounts": [
+  {
+   "name": "First Cry",
+   "plats": [
+    "First Cry"
+   ],
+   "metrics": [
+    "Primary",
+    "Secondary",
+    "Discounting %",
+    "Spend",
+    "SLA"
+   ]
+  },
+  {
+   "name": "Cred",
+   "plats": [
+    "Cred"
+   ],
+   "metrics": [
+    "Primary",
+    "Secondary",
+    "Discounting %",
+    "Spend",
+    "SLA"
+   ]
+  }
+ ],
+ "reminder_sent": false,
+ "pack_sent": false
+}

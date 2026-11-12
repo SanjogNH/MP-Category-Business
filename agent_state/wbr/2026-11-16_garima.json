@@ -1,0 +1,218 @@
+{
+ "wbr": "2026-11-16",
+ "manager": "garima",
+ "sent_at": "2026-11-12T11:01:20.018940+05:30",
+ "message_id": "<179446149257.2493.11982689569085566407@nathabit.in>",
+ "subject": "WBR prep · Mon 16 Nov 3 pm · Garima [WBR-20261116-garima]",
+ "query_window": [
+  "2026-11-05",
+  "2026-11-11"
+ ],
+ "questions": [
+  {
+   "id": "Q1",
+   "kind": "revenue",
+   "category": "Henna",
+   "platform": "Zepto",
+   "facts": {
+    "week": "5 Nov – 11 Nov",
+    "week_revenue": "₹5.3 L",
+    "week_target": "₹6.5 L",
+    "attainment": "82.3%",
+    "gap": "−₹1.1 L",
+    "vs_previous_week": "−17.0%",
+    "ad_spend": "₹48,666",
+    "roas": "3.15",
+    "roas_previous_week": "3.26",
+    "discount": "4.0%",
+    "guideline": "3.5%",
+    "discount_vs_guideline": "+0.5 pp",
+    "sku_drivers": "Henna Paste - Pack of 2 - QC (−₹1.1 L)",
+    "ad_plan_for_the_days": "₹18,822",
+    "spend_vs_ad_plan": "259%",
+    "ad_spend_as_pct_of_sales": "9.1%",
+    "platform_ad_spend_as_pct_of_sales": "33.5%"
+   },
+   "text": "Henna on Zepto closed at ₹5.3 L against a ₹6.5 L target (82.3%, −17.0% vs last week), with Henna Paste - Pack of 2 - QC accounting for the full −₹1.1 L gap. Ad spend was ₹48,666 against a plan of ₹18,822 (259%) and ROAS slipped slightly to 3.15 from 3.26, so what is driving the Pack of 2 shortfall, and why didn't the extra spend lift it?"
+  },
+  {
+   "id": "Q2",
+   "kind": "revenue",
+   "category": "Soap",
+   "platform": "Blinkit",
+   "facts": {
+    "week": "4 Nov – 10 Nov",
+    "week_revenue": "₹29,056",
+    "week_target": "₹1.3 L",
+    "attainment": "23.2%",
+    "gap": "−₹95,992",
+    "vs_previous_week": "+7.1%",
+    "ad_spend": "₹13,245",
+    "roas": "38.40",
+    "roas_previous_week": "34.59",
+    "discount": "0.0%",
+    "guideline": "15.9%",
+    "discount_vs_guideline": "−15.9 pp",
+    "sku_drivers": "Tomato Basil Soap 125g Pack of 2 - QC (−₹1.2 L)",
+    "ad_plan_for_the_days": "₹15,556",
+    "spend_vs_ad_plan": "85%",
+    "ad_spend_as_pct_of_sales": "45.6%",
+    "platform_ad_spend_as_pct_of_sales": "11.8%"
+   },
+   "text": "Soap on Blinkit delivered only ₹29,056 against a ₹1.3 L target (23.2%), even though it grew +7.1% week on week, and Tomato Basil Soap 125g Pack of 2 - QC alone is −₹1.2 L. Discount was 0.0% against a 15.9% guideline while ROAS is a strong 38.40, so is the gap down to availability or listing issues, or did the missing discount hold back sales?"
+  },
+  {
+   "id": "Q3",
+   "kind": "revenue",
+   "category": "Face Wash",
+   "platform": "Blinkit",
+   "facts": {
+    "week": "4 Nov – 10 Nov",
+    "week_revenue": "₹10.0 L",
+    "week_target": "₹10.8 L",
+    "attainment": "92.4%",
+    "gap": "−₹82,240",
+    "vs_previous_week": "+11.8%",
+    "ad_spend": "₹1.8 L",
+    "roas": "3.80",
+    "roas_previous_week": "4.96",
+    "discount": "2.9%",
+    "guideline": "1.9%",
+    "discount_vs_guideline": "+1.0 pp",
+    "sku_drivers": "Brightening Ubtan Face Wash - QC (−₹67,696); Bitter Neem Gel Face Wash - QC (−₹14,545)",
+    "ad_plan_for_the_days": "₹34,611",
+    "spend_vs_ad_plan": "528%",
+    "ad_spend_as_pct_of_sales": "18.2%",
+    "platform_ad_spend_as_pct_of_sales": "11.8%"
+   },
+   "text": "Face Wash on Blinkit reached ₹10.0 L against ₹10.8 L (92.4%), with Brightening Ubtan Face Wash - QC at −₹67,696 of the −₹82,240 gap. Ad spend was ₹1.8 L against a ₹34,611 plan (528%) and ROAS fell to 3.80 from 4.96, so what made the spend run so far ahead of plan, and what is it doing for Ubtan?"
+  },
+  {
+   "id": "Q4",
+   "kind": "spend",
+   "category": "Lepa",
+   "platform": "Blinkit",
+   "facts": {
+    "week": "4 Nov – 10 Nov",
+    "week_revenue": "₹5.5 L",
+    "week_target": "₹4.2 L",
+    "attainment": "129.5%",
+    "gap": "₹1.2 L",
+    "vs_previous_week": "+34.9%",
+    "ad_spend": "₹1.4 L",
+    "roas": "4.32",
+    "roas_previous_week": "6.01",
+    "discount": "4.8%",
+    "guideline": "3.6%",
+    "discount_vs_guideline": "+1.2 pp",
+    "sku_drivers": "Orange Kalonji 40g - QC (−₹468); Tamarind Kasturi - QC (₹21,772)",
+    "ad_plan_for_the_days": "₹36,167",
+    "spend_vs_ad_plan": "398%",
+    "ad_spend_as_pct_of_sales": "26.3%",
+    "platform_ad_spend_as_pct_of_sales": "11.8%",
+    "why_flagged": "over ad plan, high spend for the sales, ROAS falling"
+   },
+   "text": "Lepa on Blinkit is well ahead at ₹5.5 L against ₹4.2 L (129.5%), but ad spend of ₹1.4 L is 398% of the ₹36,167 plan, 26.3% of sales against the platform's 11.8%, and ROAS fell to 4.32 from 6.01. Where did the extra spend go, and do you see the Lepa growth holding at a lower spend level?"
+  },
+  {
+   "id": "Q5",
+   "kind": "spend",
+   "category": "Shampoo",
+   "platform": "Zepto",
+   "facts": {
+    "week": "5 Nov – 11 Nov",
+    "week_revenue": "₹3.9 L",
+    "week_target": "₹3.9 L",
+    "attainment": "99.4%",
+    "gap": "−₹2,319",
+    "vs_previous_week": "+1.7%",
+    "ad_spend": "₹1.4 L",
+    "roas": "1.28",
+    "roas_previous_week": "1.21",
+    "discount": "6.0%",
+    "guideline": "8.9%",
+    "discount_vs_guideline": "−2.9 pp",
+    "sku_drivers": "Five Oil Hibiscus Shampoo - QC (−₹1,786); Trileaf Rosemary Shampoo - QC (−₹533)",
+    "ad_plan_for_the_days": "₹39,384",
+    "spend_vs_ad_plan": "355%",
+    "ad_spend_as_pct_of_sales": "35.7%",
+    "platform_ad_spend_as_pct_of_sales": "33.5%",
+    "why_flagged": "over ad plan"
+   },
+   "text": "Shampoo on Zepto hit target (₹3.9 L, 99.4%), but ad spend was ₹1.4 L against a ₹39,384 plan (355%) and ROAS is only 1.28. Spend is 35.7% of sales, close to the Zepto norm of 33.5%, so was the overshoot a deliberate push, and is the plan or the spend level what should change?"
+  },
+  {
+   "id": "Q6",
+   "kind": "spend",
+   "category": "Soap",
+   "platform": "Zepto",
+   "facts": {
+    "week": "5 Nov – 11 Nov",
+    "week_revenue": "₹1.8 L",
+    "week_target": "₹1.6 L",
+    "attainment": "112.6%",
+    "gap": "₹20,249",
+    "vs_previous_week": "+8.6%",
+    "ad_spend": "₹1.6 L",
+    "roas": "1.09",
+    "roas_previous_week": "1.04",
+    "discount": "5.4%",
+    "guideline": "10.1%",
+    "discount_vs_guideline": "−4.7 pp",
+    "sku_drivers": "Himalayan Lavender Soap 125g - QC (−₹192); Healing Turmeric & Oats - QC (₹3,020)",
+    "ad_plan_for_the_days": "₹71,037",
+    "spend_vs_ad_plan": "219%",
+    "ad_spend_as_pct_of_sales": "85.5%",
+    "platform_ad_spend_as_pct_of_sales": "33.5%",
+    "why_flagged": "over ad plan, high spend for the sales"
+   },
+   "text": "Soap on Zepto is above target at ₹1.8 L (112.6%), but ad spend of ₹1.6 L is 219% of the ₹71,037 plan and equals 85.5% of sales against the platform's 33.5%, with ROAS at 1.09. Can you walk me through what this spend is buying and whether it is sustainable at this level?"
+  }
+ ],
+ "own_ids": [
+  "<179446149257.2493.11982689569085566407@nathabit.in>"
+ ],
+ "snapshot_accounts": [
+  {
+   "name": "Blinkit",
+   "plats": [
+    "Blinkit"
+   ],
+   "metrics": [
+    "Primary",
+    "Secondary",
+    "Discounting %",
+    "Spend",
+    "Availability"
+   ]
+  },
+  {
+   "name": "Zepto",
+   "plats": [
+    "Zepto"
+   ],
+   "metrics": [
+    "Primary",
+    "Secondary",
+    "Discounting %",
+    "Spend",
+    "Availability"
+   ]
+  },
+  {
+   "name": "Big Basket",
+   "plats": [
+    "Big Basket"
+   ],
+   "metrics": [
+    "Primary",
+    "Secondary",
+    "Discounting %",
+    "Spend",
+    "Availability"
+   ]
+  }
+ ],
+ "reminder_sent": false,
+ "pack_sent": false
+}

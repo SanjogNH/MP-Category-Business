@@ -1,0 +1,174 @@
+{
+ "wbr": "2026-11-16",
+ "manager": "kush",
+ "sent_at": "2026-11-12T11:01:20.018940+05:30",
+ "message_id": "<179446149912.2493.9760643243282427310@nathabit.in>",
+ "subject": "WBR prep · Mon 16 Nov 4 pm · Kush [WBR-20261116-kush]",
+ "query_window": [
+  "2026-11-05",
+  "2026-11-11"
+ ],
+ "questions": [
+  {
+   "id": "Q1",
+   "kind": "revenue",
+   "category": "Skin Malai",
+   "platform": "Nykaa",
+   "facts": {
+    "week": "5 Nov – 11 Nov",
+    "week_revenue": "₹1.2 L",
+    "week_target": "₹3.1 L",
+    "attainment": "40.0%",
+    "gap": "−₹1.9 L",
+    "vs_previous_week": "−7.4%",
+    "ad_spend": "₹5,799",
+    "roas": "3.06",
+    "roas_previous_week": "1.95",
+    "discount": "20.4%",
+    "guideline": "15.7%",
+    "discount_vs_guideline": "+4.7 pp",
+    "sku_drivers": "Double Cocoa Skin Malai - 200ml - Single Pack (−₹47,860); Fig Rose Skin Malai - 200ml - Single Pack (−₹35,558)",
+    "ad_plan_for_the_days": "no ad plan",
+    "spend_vs_ad_plan": "–",
+    "ad_spend_as_pct_of_sales": "4.7%",
+    "platform_ad_spend_as_pct_of_sales": "6.6%"
+   },
+   "text": "Kush, Skin Malai on Nykaa delivered ₹1.2 L against a ₹3.1 L target (40.0% attainment), with Double Cocoa 200ml (−₹47,860) and Fig Rose 200ml (−₹35,558) as the biggest gaps, while the discount ran at 20.4% versus a 15.7% guideline. What is driving the shortfall on those two SKUs, and how much of it do you think the higher discount failed to offset?"
+  },
+  {
+   "id": "Q2",
+   "kind": "revenue",
+   "category": "Henna",
+   "platform": "Nykaa",
+   "facts": {
+    "week": "5 Nov – 11 Nov",
+    "week_revenue": "₹2.6 L",
+    "week_target": "₹3.9 L",
+    "attainment": "65.2%",
+    "gap": "−₹1.4 L",
+    "vs_previous_week": "−33.9%",
+    "ad_spend": "₹25,489",
+    "roas": "1.94",
+    "roas_previous_week": "2.90",
+    "discount": "15.6%",
+    "guideline": "15.3%",
+    "discount_vs_guideline": "+0.3 pp",
+    "sku_drivers": "Henna Paste - Pack of 2 (−₹1.1 L); Henna Paste - Pack of 3 (−₹24,294)",
+    "ad_plan_for_the_days": "no ad plan",
+    "spend_vs_ad_plan": "–",
+    "ad_spend_as_pct_of_sales": "9.9%",
+    "platform_ad_spend_as_pct_of_sales": "6.6%"
+   },
+   "text": "Henna on Nykaa came in at ₹2.6 L against ₹3.9 L (65.2%), down 33.9% week on week, with Henna Paste Pack of 2 accounting for −₹1.1 L. Ad spend was ₹25,489 (9.9% of sales vs the 6.6% platform norm) and ROAS fell to 1.94 from 2.90. What changed on the Pack of 2 listing, and why did spend stay elevated as returns dropped?"
+  },
+  {
+   "id": "Q3",
+   "kind": "revenue",
+   "category": "Dasabuti Hair Oil",
+   "platform": "Nykaa",
+   "facts": {
+    "week": "5 Nov – 11 Nov",
+    "week_revenue": "₹2.8 L",
+    "week_target": "₹3.6 L",
+    "attainment": "76.0%",
+    "gap": "−₹87,286",
+    "vs_previous_week": "−21.4%",
+    "ad_spend": "₹18,968",
+    "roas": "1.77",
+    "roas_previous_week": "1.81",
+    "discount": "19.8%",
+    "guideline": "20.6%",
+    "discount_vs_guideline": "−0.8 pp",
+    "sku_drivers": "Hibiscus Amla Summer Hair Oil - 200 ml (−₹19,439); Hibiscus Amla Summer Hair Oil - 100 ml (−₹17,235)",
+    "ad_plan_for_the_days": "no ad plan",
+    "spend_vs_ad_plan": "–",
+    "ad_spend_as_pct_of_sales": "6.9%",
+    "platform_ad_spend_as_pct_of_sales": "6.6%"
+   },
+   "text": "Dasabuti Hair Oil on Nykaa reached ₹2.8 L against ₹3.6 L (76.0%), down 21.4% week on week, with the Hibiscus Amla Summer Hair Oil 200 ml (−₹19,439) and 100 ml (−₹17,235) leading the gap. Discount was in line at 19.8%, and ROAS was flat at 1.77. What do you see behind the decline in the Summer Hair Oil, and is it seasonal or something we can fix?"
+  },
+  {
+   "id": "Q4",
+   "kind": "discount",
+   "category": "Lip Butter",
+   "platform": "Nykaa",
+   "facts": {
+    "week": "5 Nov – 11 Nov",
+    "week_revenue": "₹69,482",
+    "week_target": "₹1.1 L",
+    "attainment": "62.8%",
+    "gap": "−₹41,086",
+    "vs_previous_week": "−16.8%",
+    "ad_spend": "₹4,779",
+    "roas": "1.43",
+    "roas_previous_week": "1.90",
+    "discount": "24.1%",
+    "guideline": "15.5%",
+    "discount_vs_guideline": "+8.6 pp",
+    "sku_drivers": "Beetroot Crush Lip Butter (−₹35,426); Kokum Honey Lip Butter (−₹2,786)",
+    "ad_plan_for_the_days": "no ad plan",
+    "spend_vs_ad_plan": "–",
+    "ad_spend_as_pct_of_sales": "6.9%",
+    "platform_ad_spend_as_pct_of_sales": "6.6%"
+   },
+   "text": "Lip Butter on Nykaa ran a 24.1% discount against a 15.5% guideline (+8.6 pp), yet revenue was ₹69,482 against ₹1.1 L (62.8%), with Beetroot Crush at −₹35,426. Why did the deeper discount not lift Beetroot Crush, and what is the plan to bring it back toward guideline?"
+  },
+  {
+   "id": "Q5",
+   "kind": "discount",
+   "category": "Indigo Powder",
+   "platform": "Nykaa",
+   "facts": {
+    "week": "5 Nov – 11 Nov",
+    "week_revenue": "₹39,175",
+    "week_target": "₹88,429",
+    "attainment": "44.3%",
+    "gap": "−₹49,255",
+    "vs_previous_week": "−48.5%",
+    "ad_spend": "₹4,620",
+    "roas": "2.84",
+    "roas_previous_week": "1.68",
+    "discount": "25.0%",
+    "guideline": "16.7%",
+    "discount_vs_guideline": "+8.2 pp",
+    "sku_drivers": "HUFA Pigment Indigo Powder - 85g (−₹31,872); HUFA Pigment Indigo Powder - 170g (−₹15,494)",
+    "ad_plan_for_the_days": "no ad plan",
+    "spend_vs_ad_plan": "–",
+    "ad_spend_as_pct_of_sales": "11.8%",
+    "platform_ad_spend_as_pct_of_sales": "6.6%"
+   },
+   "text": "Indigo Powder on Nykaa was discounted at 25.0% versus a 16.7% guideline (+8.2 pp), but revenue was ₹39,175 against ₹88,429 (44.3%), down 48.5% week on week. Can you walk me through what the extra discount was meant to achieve here, and why it didn't convert into volume?"
+  },
+  {
+   "id": "Q6",
+   "kind": "persistent",
+   "category": "revenue",
+   "platform": "Nykaa",
+   "facts": {
+    "item": "HUFA Pigment Indigo Powder - 170g",
+    "note": "raised 2+ times in the daily brief without improving"
+   },
+   "text": "HUFA Pigment Indigo Powder 170g on Nykaa has been raised in the daily brief more than twice without improving. What has been tried so far on this SKU, and what is different about the next step?"
+  }
+ ],
+ "own_ids": [
+  "<179446149912.2493.9760643243282427310@nathabit.in>"
+ ],
+ "snapshot_accounts": [
+  {
+   "name": "Nykaa",
+   "plats": [
+    "Nykaa"
+   ],
+   "metrics": [
+    "Primary",
+    "Secondary",
+    "Discounting %",
+    "Spend",
+    "SLA"
+   ]
+  }
+ ],
+ "reminder_sent": false,
+ "pack_sent": false
+}
