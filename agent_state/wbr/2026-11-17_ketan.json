@@ -1,0 +1,191 @@
+{
+ "wbr": "2026-11-17",
+ "manager": "ketan",
+ "sent_at": "2026-11-13T11:01:26.655997+05:30",
+ "message_id": "<179454790313.2492.941035664435352044@nathabit.in>",
+ "subject": "WBR prep · Tue 17 Nov 3 pm · Ketan [WBR-20261117-ketan]",
+ "query_window": [
+  "2026-11-04",
+  "2026-11-10"
+ ],
+ "questions": [
+  {
+   "id": "Q1",
+   "kind": "revenue",
+   "category": "Soap",
+   "platform": "Amazon",
+   "facts": {
+    "week": "4 Nov – 10 Nov",
+    "week_revenue": "₹4.5 L",
+    "week_target": "₹9.6 L",
+    "attainment": "46.6%",
+    "gap": "−₹5.1 L",
+    "vs_previous_week": "−23.5%",
+    "ad_spend": "₹33,316",
+    "roas": "3.93",
+    "roas_previous_week": "3.65",
+    "discount": "22.1%",
+    "guideline": "18.2%",
+    "discount_vs_guideline": "+3.9 pp",
+    "sku_drivers": "Tomato Basil Soap 125g - Pack of 2 (−₹1.6 L); Tomato Basil Soap - Single Pack (−₹58,859)",
+    "ad_plan_for_the_days": "₹21,551",
+    "spend_vs_ad_plan": "155%",
+    "ad_spend_as_pct_of_sales": "7.5%",
+    "platform_ad_spend_as_pct_of_sales": "15.2%"
+   },
+   "text": "Ketan, Soap on Amazon reached ₹4.5 L against a ₹9.6 L target (46.6%, down 23.5% week on week), with the Tomato Basil Pack of 2 alone down ₹1.6 L. Ad spend ran at 155% of plan and the discount was 22.1% against an 18.2% guideline, so what do you think drove the drop in Tomato Basil, and how did the extra spend and discount affect it?"
+  },
+  {
+   "id": "Q2",
+   "kind": "revenue",
+   "category": "Face Wash",
+   "platform": "Amazon",
+   "facts": {
+    "week": "4 Nov – 10 Nov",
+    "week_revenue": "₹6.1 L",
+    "week_target": "₹10.9 L",
+    "attainment": "56.2%",
+    "gap": "−₹4.8 L",
+    "vs_previous_week": "−30.8%",
+    "ad_spend": "₹75,145",
+    "roas": "4.16",
+    "roas_previous_week": "3.71",
+    "discount": "18.2%",
+    "guideline": "15.2%",
+    "discount_vs_guideline": "+3.0 pp",
+    "sku_drivers": "Ubtan Tikta Face Wash (−₹3.7 L); Brightening Ubtan Face Wash - Pack of 2 (−₹44,422)",
+    "ad_plan_for_the_days": "₹37,202",
+    "spend_vs_ad_plan": "202%",
+    "ad_spend_as_pct_of_sales": "12.3%",
+    "platform_ad_spend_as_pct_of_sales": "15.2%"
+   },
+   "text": "Ketan, Face Wash on Amazon came in at ₹6.1 L against ₹10.9 L (56.2%, down 30.8% week on week), and Ubtan Tikta Face Wash accounts for −₹3.7 L of that. Ad spend was ₹75,145, 202% of plan, and the discount was 18.2% against a 15.2% guideline, so what is happening with Ubtan Tikta, and why did the extra spend not hold revenue?"
+  },
+  {
+   "id": "Q3",
+   "kind": "revenue",
+   "category": "Henna Combo",
+   "platform": "Amazon",
+   "facts": {
+    "week": "4 Nov – 10 Nov",
+    "week_revenue": "₹2.9 L",
+    "week_target": "₹5.3 L",
+    "attainment": "55.2%",
+    "gap": "−₹2.4 L",
+    "vs_previous_week": "−38.6%",
+    "ad_spend": "₹73,273",
+    "roas": "2.56",
+    "roas_previous_week": "2.88",
+    "discount": "18.4%",
+    "guideline": "17.8%",
+    "discount_vs_guideline": "+0.7 pp",
+    "sku_drivers": "HUFA Pigment Indigo Powder - 85g + Henna Paste - Pack of 2 (−₹1.5 L); Henna Paste x 2 + Post-Henna Oil (−₹41,730)",
+    "ad_plan_for_the_days": "₹26,659",
+    "spend_vs_ad_plan": "275%",
+    "ad_spend_as_pct_of_sales": "25.1%",
+    "platform_ad_spend_as_pct_of_sales": "15.2%"
+   },
+   "text": "Ketan, Henna Combo on Amazon delivered ₹2.9 L against ₹5.3 L (55.2%, down 38.6% week on week), with ROAS slipping from 2.88 to 2.56. Ad spend of ₹73,273 was 275% of plan and 25.1% of sales against the platform's 15.2%, so what led to that spend level, and what are you seeing in the Indigo + Henna Pack of 2?"
+  },
+  {
+   "id": "Q4",
+   "kind": "spend",
+   "category": "CP Hair Oil",
+   "platform": "Amazon",
+   "facts": {
+    "week": "4 Nov – 10 Nov",
+    "week_revenue": "₹2.9 L",
+    "week_target": "₹3.9 L",
+    "attainment": "74.6%",
+    "gap": "−₹1.0 L",
+    "vs_previous_week": "−23.5%",
+    "ad_spend": "₹1.3 L",
+    "roas": "1.22",
+    "roas_previous_week": "1.34",
+    "discount": "21.6%",
+    "guideline": "15.2%",
+    "discount_vs_guideline": "+6.4 pp",
+    "sku_drivers": "Castor Oil - 200 ml (−₹76,107); Neem Oil - 200 ml (−₹19,154)",
+    "ad_plan_for_the_days": "₹48,327",
+    "spend_vs_ad_plan": "264%",
+    "ad_spend_as_pct_of_sales": "43.3%",
+    "platform_ad_spend_as_pct_of_sales": "15.2%",
+    "why_flagged": "over ad plan, high spend for the sales"
+   },
+   "text": "Ketan, CP Hair Oil on Amazon spent ₹1.3 L on ads, 264% of plan and 43.3% of sales against the platform's 15.2%, while ROAS fell from 1.34 to 1.22. Revenue was still 74.6% of target, with a 21.6% discount against a 15.2% guideline, so what is the thinking behind this spend level, and what are you seeing on Castor Oil 200 ml?"
+  },
+  {
+   "id": "Q5",
+   "kind": "spend",
+   "category": "Comb",
+   "platform": "Amazon",
+   "facts": {
+    "week": "4 Nov – 10 Nov",
+    "week_revenue": "₹4.3 L",
+    "week_target": "₹4.1 L",
+    "attainment": "105.3%",
+    "gap": "₹21,697",
+    "vs_previous_week": "−2.9%",
+    "ad_spend": "₹1.1 L",
+    "roas": "2.15",
+    "roas_previous_week": "2.05",
+    "discount": "20.0%",
+    "guideline": "16.0%",
+    "discount_vs_guideline": "+4.0 pp",
+    "sku_drivers": "Neem Comb - Wide Tooth (−₹6,164); Neem Comb - Shampoo Small (−₹5,706)",
+    "ad_plan_for_the_days": "₹31,332",
+    "spend_vs_ad_plan": "350%",
+    "ad_spend_as_pct_of_sales": "25.5%",
+    "platform_ad_spend_as_pct_of_sales": "15.2%",
+    "why_flagged": "over ad plan, high spend for the sales"
+   },
+   "text": "Ketan, Comb on Amazon is ahead of target at ₹4.3 L (105.3%), but ad spend was ₹1.1 L, which is 350% of plan and 25.5% of sales against the platform's 15.2%. Discount was also 20.0% against a 16.0% guideline, so how did you weigh this extra spend against the revenue it brought in, and is this level planned to continue?"
+  },
+  {
+   "id": "Q6",
+   "kind": "discount",
+   "category": "Baby Scalp Oil",
+   "platform": "Amazon",
+   "facts": {
+    "week": "4 Nov – 10 Nov",
+    "week_revenue": "₹2.0 L",
+    "week_target": "₹3.8 L",
+    "attainment": "53.7%",
+    "gap": "−₹1.7 L",
+    "vs_previous_week": "−34.8%",
+    "ad_spend": "₹17,253",
+    "roas": "5.32",
+    "roas_previous_week": "6.21",
+    "discount": "33.8%",
+    "guideline": "15.2%",
+    "discount_vs_guideline": "+18.6 pp",
+    "sku_drivers": "Brahmi Winter Baby Scalp Oil - 110 ml (−₹94,130); Brahmi Summer Baby Scalp Oil - 110 ml (−₹80,278)",
+    "ad_plan_for_the_days": "₹9,101",
+    "spend_vs_ad_plan": "190%",
+    "ad_spend_as_pct_of_sales": "8.5%",
+    "platform_ad_spend_as_pct_of_sales": "15.2%"
+   },
+   "text": "Ketan, Baby Scalp Oil on Amazon ran a 33.8% discount against a 15.2% guideline (+18.6 pp), yet revenue was ₹2.0 L against ₹3.8 L (53.7%, down 34.8% week on week). With ROAS also down from 6.21 to 5.32, what was the reasoning behind such a deep discount, and what did you see from the Brahmi Winter and Summer variants?"
+  }
+ ],
+ "own_ids": [
+  "<179454790313.2492.941035664435352044@nathabit.in>"
+ ],
+ "snapshot_accounts": [
+  {
+   "name": "Amazon",
+   "plats": [
+    "Amazon"
+   ],
+   "metrics": [
+    "Primary",
+    "Secondary",
+    "Discounting %",
+    "Spend",
+    "SLA"
+   ]
+  }
+ ],
+ "reminder_sent": false,
+ "pack_sent": false
+}

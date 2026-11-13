@@ -1,0 +1,235 @@
+{
+ "wbr": "2026-11-17",
+ "manager": "anika",
+ "sent_at": "2026-11-13T11:01:26.655997+05:30",
+ "message_id": "<179454789417.2492.13185067952303457550@nathabit.in>",
+ "subject": "WBR prep · Tue 17 Nov 12:15 pm · Anika [WBR-20261117-anika]",
+ "query_window": [
+  "2026-11-06",
+  "2026-11-12"
+ ],
+ "questions": [
+  {
+   "id": "Q1",
+   "kind": "revenue",
+   "category": "Face Wash",
+   "platform": "Meesho",
+   "facts": {
+    "week": "6 Nov – 12 Nov",
+    "week_revenue": "₹16.4 L",
+    "week_target": "₹30.4 L",
+    "attainment": "53.9%",
+    "gap": "−₹14.0 L",
+    "vs_previous_week": "+17.9%",
+    "ad_spend": "no ads",
+    "roas": "–",
+    "roas_previous_week": "–",
+    "discount": "21.9%",
+    "guideline": "15.4%",
+    "discount_vs_guideline": "+6.5 pp",
+    "sku_drivers": "Ubtan Tikta Face Wash (−₹12.4 L); Brightening Ubtan Face Wash - Pack of 2 (−₹63,599)",
+    "ad_plan_for_the_days": "no ad plan",
+    "spend_vs_ad_plan": "–",
+    "ad_spend_as_pct_of_sales": "0.0%",
+    "platform_ad_spend_as_pct_of_sales": "0.0%"
+   },
+   "text": "Anika, Face Wash on Meesho did ₹16.4 L against a ₹30.4 L target (53.9%, −₹14.0 L), even though revenue is up 17.9% on last week and discount ran at 21.9% vs the 15.4% guideline. Ubtan Tikta Face Wash accounts for −₹12.4 L of the gap. What is happening with that SKU, and why has the higher discount not closed the gap?"
+  },
+  {
+   "id": "Q2",
+   "kind": "revenue",
+   "category": "Face Wash",
+   "platform": "Flipkart",
+   "facts": {
+    "week": "6 Nov – 11 Nov",
+    "week_revenue": "₹12.3 L",
+    "week_target": "₹22.2 L",
+    "attainment": "55.5%",
+    "gap": "−₹9.9 L",
+    "vs_previous_week": "+36.9%",
+    "ad_spend": "no ads",
+    "roas": "–",
+    "roas_previous_week": "–",
+    "discount": "7.5%",
+    "guideline": "12.8%",
+    "discount_vs_guideline": "−5.3 pp",
+    "sku_drivers": "Ubtan Face Wash - 150g (−₹5.1 L); Ubtan Tikta Face Wash (−₹3.6 L)",
+    "ad_plan_for_the_days": "₹10,680",
+    "spend_vs_ad_plan": "–",
+    "ad_spend_as_pct_of_sales": "0.0%",
+    "platform_ad_spend_as_pct_of_sales": "0.7%"
+   },
+   "text": "Face Wash on Flipkart reached ₹12.3 L against ₹22.2 L (55.5%, −₹9.9 L), up 36.9% on last week, with discount at 7.5% vs the 12.8% guideline. There were no ads against a ₹10,680 plan. Could the missing ad support or the lower discount be holding back Ubtan Face Wash - 150g (−₹5.1 L)?"
+  },
+  {
+   "id": "Q3",
+   "kind": "revenue",
+   "category": "Soap",
+   "platform": "Meesho",
+   "facts": {
+    "week": "6 Nov – 12 Nov",
+    "week_revenue": "₹3.1 L",
+    "week_target": "₹7.1 L",
+    "attainment": "42.8%",
+    "gap": "−₹4.1 L",
+    "vs_previous_week": "−30.1%",
+    "ad_spend": "no ads",
+    "roas": "–",
+    "roas_previous_week": "–",
+    "discount": "19.2%",
+    "guideline": "18.1%",
+    "discount_vs_guideline": "+1.0 pp",
+    "sku_drivers": "Tomato Basil Soap 125g - Pack of 2 (−₹2.7 L); Tomato Basil 125g - Pack of 3 (−₹1.2 L)",
+    "ad_plan_for_the_days": "no ad plan",
+    "spend_vs_ad_plan": "–",
+    "ad_spend_as_pct_of_sales": "0.0%",
+    "platform_ad_spend_as_pct_of_sales": "0.0%"
+   },
+   "text": "Soap on Meesho was at ₹3.1 L vs ₹7.1 L target (42.8%), down 30.1% on last week, with no ads running. Tomato Basil Soap 125g - Pack of 2 (−₹2.7 L) is the main drag. What changed there this week, and what is the plan to recover it?"
+  },
+  {
+   "id": "Q4",
+   "kind": "discount",
+   "category": "Henna",
+   "platform": "Meesho",
+   "facts": {
+    "week": "6 Nov – 12 Nov",
+    "week_revenue": "₹2.0 L",
+    "week_target": "₹1.7 L",
+    "attainment": "113.0%",
+    "gap": "₹22,633",
+    "vs_previous_week": "−29.3%",
+    "ad_spend": "no ads",
+    "roas": "–",
+    "roas_previous_week": "–",
+    "discount": "25.0%",
+    "guideline": "14.3%",
+    "discount_vs_guideline": "+10.7 pp",
+    "sku_drivers": "Henna Paste - Pack of 2 (−₹22,947); Henna Paste - Pack of 3 (−₹5,476)",
+    "ad_plan_for_the_days": "no ad plan",
+    "spend_vs_ad_plan": "–",
+    "ad_spend_as_pct_of_sales": "0.0%",
+    "platform_ad_spend_as_pct_of_sales": "0.0%"
+   },
+   "text": "Henna on Meesho beat target at ₹2.0 L vs ₹1.7 L (113.0%), but discount was 25.0% against a 14.3% guideline (+10.7 pp), and revenue is down 29.3% on last week. Was this deeper discount deliberate, and would the revenue have held at a lower level?"
+  },
+  {
+   "id": "Q5",
+   "kind": "discount",
+   "category": "Face Wash",
+   "platform": "Snapdeal",
+   "facts": {
+    "week": "5 Nov – 12 Nov",
+    "week_revenue": "₹41,933",
+    "week_target": "₹0",
+    "attainment": "–",
+    "gap": "–",
+    "vs_previous_week": "−381.7%",
+    "ad_spend": "no ads",
+    "roas": "–",
+    "roas_previous_week": "–",
+    "discount": "31.4%",
+    "guideline": "16.3%",
+    "discount_vs_guideline": "+15.1 pp",
+    "sku_drivers": "–",
+    "ad_plan_for_the_days": "no ad plan",
+    "spend_vs_ad_plan": "–",
+    "ad_spend_as_pct_of_sales": "0.0%",
+    "platform_ad_spend_as_pct_of_sales": "0.0%"
+   },
+   "text": "Face Wash on Snapdeal had ₹41,933 revenue this week with discount at 31.4% vs a 16.3% guideline (+15.1 pp), and no target is set. Can you help me understand how this discount level was set and whether it should come down?"
+  },
+  {
+   "id": "Q6",
+   "kind": "persistent",
+   "category": "revenue",
+   "platform": "Meesho",
+   "facts": {
+    "item": "Ubtan Tikta Face Wash",
+    "note": "raised 2+ times in the daily brief without improving"
+   },
+   "text": "Ubtan Tikta Face Wash on Meesho has now come up in the daily brief 2+ times without improving. What do you think is the root cause, and what are you trying differently this time?"
+  }
+ ],
+ "own_ids": [
+  "<179454789417.2492.13185067952303457550@nathabit.in>"
+ ],
+ "snapshot_accounts": [
+  {
+   "name": "Flipkart",
+   "plats": [
+    "Flipkart"
+   ],
+   "metrics": [
+    "Primary",
+    "Secondary",
+    "Discounting %",
+    "Spend",
+    "SLA"
+   ]
+  },
+  {
+   "name": "Flipkart Minutes",
+   "plats": [
+    "Flipkart Minutes"
+   ],
+   "metrics": [
+    "Primary",
+    "Secondary",
+    "Discounting %",
+    "Spend",
+    "Availability"
+   ]
+  },
+  {
+   "name": "Meesho",
+   "plats": [
+    "Meesho"
+   ],
+   "metrics": [
+    "Primary",
+    "Secondary",
+    "Discounting %",
+    "Spend",
+    "SLA"
+   ]
+  },
+  {
+   "name": "Myntra",
+   "plats": [
+    "Myntra"
+   ],
+   "metrics": [
+    "Primary",
+    "Secondary",
+    "Discounting %",
+    "Spend",
+    "SLA"
+   ]
+  },
+  {
+   "name": "Other accounts",
+   "plats": [
+    "Amala Earth",
+    "Jio Mart",
+    "Kindlife",
+    "Maccaron",
+    "Pharmeasy",
+    "Pop Club",
+    "Purplle",
+    "Snapdeal",
+    "Tata 1mg",
+    "Tata Cliq"
+   ],
+   "metrics": [
+    "Primary",
+    "Secondary",
+    "Discounting %",
+    "Spend",
+    "SLA"
+   ]
+  }
+ ],
+ "reminder_sent": false,
+ "pack_sent": false
+}
