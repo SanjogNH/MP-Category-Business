@@ -29,7 +29,9 @@ log = logging.getLogger(__name__)
 SNAP_DIR = "agent_state/snapshots"
 KEEP_DAYS = 75
 IST = dt.timezone(dt.timedelta(hours=5, minutes=30))
-F = ["cat", "rev", "qty", "mrp", "plan", "ad_spend", "ad_sales", "ad_clicks", "gross_sales", "phased"]
+F = ["cat", "rev", "qty", "mrp", "plan", "ad_spend", "ad_sales", "ad_clicks", "gross_sales", "phased", "ad_tgt"]
+# "ad_tgt" = ad spend target to date (the sheet's Ad_Spend_TGT runs to the same date as the sales data), so a week's
+# ad target = ad_tgt(end) − ad_tgt(day before start), exactly like spend
 # "phased" = phased plan to date (cumulative), so a week's target = phased(end) − phased(day before start)
 
 
@@ -48,13 +50,13 @@ def month_snapshot(m):
         plat["skus"][r["SKU"]] = [r["Category"], r.get("MTD Actual SP Revenue") or 0, r.get("MTD Actual Quantity") or 0,
                                   mrp.get(k, 0), r.get("Planned SP Revenue") or 0, a.get("Ad_Spend_MTD") or 0,
                                   a.get("Ad_Sales_MTD") or 0, a.get("Ad_Clicks_MTD") or 0, a.get("Gross_Sales_MTD") or 0,
-                                  r.get("Phased Planned SP Revenue") or 0]
+                                  r.get("Phased Planned SP Revenue") or 0, a.get("Ad_Spend_TGT") or 0]
     for k, a in ads.items():  # ad-only SKUs (no sales row)
         if k in seen or a.get("Category") == "Unmapped Category":
             continue
         plat = out.setdefault(k[0], {"till": till.get(k[0]), "skus": {}})
         plat["skus"][k[1]] = [a["Category"], 0, 0, 0, 0, a.get("Ad_Spend_MTD") or 0, a.get("Ad_Sales_MTD") or 0,
-                              a.get("Ad_Clicks_MTD") or 0, a.get("Gross_Sales_MTD") or 0, 0]
+                              a.get("Ad_Clicks_MTD") or 0, a.get("Gross_Sales_MTD") or 0, 0, a.get("Ad_Spend_TGT") or 0]
     return out
 
 
@@ -184,10 +186,11 @@ class History:
 
     def window(self, platform, start, end):
         """Per-SKU totals for [start, end] (dates).
-        Returns (rows, effective_start, effective_end, days_covered, plan_for_days). If a snapshot for the exact
+        Returns (rows, effective_start, effective_end, days_covered, plan_for_days, ad_target_for_days). If a snapshot for the exact
         start/end day is missing, the nearest earlier one is used and the effective dates say what was covered."""
         mk = lambda d: d.strftime("%Y-%m")
         total, plan, covered, eff_end, eff_start = {}, {}, 0, None, None
+        adtgt, adtgt_missing = {}, set()
         d = start
         segments = []
         while d <= end:  # split the window at month boundaries
@@ -217,11 +220,17 @@ class History:
                 has_phased = len(r) > 9 and (r0 is None or len(r0) > 9)
                 seg_plan = (at(r, 9) - at(r0, 9)) if has_phased else (r[4] or 0) * days / ndays
                 plan[sku] = plan.get(sku, 0) + seg_plan
+                if len(r) > 10 and (r0 is None or len(r0) > 10):
+                    adtgt[sku] = adtgt.get(sku, 0) + at(r, 10) - at(r0, 10)
+                else:
+                    adtgt_missing.add(sku)
             covered += days
             if eff_start is None:
                 eff_start = dt.date(a.year, a.month, t0 + 1)
             eff_end = dt.date(a.year, a.month, t_end)
-        return total, eff_start, eff_end, covered, plan
+        for sku in adtgt_missing:
+            adtgt.pop(sku, None)  # older snapshot without the target: caller falls back
+        return total, eff_start, eff_end, covered, plan, adtgt
 
 
 if __name__ == "__main__":
