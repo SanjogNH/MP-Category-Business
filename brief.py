@@ -486,7 +486,7 @@ def agg(d, plats, cat=None, factors=None):
     a = {k: sum(r.get(k) or 0 for r in ads) for k in
          ("Ad_Spend_MTD", "Ad_Sales_MTD", "Ad_Units_MTD", "Ad_Clicks_MTD", "Gross_Units_MTD", "Gross_Sales_MTD",
           "Ad_Spend_LFM", "Ad_Sales_LFM", "Ad_Clicks_LFM")}
-    tgt = sum((r.get("Ad_Spend_TGT") or 0) * (factors or {}).get(r["Platform"], 0) for r in ads)
+    tgt = sum(r.get("Ad_Spend_TGT") or 0 for r in ads)  # already a target to date (same date as the sales data)
     ds = [r for r in d["discount_sku"] if keep(r)]
     mrp, sp = sum(r["Actual_MRP_Revenue"] for r in ds), sum(r["Actual_SP_Revenue"] for r in ds)
     g = [r for r in ds if r.get("Has_Guideline") and r.get("Guideline_Discount_Pct") is not None]
@@ -799,7 +799,7 @@ def render_email(title, sub, intro, headline_html, body_html, notes):
             f'<p style="{CSS["sub"]}">{e(sub)}</p>{headline_html}'
             + (f'<p style="margin:12px 0">{e(intro)}</p>' if intro else "")
             + body_html + note_html
-            + f'<p style="{CSS["muted"]};margin-top:24px">Basis: {BASIS_LABEL} to date. Ad spend vs target uses the ad plan prorated by days. '
+            + f'<p style="{CSS["muted"]};margin-top:24px">Basis: {BASIS_LABEL} to date. Ad spend vs target uses the sheet’s ad target to date. '
               f'Thresholds come from the dashboard config. Items already raised wait '
               f'{bc.COOLDOWN_DAYS["revenue"]} days before being raised again, unless they get clearly worse.</p></div>')
 
@@ -920,7 +920,7 @@ def render_sections(sec, s, focus, excluded_here=(), info_rows=(), show_owner=Tr
     if not no_ad_data(sec):
         body += f'<h2 style="{CSS["h2"]}">Ads scorecard</h2>' + render_ads_scorecard(sec["ads_rows"], s)
         body += (f'<p style="{CSS["muted"]}">ROAS in brackets = last full month. Spend vs target = MTD spend against the '
-                 f'ad plan prorated to date.</p>')
+                 f'ad spend target to date from the sheet.</p>')
     body += (f'<h2 style="{CSS["h2"]}">Top {len(sec["top_cats"])} categories by revenue</h2>'
              + render_category_scorecard(sec["top_cats"], s))
     what = "SKUs" if sec["sku_breakdown"] else "platforms"
