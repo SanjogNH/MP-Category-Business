@@ -139,18 +139,22 @@ def metric_labels(account):
 class Week:
     """Per-platform totals for a window, aggregated to platform and category × platform."""
 
-    def __init__(self, hist, platforms, start, end, guide, names):
+    def __init__(self, hist, platforms, start, end, guide, names, windows=None):
+        """windows: optional {platform: (start, end)} so each channel can use its own latest 7 days."""
         self.start, self.end, self.plat, self.cp, self.sku, self.till = start, end, {}, {}, {}, {}
-        self.since = {}
+        self.since, self.win = {}, {}
         for p in platforms:
-            rows, eff_start, eff_end, days, plan = hist.window(p, start, end)
+            ps, pe = (windows or {}).get(p, (start, end))
+            self.win[p] = (ps, pe)
+            rows, eff_start, eff_end, days, plan, adtgt = hist.window(p, ps, pe)
             self.till[p], self.since[p] = eff_end, eff_start
             if not rows:
                 continue
             for sku, r in rows.items():
                 cat = r[0]
                 v = {"rev": r[1], "qty": r[2], "mrp": r[3], "spend": r[5], "ad_sales": r[6], "clicks": r[7],
-                     "gross": r[8], "plan": plan.get(sku, 0), "rate": r[1] / days if days else 0}
+                     "gross": r[8], "plan": plan.get(sku, 0), "rate": r[1] / days if days else 0,
+                     "adtgt": adtgt.get(sku, 0), "adtgt_known": 1 if sku in adtgt else 0}
                 g = guide.get((p, sku))
                 v["gmrp"] = r[3] if g is not None else 0
                 v["gsum"] = (g or 0) * r[3]
@@ -186,9 +190,42 @@ def covered(wk, p):
     a, b = wk.since.get(p), wk.till.get(p)
     if not a or not b:
         return "no data"
-    if a == wk.start and b == wk.end:
+    if (a, b) == wk.win.get(p, (wk.start, wk.end)):
         return "full week"
     return fmt_range(a, b)
+
+
+def latest_window(hist, p):
+    """The latest 7 days of data available for a channel, ending no later than yesterday (N−1).
+    If the channel's data stops earlier, the window steps back to end on its latest data date."""
+    yesterday = TODAY - dt.timedelta(days=1)
+    t = hist.latest_till(p, TODAY.strftime("%Y-%m"))
+    if t:
+        last = dt.date(TODAY.year, TODAY.month, t)
+    else:  # nothing yet this month: the previous month's latest data
+        pm = TODAY.replace(day=1) - dt.timedelta(days=1)
+        t2 = hist.latest_till(p, pm.strftime("%Y-%m"))
+        last = dt.date(pm.year, pm.month, t2) if t2 else None
+    if not last:
+        return None
+    end = min(yesterday, last)
+    return end - dt.timedelta(days=6), end
+
+
+def period_line(wk, plats):
+    """'4 – 10 Nov, the latest 7 days of Amazon data available' or one range per channel when they differ."""
+    groups = {}
+    for p in plats:
+        if p in wk.win and wk.till.get(p):
+            groups.setdefault(wk.win[p], []).append(p)
+    if not groups:
+        return "the latest 7 days of data available"
+    if len(groups) == 1:
+        (a, b), ps = next(iter(groups.items()))
+        who = ps[0] if len(ps) == 1 else ", ".join(ps[:-1]) + " and " + ps[-1]
+        return f"<b>{fmt_range(a, b)}</b>, the latest 7 days of data available for {e(who)}"
+    parts = " · ".join(f"{e(', '.join(ps))} <b>{fmt_range(a, b)}</b>" for (a, b), ps in sorted(groups.items(), reverse=True))
+    return f"the latest 7 days of data available for each channel: {parts}"
 
 
 def wow(cur, prev):
@@ -198,14 +235,20 @@ def wow(cur, prev):
     return round((cur["rate"] / prev["rate"] - 1) * 100, 1) + 0.0
 
 
+TILL = {}  # platform → day of month its data (and ad target) runs to, set in main()
+
+
 def week_ad_plan(ad_plan, wk, cat, p):
-    """Monthly ad budget for a category × platform, prorated to the days this week actually covers."""
+    """Ad spend target for the days this week covers: target to date at the end − target to date the day before
+    the start (the sheet's ad target runs to the same date as the sales data). Falls back to the current
+    to-date target ÷ days so far × days covered only if the daily history doesn't have the target yet."""
+    v = wk.cp.get((cat, p))
+    if v and v.get("adtgt_known"):
+        return v["adtgt"]
     a, b = wk.since.get(p), wk.till.get(p)
-    if not a or not b:
+    if not a or not b or not TILL.get(p):
         return 0
-    import calendar
-    days_in_month = calendar.monthrange(b.year, b.month)[1]
-    return (ad_plan.get((cat, p)) or 0) * ((b - a).days + 1) / days_in_month
+    return (ad_plan.get((cat, p)) or 0) / TILL[p] * ((b - a).days + 1)
 
 
 def spend_share(v):
@@ -271,7 +314,8 @@ def claude(system, payload, max_tokens=3000):
 
 QUERY_PROMPT = """You draft pre-WBR questions that the Head of Marketplaces at Nat Habit (an Indian personal-care brand) sends to a growth manager.
 
-For each item you get the data facts and its kind: "revenue" (behind target), "spend" (ad spend over plan, out of line with the platform's norm, or losing efficiency — often while revenue is on target; why_flagged says which), "discount" (above guideline), "persistent". Write one question per item: 1–2 sentences, quoting the 2–3 most telling figures exactly as given, ending with a clear ask. Tone: direct, respectful, curious, never accusatory. Don't ask for reason/action/date in every question; the email already asks for that.
+For each item you get the data facts and its kind: "revenue" (behind target), "spend" (ad spend over plan, out of line with the platform's norm, or losing efficiency — often while revenue is on target; why_flagged says which), "discount" (above guideline), "persistent". Write one question per item: 1–2 sentences, quoting the 2–3 most telling figures exactly as given, ending with a clear ask.
+Ad spend in a "revenue" question: mention it only if it looks inefficient, i.e. ad_spend_as_pct_of_sales is above platform_ad_spend_as_pct_of_sales, or ROAS fell vs the previous week. If spend is over plan but efficient (lower share of sales than the platform, ROAS steady or up), do not call it "extra spend" and do not imply it caused the gap. Whenever you cite spend, give the rupee amounts (ad_spend vs ad_plan_for_the_days), not only a percentage. Tone: direct, respectful, curious, never accusatory. Don't ask for reason/action/date in every question; the email already asks for that.
 
 Reply with ONLY JSON: {"questions": {"<id>": "..."}}. No markdown fences."""
 
@@ -535,12 +579,15 @@ def run_queries(wbr_target, managers, hist, guide, names, brief_state, ad_plan):
         if load_state(wbr, m["key"]) and not FORCE:
             log.info(f"  {m['name']}: questions already sent for {wbr}; skipping (tick 'resend' to send again)")
             continue
-        # most recent 7 days available, per platform
-        latest = max((hist.latest_till(p, TODAY.strftime("%Y-%m")) or 0) for p in m["plats"]) or TODAY.day - 1
-        end = min(TODAY - dt.timedelta(days=1), dt.date(TODAY.year, TODAY.month, max(1, latest)))
-        start = end - dt.timedelta(days=6)
-        wk = Week(hist, m["plats"], start, end, guide, names)
-        pw = Week(hist, m["plats"], start - dt.timedelta(days=7), end - dt.timedelta(days=7), guide, names)
+        # latest 7 days available per channel: N−7 to N−1, stepping back if a channel's data stops earlier
+        windows = {p: w for p in m["plats"] if (w := latest_window(hist, p))}
+        if not windows:
+            log.info(f"  {m['name']}: no data available yet; skipping")
+            continue
+        start, end = min(w[0] for w in windows.values()), max(w[1] for w in windows.values())
+        wk = Week(hist, m["plats"], start, end, guide, names, windows=windows)
+        prev = {p: (a - dt.timedelta(days=7), b - dt.timedelta(days=7)) for p, (a, b) in windows.items()}
+        pw = Week(hist, m["plats"], start - dt.timedelta(days=7), end - dt.timedelta(days=7), guide, names, windows=prev)
         picks = pick_questions(m, wk, pw, brief_state, ad_plan)
         if not picks:
             log.info(f"  {m['name']}: nothing material to ask; skipping")
@@ -567,7 +614,9 @@ def run_queries(wbr_target, managers, hist, guide, names, brief_state, ad_plan):
         body = render_query_email(m, wbr, rp, dl, qs, wk)
         mid = send_mail(m["to"], m["cc"], subject, body, label=f"query_{m['key']}")
         save_state(wbr, m["key"], {"wbr": wbr, "manager": m["key"], "sent_at": NOW.isoformat(), "message_id": mid,
-                                   "subject": subject, "query_window": [start, end], "questions": qs, "own_ids": [mid],
+                                   "subject": subject, "query_window": [start, end],
+                                   "query_windows": {p: [a, b] for p, (a, b) in windows.items()},
+                                   "questions": qs, "own_ids": [mid],
                                    "snapshot_accounts": [{"name": a["name"], "plats": a["plats"], "metrics": metric_labels(a)}
                                                          for a in m["accounts"]],
                                    "reminder_sent": False, "pack_sent": False})
@@ -593,22 +642,23 @@ def render_snapshot_form(m, wbr):
 
 
 def render_query_email(m, wbr, rp, dl, qs, wk):
-    till = ", ".join(f"{p} till {fmt_d(d)}" for p, d in wk.till.items() if d) or "latest available"
     items = "".join(
         f'<tr><td style="{TD};vertical-align:top;font-weight:bold;color:#0b5394">{q["id"]}</td>'
         f'<td style="padding:6px 8px;border-bottom:1px solid #eaeef2;font-size:14px;line-height:1.45">{e(q["text"])}</td></tr>'
         for q in qs)
     return (f'<div style="{CSS["body"]}">'
             f'<p>Hi {e(m["name"])},</p>'
-            f'<p>Ahead of our WBR on <b>{fmt_d(wbr)} at {fmt_t(m["time"])}</b> (review period {fmt_range(*rp)}), '
+            f'<p>Ahead of our WBR on <b>{fmt_d(wbr)} at {fmt_t(m["time"])}</b>, '
             f'I’d like your view on the points below. Please <b>reply to this email by {fmt_d(dl)}, {wc.REPLY_DEADLINE}</b>.</p>'
+            f'<p style="background:#ddf4ff;border-left:3px solid #0969da;padding:6px 10px;margin:10px 0">'
+            f'📅 Figures below are for {period_line(wk, sorted({q["platform"] for q in qs}) or m["plats"])}.</p>'
             f'<p>For each question, please cover: <b>(1) the reason</b>, <b>(2) the action you have taken or will take</b>, '
             f'and <b>(3) when you expect it to show in the numbers</b>. Short answers are fine; just keep the Q numbers. '
             f'Please also fill in the business snapshot table at the end.</p>'
             f'<table style="border-collapse:collapse;width:100%">{items}</table>'
             + render_snapshot_form(m, wbr) +
-            f'<p style="{CSS["muted"]};margin-top:14px">Figures are for {fmt_range(wk.start, wk.end)} ({e(till)}), '
-            f'from the Category Intelligence dashboard. Targets are prorated to the days covered.</p>'
+            f'<p style="{CSS["muted"]};margin-top:14px">Source: Category Intelligence dashboard. Sales targets are the '
+            f'plan for these days, phased by day; ad targets are the sheet’s targets for the same days.</p>'
             f'<p>Thanks,<br>{e(wc.SENDER_NAME)}</p>'
             f'<p style="{CSS["muted"]}">Prepared automatically from the dashboard on {e(wc.SENDER_NAME)}’s behalf. '
             f'Your reply goes to {e(wc.SENDER_NAME)}.</p></div>')
@@ -735,7 +785,8 @@ def dashboard_view(d, plats, month_key):
         "Secondary": {"plan": plan_sp / 1e5 if plan_sp else None, "projection": proj(act_sp), "days": days},
         "Discounting %": {"plan": (plan_mrp - plan_sp) / plan_mrp * 100 if plan_mrp else None,
                           "projection": (act_mrp - act_sp) / act_mrp * 100 if act_mrp else None, "days": days},
-        "Spend": {"plan": ad_tgt / 1e5 if ad_tgt else None, "projection": proj(ad_mtd), "days": days},
+        # the sheet's ad target runs to the data date, so the month's ad plan is projected from it
+        "Spend": {"plan": proj(ad_tgt), "projection": proj(ad_mtd), "days": days},
     }
 
 
@@ -997,8 +1048,9 @@ def main():
     guide = {(r["Platform"], r["SKU"]): r["Guideline_Discount_Pct"] for r in d["discount_sku"]
              if r.get("Has_Guideline") and r.get("Guideline_Discount_Pct") is not None}
     names = {(r["Platform"], r["SKU"]): r.get("Short Name") or r["SKU"] for r in d["sku_detail"]}
+    TILL.update({p: int(v.get("day") or 0) for p, v in d["prorate_info"].items()})
     ad_plan = {}
-    for r in d["ads_sku_detail"]:  # monthly ad budget per category × platform
+    for r in d["ads_sku_detail"]:  # ad target to date per category × platform (runs to the data date)
         k = (r["Category"], r["Platform"])
         ad_plan[k] = ad_plan.get(k, 0) + (r.get("Ad_Spend_TGT") or 0)
     override = os.environ.get("WBR_DATE", "").strip()
