@@ -33,7 +33,30 @@
     "ad_spend_as_pct_of_sales": "0.0%",
     "platform_ad_spend_as_pct_of_sales": "0.0%"
    },
-   "text": "Harsh, Soap on Cred ran at 62.6% discount for 5–11 Nov against a 28.6% guideline (+34.0 pp), while revenue grew +121.4% week on week to ₹91,957 with no ads. Was this a planned Cred-funded deal, and how much of the growth do you think came from the depth of the discount?"
+   "text": "Harsh, Soap on Cred ran at 62.6% discount for 5–11 Nov against a 28.6% guideline (+34.0 pp), while revenue grew +121.4% week on week to ₹91,957 with no ads. Was this a planned Cred-funded deal, and how much of the growth do you think came from the depth of the discount?",
+   "review_period_facts": {
+    "week": "7 Nov – 13 Nov",
+    "week_revenue": "₹1.1 L",
+    "week_target": "₹0",
+    "attainment": "–",
+    "gap": "–",
+    "vs_previous_week": "+186.3%",
+    "ad_spend": "no ads",
+    "roas": "–",
+    "roas_previous_week": "–",
+    "discount": "62.7%",
+    "guideline": "28.8%",
+    "discount_vs_guideline": "+33.9 pp",
+    "sku_drivers": "–",
+    "ad_plan_for_the_days": "no ad plan",
+    "spend_vs_ad_plan": "–",
+    "ad_spend_as_pct_of_sales": "0.0%",
+    "platform_ad_spend_as_pct_of_sales": "0.0%"
+   },
+   "verdict": "No answer",
+   "answer": "",
+   "why": "No reply from Harsh; Soap on Cred stayed at 62.7% discount vs a 28.8% guideline (+33.9 pp) in 7–13 Nov while revenue rose +186.3% to ₹1.1 L with no ads.",
+   "ask": "Was the 62.7% Soap discount on Cred a funded, approved deal, and what is the margin cost versus the ₹1.1 L revenue?"
   },
   {
    "id": "Q2",
@@ -59,7 +82,30 @@
     "ad_spend_as_pct_of_sales": "0.0%",
     "platform_ad_spend_as_pct_of_sales": "0.0%"
    },
-   "text": "Comb on Cred was at 71.3% discount versus a 19.6% guideline (+51.7 pp) for 5–11 Nov, with revenue of ₹27,464 (+146.7% vs previous week) and no ads. Can you walk me through how this discount level was agreed and whether it was intended to continue?"
+   "text": "Comb on Cred was at 71.3% discount versus a 19.6% guideline (+51.7 pp) for 5–11 Nov, with revenue of ₹27,464 (+146.7% vs previous week) and no ads. Can you walk me through how this discount level was agreed and whether it was intended to continue?",
+   "review_period_facts": {
+    "week": "7 Nov – 13 Nov",
+    "week_revenue": "₹6,917",
+    "week_target": "₹0",
+    "attainment": "–",
+    "gap": "–",
+    "vs_previous_week": "−78.6%",
+    "ad_spend": "no ads",
+    "roas": "–",
+    "roas_previous_week": "–",
+    "discount": "69.5%",
+    "guideline": "19.4%",
+    "discount_vs_guideline": "+50.0 pp",
+    "sku_drivers": "–",
+    "ad_plan_for_the_days": "no ad plan",
+    "spend_vs_ad_plan": "–",
+    "ad_spend_as_pct_of_sales": "0.0%",
+    "platform_ad_spend_as_pct_of_sales": "0.0%"
+   },
+   "verdict": "No answer",
+   "answer": "",
+   "why": "No reply; Comb on Cred discount was still 69.5% vs a 19.4% guideline (+50.0 pp) in 7–13 Nov, and revenue fell −78.6% to ₹6,917, so the deep discount is no longer driving volume.",
+   "ask": "Why is Comb still at 69.5% discount when revenue fell −78.6%, and when will it return to the 19.4% guideline?"
   },
   {
    "id": "Q3",
@@ -70,7 +116,11 @@
     "item": "Brahmi Summer Baby Scalp Oil - 110 ml",
     "note": "raised 2+ times in the daily brief without improving"
    },
-   "text": "Harsh, the Brahmi Summer Baby Scalp Oil - 110 ml on First Cry has been raised 2+ times in the daily brief without improving. What do you see as the main blocker on this SKU, and what is different in your plan this time?"
+   "text": "Harsh, the Brahmi Summer Baby Scalp Oil - 110 ml on First Cry has been raised 2+ times in the daily brief without improving. What do you see as the main blocker on this SKU, and what is different in your plan this time?",
+   "verdict": "No answer",
+   "answer": "",
+   "why": "No reply; Brahmi Summer Baby Scalp Oil - 110 ml on First Cry has been raised 2+ times in the daily brief without improving.",
+   "ask": "What is the specific blocker on the Brahmi 110 ml SKU on First Cry (stock, buy-box, visibility or ads), and what will you change this week?"
   }
  ],
  "own_ids": [
@@ -106,5 +156,6 @@
   }
  ],
  "reminder_sent": "2026-11-13T16:01:13.786160+05:30",
- "pack_sent": false
+ "pack_sent": "2026-11-16T10:01:16.250767+05:30",
+ "replies": []
 }

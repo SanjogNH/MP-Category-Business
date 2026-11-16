@@ -33,7 +33,30 @@
     "ad_spend_as_pct_of_sales": "9.1%",
     "platform_ad_spend_as_pct_of_sales": "33.5%"
    },
-   "text": "Henna on Zepto closed at ₹5.3 L against a ₹6.5 L target (82.3%, −17.0% vs last week), with Henna Paste - Pack of 2 - QC accounting for the full −₹1.1 L gap. Ad spend was ₹48,666 against a plan of ₹18,822 (259%) and ROAS slipped slightly to 3.15 from 3.26, so what is driving the Pack of 2 shortfall, and why didn't the extra spend lift it?"
+   "text": "Henna on Zepto closed at ₹5.3 L against a ₹6.5 L target (82.3%, −17.0% vs last week), with Henna Paste - Pack of 2 - QC accounting for the full −₹1.1 L gap. Ad spend was ₹48,666 against a plan of ₹18,822 (259%) and ROAS slipped slightly to 3.15 from 3.26, so what is driving the Pack of 2 shortfall, and why didn't the extra spend lift it?",
+   "review_period_facts": {
+    "week": "7 Nov – 13 Nov",
+    "week_revenue": "₹4.8 L",
+    "week_target": "₹6.5 L",
+    "attainment": "74.1%",
+    "gap": "−₹1.7 L",
+    "vs_previous_week": "−25.5%",
+    "ad_spend": "₹42,186",
+    "roas": "3.01",
+    "roas_previous_week": "3.59",
+    "discount": "4.0%",
+    "guideline": "3.5%",
+    "discount_vs_guideline": "+0.5 pp",
+    "sku_drivers": "Henna Paste - Pack of 2 - QC (−₹1.7 L)",
+    "ad_plan_for_the_days": "₹51,333",
+    "spend_vs_ad_plan": "82%",
+    "ad_spend_as_pct_of_sales": "8.8%",
+    "platform_ad_spend_as_pct_of_sales": "31.9%"
+   },
+   "verdict": "No answer",
+   "answer": "",
+   "why": "No reply was received. Henna on Zepto worsened in the review period to ₹4.8 L vs ₹6.5 L (74.1%, −25.5% WoW), and ROAS fell to 3.01 from 3.59. The Pack of 2 gap widened to −₹1.7 L, with discount at +0.5 pp over guideline.",
+   "ask": "Why is Henna Paste Pack of 2 down ₹1.7 L: stock, buy-box, or visibility? What are you fixing, and by when?"
   },
   {
    "id": "Q2",
@@ -59,7 +82,30 @@
     "ad_spend_as_pct_of_sales": "45.6%",
     "platform_ad_spend_as_pct_of_sales": "11.8%"
    },
-   "text": "Soap on Blinkit delivered only ₹29,056 against a ₹1.3 L target (23.2%), even though it grew +7.1% week on week, and Tomato Basil Soap 125g Pack of 2 - QC alone is −₹1.2 L. Discount was 0.0% against a 15.9% guideline while ROAS is a strong 38.40, so is the gap down to availability or listing issues, or did the missing discount hold back sales?"
+   "text": "Soap on Blinkit delivered only ₹29,056 against a ₹1.3 L target (23.2%), even though it grew +7.1% week on week, and Tomato Basil Soap 125g Pack of 2 - QC alone is −₹1.2 L. Discount was 0.0% against a 15.9% guideline while ROAS is a strong 38.40, so is the gap down to availability or listing issues, or did the missing discount hold back sales?",
+   "review_period_facts": {
+    "week": "7 Nov – 12 Nov",
+    "week_revenue": "₹18,387",
+    "week_target": "₹1.1 L",
+    "attainment": "17.2%",
+    "gap": "−₹88,797",
+    "vs_previous_week": "−36.6%",
+    "ad_spend": "₹11,805",
+    "roas": "35.01",
+    "roas_previous_week": "38.06",
+    "discount": "0.0%",
+    "guideline": "16.0%",
+    "discount_vs_guideline": "−16.0 pp",
+    "sku_drivers": "Tomato Basil Soap 125g Pack of 2 - QC (−₹1.0 L)",
+    "ad_plan_for_the_days": "₹40,000",
+    "spend_vs_ad_plan": "30%",
+    "ad_spend_as_pct_of_sales": "64.2%",
+    "platform_ad_spend_as_pct_of_sales": "12.3%"
+   },
+   "verdict": "No answer",
+   "answer": "",
+   "why": "No reply was received. Soap on Blinkit fell to ₹18,387 vs a ₹1.1 L target (17.2%, −36.6% WoW). Discount is 0.0% vs a 16.0% guideline, and Tomato Basil Pack of 2 is −₹1.0 L.",
+   "ask": "Is Tomato Basil Pack of 2 in stock and visible on Blinkit? Why is spend only 30% of plan at 35.01 ROAS?"
   },
   {
    "id": "Q3",
@@ -85,7 +131,30 @@
     "ad_spend_as_pct_of_sales": "18.2%",
     "platform_ad_spend_as_pct_of_sales": "11.8%"
    },
-   "text": "Face Wash on Blinkit reached ₹10.0 L against ₹10.8 L (92.4%), with Brightening Ubtan Face Wash - QC at −₹67,696 of the −₹82,240 gap. Ad spend was ₹1.8 L against a ₹34,611 plan (528%) and ROAS fell to 3.80 from 4.96, so what made the spend run so far ahead of plan, and what is it doing for Ubtan?"
+   "text": "Face Wash on Blinkit reached ₹10.0 L against ₹10.8 L (92.4%), with Brightening Ubtan Face Wash - QC at −₹67,696 of the −₹82,240 gap. Ad spend was ₹1.8 L against a ₹34,611 plan (528%) and ROAS fell to 3.80 from 4.96, so what made the spend run so far ahead of plan, and what is it doing for Ubtan?",
+   "review_period_facts": {
+    "week": "7 Nov – 12 Nov",
+    "week_revenue": "₹8.5 L",
+    "week_target": "₹9.3 L",
+    "attainment": "91.4%",
+    "gap": "−₹79,909",
+    "vs_previous_week": "+0.9%",
+    "ad_spend": "₹1.6 L",
+    "roas": "3.67",
+    "roas_previous_week": "4.36",
+    "discount": "2.8%",
+    "guideline": "1.9%",
+    "discount_vs_guideline": "+0.9 pp",
+    "sku_drivers": "Brightening Ubtan Face Wash - QC (−₹67,887); Bitter Neem Gel Face Wash - QC (−₹12,022)",
+    "ad_plan_for_the_days": "₹89,000",
+    "spend_vs_ad_plan": "180%",
+    "ad_spend_as_pct_of_sales": "18.8%",
+    "platform_ad_spend_as_pct_of_sales": "12.3%"
+   },
+   "verdict": "No answer",
+   "answer": "",
+   "why": "No reply was received. Face Wash on Blinkit is at 91.4% attainment with ROAS down to 3.67 from 4.36. Ad spend is 180% of plan, and Ubtan is still −₹67,887 of the −₹79,909 gap.",
+   "ask": "What is the specific fix for Ubtan, and which campaigns will you cut to bring ROAS back toward 4.36?"
   },
   {
    "id": "Q4",
@@ -112,7 +181,30 @@
     "platform_ad_spend_as_pct_of_sales": "11.8%",
     "why_flagged": "over ad plan, high spend for the sales, ROAS falling"
    },
-   "text": "Lepa on Blinkit is well ahead at ₹5.5 L against ₹4.2 L (129.5%), but ad spend of ₹1.4 L is 398% of the ₹36,167 plan, 26.3% of sales against the platform's 11.8%, and ROAS fell to 4.32 from 6.01. Where did the extra spend go, and do you see the Lepa growth holding at a lower spend level?"
+   "text": "Lepa on Blinkit is well ahead at ₹5.5 L against ₹4.2 L (129.5%), but ad spend of ₹1.4 L is 398% of the ₹36,167 plan, 26.3% of sales against the platform's 11.8%, and ROAS fell to 4.32 from 6.01. Where did the extra spend go, and do you see the Lepa growth holding at a lower spend level?",
+   "review_period_facts": {
+    "week": "7 Nov – 12 Nov",
+    "week_revenue": "₹4.7 L",
+    "week_target": "₹3.6 L",
+    "attainment": "128.7%",
+    "gap": "₹1.0 L",
+    "vs_previous_week": "+17.2%",
+    "ad_spend": "₹1.0 L",
+    "roas": "4.91",
+    "roas_previous_week": "4.72",
+    "discount": "4.8%",
+    "guideline": "3.6%",
+    "discount_vs_guideline": "+1.2 pp",
+    "sku_drivers": "Orange Kalonji 40g - QC (−₹3,152); Tamarind Kasturi - QC (₹20,017)",
+    "ad_plan_for_the_days": "₹93,000",
+    "spend_vs_ad_plan": "112%",
+    "ad_spend_as_pct_of_sales": "22.3%",
+    "platform_ad_spend_as_pct_of_sales": "12.3%"
+   },
+   "verdict": "No answer",
+   "answer": "",
+   "why": "No reply was received. Lepa on Blinkit is still ahead at ₹4.7 L vs ₹3.6 L (128.7%). Spend is 112% of plan at 22.3% of sales vs 12.3% for the platform, though ROAS recovered to 4.91 from 4.72.",
+   "ask": "Can Lepa hold 128% attainment at the platform's 12.3% spend share? Which campaigns will you cut?"
   },
   {
    "id": "Q5",
@@ -139,7 +231,30 @@
     "platform_ad_spend_as_pct_of_sales": "33.5%",
     "why_flagged": "over ad plan"
    },
-   "text": "Shampoo on Zepto hit target (₹3.9 L, 99.4%), but ad spend was ₹1.4 L against a ₹39,384 plan (355%) and ROAS is only 1.28. Spend is 35.7% of sales, close to the Zepto norm of 33.5%, so was the overshoot a deliberate push, and is the plan or the spend level what should change?"
+   "text": "Shampoo on Zepto hit target (₹3.9 L, 99.4%), but ad spend was ₹1.4 L against a ₹39,384 plan (355%) and ROAS is only 1.28. Spend is 35.7% of sales, close to the Zepto norm of 33.5%, so was the overshoot a deliberate push, and is the plan or the spend level what should change?",
+   "review_period_facts": {
+    "week": "7 Nov – 13 Nov",
+    "week_revenue": "₹4.4 L",
+    "week_target": "₹3.9 L",
+    "attainment": "110.7%",
+    "gap": "₹42,226",
+    "vs_previous_week": "+13.8%",
+    "ad_spend": "₹1.4 L",
+    "roas": "1.36",
+    "roas_previous_week": "1.15",
+    "discount": "6.0%",
+    "guideline": "8.9%",
+    "discount_vs_guideline": "−2.9 pp",
+    "sku_drivers": "Trileaf Rosemary Shampoo - QC (₹5,077); Five Oil Hibiscus Shampoo - QC (₹37,149)",
+    "ad_plan_for_the_days": "₹1.1 L",
+    "spend_vs_ad_plan": "131%",
+    "ad_spend_as_pct_of_sales": "32.3%",
+    "platform_ad_spend_as_pct_of_sales": "31.9%"
+   },
+   "verdict": "No answer",
+   "answer": "",
+   "why": "No reply was received. Shampoo on Zepto beat target at ₹4.4 L (110.7%), but ROAS is only 1.36 and spend is 131% of plan at 32.3% of sales vs a 31.9% norm.",
+   "ask": "Is the ₹1.4 L spend a deliberate push? Should the plan be raised, or the spend cut given 1.36 ROAS?"
   },
   {
    "id": "Q6",
@@ -166,7 +281,30 @@
     "platform_ad_spend_as_pct_of_sales": "33.5%",
     "why_flagged": "over ad plan, high spend for the sales"
    },
-   "text": "Soap on Zepto is above target at ₹1.8 L (112.6%), but ad spend of ₹1.6 L is 219% of the ₹71,037 plan and equals 85.5% of sales against the platform's 33.5%, with ROAS at 1.09. Can you walk me through what this spend is buying and whether it is sustainable at this level?"
+   "text": "Soap on Zepto is above target at ₹1.8 L (112.6%), but ad spend of ₹1.6 L is 219% of the ₹71,037 plan and equals 85.5% of sales against the platform's 33.5%, with ROAS at 1.09. Can you walk me through what this spend is buying and whether it is sustainable at this level?",
+   "review_period_facts": {
+    "week": "7 Nov – 13 Nov",
+    "week_revenue": "₹1.8 L",
+    "week_target": "₹1.6 L",
+    "attainment": "111.3%",
+    "gap": "₹18,148",
+    "vs_previous_week": "+8.5%",
+    "ad_spend": "₹1.5 L",
+    "roas": "1.06",
+    "roas_previous_week": "1.05",
+    "discount": "5.4%",
+    "guideline": "10.0%",
+    "discount_vs_guideline": "−4.5 pp",
+    "sku_drivers": "Himalayan Lavender Soap 125g - QC (₹1,340); Tomato Basil Soap 125g Pack of 2 - QC (₹2,399)",
+    "ad_plan_for_the_days": "₹1.9 L",
+    "spend_vs_ad_plan": "79%",
+    "ad_spend_as_pct_of_sales": "85.4%",
+    "platform_ad_spend_as_pct_of_sales": "31.9%"
+   },
+   "verdict": "No answer",
+   "answer": "",
+   "why": "No reply was received. Soap on Zepto at ₹1.8 L (111.3%) costs ₹1.5 L in ads, 85.4% of sales vs 31.9% for the platform, with ROAS 1.06. Discount is 4.5 pp below guideline.",
+   "ask": "What is ₹1.5 L of spend buying at 1.06 ROAS? Which keywords will you cut and by when?"
   }
  ],
  "own_ids": [
@@ -215,5 +353,6 @@
   }
  ],
  "reminder_sent": "2026-11-13T16:01:13.786160+05:30",
- "pack_sent": false
+ "pack_sent": "2026-11-16T10:01:16.250767+05:30",
+ "replies": []
 }

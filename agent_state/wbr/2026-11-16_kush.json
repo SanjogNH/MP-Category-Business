@@ -33,7 +33,30 @@
     "ad_spend_as_pct_of_sales": "4.7%",
     "platform_ad_spend_as_pct_of_sales": "6.6%"
    },
-   "text": "Kush, Skin Malai on Nykaa delivered ₹1.2 L against a ₹3.1 L target (40.0% attainment), with Double Cocoa 200ml (−₹47,860) and Fig Rose 200ml (−₹35,558) as the biggest gaps, while the discount ran at 20.4% versus a 15.7% guideline. What is driving the shortfall on those two SKUs, and how much of it do you think the higher discount failed to offset?"
+   "text": "Kush, Skin Malai on Nykaa delivered ₹1.2 L against a ₹3.1 L target (40.0% attainment), with Double Cocoa 200ml (−₹47,860) and Fig Rose 200ml (−₹35,558) as the biggest gaps, while the discount ran at 20.4% versus a 15.7% guideline. What is driving the shortfall on those two SKUs, and how much of it do you think the higher discount failed to offset?",
+   "review_period_facts": {
+    "week": "7 Nov – 13 Nov",
+    "week_revenue": "₹1.5 L",
+    "week_target": "₹3.1 L",
+    "attainment": "48.4%",
+    "gap": "−₹1.6 L",
+    "vs_previous_week": "+31.6%",
+    "ad_spend": "₹5,876",
+    "roas": "2.98",
+    "roas_previous_week": "1.64",
+    "discount": "18.4%",
+    "guideline": "15.6%",
+    "discount_vs_guideline": "+2.7 pp",
+    "sku_drivers": "Double Cocoa Skin Malai - 200ml - Single Pack (−₹40,631); Multi-Nut Skin Malai - 200ml - Single Pack (−₹34,650)",
+    "ad_plan_for_the_days": "no ad plan",
+    "spend_vs_ad_plan": "–",
+    "ad_spend_as_pct_of_sales": "3.9%",
+    "platform_ad_spend_as_pct_of_sales": "6.4%"
+   },
+   "verdict": "Aligned",
+   "answer": "Winter demand hasn't started and the target spread last year's ~3x lift evenly; the 20.4% discount was a legacy price list, and he plans a Winter Kit cart rule from 14 Nov, higher PLA budgets and SOR stock from 16 Nov.",
+   "why": "Revenue was ₹1.5 L vs ₹3.1 L (48.4%) in the review period, with discount down from +4.7 pp to +2.7 pp over guideline and ad spend at 3.9% of sales vs 6.4% for the platform, so there is room to raise ads and the actions have dates.",
+   "ask": "If the target over-assumed the winter lift, will you re-plan it, and what weekly run-rate do you expect before the Pink Sale?"
   },
   {
    "id": "Q2",
@@ -59,7 +82,30 @@
     "ad_spend_as_pct_of_sales": "9.9%",
     "platform_ad_spend_as_pct_of_sales": "6.6%"
    },
-   "text": "Henna on Nykaa came in at ₹2.6 L against ₹3.9 L (65.2%), down 33.9% week on week, with Henna Paste Pack of 2 accounting for −₹1.1 L. Ad spend was ₹25,489 (9.9% of sales vs the 6.6% platform norm) and ROAS fell to 1.94 from 2.90. What changed on the Pack of 2 listing, and why did spend stay elevated as returns dropped?"
+   "text": "Henna on Nykaa came in at ₹2.6 L against ₹3.9 L (65.2%), down 33.9% week on week, with Henna Paste Pack of 2 accounting for −₹1.1 L. Ad spend was ₹25,489 (9.9% of sales vs the 6.6% platform norm) and ROAS fell to 1.94 from 2.90. What changed on the Pack of 2 listing, and why did spend stay elevated as returns dropped?",
+   "review_period_facts": {
+    "week": "7 Nov – 13 Nov",
+    "week_revenue": "₹2.6 L",
+    "week_target": "₹3.9 L",
+    "attainment": "66.3%",
+    "gap": "−₹1.3 L",
+    "vs_previous_week": "−27.9%",
+    "ad_spend": "₹27,464",
+    "roas": "1.95",
+    "roas_previous_week": "2.46",
+    "discount": "15.3%",
+    "guideline": "15.3%",
+    "discount_vs_guideline": "0.0 pp",
+    "sku_drivers": "Henna Paste - Pack of 2 (−₹1.1 L); Henna Paste - Pack of 3 (−₹24,670)",
+    "ad_plan_for_the_days": "no ad plan",
+    "spend_vs_ad_plan": "–",
+    "ad_spend_as_pct_of_sales": "10.5%",
+    "platform_ad_spend_as_pct_of_sales": "6.4%"
+   },
+   "verdict": "Partly aligned",
+   "answer": "Post-festive dip with no listing, price or stock change; spend stayed high because Henna_KW runs on fixed bids; he will cut weekday bids when ROAS is below 2.5x, re-escalate the title change, add a Henna Kit cart rule, and expects ~80 units/day in the week of 16 Nov.",
+   "why": "Spend was 10.5% of sales vs 6.4% for the platform and ROAS 1.95 (from 2.46), and revenue stayed at ₹2.6 L (66.3%), so the claimed recovery isn't visible yet, while the bid fix only starts next week and the budget stays at ₹8k/day.",
+   "ask": "With ROAS at 1.95 and spend at 10.5% of sales, why wait until next week to cut Henna_KW bids and the budget?"
   },
   {
    "id": "Q3",
@@ -85,7 +131,30 @@
     "ad_spend_as_pct_of_sales": "6.9%",
     "platform_ad_spend_as_pct_of_sales": "6.6%"
    },
-   "text": "Dasabuti Hair Oil on Nykaa reached ₹2.8 L against ₹3.6 L (76.0%), down 21.4% week on week, with the Hibiscus Amla Summer Hair Oil 200 ml (−₹19,439) and 100 ml (−₹17,235) leading the gap. Discount was in line at 19.8%, and ROAS was flat at 1.77. What do you see behind the decline in the Summer Hair Oil, and is it seasonal or something we can fix?"
+   "text": "Dasabuti Hair Oil on Nykaa reached ₹2.8 L against ₹3.6 L (76.0%), down 21.4% week on week, with the Hibiscus Amla Summer Hair Oil 200 ml (−₹19,439) and 100 ml (−₹17,235) leading the gap. Discount was in line at 19.8%, and ROAS was flat at 1.77. What do you see behind the decline in the Summer Hair Oil, and is it seasonal or something we can fix?",
+   "review_period_facts": {
+    "week": "7 Nov – 13 Nov",
+    "week_revenue": "₹3.0 L",
+    "week_target": "₹3.6 L",
+    "attainment": "83.8%",
+    "gap": "−₹59,066",
+    "vs_previous_week": "−4.6%",
+    "ad_spend": "₹19,115",
+    "roas": "1.70",
+    "roas_previous_week": "1.97",
+    "discount": "20.1%",
+    "guideline": "20.5%",
+    "discount_vs_guideline": "−0.4 pp",
+    "sku_drivers": "Crushed Tri-Leaf Winter Hair Oil - 100 ml (−₹13,962); Hibiscus Amla Summer Hair Oil - 200 ml (−₹13,142)",
+    "ad_plan_for_the_days": "no ad plan",
+    "spend_vs_ad_plan": "–",
+    "ad_spend_as_pct_of_sales": "6.3%",
+    "platform_ad_spend_as_pct_of_sales": "6.4%"
+   },
+   "verdict": "Aligned",
+   "answer": "Mostly seasonal as Summer gives way to Winter Dasabuti, and Summer PLA is deliberately capped at ₹2k/day; he will raise bids on the Winter campaign (3–5x ROAS) over 2 weeks and re-phase the Summer plan down.",
+   "why": "Discount is in line (20.1% vs 20.5%) and the gap narrowed to −₹59,066 (83.8%), so the seasonal reason fits; shifting budget to the better-ROAS Winter campaign is the right lever, though ROAS slipped to 1.70 from 1.97.",
+   "ask": "Crushed Tri-Leaf Winter 100 ml is now a top gap driver (−₹13,962), so is Winter picking up the shifted demand?"
   },
   {
    "id": "Q4",
@@ -111,7 +180,30 @@
     "ad_spend_as_pct_of_sales": "6.9%",
     "platform_ad_spend_as_pct_of_sales": "6.6%"
    },
-   "text": "Lip Butter on Nykaa ran a 24.1% discount against a 15.5% guideline (+8.6 pp), yet revenue was ₹69,482 against ₹1.1 L (62.8%), with Beetroot Crush at −₹35,426. Why did the deeper discount not lift Beetroot Crush, and what is the plan to bring it back toward guideline?"
+   "text": "Lip Butter on Nykaa ran a 24.1% discount against a 15.5% guideline (+8.6 pp), yet revenue was ₹69,482 against ₹1.1 L (62.8%), with Beetroot Crush at −₹35,426. Why did the deeper discount not lift Beetroot Crush, and what is the plan to bring it back toward guideline?",
+   "review_period_facts": {
+    "week": "7 Nov – 13 Nov",
+    "week_revenue": "₹74,966",
+    "week_target": "₹1.1 L",
+    "attainment": "67.8%",
+    "gap": "−₹35,602",
+    "vs_previous_week": "+4.6%",
+    "ad_spend": "₹4,743",
+    "roas": "2.11",
+    "roas_previous_week": "1.51",
+    "discount": "28.8%",
+    "guideline": "15.4%",
+    "discount_vs_guideline": "+13.4 pp",
+    "sku_drivers": "Beetroot Crush Lip Butter (−₹28,867); Pomegranate Rose Lip Butter (−₹2,642)",
+    "ad_plan_for_the_days": "no ad plan",
+    "spend_vs_ad_plan": "–",
+    "ad_spend_as_pct_of_sales": "6.3%",
+    "platform_ad_spend_as_pct_of_sales": "6.4%"
+   },
+   "verdict": "Partly aligned",
+   "answer": "The 24.1% is a blend of the old 17% and a new guardrail price (₹221) that shows as 33% off because of an MRP mismatch on Nykaa; he will correct the MRP to ₹308 this week and check with pricing which guideline stands.",
+   "why": "The discount rose to 28.8% vs 15.4% guideline (+13.4 pp) while revenue was only ₹74,966 (67.8%, +4.6% WoW), and fixing the MRP changes how the discount reads (28.6%), not the price customers pay.",
+   "ask": "After the MRP fix the discount is still 28.6% vs 15.5% guideline, so who decides this and by when?"
   },
   {
    "id": "Q5",
@@ -137,7 +229,30 @@
     "ad_spend_as_pct_of_sales": "11.8%",
     "platform_ad_spend_as_pct_of_sales": "6.6%"
    },
-   "text": "Indigo Powder on Nykaa was discounted at 25.0% versus a 16.7% guideline (+8.2 pp), but revenue was ₹39,175 against ₹88,429 (44.3%), down 48.5% week on week. Can you walk me through what the extra discount was meant to achieve here, and why it didn't convert into volume?"
+   "text": "Indigo Powder on Nykaa was discounted at 25.0% versus a 16.7% guideline (+8.2 pp), but revenue was ₹39,175 against ₹88,429 (44.3%), down 48.5% week on week. Can you walk me through what the extra discount was meant to achieve here, and why it didn't convert into volume?",
+   "review_period_facts": {
+    "week": "7 Nov – 13 Nov",
+    "week_revenue": "₹43,858",
+    "week_target": "₹88,429",
+    "attainment": "49.6%",
+    "gap": "−₹44,571",
+    "vs_previous_week": "−34.0%",
+    "ad_spend": "₹4,560",
+    "roas": "2.65",
+    "roas_previous_week": "1.55",
+    "discount": "21.2%",
+    "guideline": "16.7%",
+    "discount_vs_guideline": "+4.5 pp",
+    "sku_drivers": "HUFA Pigment Indigo Powder - 85g (−₹28,707); HUFA Pigment Indigo Powder - 170g (−₹13,977)",
+    "ad_plan_for_the_days": "no ad plan",
+    "spend_vs_ad_plan": "–",
+    "ad_spend_as_pct_of_sales": "10.4%",
+    "platform_ad_spend_as_pct_of_sales": "6.4%"
+   },
+   "verdict": "Partly aligned",
+   "answer": "The 25% was a legacy price list, not a deliberate lever, and volume tracks Henna's post-festive dip; new pricing (85g at 15%, 170g at 18%) has been live since 11 Nov, and he plans a Henna Kit cart rule from 14 Nov, a budget raise to ~₹1.5k/day and the title change.",
+   "why": "Discount gap eased from +8.2 pp to +4.5 pp and revenue was ₹43,858 (49.6%), but ad spend is already 10.4% of sales vs 6.4% for the platform, so more than doubling the budget from ₹676/day is risky with only 'from next week' as timing.",
+   "ask": "What ROAS and sales do you need to see before the budget goes to ₹1.5k/day, given spend is already 10.4% of sales?"
   },
   {
    "id": "Q6",
@@ -148,7 +263,11 @@
     "item": "HUFA Pigment Indigo Powder - 170g",
     "note": "raised 2+ times in the daily brief without improving"
    },
-   "text": "HUFA Pigment Indigo Powder 170g on Nykaa has been raised in the daily brief more than twice without improving. What has been tried so far on this SKU, and what is different about the next step?"
+   "text": "HUFA Pigment Indigo Powder 170g on Nykaa has been raised in the daily brief more than twice without improving. What has been tried so far on this SKU, and what is different about the next step?",
+   "verdict": "Aligned",
+   "answer": "Tried 35% legacy discount (no trade-up), shared Indigo campaign ads at ₹676/day and a title change not yet live; next are 18% guardrail pricing, the Henna Kit cart rule, pushing the title change live, and a 30 Nov review that cuts the plan if 170g is under 50% of target.",
+   "why": "The 170g was still −₹13,977 vs target in the review period, and the reply lists what was tried, what changes (pricing, kit, title) and a dated decision rule (30 Nov, below 50% of target).",
+   "ask": "Where is 170g against the 50% threshold today, and what is the date for the title change going live?"
   }
  ],
  "own_ids": [
@@ -171,5 +290,13 @@
   }
  ],
  "reminder_sent": "2026-11-13T16:01:13.786160+05:30",
- "pack_sent": false
+ "pack_sent": "2026-11-16T10:01:16.250767+05:30",
+ "replies": [
+  {
+   "from": "kush.sutaria@nathabit.in",
+   "date": "Fri, 13 Nov 2026 18:26:08 +0530",
+   "text": "Hi Sanjog,\n\nPlease find my inputs below.\n\n*Q1. Skin Malai (Double Cocoa 200ml, Fig Rose 200ml)*\n*Reason:* Winter demand hasn't kicked in yet. Double Cocoa 200ml sold ~10\nunits/day in 5–11 Nov, the same as October. Our November target applied\nlast year's ~3x winter lift evenly across the month, but last year's spike\ncame later with the cold weather and the Pink Sale. The 20.4% discount was\nnot a new lever: it was our old price list (23% on 200g packs) still live\nbecause of Nykaa's discount-mapping issue, the same as in October, so it\nneither drove nor offset the gap. The new guardrail pricing (15%) has been\nlive since 11 Nov; 200g ASP is up ~10% (₹520 to ₹575) and units have held.\n*Action:* Winter Kit cart rule (Skin Malai + Lip Butter / Hand Malai) from\n14 Nov; raising Skin Malai PLA budgets (currently capped at ₹320–480/day\ndespite 2.7–4.8x ROAS); winter cohort on ITS; SOR stock goes live from 16\nNov (faster delivery, Nykaa Now).\n*When:* from the week of 16 Nov, with most of the winter lift expected in\nthe Pink Sale (26 Nov–10 Dec).\n\n*Q2. Henna (Pack of 2)*\n*Reason:* Pack of 2 units dropped from ~85/day in late Oct to ~55/day in\n5–11 Nov, with a low of 37 on 9 Nov (the day after Diwali). Nothing changed\non our side: price is unchanged at ₹360, there was no stock-out (sales\ncontinued on all 3 seller accounts) and no listing change. Ad clicks and\nCPC held steady (~200–300 clicks/day at ~₹16.5), but fewer of those clicks\nconverted, which points to the post-festive dip after the Karva Chauth /\nDiwali peak (1 Nov was the high at 147 units). It is already recovering at\n59–72 units/day on 10–12 Nov. Spend stayed elevated because Henna_KW runs\non fixed bids with an ₹8k/day budget and no ROAS-based pacing.\n*Action:* cut Henna_KW bids on weekdays when ROAS falls below 2.5x and keep\nbudget for weekends and Pink; Re-escalating the pending title change\n(adding \"hair color\") with Nykaa; Henna Kit cart rule (Henna + Indigo) from\n14 Nov; Henna is a focus SKU on the Pink Hair tile.\n*When:* ROAS correction from next week; volume back to ~80/day in the week\nof 16 Nov.\n\n*Q3. Dasabuti Summer Hair Oil*\n*Reason:* Mainly seasonal. The Summer variant declines through Oct–Dec as\nWinter Dasabuti takes over, and its weekly units were already falling\nthrough October. The -21% WoW is also against a week that included the 1\nNov coupon spike (the brand overall was -16% WoW). We have also\ndeliberately capped Summer PLA at ₹2k/day after its ROAS fell from 3.2x to\n~2.0x.\n*Action:* moving demand to Winter Dasabuti: its campaign returns 3–5x but\nspends only ~₹260/day, so we're raising bids; Winter Dasabuti is part of\nthe Hair Ritual cart rule and the Pink push.\n*When:* Winter Dasabuti uplift over the next 2 weeks. The Summer decline is\nstructural through winter, so we'll re-phase its plan down.\n\n*Q4. Lip Butter (Beetroot Crush)*\n*Reason:* In 5–9 Nov Beetroot Crush sold ~20/day (vs ~30/day in late Oct)\nat the old 17% discount. The 24.1% weekly figure is a blend: from 10 Nov\nthe new guardrail price (₹221) went live, which shows as 33% off because\nNykaa's MRP (₹330) doesn't match our pack MRP (₹308). Since then it has\njumped to 36–38 units/day (+80%), so the new price is converting.\n*Action:* correcting the MRP on Nykaa to ₹308, after which the discount\nreads 28.6%, in line with our pricing guardrail. The 15.5% dashboard\nguideline differs from the guardrail for Lip Butter, so I'll align with the\npricing team on which one stands.\n*When:* MRP correction this week; the discount metric corrects immediately\nafter.\n\n*Q5. Indigo Powder*\n*Reason:* The 25% was not a deliberate lever. It was the legacy price list\n(24% on 85g, 35% on 170g), live until the new pricing went live on 11 Nov\n(85g now 15%, 170g 18%). Indigo is used together with Henna, so its volume\ntracks Henna: Indigo 85g fell 44% WoW alongside Henna Pack of 2 (-39%) in\nthe post-festive dip. Ads are not the constraint: the Indigo campaign\nreturns ~4x but is capped at ₹676/day.\n*Action:* Henna Kit cart rule (extra 15% off Indigo with Henna) from 14\nNov; raising the Indigo budget to ~₹1.5k/day; the pending title change.\n*When:* in line with the Henna recovery from next week, with the kit adding\nvolume in Pink.\n\n*Q6. Indigo Powder 170g*\n*Tried so far:* it ran at 35% off on the legacy price list, which did not\ndrive trade-up (customers buy 85g about 4:1, even though 170g is ~15%\ncheaper per gram); ad support only via the shared Indigo campaign at\n₹676/day; a title change was requested but isn't live yet.\n*What's different now:* (1) guardrail pricing at 18% has been live since 11\nNov, so we're no longer giving away margin; (2) 170g is included in the\nHenna Kit cart rule as the value option; (3) pushing the title change live;\n(4) a clear decision point: if 170g stays below 50% of target by 30 Nov, we\ncut its plan and focus on the 85g.\n*When:* review on 30 Nov.\n\n*Business snapshot · November 2026* (₹ lakh)\nNykaa Target Estimated achievement\nPrimary (₹ L) 224 ~245\nSecondary (₹ L) 253 ~215–220\nDiscounting % (%) 23.3% ~21%\nSpend (₹ L) 41.3 ~35\nSLA (%)\n\nNotes: Primary includes the November-wave POs (received in October)\ninvoiced in November, plus our own marketplace sales until the SOR model\nstarts selling on 16 Nov. We don't expect replenishment POs this month, as\nSOR sales only begin on 16 Nov. Secondary is ~₹65.7L MTD to 12 Nov (~82% of\nplan pace), with SOR going live and Pink still to come. Discount is ~17.5%\nsince the new pricing went live on 11 Nov, rising with Pink event pricing\nfrom 26 Nov.\n\nThanks & Regards,\nKush",
+   "full": "Hi Sanjog,\n Please find my inputs below.\n Q1. Skin Malai (Double Cocoa 200ml, Fig Rose 200ml) \n Reason: Winter demand hasn't kicked in yet. Double Cocoa 200ml sold ~10 units/day in 5–11 Nov, the same as October. Our November target applied last year's ~3x winter lift evenly across the month, but last year's spike came later with the cold weather and the Pink Sale. The 20.4% discount was not a new lever: it was our old price list (23% on 200g packs) still live because of Nykaa's discount-mapping issue, the same as in October, so it neither drove nor offset the gap. The new guardrail pricing (15%) has been live since 11 Nov; 200g ASP is up ~10% (₹520 to ₹575) and units have held.\n Action: Winter Kit cart rule (Skin Malai + Lip Butter / Hand Malai) from 14 Nov; raising Skin Malai PLA budgets (currently capped at ₹320–480/day despite 2.7–4.8x ROAS); winter cohort on ITS; SOR stock goes live from 16 Nov (faster delivery, Nykaa Now).\n When: from the week of 16 Nov, with most of the winter lift expected in the Pink Sale (26 Nov–10 Dec).\n Q2. Henna (Pack of 2) \n Reason: Pack of 2 units dropped from ~85/day in late Oct to ~55/day in 5–11 Nov, with a low of 37 on 9 Nov (the day after Diwali). Nothing changed on our side: price is unchanged at ₹360, there was no stock-out (sales continued on all 3 seller accounts) and no listing change. Ad clicks and CPC held steady (~200–300 clicks/day at ~₹16.5), but fewer of those clicks converted, which points to the post-festive dip after the Karva Chauth / Diwali peak (1 Nov was the high at 147 units). It is already recovering at 59–72 units/day on 10–12 Nov. Spend stayed elevated because Henna_KW runs on fixed bids with an ₹8k/day budget and no ROAS-based pacing.\n Action: cut Henna_KW bids on weekdays when ROAS falls below 2.5x and keep budget for weekends and Pink; Re-escalating the pending title change (adding \"hair color\") with Nykaa; Henna Kit cart rule (Henna + Indigo) from 14 Nov; Henna is a focus SKU on the Pink Hair tile.\n When: ROAS correction from next week; volume back to ~80/day in the week of 16 Nov.\n Q3. Dasabuti Summer Hair Oil \n Reason: Mainly seasonal. The Summer variant declines through Oct–Dec as Winter Dasabuti takes over, and its weekly units were already falling through October. The -21% WoW is also against a week that included the 1 Nov coupon spike (the brand overall was -16% WoW). We have also deliberately capped Summer PLA at ₹2k/day after its ROAS fell from 3.2x to ~2.0x.\n Action: moving demand to Winter Dasabuti: its campaign returns 3–5x but spends only ~₹260/day, so we're raising bids; Winter Dasabuti is part of the Hair Ritual cart rule and the Pink push.\n When: Winter Dasabuti uplift over the next 2 weeks. The Summer decline is structural through winter, so we'll re-phase its plan down.\n Q4. Lip Butter (Beetroot Crush) \n Reason: In 5–9 Nov Beetroot Crush sold ~20/day (vs ~30/day in late Oct) at the old 17% discount. The 24.1% weekly figure is a blend: from 10 Nov the new guardrail price (₹221) went live, which shows as 33% off because Nykaa's MRP (₹330) doesn't match our pack MRP (₹308). Since then it has jumped to 36–38 units/day (+80%), so the new price is converting.\n Action: correcting the MRP on Nykaa to ₹308, after which the discount reads 28.6%, in line with our pricing guardrail. The 15.5% dashboard guideline differs from the guardrail for Lip Butter, so I'll align with the pricing team on which one stands.\n When: MRP correction this week; the discount metric corrects immediately after.\n Q5. Indigo Powder \n Reason: The 25% was not a deliberate lever. It was the legacy price list (24% on 85g, 35% on 170g), live until the new pricing went live on 11 Nov (85g now 15%, 170g 18%). Indigo is used together with Henna, so its volume tracks Henna: Indigo 85g fell 44% WoW alongside Henna Pack of 2 (-39%) in the post-festive dip. Ads are not the constraint: the Indigo campaign returns ~4x but is capped at ₹676/day.\n Action: Henna Kit cart rule (extra 15% off Indigo with Henna) from 14 Nov; raising the Indigo budget to ~₹1.5k/day; the pending title change.\n When: in line with the Henna recovery from next week, with the kit adding volume in Pink.\n Q6. Indigo Powder 170g \n Tried so far: it ran at 35% off on the legacy price list, which did not drive trade-up (customers buy 85g about 4:1, even though 170g is ~15% cheaper per gram); ad support only via the shared Indigo campaign at ₹676/day; a title change was requested but isn't live yet.\n What's different now: (1) guardrail pricing at 18% has been live since 11 Nov, so we're no longer giving away margin; (2) 170g is included in the Henna Kit cart rule as the value option; (3) pushing the title change live; (4) a clear decision point: if 170g stays below 50% of target by 30 Nov, we cut its plan and focus on the 85g.\n When: review on 30 Nov.\n Business snapshot · November 2026 (₹ lakh)\n Nykaa | Target | Estimated achievement | \n Primary (₹ L) | 224 | ~245 | \n Secondary (₹ L) | 253 | ~215–220 | \n Discounting % (%) | 23.3% | ~21% | \n Spend (₹ L) | 41.3 | ~35 | \n SLA (%) | | | \n Notes: Primary includes the November-wave POs (received in October) invoiced in November, plus our own marketplace sales until the SOR model starts selling on 16 Nov. We don't expect replenishment POs this month, as SOR sales only begin on 16 Nov. Secondary is ~₹65.7L MTD to 12 Nov (~82% of plan pace), with SOR going live and Pink still to come. Discount is ~17.5% since the new pricing went live on 11 Nov, rising with Pink event pricing from 26 Nov.\n Thanks & Regards,\nKush\n On Fri, Nov 13, 2026 04:01 PM, Sanjog < sanjog@nathabit.in > wrote:\n Hi Kush,\n A quick reminder on the WBR questions below, ahead of Mon 16 Nov at 4 pm. A short reply by Fri 13 Nov, 6 pm would really help me prepare.\n Thanks,\nSanjog"
+  }
+ ]
 }

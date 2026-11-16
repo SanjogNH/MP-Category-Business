@@ -33,7 +33,30 @@
     "ad_spend_as_pct_of_sales": "9.7%",
     "platform_ad_spend_as_pct_of_sales": "26.4%"
    },
-   "text": "Mayank, Instamart revenue for 5 Nov – 11 Nov was ₹8,316 against a ₹90,732 target (9.2%), with Tomato Basil 75g - QC accounting for the full −₹82,416 gap, and there was no ad plan for these days (₹805 spend, ROAS 1.22). What happened with this SKU, and was it a stock or listing issue rather than demand?"
+   "text": "Mayank, Instamart revenue for 5 Nov – 11 Nov was ₹8,316 against a ₹90,732 target (9.2%), with Tomato Basil 75g - QC accounting for the full −₹82,416 gap, and there was no ad plan for these days (₹805 spend, ROAS 1.22). What happened with this SKU, and was it a stock or listing issue rather than demand?",
+   "review_period_facts": {
+    "week": "7 Nov – 13 Nov",
+    "week_revenue": "₹7,029",
+    "week_target": "₹57,738",
+    "attainment": "12.2%",
+    "gap": "−₹50,709",
+    "vs_previous_week": "−34.9%",
+    "ad_spend": "₹891",
+    "roas": "1.73",
+    "roas_previous_week": "0.79",
+    "discount": "29.3%",
+    "guideline": "–",
+    "discount_vs_guideline": "–",
+    "sku_drivers": "Tomato Basil 75g - QC (−₹50,709)",
+    "ad_plan_for_the_days": "no ad plan",
+    "spend_vs_ad_plan": "–",
+    "ad_spend_as_pct_of_sales": "12.7%",
+    "platform_ad_spend_as_pct_of_sales": "24.1%"
+   },
+   "verdict": "Partly aligned",
+   "answer": "Tomato Basil 75g had no 99-store visibility (MSF week 1–8 Nov) and no marketing spend, so sales were low; he says only Instamart's central team can activate the 99 store.",
+   "why": "A visibility cause fits the gap, but the review week is still ₹7,029 against ₹57,738 (12.2%), well past 8 Nov, and no ad plan or action exists despite ROAS at 1.73.",
+   "ask": "The SKU is still at 12.2% in 7–13 Nov, after the 99 store was supposed to be back. What have you escalated to Instamart, and what is the recovery date?"
   },
   {
    "id": "Q2",
@@ -59,7 +82,30 @@
     "ad_spend_as_pct_of_sales": "30.8%",
     "platform_ad_spend_as_pct_of_sales": "26.4%"
    },
-   "text": "Dasabuti Hair Oil on Instamart reached ₹1.2 L against a ₹1.9 L target (66.7%, −₹62,096) even though ad spend was ₹38,322 versus a ₹16,683 plan (230%), and discount ran 15.6% against a 7.1% guideline. Why did the extra spend and deeper discount not translate into revenue, particularly on Castor Coconut 50ml - QC (−₹37,697)?"
+   "text": "Dasabuti Hair Oil on Instamart reached ₹1.2 L against a ₹1.9 L target (66.7%, −₹62,096) even though ad spend was ₹38,322 versus a ₹16,683 plan (230%), and discount ran 15.6% against a 7.1% guideline. Why did the extra spend and deeper discount not translate into revenue, particularly on Castor Coconut 50ml - QC (−₹37,697)?",
+   "review_period_facts": {
+    "week": "7 Nov – 13 Nov",
+    "week_revenue": "₹1.4 L",
+    "week_target": "₹1.7 L",
+    "attainment": "86.6%",
+    "gap": "−₹22,319",
+    "vs_previous_week": "+7.3%",
+    "ad_spend": "₹31,731",
+    "roas": "2.63",
+    "roas_previous_week": "1.71",
+    "discount": "13.8%",
+    "guideline": "7.3%",
+    "discount_vs_guideline": "+6.5 pp",
+    "sku_drivers": "Castor Coconut 50ml - QC (−₹19,885); Crushed Tri-Leaf Summer Hair Oil 100 ml - QC (−₹11,504)",
+    "ad_plan_for_the_days": "₹45,500",
+    "spend_vs_ad_plan": "70%",
+    "ad_spend_as_pct_of_sales": "22.0%",
+    "platform_ad_spend_as_pct_of_sales": "24.1%"
+   },
+   "verdict": "Partly aligned",
+   "answer": "Castor Coconut 50ml was invisible until 8 Nov because the 99 store was inactive; the discount flag is a quirk of the NLC model (MRP-SP is not discount); no action needed as things are back to normal.",
+   "why": "Visibility is plausible and attainment improved to 86.6%, but Castor Coconut is still −₹19,885, discount is +6.5 pp over the 7.3% guideline, and the 5–11 Nov spend of ₹38,322 against a ₹16,683 plan (230%) went unaddressed.",
+   "ask": "Castor Coconut is still −₹19,885 and discount is 13.8% against 7.3%. What proof do you have that the NLC effect explains the whole gap, and why was spend 230% of plan?"
   },
   {
    "id": "Q3",
@@ -85,7 +131,30 @@
     "ad_spend_as_pct_of_sales": "141.8%",
     "platform_ad_spend_as_pct_of_sales": "26.4%"
    },
-   "text": "Malai Lotion on Instamart delivered ₹59,197 against a ₹1.1 L target (52.0%), while ad spend was ₹83,921 versus a ₹19,250 plan (436%), which puts ad spend at 141.8% of sales and ROAS at 1.01 (down from 2.07). What drove the jump in spend, and what is your view on whether it should continue at this level?"
+   "text": "Malai Lotion on Instamart delivered ₹59,197 against a ₹1.1 L target (52.0%), while ad spend was ₹83,921 versus a ₹19,250 plan (436%), which puts ad spend at 141.8% of sales and ROAS at 1.01 (down from 2.07). What drove the jump in spend, and what is your view on whether it should continue at this level?",
+   "review_period_facts": {
+    "week": "7 Nov – 13 Nov",
+    "week_revenue": "₹85,780",
+    "week_target": "₹1.1 L",
+    "attainment": "75.4%",
+    "gap": "−₹28,016",
+    "vs_previous_week": "+135.4%",
+    "ad_spend": "₹1.0 L",
+    "roas": "1.11",
+    "roas_previous_week": "1.10",
+    "discount": "11.5%",
+    "guideline": "5.8%",
+    "discount_vs_guideline": "+5.7 pp",
+    "sku_drivers": "Fig Rose PrimaLight - QC (−₹28,178); Double Cocoa Intense Dermacare - QC (−₹20,127)",
+    "ad_plan_for_the_days": "₹52,500",
+    "spend_vs_ad_plan": "196%",
+    "ad_spend_as_pct_of_sales": "119.7%",
+    "platform_ad_spend_as_pct_of_sales": "24.1%"
+   },
+   "verdict": "Not aligned",
+   "answer": "Says spends are on track with a ₹90K plan, targets are based on sale-day offtakes with a sale event on 15 Nov, and better DS availability has been aligned.",
+   "why": "Spend was ₹83,921 against a ₹19,250 plan (436%) with ROAS 1.01 and 141.8% of sales, and ₹1.0 L against ₹52,500 (196%) in the review week, so 'on track' contradicts the data.",
+   "ask": "Spend is ₹1.0 L against a ₹52,500 plan with ROAS 1.11 and 119.7% of sales. Why not cut it before the 15 Nov sale, and what is the ROAS floor?"
   },
   {
    "id": "Q4",
@@ -112,7 +181,30 @@
     "platform_ad_spend_as_pct_of_sales": "26.4%",
     "why_flagged": "over ad plan"
    },
-   "text": "Shampoo on Instamart beat target at ₹3.9 L versus ₹3.2 L (122.6%), but ad spend was ₹1.5 L against a ₹46,200 plan (318%), or 37.2% of sales versus the platform's 26.4%, with ROAS slipping to 1.62 from 1.71. Was the overspend a deliberate push to capture the upside, and is the return justifying it?"
+   "text": "Shampoo on Instamart beat target at ₹3.9 L versus ₹3.2 L (122.6%), but ad spend was ₹1.5 L against a ₹46,200 plan (318%), or 37.2% of sales versus the platform's 26.4%, with ROAS slipping to 1.62 from 1.71. Was the overspend a deliberate push to capture the upside, and is the return justifying it?",
+   "review_period_facts": {
+    "week": "7 Nov – 13 Nov",
+    "week_revenue": "₹4.5 L",
+    "week_target": "₹3.2 L",
+    "attainment": "139.9%",
+    "gap": "₹1.3 L",
+    "vs_previous_week": "+28.0%",
+    "ad_spend": "₹1.6 L",
+    "roas": "1.75",
+    "roas_previous_week": "1.50",
+    "discount": "10.1%",
+    "guideline": "8.6%",
+    "discount_vs_guideline": "+1.5 pp",
+    "sku_drivers": "Neem Beracyl Dandruff Shampoo 250ml - QC (₹13,334); Trileaf Rosemary Shampoo - QC (₹40,823)",
+    "ad_plan_for_the_days": "₹1.3 L",
+    "spend_vs_ad_plan": "128%",
+    "ad_spend_as_pct_of_sales": "35.9%",
+    "platform_ad_spend_as_pct_of_sales": "24.1%"
+   },
+   "verdict": "Partly aligned",
+   "answer": "The overspend was a deliberate choice to spend more in days 1–18 of the month and slow down afterwards; no action needed.",
+   "why": "The intent is stated and the revenue beat holds (139.9%, ROAS 1.75), but ad spend is still 128% of plan at 35.9% of sales against 24.1% for the platform, and discount is +1.5 pp over guideline; he also cites a 48K increase, not the real overspend.",
+   "ask": "Spend is 35.9% of sales against 24.1% for the platform. What is the incremental ROAS on the extra spend, and what is the date and level at which you slow it down?"
   },
   {
    "id": "Q5",
@@ -139,7 +231,30 @@
     "platform_ad_spend_as_pct_of_sales": "26.4%",
     "why_flagged": "over ad plan"
    },
-   "text": "Soap on Instamart came in at ₹3.2 L against a ₹2.9 L target (110.9%), but ad spend was ₹1.1 L versus a ₹48,339 plan (223%), and discount was 12.1% against a 4.7% guideline. Since we were already ahead of target, what was the thinking behind spending and discounting above plan here?"
+   "text": "Soap on Instamart came in at ₹3.2 L against a ₹2.9 L target (110.9%), but ad spend was ₹1.1 L versus a ₹48,339 plan (223%), and discount was 12.1% against a 4.7% guideline. Since we were already ahead of target, what was the thinking behind spending and discounting above plan here?",
+   "review_period_facts": {
+    "week": "7 Nov – 13 Nov",
+    "week_revenue": "₹3.3 L",
+    "week_target": "₹2.9 L",
+    "attainment": "114.5%",
+    "gap": "₹41,649",
+    "vs_previous_week": "+12.9%",
+    "ad_spend": "₹1.1 L",
+    "roas": "2.18",
+    "roas_previous_week": "1.75",
+    "discount": "11.4%",
+    "guideline": "4.7%",
+    "discount_vs_guideline": "+6.6 pp",
+    "sku_drivers": "Lavender 75g - Pack of 3 - QC (−₹14,181); Tomato Basil Soap 125g - QC (−₹4,183)",
+    "ad_plan_for_the_days": "₹1.3 L",
+    "spend_vs_ad_plan": "83%",
+    "ad_spend_as_pct_of_sales": "33.2%",
+    "platform_ad_spend_as_pct_of_sales": "24.1%"
+   },
+   "verdict": "Not aligned",
+   "answer": "Says Soap ad spends are lower than planned by 32.5K and there are no issues, on track with the sales plan.",
+   "why": "In 5–11 Nov spend was ₹1.1 L against a ₹48,339 plan (223%), and discount stayed +6.6 pp over the 4.7% guideline in the review week (11.4%); only the review-week 83% of plan supports his claim, and he did not address discounting.",
+   "ask": "Discount is 11.4% against a 4.7% guideline with revenue already at 114.5%. Why are we still discounting, and what is the plan to bring it down?"
   },
   {
    "id": "Q6",
@@ -166,7 +281,30 @@
     "platform_ad_spend_as_pct_of_sales": "26.4%",
     "why_flagged": "over ad plan"
    },
-   "text": "Lepa on Instamart reached ₹3.2 L against a ₹1.1 L target (277.2%), with Chandan Nagakesar - QC contributing ₹1.8 L, while ad spend was ₹55,774 versus a ₹10,267 plan (543%), though still only 17.5% of sales against the platform's 26.4%. Was the higher spend a deliberate call, and should we be rebasing the plan for Lepa given this run-rate?"
+   "text": "Lepa on Instamart reached ₹3.2 L against a ₹1.1 L target (277.2%), with Chandan Nagakesar - QC contributing ₹1.8 L, while ad spend was ₹55,774 versus a ₹10,267 plan (543%), though still only 17.5% of sales against the platform's 26.4%. Was the higher spend a deliberate call, and should we be rebasing the plan for Lepa given this run-rate?",
+   "review_period_facts": {
+    "week": "7 Nov – 13 Nov",
+    "week_revenue": "₹3.5 L",
+    "week_target": "₹1.1 L",
+    "attainment": "302.8%",
+    "gap": "₹2.3 L",
+    "vs_previous_week": "+43.5%",
+    "ad_spend": "₹51,440",
+    "roas": "2.43",
+    "roas_previous_week": "1.55",
+    "discount": "4.5%",
+    "guideline": "3.3%",
+    "discount_vs_guideline": "+1.2 pp",
+    "sku_drivers": "Tamarind Kasturi - QC (₹24,847); Chandan Nagakesar - QC (₹2.1 L)",
+    "ad_plan_for_the_days": "₹28,000",
+    "spend_vs_ad_plan": "184%",
+    "ad_spend_as_pct_of_sales": "14.8%",
+    "platform_ad_spend_as_pct_of_sales": "24.1%"
+   },
+   "verdict": "Partly aligned",
+   "answer": "Lepa is an experiment: spend only in the first 20 days, momentum builds afterwards with Instamart-sponsored liquidation offers, and spend stops once planned spends are hit.",
+   "why": "Strong returns support it (302.8% attainment, ROAS 2.43, spend 14.8% of sales against 24.1%), but spend is 184% of plan with a ₹28,000 plan, and he gave no answer on rebasing the ₹1.1 L target.",
+   "ask": "Lepa is at 302.8% of target with spend at 184% of plan. Will you rebase the plan, and what is the spend cap that triggers the stop?"
   }
  ],
  "own_ids": [
@@ -188,5 +326,13 @@
   }
  ],
  "reminder_sent": false,
- "pack_sent": false
+ "pack_sent": "2026-11-16T10:01:16.250767+05:30",
+ "replies": [
+  {
+   "from": "mayank.gangwani@nathabit.in",
+   "date": "Fri, 13 Nov 2026 13:33:50 +0530",
+   "text": "Hi Sir,\n\n1.     Tomato Basil 75g – MSF week from 1st to 8th. No 99-store visibility,\ngiven that no marketing spends is done this SKU – it saw lower sales. We\ncan’t do anything for this as the 99 store’s activation is at the\ndiscretion of the central team at Instamart.\n\n2.     For dasabuti hair oil, the largest drop is coming from Castor\ncoconut 50mL. Just as tomato basil soap 75gms, it wasn’t visible till 8th\nNov as the 99 store was inactive. Now the discount issue is also flagged\nbecause of this SKU. Given NLC model, MRP-SP is not equal to discount. No\nactions needed here, everything is back to normal now.\n\n3.     Malai lotion spends are on track with planned at 90K. The target is\ntaken basis the sale day offtakes. The sale event is planned for 15th Nov –\nSunday. Better DS availability has been aligned.\n\n4.     Shampoo’s ADs spend is up by 48K. This is a deliberate choice as we\nspend higher during 1st to 18th of the month and slow down the spends post\nthat. No actions needed here.\n\n5.     Soap AD spends are lower than planned by 32.5K. No issues here – on\ntrack with the sales plan.\n\n6.     We are experimenting with Lepa, we only spend on this category in\nthe first 20 days. Post that the momentum builds up, and as the SKU is low\nshelf life, liquidation offers (sponsored by Instamart) push for better\nofftakes. The spends will be terminated for this category once the planned\nspends is hit.\n\n\n\n*Instamart*\n\n*Target*\n\n*Estimated achievement*\n\n*Primary* (₹ L)\n\n 150 Lakhs\n\n150 Lakhs\n\n*Secondary* (₹ L)\n\n 108 Lakhs\n\n 108 Lakhs\n\n*Discounting %* (%)\n\n 6.94%\n\n7.2%\n\n*Spend* (₹ L)\n\n 12L\n\n13.32L\n\n*Availability* (%)\n\n 73%\n\n70%",
+   "full": "Hi Sir, \n 1. \r\n Tomato Basil 75g – MSF week from 1st to 8 th .\r\nNo 99-store visibility, given that no marketing spends is done this SKU – it\r\nsaw lower sales. We can’t do anything for this as the 99 store’s activation is\r\nat the discretion of the central team at Instamart.\n 2. \r\n For dasabuti hair oil, the largest drop is\r\ncoming from Castor coconut 50mL. Just as tomato basil soap 75gms, it wasn’t visible\r\ntill 8 th Nov as the 99 store was inactive. Now the discount issue is\r\nalso flagged because of this SKU. Given NLC model, MRP-SP is not equal to discount.\r\nNo actions needed here, everything is back to normal now.\n 3. \r\n Malai lotion spends are on track with planned at\r\n90K. The target is taken basis the sale day offtakes. The sale event is planned\r\nfor 15 th Nov – Sunday. Better DS availability has been aligned.\n 4. \r\n Shampoo’s ADs spend is up by 48K. This is a deliberate\r\nchoice as we spend higher during 1 st to 18 th of the month\r\nand slow down the spends post that. No actions needed here.\n 5. \r\n Soap AD spends are lower than planned by 32.5K. No\r\nissues here – on track with the sales plan.\n 6. \r\n We are experimenting with Lepa, we only spend on\r\nthis category in the first 20 days. Post that the momentum builds up, and as\r\nthe SKU is low shelf life, liquidation offers (sponsored by Instamart) push for\r\nbetter offtakes. The spends will be terminated for this category once the planned\r\nspends is hit.\n Instamart \n | \r\n Target \n | \r\n Estimated\r\n achievement \n | \r\n Primary (₹ L) \n | \r\n 150\r\n Lakhs \n | \r\n 150\r\n Lakhs \n | \r\n Secondary (₹ L) \n | \r\n 108\r\n Lakhs \n | \r\n 108\r\n Lakhs \n | \r\n Discounting\r\n % (%) \n | \r\n 6.94% \n | \r\n 7.2% \n | \r\n Spend (₹ L) \n | \r\n 12L \n | \r\n 13.32L \n | \r\n Availability (%) \n | \r\n 73% \n | \r\n 70% \n | \r\n On Thu, 12 Nov 2026 at 11:01, Sanjog < sanjog@nathabit.in > wrote:\n Hi Mayank,\n Ahead of our WBR on Mon 16 Nov at 5 pm (review period 7 Nov – 13 Nov), I’d like your view on the points below. Please reply to this email by Fri 13 Nov, 6 pm .\n For each question, please cover: (1) the reason , (2) the action you have taken or will take , and (3) when you expect it to show in the numbers . Short answers are fine; just keep the Q numbers. Please also fill in the business snapshot table at the end.\n Q1 | Mayank, Instamart revenue for 5 Nov – 11 Nov was ₹8,316 against a ₹90,732 target (9.2%), with Tomato Basil 75g - QC accounting for the full −₹82,416 gap, and there was no ad plan for these days (₹805 spend, ROAS 1.22). What happened with this SKU, and was it a stock or listing issue rather than demand? | \n Q2 | Dasabuti Hair Oil on Instamart reached ₹1.2 L against a ₹1.9 L target (66.7%, −₹62,096) even though ad spend was ₹38,322 versus a ₹16,683 plan (230%), and discount ran 15.6% against a 7.1% guideline. Why did the extra spend and deeper discount not translate into revenue, particularly on Castor Coconut 50ml - QC (−₹37,697)? | \n Q3 | Malai Lotion on Instamart delivered ₹59,197 against a ₹1.1 L target (52.0%), while ad spend was ₹83,921 versus a ₹19,250 plan (436%), which puts ad spend at 141.8% of sales and ROAS at 1.01 (down from 2.07). What drove the jump in spend, and what is your view on whether it should continue at this level? | \n Q4 | Shampoo on Instamart beat target at ₹3.9 L versus ₹3.2 L (122.6%), but ad spend was ₹1.5 L against a ₹46,200 plan (318%), or 37.2% of sales versus the platform's 26.4%, with ROAS slipping to 1.62 from 1.71. Was the overspend a deliberate push to capture the upside, and is the return justifying it? | \n Q5 | Soap on Instamart came in at ₹3.2 L against a ₹2.9 L target (110.9%), but ad spend was ₹1.1 L versus a ₹48,339 plan (223%), and discount was 12.1% against a 4.7% guideline. Since we were already ahead of target, what was the thinking behind spending and discounting above plan here? | \n Q6 | Lepa on Instamart reached ₹3.2 L against a ₹1.1 L target (277.2%), with Chandan Nagakesar - QC contributing ₹1.8 L, while ad spend was ₹55,774 versus a ₹10,267 plan (543%), though still only 17.5% of sales against the platform's 26.4%. Was the higher spend a deliberate call, and should we be rebasing the plan for Lepa given this run-rate? | \n Business snapshot · November 2026\n Please fill in the table below for November 2026 and include it in your reply (copy into your reply, or type into the quoted table). ₹ values in lakh.\n Instamart | Target | Estimated achievement | \n Primary (₹ L) | | | \n Secondary (₹ L) | | | \n Discounting % (%) | | | \n Spend (₹ L) | | | \n Availability (%) | | | \n Figures are for 5 Nov – 11 Nov (Instamart till Wed 11 Nov), from the Category Intelligence dashboard. Targets are prorated to the days covered.\n Thanks,\nSanjog\n Prepared automatically from the dashboard on Sanjog’s behalf. Your reply goes to Sanjog.\n -- \n Best regards, Mayank Gangwani\n Nat Habit"
+  }
+ ]
 }
