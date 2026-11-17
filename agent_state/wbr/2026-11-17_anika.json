@@ -33,7 +33,30 @@
     "ad_spend_as_pct_of_sales": "0.0%",
     "platform_ad_spend_as_pct_of_sales": "0.0%"
    },
-   "text": "Anika, Face Wash on Meesho did ₹16.4 L against a ₹30.4 L target (53.9%, −₹14.0 L), even though revenue is up 17.9% on last week and discount ran at 21.9% vs the 15.4% guideline. Ubtan Tikta Face Wash accounts for −₹12.4 L of the gap. What is happening with that SKU, and why has the higher discount not closed the gap?"
+   "text": "Anika, Face Wash on Meesho did ₹16.4 L against a ₹30.4 L target (53.9%, −₹14.0 L), even though revenue is up 17.9% on last week and discount ran at 21.9% vs the 15.4% guideline. Ubtan Tikta Face Wash accounts for −₹12.4 L of the gap. What is happening with that SKU, and why has the higher discount not closed the gap?",
+   "review_period_facts": {
+    "week": "6 Nov – 12 Nov",
+    "week_revenue": "₹16.4 L",
+    "week_target": "₹30.4 L",
+    "attainment": "53.9%",
+    "gap": "−₹14.0 L",
+    "vs_previous_week": "+17.9%",
+    "ad_spend": "no ads",
+    "roas": "–",
+    "roas_previous_week": "–",
+    "discount": "21.9%",
+    "guideline": "15.4%",
+    "discount_vs_guideline": "+6.5 pp",
+    "sku_drivers": "Ubtan Tikta Face Wash (−₹12.4 L); Brightening Ubtan Face Wash - Pack of 2 (−₹63,599)",
+    "ad_plan_for_the_days": "no ad plan",
+    "spend_vs_ad_plan": "–",
+    "ad_spend_as_pct_of_sales": "0.0%",
+    "platform_ad_spend_as_pct_of_sales": "0.0%"
+   },
+   "verdict": "Partly aligned",
+   "answer": "Anika blames missing influencer units (about 80% of the unit gap) and says the discount was cut to 25.1% from 31.2% last month, so it isn't above guideline. She expects recovery as the brand rebuilds influencer/Meta spend.",
+   "why": "A units-led cause fits the 53.9% attainment (₹16.4 L vs ₹30.4 L, −₹14.0 L), but she benchmarks against last month and plan, while the dashboard shows 21.9% vs a 15.4% guideline (+6.5 pp), and the influencer rebuild has no budget, owner or date.",
+   "ask": "Which exact Ubtan Tikta units will come back, from what influencer spend, starting when? And why is discount still 6.5 pp above the 15.4% guideline?"
   },
   {
    "id": "Q2",
@@ -59,7 +82,30 @@
     "ad_spend_as_pct_of_sales": "0.0%",
     "platform_ad_spend_as_pct_of_sales": "0.7%"
    },
-   "text": "Face Wash on Flipkart reached ₹12.3 L against ₹22.2 L (55.5%, −₹9.9 L), up 36.9% on last week, with discount at 7.5% vs the 12.8% guideline. There were no ads against a ₹10,680 plan. Could the missing ad support or the lower discount be holding back Ubtan Face Wash - 150g (−₹5.1 L)?"
+   "text": "Face Wash on Flipkart reached ₹12.3 L against ₹22.2 L (55.5%, −₹9.9 L), up 36.9% on last week, with discount at 7.5% vs the 12.8% guideline. There were no ads against a ₹10,680 plan. Could the missing ad support or the lower discount be holding back Ubtan Face Wash - 150g (−₹5.1 L)?",
+   "review_period_facts": {
+    "week": "6 Nov – 12 Nov",
+    "week_revenue": "₹14.7 L",
+    "week_target": "₹25.9 L",
+    "attainment": "56.8%",
+    "gap": "−₹11.2 L",
+    "vs_previous_week": "+40.1%",
+    "ad_spend": "no ads",
+    "roas": "–",
+    "roas_previous_week": "–",
+    "discount": "7.2%",
+    "guideline": "12.7%",
+    "discount_vs_guideline": "−5.5 pp",
+    "sku_drivers": "Ubtan Face Wash - 150g (−₹5.9 L); Ubtan Tikta Face Wash (−₹4.1 L)",
+    "ad_plan_for_the_days": "₹33,982",
+    "spend_vs_ad_plan": "–",
+    "ad_spend_as_pct_of_sales": "0.0%",
+    "platform_ad_spend_as_pct_of_sales": "0.7%"
+   },
+   "verdict": "Partly aligned",
+   "answer": "Anika says traffic is the problem (clicks at 48% of last month) and that Ubtan 150g conversion fell from 5.3% to 2.2%. She says ads explain only a small part and expects no big recovery, with influencer/Meta spend being rebuilt.",
+   "why": "The diagnosis is detailed, but no on-platform action addresses the 150g conversion collapse, the 7.2% discount vs 12.7% guideline (−5.5 pp), or the missing ads against the ₹33,982 plan, while attainment is 56.8% (−₹11.2 L).",
+   "ask": "Why did 150g conversion halve while discount sits 5.5 pp under guideline? Will you fix the listing, price or coupon, and run the planned ads, this week?"
   },
   {
    "id": "Q3",
@@ -85,7 +131,30 @@
     "ad_spend_as_pct_of_sales": "0.0%",
     "platform_ad_spend_as_pct_of_sales": "0.0%"
    },
-   "text": "Soap on Meesho was at ₹3.1 L vs ₹7.1 L target (42.8%), down 30.1% on last week, with no ads running. Tomato Basil Soap 125g - Pack of 2 (−₹2.7 L) is the main drag. What changed there this week, and what is the plan to recover it?"
+   "text": "Soap on Meesho was at ₹3.1 L vs ₹7.1 L target (42.8%), down 30.1% on last week, with no ads running. Tomato Basil Soap 125g - Pack of 2 (−₹2.7 L) is the main drag. What changed there this week, and what is the plan to recover it?",
+   "review_period_facts": {
+    "week": "6 Nov – 12 Nov",
+    "week_revenue": "₹3.1 L",
+    "week_target": "₹7.1 L",
+    "attainment": "42.8%",
+    "gap": "−₹4.1 L",
+    "vs_previous_week": "−30.1%",
+    "ad_spend": "no ads",
+    "roas": "–",
+    "roas_previous_week": "–",
+    "discount": "19.2%",
+    "guideline": "18.1%",
+    "discount_vs_guideline": "+1.0 pp",
+    "sku_drivers": "Tomato Basil Soap 125g - Pack of 2 (−₹2.7 L); Tomato Basil 125g - Pack of 3 (−₹1.2 L)",
+    "ad_plan_for_the_days": "no ad plan",
+    "spend_vs_ad_plan": "–",
+    "ad_spend_as_pct_of_sales": "0.0%",
+    "platform_ad_spend_as_pct_of_sales": "0.0%"
+   },
+   "verdict": "Partly aligned",
+   "answer": "Anika says Tomato Basil Pack of 2 is running at about 45% of last month's pace after the price rose to ₹239 from ₹197 and discount fell to 26.7% from 39.5%. The brand is stopping soap spend as the season fades, and she expects no recovery.",
+   "why": "The reason fits the data (revenue −30.1% WoW, 42.8% attainment at ₹3.1 L vs ₹7.1 L), but there is no pricing or deal action despite the higher price, and no re-plan of the ₹7.1 L target even though she expects no recovery.",
+   "ask": "If soap won't recover, will you re-plan the target now? Was the ₹239 price rise deliberate, and would a price test bring units back?"
   },
   {
    "id": "Q4",
@@ -111,7 +180,30 @@
     "ad_spend_as_pct_of_sales": "0.0%",
     "platform_ad_spend_as_pct_of_sales": "0.0%"
    },
-   "text": "Henna on Meesho beat target at ₹2.0 L vs ₹1.7 L (113.0%), but discount was 25.0% against a 14.3% guideline (+10.7 pp), and revenue is down 29.3% on last week. Was this deeper discount deliberate, and would the revenue have held at a lower level?"
+   "text": "Henna on Meesho beat target at ₹2.0 L vs ₹1.7 L (113.0%), but discount was 25.0% against a 14.3% guideline (+10.7 pp), and revenue is down 29.3% on last week. Was this deeper discount deliberate, and would the revenue have held at a lower level?",
+   "review_period_facts": {
+    "week": "6 Nov – 12 Nov",
+    "week_revenue": "₹2.0 L",
+    "week_target": "₹1.7 L",
+    "attainment": "113.0%",
+    "gap": "₹22,633",
+    "vs_previous_week": "−29.3%",
+    "ad_spend": "no ads",
+    "roas": "–",
+    "roas_previous_week": "–",
+    "discount": "25.0%",
+    "guideline": "14.3%",
+    "discount_vs_guideline": "+10.7 pp",
+    "sku_drivers": "Henna Paste - Pack of 2 (−₹22,947); Henna Paste - Pack of 3 (−₹5,476)",
+    "ad_plan_for_the_days": "no ad plan",
+    "spend_vs_ad_plan": "–",
+    "ad_spend_as_pct_of_sales": "0.0%",
+    "platform_ad_spend_as_pct_of_sales": "0.0%"
+   },
+   "verdict": "Not aligned",
+   "answer": "Anika says deeper discounting was not offered. She says discount is 31.9% vs a planned 42.2%, that ads are shut, and that the beat comes from influencer traffic.",
+   "why": "The dashboard shows discount at 25.0% vs a 14.3% guideline (+10.7 pp) with no ads and revenue −29.3% WoW, which contradicts 'no deeper discounting'; she also never says whether the discount was deliberate or whether revenue would have held at a lower level.",
+   "ask": "Discount is 10.7 pp above the 14.3% guideline: who approved it, and what would revenue have been at guideline?"
   },
   {
    "id": "Q5",
@@ -137,7 +229,30 @@
     "ad_spend_as_pct_of_sales": "0.0%",
     "platform_ad_spend_as_pct_of_sales": "0.0%"
    },
-   "text": "Face Wash on Snapdeal had ₹41,933 revenue this week with discount at 31.4% vs a 16.3% guideline (+15.1 pp), and no target is set. Can you help me understand how this discount level was set and whether it should come down?"
+   "text": "Face Wash on Snapdeal had ₹41,933 revenue this week with discount at 31.4% vs a 16.3% guideline (+15.1 pp), and no target is set. Can you help me understand how this discount level was set and whether it should come down?",
+   "review_period_facts": {
+    "week": "5 Nov – 12 Nov",
+    "week_revenue": "₹41,933",
+    "week_target": "₹0",
+    "attainment": "–",
+    "gap": "–",
+    "vs_previous_week": "−381.7%",
+    "ad_spend": "no ads",
+    "roas": "–",
+    "roas_previous_week": "–",
+    "discount": "31.4%",
+    "guideline": "16.3%",
+    "discount_vs_guideline": "+15.1 pp",
+    "sku_drivers": "–",
+    "ad_plan_for_the_days": "no ad plan",
+    "spend_vs_ad_plan": "–",
+    "ad_spend_as_pct_of_sales": "0.0%",
+    "platform_ad_spend_as_pct_of_sales": "0.0%"
+   },
+   "verdict": "Partly aligned",
+   "answer": "Anika says a full hygiene check is pulled in and a bulk pricing update is being done with the Snapdeal team, per the Category-shared November pricing.",
+   "why": "A bulk price correction addresses the 31.4% vs 16.3% guideline gap (+15.1 pp), but she gives no target discount level, no date, and doesn't explain how the 31.4% was set.",
+   "ask": "What discount level will Snapdeal be at after the bulk update, by what date, and how did it reach 31.4%?"
   },
   {
    "id": "Q6",
@@ -148,7 +263,11 @@
     "item": "Ubtan Tikta Face Wash",
     "note": "raised 2+ times in the daily brief without improving"
    },
-   "text": "Ubtan Tikta Face Wash on Meesho has now come up in the daily brief 2+ times without improving. What do you think is the root cause, and what are you trying differently this time?"
+   "text": "Ubtan Tikta Face Wash on Meesho has now come up in the daily brief 2+ times without improving. What do you think is the root cause, and what are you trying differently this time?",
+   "verdict": "Not aligned",
+   "answer": "Anika says the root cause is influencer volume that hasn't arrived (about 80% of the unit gap), and that the SKU isn't being spent on because spend overshot in earlier months.",
+   "why": "The SKU is the main Meesho Face Wash drag (−₹12.4 L, 53.9% attainment), yet her answer is not spending and nothing new is tried, so the action doesn't address the missing influencer volume.",
+   "ask": "This SKU has been flagged repeatedly: what specific new test, with what budget and start date, will you run on Ubtan Tikta?"
   }
  ],
  "own_ids": [
@@ -232,5 +351,13 @@
   }
  ],
  "reminder_sent": "2026-11-14T00:00:43.695290+05:30",
- "pack_sent": false
+ "pack_sent": "2026-11-17T10:01:25.561628+05:30",
+ "replies": [
+  {
+   "from": "anika@nathabit.in",
+   "date": "Mon, 16 Nov 2026 17:06:00 +0530",
+   "text": "Hi Sanjog,\n\nPlease find the responses below:\n\nQ1. Face Wash is Rs. 35.9 L against Rs. 56.4 L (63.8%), a gap of 20.4 L,\nand Ubtan FW is 18.8 L of that. Ubtan FW has 12,063 units against 14,118\npromised and 22,187 in the full plan. About 8,070 additional influencer\nunits are missing, which is roughly 80% of the unit gap. The discount\nhasn’t been raised, it was cut: it is 25.1%, against 31.2% last month,\n32.5% in the plan. Daily units were 1,534 on 13 Nov, against a 928 average\nthis month, so it is recovering. It is important to note that Meesho’s SP\nrevenue is reported on payout level after cutting logistics per unit,\nthereby the discount appears higher than guideline SP *Q2.* Face Wash is\n27.1 L against 44.4 L. Across the category, traffic is the problem: clicks\nper day are 48% of last month’s, while category conversion is actually up\n(6.6% against 5.5%). Ubtan 150g is −₹9.5 L (₹1.9 L against ₹11.5 L). Its\nunits per day are 13% of last month’s, clicks are 32% of last month’s, and\nconversion fell from 5.3% to 2.2%. We have now started seeing an uptake\nagain on it, but it is not as big to cover the entire gap. Ubtan 150g Pack\nof 2 is the same story: units per day are 11% of last month’s and\nconversion fell from 6.6% to 1.6%. Ubtan Tikta 100g is the exception, at\n105% of last month’s units per day with conversion of 9.7% against 5.7%. Ads\nwere only about 4% of the category’s last-month units, and about 15% on\nUbtan 150g, so they explain a small part of the drop. As we are aware now,\nthe brand is trying to rebuild influencer/Meta spends on this category. We\ndo not expect to see a huge recovery *Q3.* Soap is ₹7.5 L against ₹13.2 L\n(56.5%). Tomato Basil Pack of 2 is −₹4.0 L, with 1,755 units against 2,580\npromised and about 45% of last month’s pace. Price is ₹239, against ₹197\nlast month. Discount is 26.7%, against 39.5% last month. It is important to\nnote that Meesho’s SP revenue is reported on payout level after cutting\nlogistics per unit, thereby the discount appears higher than guideline SP.\nIt added only 59 units on the latest day, against about 135 a day this\nmonth, so there is no rebound. As we are aware now, the brand is shutting\ndown influencer/Meta spends on this category. We do not expect to see a\nrecovery, as we are not planning to spend on soap even on-platform as the\nseason is wearing off. *Q4. *Henna is ₹4.6 L against ₹3.3 L (141%), with a\ndiscount of 31.9% against a planned discount of 42.2%. It is important to\nnote that Meesho’s SP revenue is reported on payout level after cutting\nlogistics per unit, thereby the discount appears higher than guideline SP.\nDeeper discounting has not been offered on the category. We have currently\neven shut down ads on Henna as the season is wearing off, thereby we\nbelieve this is the influencer traffic coming in.\n*Q5. *A full hygiene check has been pulled in for Snapdeal. We are working\nwith the Snapdeal team to do a full bulk update for pricing according to\nthe pricing shared by Category for Nov *Q6. *The root cause is mostly\ninfluencer volume that hasn’t arrived, about 80% of the unit gap. We are\nnot spending on this SKU because we overshot spending in earlier months\nwhen we started influencer campaigns off-platform\nFlipkart Target Estimated achievement\nPrimary (₹ L) 15,243,148 12,308,706\nSecondary (₹ L) 24,195,473 19,537,628\nDiscounting % (%) 23.20% 13.20%\nSpend (₹ L) 1,492,715 1,158,347\nSLA (%) NA 5.5\nFlipkart Minutes Target Estimated achievement\nPrimary (₹ L) NA 417,571\nSecondary (₹ L) NA 701,924\nDiscounting % (%) NA 5.40%\nSpend (₹ L) NA 450,944\nAvailability (%) NA NA\nMeesho Target Estimated achievement\nPrimary (₹ L) 20,929,892 18,552,502\nSecondary (₹ L) 20,929,892 18,552,502\nDiscounting % (%) 33.10% 25.80%\nSpend (₹ L) 250,000 250,000\nSLA (%) NA NA\nMyntra Target Estimated achievement\nPrimary (₹ L) 4,052,528 3,932,240\nSecondary (₹ L) 5,332,274 5,174,000\nDiscounting % (%) 19.40% 18.20%\nSpend (₹ L) 350,000 350,000\nSLA (%) NA 4.5\nOthers Target Estimated achievement\nPrimary (₹ L) 1,100,000 1,000,000\nSecondary (₹ L) 1,100,000 1,000,000\nDiscounting % (%) - -\nSpend (₹ L) - -\nSLA (%) - -",
+   "full": "Hi Sanjog,\nPlease find the responses below:\n Q1. Face Wash is Rs. 35.9 L against Rs. 56.4 L (63.8%), a gap of 20.4 L, and Ubtan FW is 18.8 L of that. Ubtan FW has 12,063 units against 14,118 promised and 22,187 in the full plan. About 8,070 additional influencer units are missing, which is roughly 80% of the unit gap. The discount hasn’t been raised, it was cut: it is 25.1%, against 31.2% last month, 32.5% in the plan. Daily units were 1,534 on 13 Nov, against a 928 average this month, so it is recovering. It is important to note that Meesho’s SP revenue is reported on payout level after cutting logistics per unit, thereby the discount appears higher than guideline SP\r\n Q2. Face Wash is 27.1 L against 44.4 L. Across the category, traffic is the problem: clicks per day are 48% of last month’s, while category conversion is actually up (6.6% against 5.5%). Ubtan 150g is −₹9.5 L (₹1.9 L against ₹11.5 L). Its units per day are 13% of last month’s, clicks are 32% of last month’s, and conversion fell from 5.3% to 2.2%. We have now started seeing an uptake again on it, but it is not as big to cover the entire gap. Ubtan 150g Pack of 2 is the same story: units per day are 11% of last month’s and conversion fell from 6.6% to 1.6%. Ubtan Tikta 100g is the exception, at 105% of last month’s units per day with conversion of 9.7% against 5.7%. Ads were only about 4% of the category’s last-month units, and about 15% on Ubtan 150g, so they explain a small part of the drop. As we are aware now, the brand is trying to rebuild influencer/Meta spends on this category. We do not expect to see a huge recovery \r\n Q3. Soap is ₹7.5 L against ₹13.2 L (56.5%). Tomato Basil Pack of 2 is −₹4.0 L, with 1,755 units against 2,580 promised and about 45% of last month’s pace. Price is ₹239, against ₹197 last month. Discount is 26.7%, against 39.5% last month. It is important to note that Meesho’s SP revenue is reported on payout level after cutting logistics per unit, thereby the discount appears higher than guideline SP. It added only 59 units on the latest day, against about 135 a day this month, so there is no rebound. As we are aware now, the brand is shutting down influencer/Meta spends on this category. We do not expect to see a recovery, as we are not planning to spend on soap even on-platform as the season is wearing off. \r\n Q4. Henna is ₹4.6 L against ₹3.3 L (141%), with a discount of 31.9% against a planned discount of 42.2%. It is important to note that Meesho’s SP revenue is reported on payout level after cutting logistics per unit, thereby the discount appears higher than guideline SP. Deeper discounting has not been offered on the category. We have currently even shut down ads on Henna as the season is wearing off, thereby we believe this is the influencer traffic coming in. \n Q5. A full hygiene check has been pulled in for Snapdeal. We are working with the Snapdeal team to do a full bulk update for pricing according to the pricing shared by Category for Nov\r\n Q6. The root cause is mostly influencer volume that hasn’t arrived, about 80% of the unit gap. We are not spending on this SKU because we overshot spending in earlier months when we started influencer campaigns off-platform \r\n Flipkart | Target | Estimated achievement | \n Primary (₹ L) | 15,243,148 | 12,308,706 | \n Secondary (₹ L) | 24,195,473 | 19,537,628 | \n Discounting % (%) | 23.20% | 13.20% | \n Spend (₹ L) | 1,492,715 | 1,158,347 | \n SLA (%) | NA | 5.5 | \n | | | \n Flipkart Minutes | Target | Estimated achievement | \n Primary (₹ L) | NA | 417,571 | \n Secondary (₹ L) | NA | 701,924 | \n Discounting % (%) | NA | 5.40% | \n Spend (₹ L) | NA | 450,944 | \n Availability (%) | NA | NA | \n | | | \n Meesho | Target | Estimated achievement | \n Primary (₹ L) | 20,929,892 | 18,552,502 | \n Secondary (₹ L) | 20,929,892 | 18,552,502 | \n Discounting % (%) | 33.10% | 25.80% | \n Spend (₹ L) | 250,000 | 250,000 | \n SLA (%) | NA | NA | \n | | | \n Myntra | Target | Estimated achievement | \n Primary (₹ L) | 4,052,528 | 3,932,240 | \n Secondary (₹ L) | 5,332,274 | 5,174,000 | \n Discounting % (%) | 19.40% | 18.20% | \n Spend (₹ L) | 350,000 | 350,000 | \n SLA (%) | NA | 4.5 | \n | | | \n Others | Target | Estimated achievement | \n Primary (₹ L) | 1,100,000 | 1,000,000 | \n Secondary (₹ L) | 1,100,000 | 1,000,000 | \n Discounting % (%) | - | - | \n Spend (₹ L) | - | - | \n SLA (%) | - | - | \n On Sat, 14 Nov 2026 at 00:00, Sanjog < sanjog@nathabit.in > wrote:\n Hi Anika,\n A quick reminder on the WBR questions below, ahead of Tue 17 Nov at 12:15 pm. A short reply by Mon 16 Nov, 6 pm would really help me prepare.\n Thanks,\nSanjog\n -- \n Best,\nAnika\nGrowth Manager, E-Commerce"
+  }
+ ]
 }
