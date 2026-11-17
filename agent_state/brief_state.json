@@ -23,7 +23,7 @@
    "status_today": "escalated",
    "times_raised": 14,
    "metric_at_raise": 82.6,
-   "metric_last": 67.05744431418523
+   "metric_last": 67.06771735508022
   },
   "ads|Zepto|BL-HR-SH-HB-250": {
    "tab": "ads",
@@ -191,7 +191,7 @@
    "status_today": "followup",
    "times_raised": 4,
    "metric_at_raise": 0.0,
-   "metric_last": 53.935035334865766
+   "metric_last": 52.199391130963456
   },
   "revenue|Amazon|BC-CPS-NLTB2-125": {
    "tab": "revenue",
@@ -203,7 +203,7 @@
    "status_today": "escalated",
    "times_raised": 14,
    "metric_at_raise": 66.5,
-   "metric_last": 39.8987048895309
+   "metric_last": 40.15167436085434
   },
   "revenue|Amazon|BA-SHO-BM-110": {
    "tab": "revenue",
@@ -215,7 +215,7 @@
    "status_today": "followup",
    "times_raised": 4,
    "metric_at_raise": 41.0,
-   "metric_last": 40.80769456171734
+   "metric_last": 39.5267422636138
   },
   "ads|Amazon|HR-HE-RA2-250": {
    "tab": "ads",
@@ -227,7 +227,7 @@
    "status_today": "followup",
    "times_raised": 5,
    "metric_at_raise": 2.40995272036989,
-   "metric_last": 3.5734226254007315
+   "metric_last": 3.5607698711830067
   },
   "ads|Amazon|BC-CP-CA-200": {
    "tab": "ads",
@@ -239,7 +239,7 @@
    "status_today": "followup",
    "times_raised": 4,
    "metric_at_raise": 0.9617430578788891,
-   "metric_last": 1.0975898916916784
+   "metric_last": 1.1185786675280482
   },
   "discount|Amazon|FC-FW-BNGL-100": {
    "tab": "discount",
@@ -347,7 +347,7 @@
    "status_today": "escalated",
    "times_raised": 11,
    "metric_at_raise": 83.0,
-   "metric_last": 49.909075671030166
+   "metric_last": 49.184568797430344
   },
   "discount|Meesho|FC-FW-BUPA-100": {
    "tab": "discount",
@@ -515,7 +515,7 @@
    "status_today": "followup",
    "times_raised": 2,
    "metric_at_raise": 0.7381441604339607,
-   "metric_last": 0.7409417349671347
+   "metric_last": 0.6825509233457507
   },
   "revenue|Zepto|BL-BC-CP-CA-100": {
    "tab": "revenue",
@@ -527,7 +527,7 @@
    "status_today": "followup",
    "times_raised": 5,
    "metric_at_raise": 43.3,
-   "metric_last": 51.607196705499966
+   "metric_last": 52.53618555646481
   },
   "revenue|Zepto|BL-FC-KL-TK-040": {
    "tab": "revenue",
@@ -539,7 +539,7 @@
    "status_today": "escalated",
    "times_raised": 9,
    "metric_at_raise": 63.1,
-   "metric_last": 50.85324232081911
+   "metric_last": 50.43462030716724
   },
   "ads|Zepto|BL-HR-NM-HB2-040": {
    "tab": "ads",
@@ -695,7 +695,7 @@
    "status_today": "followup",
    "times_raised": 5,
    "metric_at_raise": 20.7,
-   "metric_last": 8.0
+   "metric_last": 7.6
   },
   "discount|Amazon|HR-SH-HB-250": {
    "tab": "discount",
@@ -731,7 +731,7 @@
    "status_today": "escalated",
    "times_raised": 12,
    "metric_at_raise": 40.6,
-   "metric_last": 18.789341960854536
+   "metric_last": 20.36658625180121
   },
   "revenue|Flipkart|FK-FW-BUPA2-150": {
    "tab": "revenue",
@@ -743,7 +743,7 @@
    "status_today": "escalated",
    "times_raised": 11,
    "metric_at_raise": 24.7,
-   "metric_last": 9.627080279647826
+   "metric_last": 9.192606519193767
   },
   "revenue|Flipkart|BC-CPS-NLTB2-125": {
    "tab": "revenue",
@@ -755,7 +755,7 @@
    "status_today": "escalated",
    "times_raised": 6,
    "metric_at_raise": 59.2,
-   "metric_last": 42.88572123586393
+   "metric_last": 42.77266616407272
   },
   "revenue|Flipkart|FK-AOSC-HA-03": {
    "tab": "revenue",
@@ -775,11 +775,11 @@
    "name": "Henna Paste - Pack of 1",
    "sev": "critical",
    "first_raised": "2026-11-04",
-   "last_actioned": "2026-11-11",
+   "last_actioned": "2026-11-17",
    "status_today": "escalated",
-   "times_raised": 6,
+   "times_raised": 7,
    "metric_at_raise": 56.0,
-   "metric_last": 39.975511011954204
+   "metric_last": 34.470190643937066
   },
   "discount|Meesho|HR-SH-HB2-250": {
    "tab": "discount",
@@ -816,18 +816,6 @@
    "times_raised": 5,
    "metric_at_raise": 16.2,
    "metric_last": 5.4
-  },
-  "discount|Flipkart|FK-CB-IP-RA-03": {
-   "tab": "discount",
-   "platform": "Flipkart",
-   "name": "Indigo Powder 125g + Henna Paste x2",
-   "sev": "critical",
-   "first_raised": "2026-11-04",
-   "last_actioned": "2026-11-13",
-   "status_today": "followup",
-   "times_raised": 4,
-   "metric_at_raise": 24.9,
-   "metric_last": 19.1
   },
   "discount|Nykaa|HR-HIP-IP-170": {
    "tab": "discount",
@@ -899,7 +887,7 @@
    "status_today": "followup",
    "times_raised": 4,
    "metric_at_raise": 41.8,
-   "metric_last": 39.6
+   "metric_last": 40.3
   },
   "discount|Cred|FC-DM-PNR-02": {
    "tab": "discount",
@@ -911,7 +899,7 @@
    "status_today": "followup",
    "times_raised": 4,
    "metric_at_raise": 54.9,
-   "metric_last": 54.0
+   "metric_last": 54.1
   },
   "discount|Cred|BC-CPS-TO2-125": {
    "tab": "discount",
@@ -1091,7 +1079,7 @@
    "status_today": "escalated",
    "times_raised": 8,
    "metric_at_raise": 42.9,
-   "metric_last": 24.576971577352605
+   "metric_last": 26.635860093280556
   },
   "discount|Amazon|BA-SHO-BM-110": {
    "tab": "discount",
@@ -1103,7 +1091,7 @@
    "status_today": "followup",
    "times_raised": 4,
    "metric_at_raise": 20.5,
-   "metric_last": 14.6
+   "metric_last": 14.4
   },
   "discount|Amazon|BC-CP-CA-200": {
    "tab": "discount",
@@ -1307,7 +1295,7 @@
    "status_today": "followup",
    "times_raised": 4,
    "metric_at_raise": 11.6,
-   "metric_last": 6.9
+   "metric_last": 6.6
   },
   "revenue|First Cry|FC-FW-MDPA-100": {
    "tab": "revenue",
@@ -1399,11 +1387,11 @@
    "name": "Castor Coconut - Pack of 2",
    "sev": "critical",
    "first_raised": "2026-11-05",
-   "last_actioned": "2026-11-11",
+   "last_actioned": "2026-11-17",
    "status_today": "escalated",
-   "times_raised": 5,
+   "times_raised": 6,
    "metric_at_raise": 40.1,
-   "metric_last": 43.1
+   "metric_last": 42.2
   },
   "discount|Cred|BC-SM-MNS2-120": {
    "tab": "discount",
@@ -1411,9 +1399,9 @@
    "name": "Multi-Nut Malai - 120 ml - Pack of 2",
    "sev": "critical",
    "first_raised": "2026-11-05",
-   "last_actioned": "2026-11-12",
+   "last_actioned": "2026-11-17",
    "status_today": "escalated",
-   "times_raised": 2,
+   "times_raised": 3,
    "metric_at_raise": 35.2,
    "metric_last": 37.2
   },
@@ -1499,7 +1487,7 @@
    "status_today": "escalated",
    "times_raised": 11,
    "metric_at_raise": 64.39328240071582,
-   "metric_last": 44.22442237270708
+   "metric_last": 45.40577957385722
   },
   "revenue|Flipkart|FK-HR-CB-TRM-03": {
    "tab": "revenue",
@@ -1559,7 +1547,7 @@
    "status_today": "followup",
    "times_raised": 4,
    "metric_at_raise": 25.088727001027365,
-   "metric_last": 31.062233429843406
+   "metric_last": 29.120843840478187
   },
   "revenue|Blinkit|BL-FC-HP-AHP-125": {
    "tab": "revenue",
@@ -1643,7 +1631,7 @@
    "status_today": "followup",
    "times_raised": 6,
    "metric_at_raise": 67.36946669150059,
-   "metric_last": 64.24370356573746
+   "metric_last": 62.18724778046813
   },
   "revenue|Myntra|BC-CPS-NLTB2-125": {
    "tab": "revenue",
@@ -1655,7 +1643,7 @@
    "status_today": "escalated",
    "times_raised": 9,
    "metric_at_raise": 81.23153828675301,
-   "metric_last": 54.14173546416219
+   "metric_last": 54.72241157312732
   },
   "discount|Myntra|LP-LB-BC-010": {
    "tab": "discount",
@@ -1691,7 +1679,7 @@
    "status_today": "escalated",
    "times_raised": 7,
    "metric_at_raise": 76.99166186715829,
-   "metric_last": 64.53412695858178
+   "metric_last": 65.71697250549404
   },
   "revenue|Nykaa|HR-PHO-SB-050": {
    "tab": "revenue",
@@ -1739,7 +1727,7 @@
    "status_today": "followup",
    "times_raised": 4,
    "metric_at_raise": 11.6,
-   "metric_last": 6.2
+   "metric_last": 5.9
   },
   "discount|Nykaa|BC-CP-CA-200": {
    "tab": "discount",
@@ -1895,7 +1883,7 @@
    "status_today": "followup",
    "times_raised": 6,
    "metric_at_raise": 76.14228877851087,
-   "metric_last": 67.80833765784466
+   "metric_last": 68.18924216027875
   },
   "discount|Myntra|LP-LB-PR-010": {
    "tab": "discount",
@@ -2003,7 +1991,7 @@
    "status_today": "escalated",
    "times_raised": 5,
    "metric_at_raise": 66.52559789310234,
-   "metric_last": 53.99178959440191
+   "metric_last": 54.95592869430194
   },
   "revenue|Big Basket|BL-HR-HE-RA2-250": {
    "tab": "revenue",
@@ -2051,7 +2039,7 @@
    "status_today": "followup",
    "times_raised": 3,
    "metric_at_raise": 2.0025826057295752,
-   "metric_last": 2.0815842022751108
+   "metric_last": 2.105840527483885
   },
   "ads|Instamart|BL-BC-BL-MNS-250": {
    "tab": "ads",
@@ -2099,7 +2087,7 @@
    "status_today": "followup",
    "times_raised": 3,
    "metric_at_raise": 84.2672530602488,
-   "metric_last": 76.31291523655233
+   "metric_last": 77.9703428573005
   },
   "revenue|Nykaa|HR-SHO-TL-200": {
    "tab": "revenue",
@@ -2123,19 +2111,7 @@
    "status_today": "escalated",
    "times_raised": 6,
    "metric_at_raise": 81.04295508303355,
-   "metric_last": 59.92290034330393
-  },
-  "revenue|Nykaa|FC-KL-CN-040": {
-   "tab": "revenue",
-   "platform": "Nykaa",
-   "name": "Chandan Nagakesar Lepa - Pack of 1",
-   "sev": "warning",
-   "first_raised": "2026-11-09",
-   "last_actioned": "2026-11-09",
-   "status_today": "new",
-   "times_raised": 1,
-   "metric_at_raise": 78.26302147810371,
-   "metric_last": 78.26302147810371
+   "metric_last": 62.157151634800165
   },
   "ads|Nykaa|AC-SDL-LO2-00": {
    "tab": "ads",
@@ -2159,7 +2135,7 @@
    "status_today": "followup",
    "times_raised": 3,
    "metric_at_raise": 11.7,
-   "metric_last": 6.4
+   "metric_last": 5.9
   },
   "discount|Nykaa|BC-CPS-NLHL4-125": {
    "tab": "discount",
@@ -2172,18 +2148,6 @@
    "times_raised": 1,
    "metric_at_raise": 13.7,
    "metric_last": 13.7
-  },
-  "discount|Nykaa|FC-DM-PG-030": {
-   "tab": "discount",
-   "platform": "Nykaa",
-   "name": "Turmeric Nutmeg (Pigmentation)  Face Malai - 30g",
-   "sev": "critical",
-   "first_raised": "2026-11-09",
-   "last_actioned": "2026-11-09",
-   "status_today": "new",
-   "times_raised": 1,
-   "metric_at_raise": 5.4,
-   "metric_last": 5.4
   },
   "discount|Snapdeal|HR-SH-HB-250": {
    "tab": "discount",
@@ -2219,7 +2183,7 @@
    "status_today": "followup",
    "times_raised": 3,
    "metric_at_raise": 1.4192781197537774,
-   "metric_last": 1.7508647999126097
+   "metric_last": 1.7920584082377655
   },
   "revenue|Myntra|FC-FW-MVGL-100": {
    "tab": "revenue",
@@ -2255,7 +2219,7 @@
    "status_today": "followup",
    "times_raised": 2,
    "metric_at_raise": 23.1,
-   "metric_last": 20.9
+   "metric_last": 20.3
   },
   "ads|Zepto|BL-HR-CN-TR-150": {
    "tab": "ads",
@@ -2267,7 +2231,7 @@
    "status_today": "followup",
    "times_raised": 2,
    "metric_at_raise": 3.9541795050193818,
-   "metric_last": 3.736234585603671
+   "metric_last": 3.5931734317343174
   },
   "revenue|Amazon|FC-FW-BUPA-100": {
    "tab": "revenue",
@@ -2423,7 +2387,7 @@
    "status_today": "escalated",
    "times_raised": 4,
    "metric_at_raise": 6.2,
-   "metric_last": 10.8
+   "metric_last": 11.4
   },
   "discount|Nykaa|HR-SH-NB-250": {
    "tab": "discount",
@@ -2435,7 +2399,7 @@
    "status_today": "escalated",
    "times_raised": 4,
    "metric_at_raise": 6.5,
-   "metric_last": 11.7
+   "metric_last": 12.4
   },
   "discount|Nykaa|AC-KNC-DWT-02": {
    "tab": "discount",
@@ -2575,11 +2539,11 @@
    "name": "Milk Rosehip + Sandalwood Soap - Pack of 2",
    "sev": "critical",
    "first_raised": "2026-11-13",
-   "last_actioned": "2026-11-13",
-   "status_today": "new",
-   "times_raised": 1,
+   "last_actioned": "2026-11-17",
+   "status_today": "followup",
+   "times_raised": 2,
    "metric_at_raise": 66.39186307711604,
-   "metric_last": 66.39186307711604
+   "metric_last": 69.32047044436082
   },
   "revenue|Nykaa|AC-KNC-DNWT-03": {
    "tab": "revenue",
@@ -2893,18 +2857,6 @@
    "metric_at_raise": 59.78099569345792,
    "metric_last": 59.78099569345792
   },
-  "ads|Nykaa|AC-KNC-DWT-02": {
-   "tab": "ads",
-   "platform": "Nykaa",
-   "name": "Neem Comb Combo Dual + Wide",
-   "sev": "warning",
-   "first_raised": "2026-11-16",
-   "last_actioned": "2026-11-16",
-   "status_today": "new",
-   "times_raised": 1,
-   "metric_at_raise": 2.433529247131262,
-   "metric_last": 2.433529247131262
-  },
   "ads|Nykaa|FC-ML-PMJ-030": {
    "tab": "ads",
    "platform": "Nykaa",
@@ -2951,7 +2903,7 @@
    "status_today": "new",
    "times_raised": 1,
    "metric_at_raise": 0.7479911718699779,
-   "metric_last": 0.7479911718699779
+   "metric_last": 0.6665635871666022
   },
   "ads|Amazon|BA-PBO-VCO-100": {
    "tab": "ads",
@@ -2963,7 +2915,7 @@
    "status_today": "new",
    "times_raised": 1,
    "metric_at_raise": 0.9961866840894372,
-   "metric_last": 0.9961866840894372
+   "metric_last": 0.9163919405611851
   },
   "ads|Amazon|BC-PO-AL-50": {
    "tab": "ads",
@@ -2987,7 +2939,7 @@
    "status_today": "new",
    "times_raised": 1,
    "metric_at_raise": 11.7,
-   "metric_last": 11.7
+   "metric_last": 11.6
   },
   "discount|Amazon|HR-SHO-HA-100": {
    "tab": "discount",
@@ -2999,7 +2951,7 @@
    "status_today": "new",
    "times_raised": 1,
    "metric_at_raise": 7.8,
-   "metric_last": 7.8
+   "metric_last": 9.8
   },
   "discount|Amazon|BA-WMA-BS-200": {
    "tab": "discount",
@@ -3023,7 +2975,7 @@
    "status_today": "new",
    "times_raised": 1,
    "metric_at_raise": 21.9,
-   "metric_last": 21.9
+   "metric_last": 21.6
   },
   "discount|Flipkart|BA-WHO-BM-110": {
    "tab": "discount",
@@ -3035,7 +2987,7 @@
    "status_today": "new",
    "times_raised": 1,
    "metric_at_raise": 13.3,
-   "metric_last": 13.3
+   "metric_last": 13.5
   },
   "revenue|Myntra|FC-FW-PBCR-100": {
    "tab": "revenue",
@@ -3047,7 +2999,7 @@
    "status_today": "new",
    "times_raised": 1,
    "metric_at_raise": 49.71232677626461,
-   "metric_last": 49.71232677626461
+   "metric_last": 50.198550092756456
   },
   "revenue|Myntra|BC-CPS-NLHL2-125": {
    "tab": "revenue",
@@ -3059,7 +3011,7 @@
    "status_today": "new",
    "times_raised": 1,
    "metric_at_raise": 57.3936118414646,
-   "metric_last": 57.3936118414646
+   "metric_last": 55.71798312883436
   },
   "revenue|Nykaa|AC-KNC-DT-00": {
    "tab": "revenue",
@@ -3131,7 +3083,139 @@
    "status_today": "new",
    "times_raised": 1,
    "metric_at_raise": 50.1,
-   "metric_last": 50.1
+   "metric_last": 49.8
+  },
+  "revenue|Instamart|BL-HR-SHO-TL-100": {
+   "tab": "revenue",
+   "platform": "Instamart",
+   "name": "Crushed Tri-Leaf Summer Hair Oil 100 ml - QC",
+   "sev": "warning",
+   "first_raised": "2026-11-17",
+   "last_actioned": "2026-11-17",
+   "status_today": "new",
+   "times_raised": 1,
+   "metric_at_raise": 84.23937266700095,
+   "metric_last": 84.23937266700095
+  },
+  "revenue|Instamart|BL-LP-LB-BC-010": {
+   "tab": "revenue",
+   "platform": "Instamart",
+   "name": "Beetroot Crush Lip Butter - QC",
+   "sev": "warning",
+   "first_raised": "2026-11-17",
+   "last_actioned": "2026-11-17",
+   "status_today": "new",
+   "times_raised": 1,
+   "metric_at_raise": 84.27269208973438,
+   "metric_last": 84.27269208973438
+  },
+  "ads|Amazon|CB-CPS-MS2-125": {
+   "tab": "ads",
+   "platform": "Amazon",
+   "name": "Milk Rosehip + Sandalwood Soap - Pack of 2",
+   "sev": "critical",
+   "first_raised": "2026-11-17",
+   "last_actioned": "2026-11-17",
+   "status_today": "new",
+   "times_raised": 1,
+   "metric_at_raise": 5.0791512306226325,
+   "metric_last": 5.0791512306226325
+  },
+  "ads|Amazon|BC-BL-MNS-250": {
+   "tab": "ads",
+   "platform": "Amazon",
+   "name": "Multi-Nut Malai Lotion",
+   "sev": "critical",
+   "first_raised": "2026-11-17",
+   "last_actioned": "2026-11-17",
+   "status_today": "new",
+   "times_raised": 1,
+   "metric_at_raise": 2.401319246673345,
+   "metric_last": 2.401319246673345
+  },
+  "discount|Meesho|FK-SH-TR-300": {
+   "tab": "discount",
+   "platform": "Meesho",
+   "name": "Trileaf Rosemary Shampoo - 300g",
+   "sev": "critical",
+   "first_raised": "2026-11-17",
+   "last_actioned": "2026-11-17",
+   "status_today": "new",
+   "times_raised": 1,
+   "metric_at_raise": 9.6,
+   "metric_last": 9.6
+  },
+  "discount|Flipkart|HR-SH-TR-650": {
+   "tab": "discount",
+   "platform": "Flipkart",
+   "name": "Trileaf Rosemary Shampoo - 650 ml",
+   "sev": "critical",
+   "first_raised": "2026-11-17",
+   "last_actioned": "2026-11-17",
+   "status_today": "new",
+   "times_raised": 1,
+   "metric_at_raise": 10.9,
+   "metric_last": 10.9
+  },
+  "revenue|Nykaa|FC-FL-LA-100": {
+   "tab": "revenue",
+   "platform": "Nykaa",
+   "name": "Pure Lavender Jal - Single Pack",
+   "sev": "critical",
+   "first_raised": "2026-11-17",
+   "last_actioned": "2026-11-17",
+   "status_today": "new",
+   "times_raised": 1,
+   "metric_at_raise": 59.92681968182809,
+   "metric_last": 59.92681968182809
+  },
+  "ads|Nykaa|HR-SHO-TL-100": {
+   "tab": "ads",
+   "platform": "Nykaa",
+   "name": "Crushed Tri-Leaf Summer Hair Oil - 100 ml",
+   "sev": "warning",
+   "first_raised": "2026-11-17",
+   "last_actioned": "2026-11-17",
+   "status_today": "new",
+   "times_raised": 1,
+   "metric_at_raise": 1.8704930812707075,
+   "metric_last": 1.8704930812707075
+  },
+  "ads|Nykaa|FC-ML-TRH-030": {
+   "tab": "ads",
+   "platform": "Nykaa",
+   "name": "Turmeric Rosehip Mukhalaya 30 ml",
+   "sev": "warning",
+   "first_raised": "2026-11-17",
+   "last_actioned": "2026-11-17",
+   "status_today": "new",
+   "times_raised": 1,
+   "metric_at_raise": 1.6378562922217654,
+   "metric_last": 1.6378562922217654
+  },
+  "ads|Nykaa|BC-HM-BVE2-030": {
+   "tab": "ads",
+   "platform": "Nykaa",
+   "name": "Berry Vanilla Hand Malai - Pack of 2",
+   "sev": "warning",
+   "first_raised": "2026-11-17",
+   "last_actioned": "2026-11-17",
+   "status_today": "new",
+   "times_raised": 1,
+   "metric_at_raise": 0.7754730958313691,
+   "metric_last": 0.7754730958313691
+  },
+  "discount|Pop Club|BC-SM-CID-120": {
+   "tab": "discount",
+   "platform": "Pop Club",
+   "name": "Double Cocoa Skin Malai - 120 ml - Single Pack",
+   "sev": "critical",
+   "first_raised": "2026-11-17",
+   "last_actioned": "2026-11-17",
+   "status_today": "new",
+   "times_raised": 1,
+   "metric_at_raise": 22.3,
+   "metric_last": 22.3
   }
  },
  "last_sent": "2026-11-17"
