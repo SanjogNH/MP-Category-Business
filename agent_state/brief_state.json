@@ -23,7 +23,7 @@
    "status_today": "escalated",
    "times_raised": 15,
    "metric_at_raise": 82.6,
-   "metric_last": 67.06771735508022
+   "metric_last": 66.25778383822579
   },
   "ads|Zepto|BL-HR-SH-HB-250": {
    "tab": "ads",
@@ -35,7 +35,7 @@
    "status_today": "followup",
    "times_raised": 6,
    "metric_at_raise": 1.4707201682144735,
-   "metric_last": 1.319071357096186
+   "metric_last": 1.3202405514496143
   },
   "ads|Zepto|BL-HR-SH-TR-250": {
    "tab": "ads",
@@ -95,7 +95,7 @@
    "status_today": "followup",
    "times_raised": 6,
    "metric_at_raise": 5.9,
-   "metric_last": 30.414700471886746
+   "metric_last": 31.767434639216003
   },
   "revenue|Instamart|BL-BC-BL-CID-250": {
    "tab": "revenue",
@@ -107,7 +107,7 @@
    "status_today": "followup",
    "times_raised": 9,
    "metric_at_raise": 48.0,
-   "metric_last": 45.74868915094656
+   "metric_last": 47.292762551981724
   },
   "ads|Instamart|BL-HR-HE-RA2-250": {
    "tab": "ads",
@@ -131,7 +131,7 @@
    "status_today": "followup",
    "times_raised": 6,
    "metric_at_raise": 1.3924756698612881,
-   "metric_last": 1.46228556615876
+   "metric_last": 1.4511430238289387
   },
   "discount|Instamart|BL-AC-SDL-LO2-00": {
    "tab": "discount",
@@ -167,7 +167,7 @@
    "status_today": "followup",
    "times_raised": 6,
    "metric_at_raise": 10.2,
-   "metric_last": 5.7
+   "metric_last": 5.4
   },
   "discount|Instamart|BL-BC-CPS-NLHL3-075": {
    "tab": "discount",
@@ -203,7 +203,7 @@
    "status_today": "escalated",
    "times_raised": 15,
    "metric_at_raise": 66.5,
-   "metric_last": 40.15167436085434
+   "metric_last": 40.234166317432795
   },
   "revenue|Amazon|BA-SHO-BM-110": {
    "tab": "revenue",
@@ -259,11 +259,11 @@
    "name": "Ubtan Tikta Face Wash",
    "sev": "critical",
    "first_raised": "2026-11-03",
-   "last_actioned": "2026-11-15",
+   "last_actioned": "2026-11-18",
    "status_today": "followup",
-   "times_raised": 6,
+   "times_raised": 7,
    "metric_at_raise": 8.3,
-   "metric_last": 5.4
+   "metric_last": 5.3
   },
   "discount|Amazon|BA-WHO-BM-110": {
    "tab": "discount",
@@ -299,7 +299,7 @@
    "status_today": "followup",
    "times_raised": 6,
    "metric_at_raise": 29.2,
-   "metric_last": 29.4
+   "metric_last": 29.5
   },
   "revenue|Meesho|FC-FW-MVGL-100": {
    "tab": "revenue",
@@ -347,7 +347,7 @@
    "status_today": "escalated",
    "times_raised": 12,
    "metric_at_raise": 83.0,
-   "metric_last": 49.184568797430344
+   "metric_last": 49.235986929322
   },
   "discount|Meesho|FC-FW-BUPA-100": {
    "tab": "discount",
@@ -359,7 +359,7 @@
    "status_today": "followup",
    "times_raised": 6,
    "metric_at_raise": 19.2,
-   "metric_last": 9.2
+   "metric_last": 9.0
   },
   "discount|Meesho|HR-HE-RA-250": {
    "tab": "discount",
@@ -371,7 +371,7 @@
    "status_today": "followup",
    "times_raised": 6,
    "metric_at_raise": 36.8,
-   "metric_last": 19.2
+   "metric_last": 18.8
   },
   "discount|Meesho|BC-CPS-NLTB2-125": {
    "tab": "discount",
@@ -383,7 +383,7 @@
    "status_today": "followup",
    "times_raised": 6,
    "metric_at_raise": 28.7,
-   "metric_last": 7.7
+   "metric_last": 7.3
   },
   "discount|Meesho|FK-HR-CB-TRM-03": {
    "tab": "discount",
@@ -395,7 +395,7 @@
    "status_today": "followup",
    "times_raised": 6,
    "metric_at_raise": 44.4,
-   "metric_last": 35.7
+   "metric_last": 34.8
   },
   "revenue|Myntra|FC-FW-BUPA-100": {
    "tab": "revenue",
@@ -419,7 +419,7 @@
    "status_today": "followup",
    "times_raised": 6,
    "metric_at_raise": 63.2,
-   "metric_last": 58.356180009175276
+   "metric_last": 57.405158129663306
   },
   "discount|Nykaa|HR-HIP-IP-85": {
    "tab": "discount",
@@ -539,7 +539,7 @@
    "status_today": "escalated",
    "times_raised": 10,
    "metric_at_raise": 63.1,
-   "metric_last": 50.43462030716724
+   "metric_last": 51.11925316201565
   },
   "ads|Zepto|BL-HR-NM-HB2-040": {
    "tab": "ads",
@@ -547,11 +547,11 @@
    "name": "Five Oil Hibiscus NutriMask - Pack of 2 - QC",
    "sev": "critical",
    "first_raised": "2026-11-04",
-   "last_actioned": "2026-11-16",
-   "status_today": "followup",
-   "times_raised": 5,
+   "last_actioned": "2026-11-18",
+   "status_today": "escalated",
+   "times_raised": 6,
    "metric_at_raise": 2.0306262230919767,
-   "metric_last": 1.7782017948502893
+   "metric_last": 1.7211187063301205
   },
   "ads|Blinkit|BL-HR-SH-HB-250": {
    "tab": "ads",
@@ -623,7 +623,7 @@
    "status_today": "followup",
    "times_raised": 8,
    "metric_at_raise": 7.4,
-   "metric_last": 8.2
+   "metric_last": 8.1
   },
   "discount|Instamart|BL-HR-CN-TR-150": {
    "tab": "discount",
@@ -647,7 +647,7 @@
    "status_today": "followup",
    "times_raised": 4,
    "metric_at_raise": 3.5,
-   "metric_last": 4.859766252136842
+   "metric_last": 4.556030859882589
   },
   "revenue|Amazon|BC-CPS-SS3-125": {
    "tab": "revenue",
@@ -655,11 +655,11 @@
    "name": "Sandalwood Soap - Pack of 3",
    "sev": "critical",
    "first_raised": "2026-11-04",
-   "last_actioned": "2026-11-10",
+   "last_actioned": "2026-11-18",
    "status_today": "followup",
-   "times_raised": 3,
+   "times_raised": 4,
    "metric_at_raise": 32.6,
-   "metric_last": 45.29840117498827
+   "metric_last": 41.914232810414525
   },
   "revenue|Amazon|FC-FW-MDPA-100": {
    "tab": "revenue",
@@ -697,18 +697,6 @@
    "metric_at_raise": 20.7,
    "metric_last": 7.6
   },
-  "discount|Amazon|HR-SH-HB-250": {
-   "tab": "discount",
-   "platform": "Amazon",
-   "name": "Five Oil Hibiscus Shampoo - 250g",
-   "sev": "critical",
-   "first_raised": "2026-11-04",
-   "last_actioned": "2026-11-13",
-   "status_today": "followup",
-   "times_raised": 4,
-   "metric_at_raise": 5.9,
-   "metric_last": 5.5
-  },
   "discount|Amazon|HR-HIP-IP-85": {
    "tab": "discount",
    "platform": "Amazon",
@@ -731,7 +719,7 @@
    "status_today": "escalated",
    "times_raised": 13,
    "metric_at_raise": 40.6,
-   "metric_last": 20.36658625180121
+   "metric_last": 20.78467570467217
   },
   "revenue|Flipkart|FK-FW-BUPA2-150": {
    "tab": "revenue",
@@ -743,7 +731,7 @@
    "status_today": "escalated",
    "times_raised": 12,
    "metric_at_raise": 24.7,
-   "metric_last": 9.192606519193767
+   "metric_last": 9.230186987615053
   },
   "revenue|Flipkart|BC-CPS-NLTB2-125": {
    "tab": "revenue",
@@ -755,7 +743,7 @@
    "status_today": "escalated",
    "times_raised": 7,
    "metric_at_raise": 59.2,
-   "metric_last": 42.77266616407272
+   "metric_last": 42.503264319242994
   },
   "revenue|Flipkart|FK-AOSC-HA-03": {
    "tab": "revenue",
@@ -779,7 +767,7 @@
    "status_today": "escalated",
    "times_raised": 8,
    "metric_at_raise": 56.0,
-   "metric_last": 34.470190643937066
+   "metric_last": 36.27358869406929
   },
   "discount|Meesho|HR-SH-HB2-250": {
    "tab": "discount",
@@ -947,7 +935,7 @@
    "status_today": "followup",
    "times_raised": 5,
    "metric_at_raise": 8.015536962464372,
-   "metric_last": 10.876948641530603
+   "metric_last": 11.00594982724112
   },
   "ads|Blinkit|BL-FC-FW-BNGL-100": {
    "tab": "ads",
@@ -959,7 +947,7 @@
    "status_today": "followup",
    "times_raised": 5,
    "metric_at_raise": 11.721317833284512,
-   "metric_last": 10.365208470475029
+   "metric_last": 10.518859434188416
   },
   "ads|Blinkit|BL-FC-KL-CN-040": {
    "tab": "ads",
@@ -971,7 +959,7 @@
    "status_today": "followup",
    "times_raised": 5,
    "metric_at_raise": 0.6505266202661029,
-   "metric_last": 0.9765481883810136
+   "metric_last": 0.9929145371684619
   },
   "ads|Blinkit|BL-AC-SDL-LO2-00": {
    "tab": "ads",
@@ -1007,7 +995,7 @@
    "status_today": "followup",
    "times_raised": 5,
    "metric_at_raise": 0.8488385687425728,
-   "metric_last": 1.4852373948870197
+   "metric_last": 1.4209633402114745
   },
   "ads|Instamart|BL-AC-KNC-WTSS-00": {
    "tab": "ads",
@@ -1019,7 +1007,7 @@
    "status_today": "followup",
    "times_raised": 5,
    "metric_at_raise": 1.7047007201507272,
-   "metric_last": 1.978025042056426
+   "metric_last": 1.9982106730564113
   },
   "revenue|Amazon|BC-CPS-TO3-125": {
    "tab": "revenue",
@@ -1067,7 +1055,7 @@
    "status_today": "escalated",
    "times_raised": 9,
    "metric_at_raise": 42.9,
-   "metric_last": 26.635860093280556
+   "metric_last": 26.357599860290847
   },
   "discount|Amazon|BA-SHO-BM-110": {
    "tab": "discount",
@@ -1175,7 +1163,7 @@
    "status_today": "followup",
    "times_raised": 5,
    "metric_at_raise": 21.8,
-   "metric_last": 17.3
+   "metric_last": 17.2
   },
   "discount|Meesho|HR-SH-NB-250": {
    "tab": "discount",
@@ -1211,7 +1199,7 @@
    "status_today": "followup",
    "times_raised": 5,
    "metric_at_raise": 52.6,
-   "metric_last": 58.93427329383704
+   "metric_last": 65.21867037189577
   },
   "revenue|Myntra|HR-HE-RA4-250": {
    "tab": "revenue",
@@ -1259,7 +1247,7 @@
    "status_today": "followup",
    "times_raised": 5,
    "metric_at_raise": 36.4,
-   "metric_last": 57.500610886294055
+   "metric_last": 60.22220381128523
   },
   "discount|Nykaa|BC-SM-CID-200": {
    "tab": "discount",
@@ -1379,7 +1367,7 @@
    "status_today": "escalated",
    "times_raised": 7,
    "metric_at_raise": 40.1,
-   "metric_last": 42.2
+   "metric_last": 41.9
   },
   "discount|Cred|BC-SM-MNS2-120": {
    "tab": "discount",
@@ -1453,18 +1441,6 @@
    "metric_at_raise": 1.9970483917600672,
    "metric_last": 2.403045571035373
   },
-  "revenue|Amazon|BC-CP-RH-030": {
-   "tab": "revenue",
-   "platform": "Amazon",
-   "name": "Rosehip Oil - 30 ml",
-   "sev": "critical",
-   "first_raised": "2026-11-06",
-   "last_actioned": "2026-11-06",
-   "status_today": "new",
-   "times_raised": 1,
-   "metric_at_raise": 69.85594169906328,
-   "metric_last": 69.85594169906328
-  },
   "revenue|Amazon|CB-SH-HRA2-03": {
    "tab": "revenue",
    "platform": "Amazon",
@@ -1475,7 +1451,7 @@
    "status_today": "escalated",
    "times_raised": 12,
    "metric_at_raise": 64.39328240071582,
-   "metric_last": 45.40577957385722
+   "metric_last": 47.729989528332496
   },
   "revenue|Flipkart|FK-HR-CB-TRM-03": {
    "tab": "revenue",
@@ -1631,7 +1607,7 @@
    "status_today": "escalated",
    "times_raised": 10,
    "metric_at_raise": 81.23153828675301,
-   "metric_last": 54.72241157312732
+   "metric_last": 51.503446186472765
   },
   "discount|Myntra|LP-LB-BC-010": {
    "tab": "discount",
@@ -1667,7 +1643,7 @@
    "status_today": "escalated",
    "times_raised": 8,
    "metric_at_raise": 76.99166186715829,
-   "metric_last": 65.71697250549404
+   "metric_last": 63.838480231188534
   },
   "revenue|Nykaa|HR-PHO-SB-050": {
    "tab": "revenue",
@@ -1775,7 +1751,7 @@
    "status_today": "followup",
    "times_raised": 4,
    "metric_at_raise": 33.007463471039635,
-   "metric_last": 40.69670212054318
+   "metric_last": 42.009498963141354
   },
   "ads|Amazon|BA-WHO-BM-110": {
    "tab": "ads",
@@ -1787,7 +1763,7 @@
    "status_today": "followup",
    "times_raised": 4,
    "metric_at_raise": 5.574530716723549,
-   "metric_last": 5.999228083829954
+   "metric_last": 5.999509253488536
   },
   "ads|Amazon|HR-SH-CCCC-02": {
    "tab": "ads",
@@ -1867,11 +1843,11 @@
    "name": "Castor Oil - 200 ml",
    "sev": "critical",
    "first_raised": "2026-11-08",
-   "last_actioned": "2026-11-17",
-   "status_today": "followup",
-   "times_raised": 6,
+   "last_actioned": "2026-11-18",
+   "status_today": "escalated",
+   "times_raised": 7,
    "metric_at_raise": 76.14228877851087,
-   "metric_last": 68.18924216027875
+   "metric_last": 65.91699990842211
   },
   "discount|Myntra|LP-LB-PR-010": {
    "tab": "discount",
@@ -1883,7 +1859,7 @@
    "status_today": "followup",
    "times_raised": 4,
    "metric_at_raise": 19.0,
-   "metric_last": 19.2
+   "metric_last": 19.3
   },
   "revenue|Nykaa|FC-KL-TK-040": {
    "tab": "revenue",
@@ -1907,7 +1883,7 @@
    "status_today": "followup",
    "times_raised": 4,
    "metric_at_raise": 1.3591578947368421,
-   "metric_last": 1.5844188376753507
+   "metric_last": 1.566659791991986
   },
   "ads|Nykaa|AC-KNC-WTSS-00": {
    "tab": "ads",
@@ -1931,7 +1907,7 @@
    "status_today": "followup",
    "times_raised": 4,
    "metric_at_raise": 9.5,
-   "metric_last": 9.7
+   "metric_last": 9.9
   },
   "discount|Nykaa|FC-FL-GU2-100": {
    "tab": "discount",
@@ -1979,7 +1955,7 @@
    "status_today": "escalated",
    "times_raised": 6,
    "metric_at_raise": 66.52559789310234,
-   "metric_last": 54.95592869430194
+   "metric_last": 59.89005232320211
   },
   "revenue|Big Basket|BL-HR-HE-RA2-250": {
    "tab": "revenue",
@@ -2039,7 +2015,7 @@
    "status_today": "followup",
    "times_raised": 4,
    "metric_at_raise": 0.8684034738046695,
-   "metric_last": 1.4447413643152576
+   "metric_last": 1.4931977982628355
   },
   "discount|Amazon|HR-SH-NB-250": {
    "tab": "discount",
@@ -2099,7 +2075,7 @@
    "status_today": "escalated",
    "times_raised": 7,
    "metric_at_raise": 81.04295508303355,
-   "metric_last": 62.157151634800165
+   "metric_last": 60.10456010620875
   },
   "ads|Nykaa|AC-SDL-LO2-00": {
    "tab": "ads",
@@ -2111,7 +2087,7 @@
    "status_today": "followup",
    "times_raised": 4,
    "metric_at_raise": 1.6229492091561057,
-   "metric_last": 1.6978392689384234
+   "metric_last": 1.7002453050227209
   },
   "discount|Nykaa|LP-LM-BR-012": {
    "tab": "discount",
@@ -2135,7 +2111,7 @@
    "status_today": "followup",
    "times_raised": 2,
    "metric_at_raise": 13.7,
-   "metric_last": 10.2
+   "metric_last": 9.9
   },
   "discount|Snapdeal|HR-SH-HB-250": {
    "tab": "discount",
@@ -2243,19 +2219,19 @@
    "status_today": "followup",
    "times_raised": 3,
    "metric_at_raise": 9.922412637499836,
-   "metric_last": 9.266725544683242
+   "metric_last": 9.260472163720888
   },
   "ads|Amazon|HR-HE-RASB-03": {
    "tab": "ads",
    "platform": "Amazon",
    "name": "Henna Paste x 2 + Post-Henna Oil",
-   "sev": "warning",
+   "sev": "critical",
    "first_raised": "2026-11-12",
    "last_actioned": "2026-11-18",
    "status_today": "followup",
    "times_raised": 3,
    "metric_at_raise": 3.373199422022642,
-   "metric_last": 4.0524923838737035
+   "metric_last": 4.010000998603976
   },
   "ads|Amazon|CB-RA2-RHBN-03": {
    "tab": "ads",
@@ -2267,7 +2243,7 @@
    "status_today": "followup",
    "times_raised": 3,
    "metric_at_raise": 2.6410455663175463,
-   "metric_last": 2.8378525431561887
+   "metric_last": 2.8282049598559316
   },
   "ads|Amazon|HR-SHO-NB-100": {
    "tab": "ads",
@@ -2303,7 +2279,7 @@
    "status_today": "followup",
    "times_raised": 3,
    "metric_at_raise": 15.5,
-   "metric_last": 16.7
+   "metric_last": 16.8
   },
   "ads|Myntra|FC-FW-BUPA-100": {
    "tab": "ads",
@@ -2315,7 +2291,7 @@
    "status_today": "followup",
    "times_raised": 3,
    "metric_at_raise": 1.3146721078105723,
-   "metric_last": 1.9734550566718196
+   "metric_last": 2.0713451453505796
   },
   "revenue|Nykaa|FC-KL-GK-040": {
    "tab": "revenue",
@@ -2327,7 +2303,7 @@
    "status_today": "followup",
    "times_raised": 3,
    "metric_at_raise": 41.555134917250406,
-   "metric_last": 49.91756759160968
+   "metric_last": 52.31225289318683
   },
   "revenue|Nykaa|BA-SMA-BN-200": {
    "tab": "revenue",
@@ -2351,19 +2327,19 @@
    "status_today": "followup",
    "times_raised": 3,
    "metric_at_raise": 1.2776054024457018,
-   "metric_last": 1.2502894188469553
+   "metric_last": 1.2568735271013354
   },
   "ads|Nykaa|BA-PBO-VCO-100": {
    "tab": "ads",
    "platform": "Nykaa",
    "name": "Pure Virgin Coconut Baby Oil - 100 ml",
-   "sev": "warning",
+   "sev": "critical",
    "first_raised": "2026-11-12",
    "last_actioned": "2026-11-18",
    "status_today": "followup",
    "times_raised": 3,
    "metric_at_raise": 2.135011404918293,
-   "metric_last": 2.036295900617715
+   "metric_last": 1.9937362372012728
   },
   "discount|Nykaa|LP-LB-BC-010": {
    "tab": "discount",
@@ -2375,7 +2351,7 @@
    "status_today": "escalated",
    "times_raised": 5,
    "metric_at_raise": 6.2,
-   "metric_last": 11.4
+   "metric_last": 11.8
   },
   "discount|Nykaa|HR-SH-NB-250": {
    "tab": "discount",
@@ -2387,19 +2363,7 @@
    "status_today": "escalated",
    "times_raised": 5,
    "metric_at_raise": 6.5,
-   "metric_last": 12.4
-  },
-  "discount|Nykaa|AC-KNC-DWT-02": {
-   "tab": "discount",
-   "platform": "Nykaa",
-   "name": "Neem Comb Combo Dual + Wide",
-   "sev": "critical",
-   "first_raised": "2026-11-12",
-   "last_actioned": "2026-11-12",
-   "status_today": "new",
-   "times_raised": 1,
-   "metric_at_raise": 5.2,
-   "metric_last": 5.2
+   "metric_last": 12.8
   },
   "discount|Pop Club|AC-SDL-LO2-00": {
    "tab": "discount",
@@ -2411,7 +2375,7 @@
    "status_today": "followup",
    "times_raised": 3,
    "metric_at_raise": 22.2,
-   "metric_last": 22.7
+   "metric_last": 22.9
   },
   "discount|Snapdeal|HR-SH-HBHB-02": {
    "tab": "discount",
@@ -2687,7 +2651,7 @@
    "status_today": "followup",
    "times_raised": 2,
    "metric_at_raise": 4.126595022740748,
-   "metric_last": 4.275825050998072
+   "metric_last": 4.482185692962484
   },
   "ads|Flipkart Minutes|BL-HR-SHO-HA-100": {
    "tab": "ads",
@@ -2723,7 +2687,7 @@
    "status_today": "followup",
    "times_raised": 2,
    "metric_at_raise": 24.342477820424087,
-   "metric_last": 34.91120304536589
+   "metric_last": 40.68568848290591
   },
   "ads|Amazon|HR-AHO-HA-100": {
    "tab": "ads",
@@ -2939,7 +2903,7 @@
    "status_today": "escalated",
    "times_raised": 2,
    "metric_at_raise": 7.8,
-   "metric_last": 9.8
+   "metric_last": 11.5
   },
   "discount|Amazon|BA-WMA-BS-200": {
    "tab": "discount",
@@ -3181,18 +3145,6 @@
    "metric_at_raise": 1.6378562922217654,
    "metric_last": 1.6378562922217654
   },
-  "ads|Nykaa|BC-HM-BVE2-030": {
-   "tab": "ads",
-   "platform": "Nykaa",
-   "name": "Berry Vanilla Hand Malai - Pack of 2",
-   "sev": "warning",
-   "first_raised": "2026-11-17",
-   "last_actioned": "2026-11-17",
-   "status_today": "new",
-   "times_raised": 1,
-   "metric_at_raise": 0.7754730958313691,
-   "metric_last": 0.7754730958313691
-  },
   "discount|Pop Club|BC-SM-CID-120": {
    "tab": "discount",
    "platform": "Pop Club",
@@ -3227,7 +3179,7 @@
    "status_today": "new",
    "times_raised": 1,
    "metric_at_raise": 62.05651855951299,
-   "metric_last": 62.05651855951299
+   "metric_last": 58.406135114835756
   },
   "revenue|Myntra|BC-PO-AL-50": {
    "tab": "revenue",
@@ -3251,7 +3203,43 @@
    "status_today": "new",
    "times_raised": 1,
    "metric_at_raise": 8.1,
-   "metric_last": 8.1
+   "metric_last": 7.6
+  },
+  "ads|Flipkart|FC-FW-BNGL-100": {
+   "tab": "ads",
+   "platform": "Flipkart",
+   "name": "Bitter Neem Tikta Gel Face Wash",
+   "sev": "critical",
+   "first_raised": "2026-11-18",
+   "last_actioned": "2026-11-18",
+   "status_today": "new",
+   "times_raised": 1,
+   "metric_at_raise": 1.1996614276085953,
+   "metric_last": 1.1996614276085953
+  },
+  "ads|Myntra|HR-HB-AG-025": {
+   "tab": "ads",
+   "platform": "Myntra",
+   "name": "Argan Grapeseed Hair Balm",
+   "sev": "critical",
+   "first_raised": "2026-11-18",
+   "last_actioned": "2026-11-18",
+   "status_today": "new",
+   "times_raised": 1,
+   "metric_at_raise": 2.9222281739375413,
+   "metric_last": 2.9222281739375413
+  },
+  "ads|Nykaa|BA-SHO-BM-110": {
+   "tab": "ads",
+   "platform": "Nykaa",
+   "name": "Brahmi Summer Baby Scalp Oil - 110 ml",
+   "sev": "critical",
+   "first_raised": "2026-11-18",
+   "last_actioned": "2026-11-18",
+   "status_today": "new",
+   "times_raised": 1,
+   "metric_at_raise": 0.8677438659485338,
+   "metric_last": 0.8677438659485338
   }
  },
  "last_sent": "2026-11-18"
