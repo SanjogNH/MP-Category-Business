@@ -1,0 +1,198 @@
+{
+ "wbr": "2026-11-23",
+ "manager": "mayank",
+ "sent_at": "2026-11-19T11:01:05.257270+05:30",
+ "message_id": "<179506630508.2285.14499138858302262203@nathabit.in>",
+ "subject": "WBR prep · Mon 23 Nov 5 pm · Mayank [WBR-20261123-mayank]",
+ "query_window": [
+  "2026-11-11",
+  "2026-11-17"
+ ],
+ "query_windows": {
+  "Instamart": [
+   "2026-11-11",
+   "2026-11-17"
+  ]
+ },
+ "questions": [
+  {
+   "id": "Q1",
+   "kind": "revenue",
+   "category": null,
+   "platform": "Instamart",
+   "facts": {
+    "week": "8 Nov – 17 Nov",
+    "week_revenue": "₹9,900",
+    "week_target": "₹82,483",
+    "attainment": "12.0%",
+    "gap": "−₹72,583",
+    "vs_previous_week": "−34.4%",
+    "ad_spend": "₹611",
+    "roas": "1.60",
+    "roas_previous_week": "1.21",
+    "discount": "29.3%",
+    "guideline": "–",
+    "discount_vs_guideline": "–",
+    "sku_drivers": "Tomato Basil 75g - QC (−₹72,583)",
+    "ad_plan_for_the_days": "no ad plan",
+    "spend_vs_ad_plan": "–",
+    "ad_spend_as_pct_of_sales": "6.2%",
+    "platform_ad_spend_as_pct_of_sales": "21.2%"
+   },
+   "text": "Mayank, Instamart revenue came in at ₹9,900 against a ₹82,483 target (12.0% attainment, −34.4% vs the previous week), and the whole gap sits on Tomato Basil 75g - QC (−₹72,583) even with a 29.3% discount. What happened on this SKU (stock, listing, or visibility), and what is the plan to recover it?"
+  },
+  {
+   "id": "Q2",
+   "kind": "spend",
+   "category": "Shampoo",
+   "platform": "Instamart",
+   "facts": {
+    "week": "8 Nov – 17 Nov",
+    "week_revenue": "₹5.6 L",
+    "week_target": "₹4.6 L",
+    "attainment": "120.7%",
+    "gap": "₹95,048",
+    "vs_previous_week": "+2.1%",
+    "ad_spend": "₹2.1 L",
+    "roas": "1.73",
+    "roas_previous_week": "1.61",
+    "discount": "6.9%",
+    "guideline": "8.5%",
+    "discount_vs_guideline": "−1.6 pp",
+    "sku_drivers": "Five Oil Hibiscus Shampoo - QC (₹17,816); Neem Beracyl Dandruff Shampoo 250ml - QC (₹24,580)",
+    "ad_plan_for_the_days": "₹1.8 L",
+    "spend_vs_ad_plan": "118%",
+    "ad_spend_as_pct_of_sales": "38.2%",
+    "platform_ad_spend_as_pct_of_sales": "21.2%",
+    "why_flagged": "high spend for the sales"
+   },
+   "text": "Mayank, Shampoo on Instamart is ahead of target at ₹5.6 L vs ₹4.6 L (120.7%), but ad spend was ₹2.1 L against a ₹1.8 L plan (118%), which is 38.2% of sales versus 21.2% for the platform. Is the extra spend at this ROAS of 1.73 deliberate, and what are you seeing that justifies a share this far above the platform norm?"
+  },
+  {
+   "id": "Q3",
+   "kind": "spend",
+   "category": "Malai Lotion",
+   "platform": "Instamart",
+   "facts": {
+    "week": "8 Nov – 17 Nov",
+    "week_revenue": "₹1.7 L",
+    "week_target": "₹1.6 L",
+    "attainment": "107.0%",
+    "gap": "₹11,381",
+    "vs_previous_week": "+220.7%",
+    "ad_spend": "₹65,797",
+    "roas": "1.86",
+    "roas_previous_week": "0.82",
+    "discount": "12.2%",
+    "guideline": "5.8%",
+    "discount_vs_guideline": "+6.4 pp",
+    "sku_drivers": "Fig Rose PrimaLight - QC (−₹33,577); Double Cocoa Intense Dermacare - QC (−₹24,315)",
+    "ad_plan_for_the_days": "₹75,000",
+    "spend_vs_ad_plan": "88%",
+    "ad_spend_as_pct_of_sales": "37.8%",
+    "platform_ad_spend_as_pct_of_sales": "21.2%",
+    "why_flagged": "high spend for the sales"
+   },
+   "text": "Mayank, Malai Lotion on Instamart hit ₹1.7 L vs ₹1.6 L (107.0%) with ad spend of ₹65,797 against a ₹75,000 plan, but that is 37.8% of sales versus 21.2% for the platform, and the discount is 12.2% against a 5.8% guideline. ROAS did improve from 0.82 to 1.86, so what drove that recovery, and can you bring the ad share and discount closer to norm?"
+  },
+  {
+   "id": "Q4",
+   "kind": "spend",
+   "category": "Loofah",
+   "platform": "Instamart",
+   "facts": {
+    "week": "8 Nov – 17 Nov",
+    "week_revenue": "₹2.6 L",
+    "week_target": "₹2.6 L",
+    "attainment": "100.0%",
+    "gap": "₹76",
+    "vs_previous_week": "−21.9%",
+    "ad_spend": "₹67,595",
+    "roas": "2.37",
+    "roas_previous_week": "3.38",
+    "discount": "7.1%",
+    "guideline": "5.0%",
+    "discount_vs_guideline": "+2.1 pp",
+    "sku_drivers": "Sun Dried Loofah - Pack of 2 - QC (−₹7,608); Sun Dried Loofah - QC (₹7,684)",
+    "ad_plan_for_the_days": "₹50,000",
+    "spend_vs_ad_plan": "135%",
+    "ad_spend_as_pct_of_sales": "25.8%",
+    "platform_ad_spend_as_pct_of_sales": "21.2%",
+    "why_flagged": "over ad plan, ROAS falling"
+   },
+   "text": "Mayank, Loofah on Instamart landed exactly on target at ₹2.6 L (100.0%), but ad spend was ₹67,595 against a ₹50,000 plan (135%) while ROAS slipped from 3.38 to 2.37. What is behind the drop in returns on the extra spend, and how do you plan to rein it in?"
+  },
+  {
+   "id": "Q5",
+   "kind": "discount",
+   "category": "Soap",
+   "platform": "Instamart",
+   "facts": {
+    "week": "8 Nov – 17 Nov",
+    "week_revenue": "₹4.1 L",
+    "week_target": "₹4.1 L",
+    "attainment": "100.3%",
+    "gap": "₹1,345",
+    "vs_previous_week": "−15.2%",
+    "ad_spend": "₹1.2 L",
+    "roas": "2.15",
+    "roas_previous_week": "1.93",
+    "discount": "11.1%",
+    "guideline": "4.7%",
+    "discount_vs_guideline": "+6.3 pp",
+    "sku_drivers": "Lavender 75g - Pack of 3 - QC (−₹16,922); Healing Turmeric & Oats - QC (₹601)",
+    "ad_plan_for_the_days": "₹1.9 L",
+    "spend_vs_ad_plan": "62%",
+    "ad_spend_as_pct_of_sales": "28.4%",
+    "platform_ad_spend_as_pct_of_sales": "21.2%"
+   },
+   "text": "Mayank, Soap on Instamart met target at ₹4.1 L (100.3%), but the discount ran at 11.1% against a 4.7% guideline (+6.3 pp), with Lavender 75g - Pack of 3 - QC at −₹16,922. Why was the discount this deep when ads were only ₹1.2 L against a ₹1.9 L plan, and could the target have been held at a lower discount?"
+  },
+  {
+   "id": "Q6",
+   "kind": "discount",
+   "category": "Dasabuti Hair Oil",
+   "platform": "Instamart",
+   "facts": {
+    "week": "8 Nov – 17 Nov",
+    "week_revenue": "₹2.4 L",
+    "week_target": "₹2.4 L",
+    "attainment": "100.4%",
+    "gap": "₹922",
+    "vs_previous_week": "+20.4%",
+    "ad_spend": "₹22,881",
+    "roas": "5.22",
+    "roas_previous_week": "1.54",
+    "discount": "16.0%",
+    "guideline": "7.3%",
+    "discount_vs_guideline": "+8.6 pp",
+    "sku_drivers": "Castor Coconut 50ml - QC (−₹25,522); Crushed Tri-Leaf Summer Hair Oil 100 ml - QC (−₹23,569)",
+    "ad_plan_for_the_days": "₹65,000",
+    "spend_vs_ad_plan": "35%",
+    "ad_spend_as_pct_of_sales": "9.6%",
+    "platform_ad_spend_as_pct_of_sales": "21.2%"
+   },
+   "text": "Mayank, Dasabuti Hair Oil on Instamart hit target at ₹2.4 L (100.4%), but the discount was 16.0% against a 7.3% guideline (+8.6 pp), while ad spend was only ₹22,881 of a ₹65,000 plan at a ROAS of 5.22. Since ads are working well and are underused, why lean on such a deep discount instead of putting more into ads?"
+  }
+ ],
+ "own_ids": [
+  "<179506630508.2285.14499138858302262203@nathabit.in>"
+ ],
+ "snapshot_accounts": [
+  {
+   "name": "Instamart",
+   "plats": [
+    "Instamart"
+   ],
+   "metrics": [
+    "Primary",
+    "Secondary",
+    "Discounting %",
+    "Spend",
+    "Availability"
+   ]
+  }
+ ],
+ "reminder_sent": false,
+ "pack_sent": false
+}
