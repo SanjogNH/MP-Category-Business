@@ -11,7 +11,7 @@
    "status_today": "followup",
    "times_raised": 7,
    "metric_at_raise": 65.2,
-   "metric_last": 60.979211217395665
+   "metric_last": 60.56394060337038
   },
   "revenue|Zepto|BL-FC-KL-CN-040": {
    "tab": "revenue",
@@ -23,7 +23,7 @@
    "status_today": "escalated",
    "times_raised": 16,
    "metric_at_raise": 82.6,
-   "metric_last": 66.25778383822579
+   "metric_last": 65.34043984642841
   },
   "ads|Zepto|BL-HR-SH-HB-250": {
    "tab": "ads",
@@ -47,7 +47,7 @@
    "status_today": "followup",
    "times_raised": 6,
    "metric_at_raise": 1.377275273032764,
-   "metric_last": 1.4678464318671178
+   "metric_last": 1.4880648688046647
   },
   "ads|Blinkit|BL-HR-SHO-HA-100": {
    "tab": "ads",
@@ -301,18 +301,6 @@
    "metric_at_raise": 29.2,
    "metric_last": 29.5
   },
-  "revenue|Meesho|FC-FW-MVGL-100": {
-   "tab": "revenue",
-   "platform": "Meesho",
-   "name": "Moringa Vit-C Tikta Gel Face Wash",
-   "sev": "critical",
-   "first_raised": "2026-11-03",
-   "last_actioned": "2026-11-03",
-   "status_today": "new",
-   "times_raised": 1,
-   "metric_at_raise": 60.2,
-   "metric_last": 60.2
-  },
   "revenue|Meesho|BC-CPS-NLTB4-125": {
    "tab": "revenue",
    "platform": "Meesho",
@@ -347,7 +335,7 @@
    "status_today": "escalated",
    "times_raised": 13,
    "metric_at_raise": 83.0,
-   "metric_last": 49.235986929322
+   "metric_last": 48.51372423589621
   },
   "discount|Meesho|FC-FW-BUPA-100": {
    "tab": "discount",
@@ -539,7 +527,7 @@
    "status_today": "escalated",
    "times_raised": 11,
    "metric_at_raise": 63.1,
-   "metric_last": 51.11925316201565
+   "metric_last": 50.86568543799773
   },
   "ads|Zepto|BL-HR-NM-HB2-040": {
    "tab": "ads",
@@ -551,7 +539,7 @@
    "status_today": "escalated",
    "times_raised": 7,
    "metric_at_raise": 2.0306262230919767,
-   "metric_last": 1.7211187063301205
+   "metric_last": 1.7292455708926424
   },
   "ads|Blinkit|BL-HR-SH-HB-250": {
    "tab": "ads",
@@ -575,7 +563,7 @@
    "status_today": "followup",
    "times_raised": 10,
    "metric_at_raise": 82.5,
-   "metric_last": 75.98236376584738
+   "metric_last": 75.04173632435885
   },
   "ads|Instamart|BL-FC-FW-BUPA-100": {
    "tab": "ads",
@@ -611,7 +599,7 @@
    "status_today": "followup",
    "times_raised": 6,
    "metric_at_raise": 8.8,
-   "metric_last": 3.9
+   "metric_last": 3.7
   },
   "discount|Instamart|BL-HR-CN-HB-150": {
    "tab": "discount",
@@ -635,7 +623,7 @@
    "status_today": "followup",
    "times_raised": 6,
    "metric_at_raise": 14.5,
-   "metric_last": 9.4
+   "metric_last": 9.2
   },
   "revenue|Amazon|FC-FW-BUPA2-100": {
    "tab": "revenue",
@@ -719,7 +707,7 @@
    "status_today": "escalated",
    "times_raised": 14,
    "metric_at_raise": 40.6,
-   "metric_last": 20.78467570467217
+   "metric_last": 22.367761456267665
   },
   "revenue|Flipkart|FK-FW-BUPA2-150": {
    "tab": "revenue",
@@ -731,7 +719,7 @@
    "status_today": "escalated",
    "times_raised": 13,
    "metric_at_raise": 24.7,
-   "metric_last": 9.230186987615053
+   "metric_last": 9.29120969127315
   },
   "revenue|Flipkart|BC-CPS-NLTB2-125": {
    "tab": "revenue",
@@ -743,7 +731,7 @@
    "status_today": "escalated",
    "times_raised": 8,
    "metric_at_raise": 59.2,
-   "metric_last": 42.503264319242994
+   "metric_last": 42.51465241114676
   },
   "revenue|Flipkart|FK-AOSC-HA-03": {
    "tab": "revenue",
@@ -767,7 +755,7 @@
    "status_today": "escalated",
    "times_raised": 9,
    "metric_at_raise": 56.0,
-   "metric_last": 36.27358869406929
+   "metric_last": 37.8581310151793
   },
   "discount|Meesho|HR-SH-HB2-250": {
    "tab": "discount",
@@ -791,7 +779,7 @@
    "status_today": "followup",
    "times_raised": 6,
    "metric_at_raise": 23.8,
-   "metric_last": 22.3
+   "metric_last": 22.2
   },
   "discount|Meesho|FC-FW-BNGL-100": {
    "tab": "discount",
@@ -815,7 +803,7 @@
    "status_today": "followup",
    "times_raised": 6,
    "metric_at_raise": 17.0,
-   "metric_last": 10.0
+   "metric_last": 10.1
   },
   "discount|Nykaa|AC-SDL-LO4-00": {
    "tab": "discount",
@@ -863,7 +851,7 @@
    "status_today": "followup",
    "times_raised": 6,
    "metric_at_raise": 31.8,
-   "metric_last": 28.3
+   "metric_last": 28.1
   },
   "discount|Cred|HR-SH-HBHB-02": {
    "tab": "discount",
@@ -1141,18 +1129,6 @@
    "metric_at_raise": 39.9,
    "metric_last": 39.9
   },
-  "discount|Meesho|FC-FW-MDPA-100": {
-   "tab": "discount",
-   "platform": "Meesho",
-   "name": "Masoor Dal Tikta Face Wash",
-   "sev": "critical",
-   "first_raised": "2026-11-05",
-   "last_actioned": "2026-11-11",
-   "status_today": "followup",
-   "times_raised": 3,
-   "metric_at_raise": 13.7,
-   "metric_last": 8.7
-  },
   "discount|Meesho|HR-SHO-HA2-100": {
    "tab": "discount",
    "platform": "Meesho",
@@ -1187,7 +1163,7 @@
    "status_today": "followup",
    "times_raised": 5,
    "metric_at_raise": 35.4,
-   "metric_last": 20.2
+   "metric_last": 19.9
   },
   "revenue|Myntra|FC-FW-MDPA-100": {
    "tab": "revenue",
@@ -1379,7 +1355,7 @@
    "status_today": "escalated",
    "times_raised": 5,
    "metric_at_raise": 35.2,
-   "metric_last": 37.2
+   "metric_last": 36.8
   },
   "discount|Cred|FC-ML-PMJ-030": {
    "tab": "discount",
@@ -1535,7 +1511,7 @@
    "status_today": "followup",
    "times_raised": 5,
    "metric_at_raise": 3.3238768647063894,
-   "metric_last": 3.004174158746468
+   "metric_last": 2.9577210936306706
   },
   "revenue|Instamart|BL-BC-CPS-NLTB-075": {
    "tab": "revenue",
@@ -1547,7 +1523,7 @@
    "status_today": "followup",
    "times_raised": 5,
    "metric_at_raise": 20.604162457062035,
-   "metric_last": 15.391344653015738
+   "metric_last": 15.269751464942413
   },
   "discount|Instamart|BL-LP-LB-BC-010": {
    "tab": "discount",
@@ -1643,19 +1619,19 @@
    "status_today": "escalated",
    "times_raised": 9,
    "metric_at_raise": 76.99166186715829,
-   "metric_last": 63.838480231188534
+   "metric_last": 60.2918979961225
   },
   "revenue|Nykaa|HR-PHO-SB-050": {
    "tab": "revenue",
    "platform": "Nykaa",
    "name": "Post-Henna Stain Boost Oil",
-   "sev": "warning",
+   "sev": "critical",
    "first_raised": "2026-11-07",
-   "last_actioned": "2026-11-10",
-   "status_today": "followup",
-   "times_raised": 2,
+   "last_actioned": "2026-11-19",
+   "status_today": "escalated",
+   "times_raised": 3,
    "metric_at_raise": 74.67122353991637,
-   "metric_last": 70.10582315231454
+   "metric_last": 69.38129061494976
   },
   "ads|Nykaa|HR-HE-RA2-250": {
    "tab": "ads",
@@ -1823,7 +1799,7 @@
    "status_today": "followup",
    "times_raised": 4,
    "metric_at_raise": 43.0,
-   "metric_last": 41.0
+   "metric_last": 40.5
   },
   "revenue|Myntra|HR-SH-HB-650": {
    "tab": "revenue",
@@ -2075,7 +2051,7 @@
    "status_today": "escalated",
    "times_raised": 8,
    "metric_at_raise": 81.04295508303355,
-   "metric_last": 60.10456010620875
+   "metric_last": 56.76541787808604
   },
   "ads|Nykaa|AC-SDL-LO2-00": {
    "tab": "ads",
@@ -2171,7 +2147,7 @@
    "status_today": "followup",
    "times_raised": 4,
    "metric_at_raise": 46.9,
-   "metric_last": 45.0
+   "metric_last": 44.8
   },
   "discount|Flipkart|FK-CB-BUPG-02": {
    "tab": "discount",
@@ -2315,7 +2291,7 @@
    "status_today": "followup",
    "times_raised": 3,
    "metric_at_raise": 50.52896170179137,
-   "metric_last": 54.02837448961034
+   "metric_last": 51.02679812907643
   },
   "ads|Nykaa|HR-NJ-RJ-200": {
    "tab": "ads",
@@ -2723,7 +2699,7 @@
    "status_today": "followup",
    "times_raised": 2,
    "metric_at_raise": 20.2,
-   "metric_last": 20.2
+   "metric_last": 20.3
   },
   "discount|Jio Mart|HR-HE-RA2-250": {
    "tab": "discount",
@@ -2747,7 +2723,7 @@
    "status_today": "followup",
    "times_raised": 2,
    "metric_at_raise": 4.3,
-   "metric_last": 4.6
+   "metric_last": 4.3
   },
   "ads|Amazon|FC-FW-MDPA-100": {
    "tab": "ads",
@@ -3049,18 +3025,6 @@
    "metric_at_raise": 84.23937266700095,
    "metric_last": 84.23937266700095
   },
-  "revenue|Instamart|BL-LP-LB-BC-010": {
-   "tab": "revenue",
-   "platform": "Instamart",
-   "name": "Beetroot Crush Lip Butter - QC",
-   "sev": "warning",
-   "first_raised": "2026-11-17",
-   "last_actioned": "2026-11-17",
-   "status_today": "new",
-   "times_raised": 1,
-   "metric_at_raise": 84.27269208973438,
-   "metric_last": 84.27269208973438
-  },
   "ads|Amazon|CB-CPS-MS2-125": {
    "tab": "ads",
    "platform": "Amazon",
@@ -3252,6 +3216,42 @@
    "times_raised": 1,
    "metric_at_raise": 79.07440663808998,
    "metric_last": 79.07440663808998
+  },
+  "revenue|Instamart|BL-FC-FW-KMPA-100": {
+   "tab": "revenue",
+   "platform": "Instamart",
+   "name": "Kali Mitti Face Wash - 100g - QC",
+   "sev": "warning",
+   "first_raised": "2026-11-19",
+   "last_actioned": "2026-11-19",
+   "status_today": "new",
+   "times_raised": 1,
+   "metric_at_raise": 83.32574662813103,
+   "metric_last": 83.32574662813103
+  },
+  "revenue|Nykaa|BA-BP-RHSC-150": {
+   "tab": "revenue",
+   "platform": "Nykaa",
+   "name": "Raw + Shwet Baby Powder",
+   "sev": "critical",
+   "first_raised": "2026-11-19",
+   "last_actioned": "2026-11-19",
+   "status_today": "new",
+   "times_raised": 1,
+   "metric_at_raise": 11.96422769887682,
+   "metric_last": 11.96422769887682
+  },
+  "discount|Pop Club|FC-AC-OK-050": {
+   "tab": "discount",
+   "platform": "Pop Club",
+   "name": "Active Orange Kiwi Vit-C Gel",
+   "sev": "critical",
+   "first_raised": "2026-11-19",
+   "last_actioned": "2026-11-19",
+   "status_today": "new",
+   "times_raised": 1,
+   "metric_at_raise": 31.8,
+   "metric_last": 31.8
   }
  },
  "last_sent": "2026-11-19"
