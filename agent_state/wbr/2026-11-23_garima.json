@@ -47,7 +47,30 @@
     "ad_spend_as_pct_of_sales": "2.4%",
     "platform_ad_spend_as_pct_of_sales": "11.8%"
    },
-   "text": "Henna on Blinkit closed at ₹27.5 L against a ₹32.0 L target (85.8%), down 23.8% on the previous week, with Henna Paste - Pack of 2 - QC accounting for −₹5.8 L. What caused the drop on that SKU, and is it recovering?"
+   "text": "Henna on Blinkit closed at ₹27.5 L against a ₹32.0 L target (85.8%), down 23.8% on the previous week, with Henna Paste - Pack of 2 - QC accounting for −₹5.8 L. What caused the drop on that SKU, and is it recovering?",
+   "review_period_facts": {
+    "week": "14 Nov – 19 Nov",
+    "week_revenue": "₹19.7 L",
+    "week_target": "₹21.3 L",
+    "attainment": "92.2%",
+    "gap": "−₹1.7 L",
+    "vs_previous_week": "+6.2%",
+    "ad_spend": "₹37,589",
+    "roas": "13.44",
+    "roas_previous_week": "7.72",
+    "discount": "4.1%",
+    "guideline": "3.5%",
+    "discount_vs_guideline": "+0.6 pp",
+    "sku_drivers": "Henna Paste - Pack of 2 - QC (−₹2.8 L); Root Touch Up Pack of 2 - QC (₹1.1 L)",
+    "ad_plan_for_the_days": "₹40,000",
+    "spend_vs_ad_plan": "94%",
+    "ad_spend_as_pct_of_sales": "1.9%",
+    "platform_ad_spend_as_pct_of_sales": "9.2%"
+   },
+   "verdict": "Partly aligned",
+   "answer": "Garima attributes the drop to Henna Paste Pack of 2 stock-outs in west and central cities (Mumbai availability 55.0 to 12.1), says availability is recovering (Mumbai 58%, Pune 91% on 17 Nov), and says a PO bump request has been raised.",
+   "why": "Stock-outs fit the −₹5.8 L Pack of 2 gap, and the review period shows recovery (+6.2% WoW, attainment 92.2% vs 85.8%), but there is no date for the PO bump, the 4.2 L drop she quotes does not match the dashboard's −23.8%, and discount stays 4.1% vs 3.5% guideline (+0.6 pp) without comment.",
+   "ask": "When will the PO bump land, what availability do Mumbai and Pune hold by month end, and why is discount still +0.6 pp over guideline?"
   },
   {
    "id": "Q2",
@@ -73,7 +96,30 @@
     "ad_spend_as_pct_of_sales": "54.3%",
     "platform_ad_spend_as_pct_of_sales": "11.8%"
    },
-   "text": "Soap on Blinkit did ₹38,555 against a ₹4.5 L target (8.6%), with Himalayan Lavender 125g - Pack of 2 - QC (−₹2.8 L) the largest shortfall. Ad spend was ₹20,948 against an ad plan showing −₹14,667, which looks like a data error, and that spend is 54.3% of sales vs 11.8% for the platform. Can you confirm the correct plan figure and explain what happened on these Pack of 2 SKUs?"
+   "text": "Soap on Blinkit did ₹38,555 against a ₹4.5 L target (8.6%), with Himalayan Lavender 125g - Pack of 2 - QC (−₹2.8 L) the largest shortfall. Ad spend was ₹20,948 against an ad plan showing −₹14,667, which looks like a data error, and that spend is 54.3% of sales vs 11.8% for the platform. Can you confirm the correct plan figure and explain what happened on these Pack of 2 SKUs?",
+   "review_period_facts": {
+    "week": "14 Nov – 19 Nov",
+    "week_revenue": "₹51,324",
+    "week_target": "₹4.5 L",
+    "attainment": "11.5%",
+    "gap": "−₹4.0 L",
+    "vs_previous_week": "+166.8%",
+    "ad_spend": "₹16,741",
+    "roas": "27.90",
+    "roas_previous_week": "35.18",
+    "discount": "5.3%",
+    "guideline": "16.9%",
+    "discount_vs_guideline": "−11.6 pp",
+    "sku_drivers": "Himalayan Lavender 125g - Pack of 2 - QC (−₹3.2 L); Tomato Basil Soap 125g Pack of 2 - QC (−₹85,248)",
+    "ad_plan_for_the_days": "₹12,000",
+    "spend_vs_ad_plan": "140%",
+    "ad_spend_as_pct_of_sales": "32.6%",
+    "platform_ad_spend_as_pct_of_sales": "9.2%"
+   },
+   "verdict": "Partly aligned",
+   "answer": "Soaps were planned to launch on 1 Nov, slipped because of Diwali, and went live on 15 Nov in a limited number of cities.",
+   "why": "A late launch plausibly explains ₹38,555 vs a ₹4.5 L target (8.6%), but she did not confirm the plan figure or re-plan the target, and spend is still 140% of plan and 32.6% of sales vs 9.2% for the platform in the review period.",
+   "ask": "What is the realistic target for the launch cities, and why is ad spend running at 140% of plan on a launch this small?"
   },
   {
    "id": "Q3",
@@ -99,7 +145,30 @@
     "ad_spend_as_pct_of_sales": "7.6%",
     "platform_ad_spend_as_pct_of_sales": "39.1%"
    },
-   "text": "Henna on Zepto came in at ₹6.2 L against an ₹8.3 L target (74.4%), down 24.8% on the previous week, almost entirely from Henna Paste - Pack of 2 - QC (−₹2.1 L). What drove the fall on this SKU, and what is the plan to recover it?"
+   "text": "Henna on Zepto came in at ₹6.2 L against an ₹8.3 L target (74.4%), down 24.8% on the previous week, almost entirely from Henna Paste - Pack of 2 - QC (−₹2.1 L). What drove the fall on this SKU, and what is the plan to recover it?",
+   "review_period_facts": {
+    "week": "14 Nov – 20 Nov",
+    "week_revenue": "₹5.5 L",
+    "week_target": "₹6.5 L",
+    "attainment": "84.5%",
+    "gap": "−₹1.0 L",
+    "vs_previous_week": "+14.1%",
+    "ad_spend": "₹37,485",
+    "roas": "3.28",
+    "roas_previous_week": "3.01",
+    "discount": "1.1%",
+    "guideline": "3.5%",
+    "discount_vs_guideline": "−2.4 pp",
+    "sku_drivers": "Henna Paste - Pack of 2 - QC (−₹1.0 L)",
+    "ad_plan_for_the_days": "₹51,333",
+    "spend_vs_ad_plan": "73%",
+    "ad_spend_as_pct_of_sales": "6.8%",
+    "platform_ad_spend_as_pct_of_sales": "39.4%"
+   },
+   "verdict": "Aligned",
+   "answer": "Zepto Henna Pack of 2 had a stock-out (availability 72% to 39% on 10-11 Nov), is back to 77% by 19 Nov with daily sales up 30%, and stock is being pushed to Mumbai (42%) and Chennai (9%).",
+   "why": "The stock-out fits the −₹2.1 L Pack of 2 gap, and the review period shows recovery (+14.1% WoW, attainment 84.5% vs 74.4%) with spend at 73% of plan and discount below guideline.",
+   "ask": "By what date will Mumbai and Chennai be back above 70% availability, and what is the weekly revenue you expect once they are?"
   },
   {
    "id": "Q4",
@@ -126,7 +195,30 @@
     "platform_ad_spend_as_pct_of_sales": "39.1%",
     "why_flagged": "high spend for the sales, ROAS falling"
    },
-   "text": "Soap on Zepto is on target at ₹2.2 L vs ₹2.1 L, but ad spend was ₹2.9 L against a plan of ₹2.5 L, which is 132.1% of sales vs 39.1% for the platform, and ROAS fell to 0.80 from 1.11. What is driving this spend, and how will you bring efficiency back?"
+   "text": "Soap on Zepto is on target at ₹2.2 L vs ₹2.1 L, but ad spend was ₹2.9 L against a plan of ₹2.5 L, which is 132.1% of sales vs 39.1% for the platform, and ROAS fell to 0.80 from 1.11. What is driving this spend, and how will you bring efficiency back?",
+   "review_period_facts": {
+    "week": "14 Nov – 20 Nov",
+    "week_revenue": "₹1.7 L",
+    "week_target": "₹1.6 L",
+    "attainment": "108.5%",
+    "gap": "₹13,722",
+    "vs_previous_week": "−2.5%",
+    "ad_spend": "₹2.4 L",
+    "roas": "0.77",
+    "roas_previous_week": "1.06",
+    "discount": "2.6%",
+    "guideline": "10.8%",
+    "discount_vs_guideline": "−8.2 pp",
+    "sku_drivers": "Himalayan Lavender Soap 125g - QC (−₹603); Soothing Sandalwood - QC (−₹570)",
+    "ad_plan_for_the_days": "₹1.9 L",
+    "spend_vs_ad_plan": "125%",
+    "ad_spend_as_pct_of_sales": "138.1%",
+    "platform_ad_spend_as_pct_of_sales": "39.4%"
+   },
+   "verdict": "Partly aligned",
+   "answer": "Display ad spend rose ₹97K but impressions grew without sales growth (revenue −₹12K, ad sales −₹27K), and she will bring efficiency back by cutting ad spends.",
+   "why": "The diagnosis fits the data, but 'cutting ad spends' names no campaign, amount or date, and the review period is worse: spend ₹2.4 L at 125% of plan, 138.1% of sales vs 39.4%, ROAS 0.77.",
+   "ask": "Which campaigns and SKUs are you cutting, by how much, and from what date, to get ROAS above 1.0?"
   },
   {
    "id": "Q5",
@@ -153,7 +245,30 @@
     "platform_ad_spend_as_pct_of_sales": "39.1%",
     "why_flagged": "ROAS falling"
    },
-   "text": "Face Wash on Zepto beat target at ₹4.0 L vs ₹3.8 L, but ad spend was ₹1.7 L against a plan of ₹1.5 L, and ROAS dropped to 1.35 from 4.28 the previous week. What changed in the campaigns, and is the extra spend still paying back?"
+   "text": "Face Wash on Zepto beat target at ₹4.0 L vs ₹3.8 L, but ad spend was ₹1.7 L against a plan of ₹1.5 L, and ROAS dropped to 1.35 from 4.28 the previous week. What changed in the campaigns, and is the extra spend still paying back?",
+   "review_period_facts": {
+    "week": "14 Nov – 20 Nov",
+    "week_revenue": "₹3.4 L",
+    "week_target": "₹3.0 L",
+    "attainment": "115.3%",
+    "gap": "₹45,266",
+    "vs_previous_week": "+22.7%",
+    "ad_spend": "₹1.8 L",
+    "roas": "0.90",
+    "roas_previous_week": "3.64",
+    "discount": "1.7%",
+    "guideline": "2.1%",
+    "discount_vs_guideline": "−0.4 pp",
+    "sku_drivers": "Bitter Neem Gel Face Wash - QC (₹5,008); Brightening Ubtan Face Wash - QC (₹40,258)",
+    "ad_plan_for_the_days": "₹1.2 L",
+    "spend_vs_ad_plan": "149%",
+    "ad_spend_as_pct_of_sales": "52.1%",
+    "platform_ad_spend_as_pct_of_sales": "39.4%"
+   },
+   "verdict": "Partly aligned",
+   "answer": "Ubtan ad spend rose about 4x (₹35K to ₹1.46 L) and CPC went from ₹24 to ₹69. The extra ₹1.11 L spent generated only about ₹69K; the reply is cut off with no action stated.",
+   "why": "She correctly shows the extra spend is not paying back, but states no fix, and in the review period ROAS fell to 0.90 from 3.64, spend is 149% of plan and 52.1% of sales vs 39.4%.",
+   "ask": "What are you doing on Ubtan bids and CPC this week, and what ROAS will you hold it to?"
   },
   {
    "id": "Q6",
@@ -180,7 +295,30 @@
     "platform_ad_spend_as_pct_of_sales": "39.1%",
     "why_flagged": "high spend for the sales"
    },
-   "text": "Lepa on Zepto did ₹57,492 against a ₹99,185 target (58.0%), while ad spend of ₹1.2 L (within the ₹1.5 L plan) is 203.7% of sales vs 39.1% for the platform, with ROAS flat at 0.62. What is this spend delivering, and would you reshape it given Chandan Nagakesar (−₹22,463) and Tamarind Kasturi (−₹19,230) are the main gaps?"
+   "text": "Lepa on Zepto did ₹57,492 against a ₹99,185 target (58.0%), while ad spend of ₹1.2 L (within the ₹1.5 L plan) is 203.7% of sales vs 39.1% for the platform, with ROAS flat at 0.62. What is this spend delivering, and would you reshape it given Chandan Nagakesar (−₹22,463) and Tamarind Kasturi (−₹19,230) are the main gaps?",
+   "review_period_facts": {
+    "week": "14 Nov – 20 Nov",
+    "week_revenue": "₹47,563",
+    "week_target": "₹77,144",
+    "attainment": "61.7%",
+    "gap": "−₹29,580",
+    "vs_previous_week": "−3.4%",
+    "ad_spend": "₹99,760",
+    "roas": "0.61",
+    "roas_previous_week": "0.66",
+    "discount": "0.6%",
+    "guideline": "3.3%",
+    "discount_vs_guideline": "−2.8 pp",
+    "sku_drivers": "Chandan Nagakesar - QC (−₹16,336); Tamarind Kasturi - QC (−₹13,245)",
+    "ad_plan_for_the_days": "₹1.2 L",
+    "spend_vs_ad_plan": "83%",
+    "ad_spend_as_pct_of_sales": "209.7%",
+    "platform_ad_spend_as_pct_of_sales": "39.4%"
+   },
+   "verdict": "No answer",
+   "answer": "",
+   "why": "No reply was given, while Lepa spend is 209.7% of sales vs 39.4% for the platform, ROAS is 0.61 and attainment is 61.7% (₹47,563 vs ₹77,144).",
+   "ask": "Lepa is spending about ₹2 for every ₹1 of sales at 0.61 ROAS; which campaigns are you pausing or reshaping, and when?"
   }
  ],
  "own_ids": [
@@ -229,5 +367,13 @@
   }
  ],
  "reminder_sent": "2026-11-20T16:01:26.879045+05:30",
- "pack_sent": false
+ "pack_sent": "2026-11-23T10:01:25.503084+05:30",
+ "replies": [
+  {
+   "from": "arman@nathabit.in",
+   "date": "Fri, 20 Nov 2026 19:28:46 +0530",
+   "text": "Hi Sanjog,\n\nQ1 – HENNA ON BLINKIT: WHAT CAUSED THE DROP, AND IS IT RECOVERING?\n\nHenna on Blinkit closed at ₹27.5 L against a ₹32.0 L target (85.8%), down\n23.8% on the previous week, with Henna Paste - Pack of 2 - QC accounting\nfor −₹5.8 L. What caused the drop on that SKU, and is it recovering?\n\nAns - The drop is driven by Henna Paste Pack of 2, and the main reason is\nstock-outs in west and central cities the city where we lost revenue is\ngiven below henna dropped from 24.8 lacs (3 nov - 9 nov) to 20.6 lacs (10\nNov - 16 Nov) total 4.2 lacs drop of which 3.35 lacs is attributed to\ndropped avl in comparison to previous week,rest the overall category size\nalso dropped by -10% in comparison to previous week.\n\nCity\n\nSales last week (MRP)\n\nSales this week (MRP)\n\nChange\n\nAvailability % last week\n\nAvailability % this week\n\nMumbai\n\n₹148,740\n\n₹17,020\n\n-₹131,720\n\n55.0\n\n12.1\n\nAhmedabad\n\n₹69,560\n\n₹17,020\n\n-₹52,540\n\n40.0\n\n42.1\n\nJaipur\n\n₹80,660\n\n₹42,550\n\n-₹38,110\n\n84.5\n\n70.5\n\nPune\n\n₹48,100\n\n₹20,350\n\n-₹27,750\n\n27.7\n\n20.4\n\nPatna\n\n₹43,290\n\n₹19,610\n\n-₹23,680\n\n75.7\n\n35.4\n\nVisakhapatnam\n\n₹31,450\n\n₹10,360\n\n-₹21,090\n\n94.6\n\n33.0\n\nNagpur\n\n₹40,700\n\n₹23,680\n\n-₹17,020\n\n97.1\n\n73.6\n\nVadodara\n\n₹22,570\n\n₹9,250\n\n-₹13,320\n\n69.7\n\n37.0\n\nSurat\n\n₹12,950\n\n₹3,700\n\n-₹9,250\n\n33.3\n\n33.1\n\nTotal\n\n₹498,020\n\n₹163,540\n\n₹334,480\n\n64.2\n\n39.7\n\nIn Ahmedabad, product availability remained stable; however, the overall\ncategory size declined significantly by -62%.\n\nAvailability is now showing signs of recovery. As of 17th November, Mumbai\nhas improved to 58% availability, while Pune has recovered to 91%. We have\nalso raised a request with the team for PO bumps to further improve stock\navailability and bring it back on track.\nQ2. Soap on Blinkit did ₹38,555 against a ₹4.5 L target (8.6%), with\nHimalayan Lavender 125g - Pack of 2 - QC (−₹2.8 L) the largest shortfall.\nAd spend was ₹20,948 against an ad plan showing −₹14,667, which looks like\na data error, and that spend is 54.3% of sales vs 11.8% for the platform.\nCan you confirm the correct plan figure and explain what happened on these\nPack of 2 SKUs?\n\nAns: The soaps have not yet been launched across most cities. The launch\nwas initially planned for 1st November but was delayed due to Diwali and\neventually went live on 15th November in a limited number of cities.\n\nQ3. Henna on Zepto came in at ₹6.2 L against an ₹8.3 L target (74.4%), down\n24.8% on the previous week, almost entirely from Henna Paste - Pack of 2 -\nQC (−₹2.1 L). What drove the fall on this SKU, and what is the plan to\nrecover it?\n\nAns- The drop is a stock-out. Zepto henna availability fell from 72% on Nov\n10 to 39% on Nov 11 and stayed low till Nov 16.\n\n\nSKU\n\nSales last week\n\nSales this week\n\nChange\n\nSpend last week\n\nSpend this week\n\nDiscount % this week\n\nAd impressions last week\n\nAd impressions this week\n\nAd sales (₹) last week\n\nAd sales (₹) this week\n\nHenna Paste - Pack of 2\n\n₹593,262\n\n₹481,644\n\n-₹111,618\n\n₹52,117\n\n₹34,463\n\n3.0\n\n122,177\n\n64,216\n\n₹268,801\n\n₹215,166\n\nThe City Lvl Avl drop revenue impact is given in the table below\n\nCity\n\nSales last week (MRP)\n\nSales this week (MRP)\n\nChange\n\nAvailability % last week\n\nAvailability % this week\n\nBangalore\n\n₹148,740\n\n₹101,010\n\n-₹47,730\n\n87.0\n\n61.5\n\nMumbai\n\n₹82,510\n\n₹58,830\n\n-₹23,680\n\n65.6\n\n44.6\n\nChennai\n\n₹22,200\n\n₹3,700\n\n-₹18,500\n\n56.6\n\n10.7\n\nPune\n\n₹21,460\n\n₹5,550\n\n-₹15,910\n\n41.7\n\n21.4\n\nHyderabad\n\n₹99,530\n\n₹88,060\n\n-₹11,470\n\n98.5\n\n55.9\n\nLucknow\n\n₹18,130\n\n₹13,690\n\n-₹4,440\n\n95.5\n\n53.8\n\nNashik\n\n₹3,330\n\n₹370\n\n-₹2,960\n\n35.7\n\n7.1\n\n\nAvailability is back to 77% by Nov 19 (Bangalore 85%, Hyderabad 84%, Pune\n97%) and daily sales are up 30% vs Nov 11–13. Mumbai (42%) and Chennai (9%)\nare still out; we are pushing stock to these two and other cities where avl\nis low.\n\nQ4. Soap on Zepto is on target at ₹2.2 L vs ₹2.1 L, but ad spend was ₹2.9 L\nagainst a plan of ₹2.5 L, which is 132.1% of sales vs 39.1% for the\nplatform, and ROAS fell to 0.80 from 1.11. What is driving this spend, and\nhow will you bring efficiency back?\n\nAns: Despite an increase of ₹97K in display ad spends for soaps, the\ncampaign has not delivered proportional returns. While impressions\nincreased by 1.18 lakh, overall revenue declined by ₹12K and ad-attributed\nsales dropped by ₹27K, indicating that the higher investment has driven\nvisibility but failed to translate into sales growth we will bring\nefficiency back by cutting down ad spends.\n\nSKU\n\nSales last week\n\nSales this week\n\nSales Change\n\nSpend last week\n\nSpend this week\n\nSpend change\n\nDiscount % this week\n\nImpressions this week\n\nImpressions Last Week\n\nImpressions Change\n\nAd sales this week\n\nAd sales Prev Week\n\nAd sales Change\n\nSoothing Sandalwood\n\n₹55,955\n\n₹47,061\n\n-₹8,893\n\n₹48,347\n\n₹72,063\n\n₹23,716\n\n4.0\n\n182,207\n\n144,191\n\n38,016\n\n₹47,050\n\n₹48,209\n\n-₹1,159\n\nTomato Basil Soap 125g Pack of 2\n\n₹55,651\n\n₹55,651\n\n₹0\n\n₹48,162\n\n₹65,912\n\n₹17,750\n\n5.0\n\n236,348\n\n226,230\n\n10,118\n\n₹66,020\n\n₹72,544\n\n-₹6,524\n\nHealing Turmeric & Oats\n\n₹47,988\n\n₹44,838\n\n-₹3,150\n\n₹31,351\n\n₹57,995\n\n₹26,644\n\n4.0\n\n123,192\n\n88,155\n\n35,037\n\n₹32,532\n\n₹43,117\n\n-₹10,585\n\nHimalayan Lavender Soap 125g\n\n₹21,369\n\n₹21,214\n\n-₹155\n\n₹27,371\n\n₹46,718\n\n₹19,347\n\n5.0\n\n98,802\n\n75,399\n\n23,403\n\n₹17,852\n\n₹24,266\n\n-₹6,414\n\nHealing Turmeric & Oats 125g Pack of 2\n\n₹0\n\n₹0\n\n₹0\n\n₹0\n\n₹4,812\n\n₹4,812\n\n0.0\n\n\n0\n\n\n₹0\n\nSoothing Sandalwood Soap Pack of 2\n\n₹0\n\n₹0\n\n₹0\n\n₹0\n\n₹4,812\n\n₹4,812\n\n0.0\n\n12,030\n\n12,030\n\n₹3,120\n\n-₹3,120\n\ntotal\n\n₹180,962\n\n₹168,764\n\n-₹12,198\n\n₹155,231\n\n₹252,311\n\n₹97,080\n\n18.0\n\n652,579\n\n533,975\n\n118,604\n\n₹163,454\n\n₹191,256\n\n-₹27,802\n\nQ5. Face Wash on Zepto beat target at ₹4.0 L vs ₹3.8 L, but ad spend was\n₹1.7 L against a plan of ₹1.5 L, and ROAS dropped to 1.35 from 4.28 the\nprevious week. What changed in the campaigns, and is the extra spend still\npaying back?\n\nAns: Ubtan ad spends increased by nearly 4×, rising from ₹35K (Nov 4–10) to\n₹1.46L (Nov 11–17), while CPC also increased significantly from ₹24 to ₹69.\nAlthough Face Wash sales grew by ₹74K, from ₹2.52L to ₹3.26L, the\nadditional ₹1.11L spent on Ubtan generated only ~₹69K",
+   "full": "Hi Sanjog,\n Q1 – HENNA ON BLINKIT: WHAT CAUSED THE DROP, AND IS IT RECOVERING? \n Henna on Blinkit closed at ₹27.5 L against a ₹32.0 L target (85.8%), down 23.8% on the previous week, with Henna Paste - Pack of 2 - QC accounting for −₹5.8 L. What caused the drop on that SKU, and is it recovering? \n Ans - The drop is driven by Henna Paste Pack of 2, and the main reason is stock-outs in west and central cities the city where we lost revenue is given below henna dropped from 24.8 lacs (3 nov - 9 nov) to 20.6 lacs (10 Nov - 16 Nov) total 4.2 lacs drop of which 3.35 lacs is attributed to dropped avl in comparison to previous week,rest the overall category size also dropped by -10% in comparison to previous week. \n City \n | Sales last week (MRP) \n | Sales this week (MRP) \n | Change \n | Availability % last week \n | Availability % this week \n | \n Mumbai \n | ₹148,740 \n | ₹17,020 \n | -₹131,720 \n | 55.0 \n | 12.1 \n | \n Ahmedabad \n | ₹69,560 \n | ₹17,020 \n | -₹52,540 \n | 40.0 \n | 42.1 \n | \n Jaipur \n | ₹80,660 \n | ₹42,550 \n | -₹38,110 \n | 84.5 \n | 70.5 \n | \n Pune \n | ₹48,100 \n | ₹20,350 \n | -₹27,750 \n | 27.7 \n | 20.4 \n | \n Patna \n | ₹43,290 \n | ₹19,610 \n | -₹23,680 \n | 75.7 \n | 35.4 \n | \n Visakhapatnam \n | ₹31,450 \n | ₹10,360 \n | -₹21,090 \n | 94.6 \n | 33.0 \n | \n Nagpur \n | ₹40,700 \n | ₹23,680 \n | -₹17,020 \n | 97.1 \n | 73.6 \n | \n Vadodara \n | ₹22,570 \n | ₹9,250 \n | -₹13,320 \n | 69.7 \n | 37.0 \n | \n Surat \n | ₹12,950 \n | ₹3,700 \n | -₹9,250 \n | 33.3 \n | 33.1 \n | \n Total \n | ₹498,020 \n | ₹163,540 \n | ₹334,480 \n | 64.2 \n | 39.7 \n | \n In Ahmedabad, product availability remained stable; however, the overall category size declined significantly by -62%. \n Availability is now showing signs of recovery. As of 17th November, Mumbai has improved to 58% availability, while Pune has recovered to 91%. We have also raised a request with the team for PO bumps to further improve stock availability and bring it back on track. \n Q2. Soap on Blinkit did ₹38,555 against a ₹4.5 L target (8.6%), with Himalayan Lavender 125g - Pack of 2 - QC (−₹2.8 L) the largest shortfall. Ad spend was ₹20,948 against an ad plan showing −₹14,667, which looks like a data error, and that spend is 54.3% of sales vs 11.8% for the platform. Can you confirm the correct plan figure and explain what happened on these Pack of 2 SKUs? \n Ans: The soaps have not yet been launched across most cities. The launch was initially planned for 1st November but was delayed due to Diwali and eventually went live on 15th November in a limited number of cities. \n Q3. Henna on Zepto came in at ₹6.2 L against an ₹8.3 L target (74.4%), down 24.8% on the previous week, almost entirely from Henna Paste - Pack of 2 - QC (−₹2.1 L). What drove the fall on this SKU, and what is the plan to recover it? \n Ans- The drop is a stock-out. Zepto henna availability fell from 72% on Nov 10 to 39% on Nov 11 and stayed low till Nov 16. \n SKU \n | Sales last week \n | Sales this week \n | Change \n | Spend last week \n | Spend this week \n | Discount % this week \n | Ad impressions last week \n | Ad impressions this week \n | Ad sales (₹) last week \n | Ad sales (₹) this week \n | \n Henna Paste - Pack of 2 \n | ₹593,262 \n | ₹481,644 \n | -₹111,618 \n | ₹52,117 \n | ₹34,463 \n | 3.0 \n | 122,177 \n | 64,216 \n | ₹268,801 \n | ₹215,166 \n | \n The City Lvl Avl drop revenue impact is given in the table below \n City \n | Sales last week (MRP) \n | Sales this week (MRP) \n | Change \n | Availability % last week \n | Availability % this week \n | \n Bangalore \n | ₹148,740 \n | ₹101,010 \n | -₹47,730 \n | 87.0 \n | 61.5 \n | \n Mumbai \n | ₹82,510 \n | ₹58,830 \n | -₹23,680 \n | 65.6 \n | 44.6 \n | \n Chennai \n | ₹22,200 \n | ₹3,700 \n | -₹18,500 \n | 56.6 \n | 10.7 \n | \n Pune \n | ₹21,460 \n | ₹5,550 \n | -₹15,910 \n | 41.7 \n | 21.4 \n | \n Hyderabad \n | ₹99,530 \n | ₹88,060 \n | -₹11,470 \n | 98.5 \n | 55.9 \n | \n Lucknow \n | ₹18,130 \n | ₹13,690 \n | -₹4,440 \n | 95.5 \n | 53.8 \n | \n Nashik \n | ₹3,330 \n | ₹370 \n | -₹2,960 \n | 35.7 \n | 7.1 \n | \n Availability is back to 77% by Nov 19 (Bangalore 85%, Hyderabad 84%, Pune 97%) and daily sales are up 30% vs Nov 11–13. Mumbai (42%) and Chennai (9%) are still out; we are pushing stock to these two and other cities where avl is low. \n Q4. Soap on Zepto is on target at ₹2.2 L vs ₹2.1 L, but ad spend was ₹2.9 L against a plan of ₹2.5 L, which is 132.1% of sales vs 39.1% for the platform, and ROAS fell to 0.80 from 1.11. What is driving this spend, and how will you bring efficiency back? \n Ans: Despite an increase of ₹97K in display ad spends for soaps, the campaign has not delivered proportional returns. While impressions increased by 1.18 lakh, overall revenue declined by ₹12K and ad-attributed sales dropped by ₹27K, indicating that the higher investment has driven visibility but failed to translate into sales growth we will bring efficiency back by cutting down ad spends. \n SKU \n | Sales last week \n | Sales this week \n | Sales Change \n | Spend last week \n | Spend this week \n | Spend change \n | Discount % this week \n | Impressions this week \n | Impressions Last Week \n | Impressions Change \n | Ad sales this week \n | Ad sales Prev Week \n | Ad sales Change \n | \n Soothing Sandalwood \n | ₹55,955 \n | ₹47,061 \n | -₹8,893 \n | ₹48,347 \n | ₹72,063 \n | ₹23,716 \n | 4.0 \n | 182,207 \n | 144,191 \n | 38,016 \n | ₹47,050 \n | ₹48,209 \n | -₹1,159 \n | \n Tomato Basil Soap 125g Pack of 2 \n | ₹55,651 \n | ₹55,651 \n | ₹0 \n | ₹48,162 \n | ₹65,912 \n | ₹17,750 \n | 5.0 \n | 236,348 \n | 226,230 \n | 10,118 \n | ₹66,020 \n | ₹72,544 \n | -₹6,524 \n | \n Healing Turmeric & Oats \n | ₹47,988 \n | ₹44,838 \n | -₹3,150 \n | ₹31,351 \n | ₹57,995 \n | ₹26,644 \n | 4.0 \n | 123,192 \n | 88,155 \n | 35,037 \n | ₹32,532 \n | ₹43,117 \n | -₹10,585 \n | \n Himalayan Lavender Soap 125g \n | ₹21,369 \n | ₹21,214 \n | -₹155 \n | ₹27,371 \n | ₹46,718 \n | ₹19,347 \n | 5.0 \n | 98,802 \n | 75,399 \n | 23,403 \n | ₹17,852 \n | ₹24,266 \n | -₹6,414 \n | \n Healing Turmeric & Oats 125g Pack of 2 \n | ₹0 \n | ₹0 \n | ₹0 \n | ₹0 \n | ₹4,812 \n | ₹4,812 \n | 0.0 \n | \n | \n | 0 \n | \n | \n | ₹0 \n | \n Soothing Sandalwood Soap Pack of 2 \n | ₹0 \n | ₹0 \n | ₹0 \n | ₹0 \n | ₹4,812 \n | ₹4,812 \n | 0.0 \n | 12,030 \n | \n | 12,030 \n | \n | ₹3,120 \n | -₹3,120 \n | \n total \n | ₹180,962 \n | ₹168,764 \n | -₹12,198 \n | ₹155,231 \n | ₹252,311 \n | ₹97,080 \n | 18.0 \n | 652,579 \n | 533,975 \n | 118,604 \n | ₹163,454 \n | ₹191,256 \n | -₹27,802 \n | \n Q5. Face Wash on Zepto beat target at ₹4.0 L vs ₹3.8 L, but ad spend was ₹1.7 L against a plan of ₹1.5 L, and ROAS dropped to 1.35 from 4.28 the previous week. What changed in the campaigns, and is the extra spend still paying back? \n Ans: Ubtan ad spends increased by nearly 4×, rising from ₹35K (Nov 4–10) to ₹1.46L (Nov 11–17), while CPC also increased significantly from ₹24 to ₹69. Although Face Wash sales grew by ₹74K, from ₹2.52L to ₹3.26L, the additional ₹1.11L spent on Ubtan generated only ~₹69K in incremental sales, translating to a return of just ₹0.60 per ₹1 spent. Moreover, Ubtan was already witnessing organic growth, with weekly sales increasing from ₹1.73L in October to ₹2.22L during Nov 4–10, even at a lower ad spend of ₹35K. Given the limited incremental returns and rising acquisition costs, we will be reducing Ubtan ad spends and reallocating the budget more efficiently. Spends were shifted to display properties which have now been reduced. \n SKU \n | Sales last week \n | Sales this week \n | Change \n | Spend last week \n | Spend this week \n | Change \n | Discount % this week \n | Impressions this week \n | Impressions last week \n | Impressions Chnage \n | Ad sales this week \n | Ad sales last week \n | Ad Sales Change \n | \n Brightening Ubtan Face Wash \n | ₹222,458 \n | ₹291,029 \n | ₹68,571 \n | ₹35,348 \n | ₹145,996 \n | ₹110,648 \n | 3.0 \n | 201,307 \n | 134,208 \n | 67,099 \n | ₹136,708 \n | ₹75,281 \n | ₹61,427 \n | \n Bitter Neem Gel Face Wash \n | ₹30,009 \n | ₹35,104 \n | ₹5,096 \n | ₹19,936 \n | ₹11,896 \n | -₹8,040 \n | 5.0 \n | 54,838 \n | 70,356 \n | -15,518 \n | ₹26,126 \n | ₹164,539 \n | -₹138,413 \n | \n Q6. Lepa on Zepto did ₹57,492 against a ₹99,185 target (58.0%), while ad spend of ₹1.2 L (within the ₹1.5 L plan) is 203.7% of sales vs 39.1% for the platform, with ROAS flat at 0.62. What is this spend delivering, and would you reshape it given Chandan Nagakesar (−₹22,463) and Tamarind Kasturi (−₹19,230) are the main gaps? \n Ans: The decision to stop ad spends had already been communicated to the Ads team at the beginning of the month due to low product availability of 30% for both sku’s. Additionally, the increased ad spends have not resulted in any significant improvement in impressions, indicating limited effectiveness. Hence, we will be stopping the ad spends going forward. \n SKU \n | Sales last week \n | Sales this week \n | Sales Change \n | Spend last week \n | Spend this week \n | Spends Change \n | Discount % this week \n | Impressions this week \n | Impressions last week \n | Impressions change \n | Ad sales this week \n | Ad sales prev week \n | Ad sales change \n | \n Chandan Nagakesar \n | ₹28,665 \n | ₹34,055 \n | ₹5,390 \n | ₹45,356 \n | ₹64,518 \n | ₹19,162 \n | 2.0 \n | 87,348 \n | 90,815 \n | -3,467 \n | ₹44,017 \n | ₹28,054 \n | ₹15,963 \n | \n Tamarind Kasturi \n | ₹12,377 \n | ₹15,578 \n | ₹3,201 \n | ₹20,525 \n | ₹34,648 \n | ₹14,123 \n | 3.0 \n | 54,952 \n | 81,240 \n | -26,288 \n | ₹20,238 \n | ₹9,540 \n | ₹10,698 \n | \n TOTAL \n | ₹41,042 \n | ₹49,633 \n | ₹8,591 \n | ₹65,881 \n | ₹99,165 \n | ₹33,284 \n | \n | 142,300 \n | 172,055 \n | -29,755 \n | ₹64,255 \n | ₹37,594 \n | ₹26,661 \n | \n Happy to walk through any of these in detail. Best regards, Arman\n On Thu, 19 Nov 2026 at 11:01, Sanjog < sanjog@nathabit.in > wrote:\n Hi Garima,\n Ahead of our WBR on Mon 23 Nov at 3 pm , I’d like your view on the points below. Please reply to this email by Fri 20 Nov, 6 pm .\n 📅 Figures below are for the latest 7 days of data available for each channel: Zepto 11 Nov – 17 Nov · Blinkit 10 Nov – 16 Nov .\n For each question, please cover: (1) the reason , (2) the action you have taken or will take , and (3) when you expect it to show in the numbers . Short answers are fine; just keep the Q numbers. Please also fill in the business snapshot table at the end.\n Q1 | Henna on Blinkit closed at ₹27.5 L against a ₹32.0 L target (85.8%), down 23.8% on the previous week, with Henna Paste - Pack of 2 - QC accounting for −₹5.8 L. What caused the drop on that SKU, and is it recovering? | \n Q2 | Soap on Blinkit did ₹38,555 against a ₹4.5 L target (8.6%), with Himalayan Lavender 125g - Pack of 2 - QC (−₹2.8 L) the largest shortfall. Ad spend was ₹20,948 against an ad plan showing −₹14,667, which looks like a data error, and that spend is 54.3% of sales vs 11.8% for the platform. Can you confirm the correct plan figure and explain what happened on these Pack of 2 SKUs? | \n Q3 | Henna on Zepto came in at ₹6.2 L against an ₹8.3 L target (74.4%), down 24.8% on the previous week, almost entirely from Henna Paste - Pack of 2 - QC (−₹2.1 L). What drove the fall on this SKU, and what is the plan to recover it? | \n Q4 | Soap on Zepto is on target at ₹2.2 L vs ₹2.1 L, but ad spend was ₹2.9 L against a plan of ₹2.5 L, which is 132.1% of sales vs 39.1% for the platform, and ROAS fell to 0.80 from 1.11. What is driving this spend, and how will you bring efficiency back? | \n Q5 | Face Wash on Zepto beat target at ₹4.0 L vs ₹3.8 L, but ad spend was ₹1.7 L against a plan of ₹1.5 L, and ROAS dropped to 1.35 from 4.28 the previous week. What changed in the campaigns, and is the extra spend still paying back? | \n Q6 | Lepa on Zepto did ₹57,492 against a ₹99,185 target (58.0%), while ad spend of ₹1.2 L (within the ₹1.5 L plan) is 203.7% of sales vs 39.1% for the platform, with ROAS flat at 0.62. What is this spend delivering, and would you reshape it given Chandan Nagakesar (−₹22,463) and Tamarind Kasturi (−₹19,230) are the main gaps? | \n Business snapshot · November 2026\n Please fill in the tables below for November 2026 and include them in your reply (copy into your reply, or type into the quoted table). ₹ values in lakh.\n Blinkit | Target | Estimated achievement | \n Primary (₹ L) | | | \n Secondary (₹ L) | | | \n Discounting % (%) | | | \n Spend (₹ L) | | | \n Availability (%) | | | \n Zepto | Target | Estimated achievement | \n Primary (₹ L) | | | \n Secondary (₹ L) | | | \n Discounting % (%) | | | \n Spend (₹ L) | | | \n Availability (%) | | | \n Big Basket | Target | Estimated achievement | \n Primary (₹ L) | | | \n Secondary (₹ L) | | | \n Discounting % (%) | | | \n Spend (₹ L) | | | \n Availability (%) | | | \n Source: Category Intelligence dashboard. Sales targets are the plan for these days, phased by day; ad targets are the sheet’s targets for the same days.\n Thanks,\nSanjog\n Prepared automatically from the dashboard on Sanjog’s behalf. Your reply goes to Sanjog."
+  }
+ ]
 }

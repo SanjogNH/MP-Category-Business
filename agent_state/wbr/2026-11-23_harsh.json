@@ -43,7 +43,30 @@
     "ad_spend_as_pct_of_sales": "17.6%",
     "platform_ad_spend_as_pct_of_sales": "13.8%"
    },
-   "text": "Harsh, Baby Scalp Oil on First Cry did ₹81,428 against a ₹2.6 L target (31.5%), with Brahmi Summer 110 ml alone down ₹1.2 L. Ad spend was ₹14,316 with no plan set, and ROAS fell to 1.72 from 3.61 the week before, at 17.6% of sales against 13.8% for the platform. What is behind the weaker ad returns, and how do you plan to close the gap on this SKU?"
+   "text": "Harsh, Baby Scalp Oil on First Cry did ₹81,428 against a ₹2.6 L target (31.5%), with Brahmi Summer 110 ml alone down ₹1.2 L. Ad spend was ₹14,316 with no plan set, and ROAS fell to 1.72 from 3.61 the week before, at 17.6% of sales against 13.8% for the platform. What is behind the weaker ad returns, and how do you plan to close the gap on this SKU?",
+   "review_period_facts": {
+    "week": "14 Nov – 20 Nov",
+    "week_revenue": "₹55,009",
+    "week_target": "₹1.4 L",
+    "attainment": "39.5%",
+    "gap": "−₹84,332",
+    "vs_previous_week": "+60.2%",
+    "ad_spend": "₹9,156",
+    "roas": "2.17",
+    "roas_previous_week": "1.41",
+    "discount": "16.8%",
+    "guideline": "15.2%",
+    "discount_vs_guideline": "+1.6 pp",
+    "sku_drivers": "Brahmi Summer Baby Scalp Oil - 110 ml (−₹63,521); Brahmi Winter Baby Scalp Oil - 110 ml (−₹20,812)",
+    "ad_plan_for_the_days": "no ad plan",
+    "spend_vs_ad_plan": "–",
+    "ad_spend_as_pct_of_sales": "16.6%",
+    "platform_ad_spend_as_pct_of_sales": "13.5%"
+   },
+   "verdict": "No answer",
+   "answer": "",
+   "why": "No reply received; in the review week revenue was ₹55,009 vs ₹1.4 L target (39.5%), ROAS 2.17 (up from 1.41), ad spend 16.6% of sales vs 13.5% platform, discount 16.8% vs 15.2% guideline, still no ad plan.",
+   "ask": "Why is Baby Scalp Oil spending 16.6% of sales with no ad plan and discount +1.6 pp over guideline, and what will you fix on Brahmi Summer 110 ml (−₹63,521) by when?"
   },
   {
    "id": "Q2",
@@ -69,7 +92,30 @@
     "ad_spend_as_pct_of_sales": "0.0%",
     "platform_ad_spend_as_pct_of_sales": "13.8%"
    },
-   "text": "Harsh, Face Wash on First Cry did ₹28,132 against a ₹1.9 L target (14.5%), down 31.0% on the previous week, with Ubtan Tikta Face Wash accounting for −₹1.1 L of the gap. Discount was also 17.0% against a 15.3% guideline. What do you think is driving the drop, and what is the plan to recover it?"
+   "text": "Harsh, Face Wash on First Cry did ₹28,132 against a ₹1.9 L target (14.5%), down 31.0% on the previous week, with Ubtan Tikta Face Wash accounting for −₹1.1 L of the gap. Discount was also 17.0% against a 15.3% guideline. What do you think is driving the drop, and what is the plan to recover it?",
+   "review_period_facts": {
+    "week": "14 Nov – 20 Nov",
+    "week_revenue": "₹52,151",
+    "week_target": "₹1.0 L",
+    "attainment": "50.1%",
+    "gap": "−₹52,040",
+    "vs_previous_week": "+645.4%",
+    "ad_spend": "no ads",
+    "roas": "–",
+    "roas_previous_week": "–",
+    "discount": "17.0%",
+    "guideline": "15.4%",
+    "discount_vs_guideline": "+1.6 pp",
+    "sku_drivers": "Ubtan Tikta Face Wash (−₹58,937); Masoor Dal Tikta Face Wash (−₹20,259)",
+    "ad_plan_for_the_days": "no ad plan",
+    "spend_vs_ad_plan": "–",
+    "ad_spend_as_pct_of_sales": "0.0%",
+    "platform_ad_spend_as_pct_of_sales": "13.5%"
+   },
+   "verdict": "No answer",
+   "answer": "",
+   "why": "No reply received; Face Wash recovered to ₹52,151 (50.1% of ₹1.0 L target, +645.4% WoW) with no ads, but discount is still 17.0% vs 15.4% guideline and Ubtan Tikta is −₹58,937.",
+   "ask": "What caused the earlier drop and sudden rebound on Face Wash, and is Ubtan Tikta in stock and visible, given the discount is above guideline?"
   },
   {
    "id": "Q3",
@@ -95,7 +141,30 @@
     "ad_spend_as_pct_of_sales": "53.0%",
     "platform_ad_spend_as_pct_of_sales": "13.8%"
    },
-   "text": "Harsh, Baby Pure Oils on First Cry did ₹28,971 against a ₹1.5 L target (18.7%), even though revenue grew 123.1% on the previous week. Ad spend of ₹15,364 (no plan set) is 53.0% of sales against 13.8% for the platform, and ROAS slipped to 1.18 from 1.83. Can you walk me through what this spend is achieving and whether you would keep it at this level?"
+   "text": "Harsh, Baby Pure Oils on First Cry did ₹28,971 against a ₹1.5 L target (18.7%), even though revenue grew 123.1% on the previous week. Ad spend of ₹15,364 (no plan set) is 53.0% of sales against 13.8% for the platform, and ROAS slipped to 1.18 from 1.83. Can you walk me through what this spend is achieving and whether you would keep it at this level?",
+   "review_period_facts": {
+    "week": "14 Nov – 20 Nov",
+    "week_revenue": "₹14,985",
+    "week_target": "₹83,227",
+    "attainment": "18.0%",
+    "gap": "−₹68,242",
+    "vs_previous_week": "+13.4%",
+    "ad_spend": "₹10,575",
+    "roas": "1.36",
+    "roas_previous_week": "1.01",
+    "discount": "20.0%",
+    "guideline": "20.0%",
+    "discount_vs_guideline": "0.0 pp",
+    "sku_drivers": "Pure Almond Baby Oil - 100 ml (−₹25,692); Pure Virgin Coconut Baby Oil - 200 ml (−₹19,537)",
+    "ad_plan_for_the_days": "no ad plan",
+    "spend_vs_ad_plan": "–",
+    "ad_spend_as_pct_of_sales": "70.6%",
+    "platform_ad_spend_as_pct_of_sales": "13.5%"
+   },
+   "verdict": "No answer",
+   "answer": "",
+   "why": "No reply received; ad spend of ₹10,575 is 70.6% of sales (platform 13.5%) on ₹14,985 revenue, ROAS only 1.36, attainment 18.0%, with discount at guideline (20.0%).",
+   "ask": "Why keep spending ₹10,575 for ₹14,985 of revenue, and which campaigns or keywords will you cut this week?"
   },
   {
    "id": "Q4",
@@ -122,7 +191,30 @@
     "platform_ad_spend_as_pct_of_sales": "13.8%",
     "why_flagged": "high spend for the sales, ROAS falling"
    },
-   "text": "Harsh, Shampoo on First Cry spent ₹31,165 on ads (no plan set), which is 20.8% of sales against 13.8% for the platform. ROAS fell to 2.49 from 4.97, and revenue of ₹1.5 L is still 57.5% of the ₹2.6 L target. Where is the extra spend going, and what will you change to bring ROAS back up?"
+   "text": "Harsh, Shampoo on First Cry spent ₹31,165 on ads (no plan set), which is 20.8% of sales against 13.8% for the platform. ROAS fell to 2.49 from 4.97, and revenue of ₹1.5 L is still 57.5% of the ₹2.6 L target. Where is the extra spend going, and what will you change to bring ROAS back up?",
+   "review_period_facts": {
+    "week": "14 Nov – 20 Nov",
+    "week_revenue": "₹1.3 L",
+    "week_target": "₹1.4 L",
+    "attainment": "89.6%",
+    "gap": "−₹14,555",
+    "vs_previous_week": "+92.5%",
+    "ad_spend": "₹22,760",
+    "roas": "2.70",
+    "roas_previous_week": "2.38",
+    "discount": "16.1%",
+    "guideline": "16.5%",
+    "discount_vs_guideline": "−0.4 pp",
+    "sku_drivers": "Trileaf Rosemary Shampoo - 250g (−₹26,778); Neem Beracyl Dandruff Shampoo - 250g (−₹18,742)",
+    "ad_plan_for_the_days": "no ad plan",
+    "spend_vs_ad_plan": "–",
+    "ad_spend_as_pct_of_sales": "18.1%",
+    "platform_ad_spend_as_pct_of_sales": "13.5%"
+   },
+   "verdict": "No answer",
+   "answer": "",
+   "why": "No reply received; Shampoo improved to ₹1.3 L (89.6% of target) with ROAS 2.70 vs 2.38, but ad spend is still 18.1% of sales vs 13.5% platform and no plan is set; discount −0.4 pp vs guideline.",
+   "ask": "What specifically drove the improvement, and what ad plan and ROAS target will you set to bring spend toward 13.5% of sales?"
   },
   {
    "id": "Q5",
@@ -148,7 +240,30 @@
     "ad_spend_as_pct_of_sales": "0.0%",
     "platform_ad_spend_as_pct_of_sales": "0.0%"
    },
-   "text": "Harsh, Soap on Cred ran at a 61.0% discount this week against a 30.6% guideline (+30.4 pp), on ₹1.1 L of revenue. Was this a deliberate, approved Cred offer, and what did it deliver for the margin you gave up?"
+   "text": "Harsh, Soap on Cred ran at a 61.0% discount this week against a 30.6% guideline (+30.4 pp), on ₹1.1 L of revenue. Was this a deliberate, approved Cred offer, and what did it deliver for the margin you gave up?",
+   "review_period_facts": {
+    "week": "14 Nov – 20 Nov",
+    "week_revenue": "₹79,492",
+    "week_target": "₹0",
+    "attainment": "–",
+    "gap": "–",
+    "vs_previous_week": "−28.7%",
+    "ad_spend": "no ads",
+    "roas": "–",
+    "roas_previous_week": "–",
+    "discount": "60.7%",
+    "guideline": "31.9%",
+    "discount_vs_guideline": "+28.9 pp",
+    "sku_drivers": "–",
+    "ad_plan_for_the_days": "no ad plan",
+    "spend_vs_ad_plan": "–",
+    "ad_spend_as_pct_of_sales": "0.0%",
+    "platform_ad_spend_as_pct_of_sales": "0.0%"
+   },
+   "verdict": "No answer",
+   "answer": "",
+   "why": "No reply received; Soap on Cred ran 60.7% discount vs 31.9% guideline (+28.9 pp) and revenue fell 28.7% to ₹79,492.",
+   "ask": "Was the 60.7% Soap discount on Cred approved, and why did revenue fall 28.7% despite giving up that margin?"
   },
   {
    "id": "Q6",
@@ -174,7 +289,30 @@
     "ad_spend_as_pct_of_sales": "0.0%",
     "platform_ad_spend_as_pct_of_sales": "0.0%"
    },
-   "text": "Harsh, Henna Combo on Cred ran at a 71.1% discount against a 17.7% guideline (+53.4 pp), on ₹26,799 of revenue. Can you explain how the discount got this high, and whether it was approved or came from a platform-led deal?"
+   "text": "Harsh, Henna Combo on Cred ran at a 71.1% discount against a 17.7% guideline (+53.4 pp), on ₹26,799 of revenue. Can you explain how the discount got this high, and whether it was approved or came from a platform-led deal?",
+   "review_period_facts": {
+    "week": "14 Nov – 20 Nov",
+    "week_revenue": "₹20,484",
+    "week_target": "₹0",
+    "attainment": "–",
+    "gap": "–",
+    "vs_previous_week": "+11.6%",
+    "ad_spend": "no ads",
+    "roas": "–",
+    "roas_previous_week": "–",
+    "discount": "71.0%",
+    "guideline": "17.7%",
+    "discount_vs_guideline": "+53.3 pp",
+    "sku_drivers": "–",
+    "ad_plan_for_the_days": "no ad plan",
+    "spend_vs_ad_plan": "–",
+    "ad_spend_as_pct_of_sales": "0.0%",
+    "platform_ad_spend_as_pct_of_sales": "0.0%"
+   },
+   "verdict": "No answer",
+   "answer": "",
+   "why": "No reply received; Henna Combo on Cred stayed at 71.0% discount vs 17.7% guideline (+53.3 pp) on ₹20,484 revenue (+11.6%).",
+   "ask": "Who approved a 71.0% discount on Henna Combo, and when will it return to the 17.7% guideline?"
   }
  ],
  "own_ids": [
@@ -210,5 +348,6 @@
   }
  ],
  "reminder_sent": "2026-11-20T16:01:26.879045+05:30",
- "pack_sent": false
+ "pack_sent": "2026-11-23T10:01:25.503084+05:30",
+ "replies": []
 }

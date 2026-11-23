@@ -39,7 +39,30 @@
     "ad_spend_as_pct_of_sales": "4.3%",
     "platform_ad_spend_as_pct_of_sales": "7.5%"
    },
-   "text": "Kush, Skin Malai on Nykaa reached ₹1.9 L against a ₹4.0 L target (48.8%, gap −₹2.0 L), even though revenue is up 28.5% on last week. Double Cocoa 200ml (−₹61,521) and Multi-Nut 200ml (−₹46,722) account for most of the gap. What is holding these two SKUs back, and what would it take to close the gap?"
+   "text": "Kush, Skin Malai on Nykaa reached ₹1.9 L against a ₹4.0 L target (48.8%, gap −₹2.0 L), even though revenue is up 28.5% on last week. Double Cocoa 200ml (−₹61,521) and Multi-Nut 200ml (−₹46,722) account for most of the gap. What is holding these two SKUs back, and what would it take to close the gap?",
+   "review_period_facts": {
+    "week": "14 Nov – 20 Nov",
+    "week_revenue": "₹1.6 L",
+    "week_target": "₹3.1 L",
+    "attainment": "51.2%",
+    "gap": "−₹1.5 L",
+    "vs_previous_week": "+5.7%",
+    "ad_spend": "₹5,789",
+    "roas": "2.50",
+    "roas_previous_week": "2.98",
+    "discount": "16.8%",
+    "guideline": "15.7%",
+    "discount_vs_guideline": "+1.1 pp",
+    "sku_drivers": "Double Cocoa Skin Malai - 200ml - Single Pack (−₹48,573); Multi-Nut Skin Malai - 200ml - Single Pack (−₹34,127)",
+    "ad_plan_for_the_days": "₹42,625",
+    "spend_vs_ad_plan": "14%",
+    "ad_spend_as_pct_of_sales": "3.6%",
+    "platform_ad_spend_as_pct_of_sales": "7.5%"
+   },
+   "verdict": "No answer",
+   "answer": "",
+   "why": "No reply was received; in the review period Skin Malai on Nykaa reached ₹1.6 L against ₹3.1 L (51.2%), with discount at 16.8% against a 15.7% guideline (+1.1 pp).",
+   "ask": "Why are Double Cocoa 200ml (−₹48,573) and Multi-Nut 200ml (−₹34,127) still short, and is it stock, buy-box or visibility, given ad spend is only 14% of the ₹42,625 plan?"
   },
   {
    "id": "Q2",
@@ -65,7 +88,30 @@
     "ad_spend_as_pct_of_sales": "12.5%",
     "platform_ad_spend_as_pct_of_sales": "7.5%"
    },
-   "text": "Kush, Henna on Nykaa reached ₹3.9 L against ₹5.1 L (76.4%), with Henna Paste Pack of 2 (−₹85,085) the biggest drag. Ad spend was ₹48,340 against a plan of ₹63,738, which is 12.5% of sales versus the platform's 7.5%, and ROAS slipped from 2.16 to 2.02. Is the spend working hard enough here, and what is holding back the Pack of 2?"
+   "text": "Kush, Henna on Nykaa reached ₹3.9 L against ₹5.1 L (76.4%), with Henna Paste Pack of 2 (−₹85,085) the biggest drag. Ad spend was ₹48,340 against a plan of ₹63,738, which is 12.5% of sales versus the platform's 7.5%, and ROAS slipped from 2.16 to 2.02. Is the spend working hard enough here, and what is holding back the Pack of 2?",
+   "review_period_facts": {
+    "week": "14 Nov – 20 Nov",
+    "week_revenue": "₹3.2 L",
+    "week_target": "₹3.9 L",
+    "attainment": "80.4%",
+    "gap": "−₹77,179",
+    "vs_previous_week": "+21.4%",
+    "ad_spend": "₹37,559",
+    "roas": "2.12",
+    "roas_previous_week": "1.95",
+    "discount": "15.5%",
+    "guideline": "15.0%",
+    "discount_vs_guideline": "+0.4 pp",
+    "sku_drivers": "Henna Paste - Pack of 2 (−₹42,515); Henna Paste - Pack of 3 (−₹42,289)",
+    "ad_plan_for_the_days": "₹74,986",
+    "spend_vs_ad_plan": "50%",
+    "ad_spend_as_pct_of_sales": "11.8%",
+    "platform_ad_spend_as_pct_of_sales": "7.5%"
+   },
+   "verdict": "No answer",
+   "answer": "",
+   "why": "No reply was received; in the review period Henna is at ₹3.2 L against ₹3.9 L (80.4%), ad spend is 11.8% of sales against 7.5% for the platform, and discount rose to 15.5% against a 15.0% guideline.",
+   "ask": "Spend is 11.8% of sales versus 7.5% for the platform, so which Henna campaigns will you cut or shift, and why is Pack of 3 (−₹42,289) now as weak as Pack of 2 (−₹42,515)?"
   },
   {
    "id": "Q3",
@@ -91,7 +137,30 @@
     "ad_spend_as_pct_of_sales": "4.7%",
     "platform_ad_spend_as_pct_of_sales": "7.5%"
    },
-   "text": "Kush, Flora Jal on Nykaa reached ₹1.0 L against ₹1.9 L (55.4%) and fell 11.4% week on week, with Pure Gulab Jal Single Pack (−₹41,832) leading the gap. ROAS also dropped from 2.45 to 1.76 on ₹4,837 of spend against a ₹13,052 plan. What changed this week, and is the ROAS drop connected to the sales decline?"
+   "text": "Kush, Flora Jal on Nykaa reached ₹1.0 L against ₹1.9 L (55.4%) and fell 11.4% week on week, with Pure Gulab Jal Single Pack (−₹41,832) leading the gap. ROAS also dropped from 2.45 to 1.76 on ₹4,837 of spend against a ₹13,052 plan. What changed this week, and is the ROAS drop connected to the sales decline?",
+   "review_period_facts": {
+    "week": "14 Nov – 20 Nov",
+    "week_revenue": "₹68,848",
+    "week_target": "₹1.4 L",
+    "attainment": "47.7%",
+    "gap": "−₹75,586",
+    "vs_previous_week": "−17.3%",
+    "ad_spend": "₹3,429",
+    "roas": "2.11",
+    "roas_previous_week": "2.10",
+    "discount": "17.1%",
+    "guideline": "16.0%",
+    "discount_vs_guideline": "+1.1 pp",
+    "sku_drivers": "Pure Gulab Jal - Single Pack (−₹40,489); Pure Gulab Jal - Pack of 2 (−₹26,262)",
+    "ad_plan_for_the_days": "₹15,355",
+    "spend_vs_ad_plan": "22%",
+    "ad_spend_as_pct_of_sales": "5.0%",
+    "platform_ad_spend_as_pct_of_sales": "7.5%"
+   },
+   "verdict": "No answer",
+   "answer": "",
+   "why": "No reply was received; in the review period Flora Jal fell a further 17.3% to ₹68,848 against ₹1.4 L (47.7%), with discount at 17.1% against a 16.0% guideline (+1.1 pp).",
+   "ask": "Flora Jal fell 17.3% with ROAS flat at 2.11, so what changed in stock, listing or pricing, and why is discount at 17.1% against 16.0% not lifting volume?"
   },
   {
    "id": "Q4",
@@ -118,7 +187,30 @@
     "platform_ad_spend_as_pct_of_sales": "7.5%",
     "why_flagged": "high spend for the sales"
    },
-   "text": "Kush, Comb on Nykaa spent ₹39,254 against a plan of ₹44,753, which is 17.5% of sales versus the platform's 7.5%, and ROAS is flat at 1.75. Revenue is still ₹2.2 L against ₹2.6 L (85.6%). Why is the spend share so high for Comb, and is there room to pull it back without hurting sales?"
+   "text": "Kush, Comb on Nykaa spent ₹39,254 against a plan of ₹44,753, which is 17.5% of sales versus the platform's 7.5%, and ROAS is flat at 1.75. Revenue is still ₹2.2 L against ₹2.6 L (85.6%). Why is the spend share so high for Comb, and is there room to pull it back without hurting sales?",
+   "review_period_facts": {
+    "week": "14 Nov – 20 Nov",
+    "week_revenue": "₹1.5 L",
+    "week_target": "₹2.0 L",
+    "attainment": "74.2%",
+    "gap": "−₹52,597",
+    "vs_previous_week": "−13.0%",
+    "ad_spend": "₹30,560",
+    "roas": "1.74",
+    "roas_previous_week": "1.90",
+    "discount": "16.6%",
+    "guideline": "16.0%",
+    "discount_vs_guideline": "+0.7 pp",
+    "sku_drivers": "Neem Comb - Dual Tooth (−₹24,354); Neem Comb - Shampoo Small (−₹14,508)",
+    "ad_plan_for_the_days": "₹52,650",
+    "spend_vs_ad_plan": "58%",
+    "ad_spend_as_pct_of_sales": "20.2%",
+    "platform_ad_spend_as_pct_of_sales": "7.5%"
+   },
+   "verdict": "No answer",
+   "answer": "",
+   "why": "No reply was received; Comb ad spend is 20.2% of sales against 7.5% for the platform, ROAS fell from 1.90 to 1.74, and revenue fell 13.0% to ₹1.5 L (74.2%).",
+   "ask": "Comb spends 20.2% of sales at a 1.74 ROAS, so which keywords or campaigns will you cut this week and by how much?"
   },
   {
    "id": "Q5",
@@ -145,7 +237,30 @@
     "platform_ad_spend_as_pct_of_sales": "7.5%",
     "why_flagged": "over ad plan, high spend for the sales"
    },
-   "text": "Kush, Hand Malai on Nykaa spent ₹26,808 against a plan of ₹11,062 (242%), which is 34.1% of sales versus the platform's 7.5%. Revenue was ₹78,651 against ₹1.0 L, and ROAS is only 1.17 even though it improved from 0.99. What led to the overspend, and is it worth continuing at this level?"
+   "text": "Kush, Hand Malai on Nykaa spent ₹26,808 against a plan of ₹11,062 (242%), which is 34.1% of sales versus the platform's 7.5%. Revenue was ₹78,651 against ₹1.0 L, and ROAS is only 1.17 even though it improved from 0.99. What led to the overspend, and is it worth continuing at this level?",
+   "review_period_facts": {
+    "week": "14 Nov – 20 Nov",
+    "week_revenue": "₹62,312",
+    "week_target": "₹81,387",
+    "attainment": "76.6%",
+    "gap": "−₹19,075",
+    "vs_previous_week": "+13.5%",
+    "ad_spend": "₹21,600",
+    "roas": "1.11",
+    "roas_previous_week": "1.09",
+    "discount": "15.8%",
+    "guideline": "15.5%",
+    "discount_vs_guideline": "+0.3 pp",
+    "sku_drivers": "Berry Vanilla Hand Malai - Pack of 2 (−₹4,048); Lemon Moringa Hand Malai - Single Pack (−₹3,342)",
+    "ad_plan_for_the_days": "₹13,014",
+    "spend_vs_ad_plan": "166%",
+    "ad_spend_as_pct_of_sales": "34.7%",
+    "platform_ad_spend_as_pct_of_sales": "7.5%"
+   },
+   "verdict": "No answer",
+   "answer": "",
+   "why": "No reply was received; Hand Malai spend is still 166% of the ₹13,014 plan, at 34.7% of sales against 7.5% for the platform, with ROAS of only 1.11.",
+   "ask": "Why is Hand Malai spending ₹21,600 against a ₹13,014 plan at 1.11 ROAS, and what is the cap and cut date?"
   },
   {
    "id": "Q6",
@@ -171,7 +286,30 @@
     "ad_spend_as_pct_of_sales": "6.5%",
     "platform_ad_spend_as_pct_of_sales": "7.5%"
    },
-   "text": "Kush, Lip Butter on Nykaa ran a 33.2% discount against a 15.4% guideline (+17.8 pp), and revenue was still ₹1.1 L against ₹1.4 L (74.3%). Beetroot Crush (−₹28,735) is the main shortfall. What was behind this deep discount, and was it approved?"
+   "text": "Kush, Lip Butter on Nykaa ran a 33.2% discount against a 15.4% guideline (+17.8 pp), and revenue was still ₹1.1 L against ₹1.4 L (74.3%). Beetroot Crush (−₹28,735) is the main shortfall. What was behind this deep discount, and was it approved?",
+   "review_period_facts": {
+    "week": "14 Nov – 20 Nov",
+    "week_revenue": "₹78,496",
+    "week_target": "₹1.1 L",
+    "attainment": "71.0%",
+    "gap": "−₹32,073",
+    "vs_previous_week": "+4.7%",
+    "ad_spend": "₹4,842",
+    "roas": "1.95",
+    "roas_previous_week": "2.11",
+    "discount": "31.3%",
+    "guideline": "15.3%",
+    "discount_vs_guideline": "+16.0 pp",
+    "sku_drivers": "Beetroot Crush Lip Butter (−₹25,779); Beetroot Crush Lip Butter - Pack of 2 (−₹2,498)",
+    "ad_plan_for_the_days": "₹34,659",
+    "spend_vs_ad_plan": "14%",
+    "ad_spend_as_pct_of_sales": "6.2%",
+    "platform_ad_spend_as_pct_of_sales": "7.5%"
+   },
+   "verdict": "No answer",
+   "answer": "",
+   "why": "No reply was received; Lip Butter discount is 31.3% against a 15.3% guideline (+16.0 pp) yet revenue is only ₹78,496 against ₹1.1 L (71.0%).",
+   "ask": "Who approved a 31.3% discount on Lip Butter, why did it still miss target on Beetroot Crush (−₹25,779), and when will it return to guideline?"
   }
  ],
  "own_ids": [
@@ -194,5 +332,6 @@
   }
  ],
  "reminder_sent": "2026-11-20T16:01:26.879045+05:30",
- "pack_sent": false
+ "pack_sent": "2026-11-23T10:01:25.503084+05:30",
+ "replies": []
 }

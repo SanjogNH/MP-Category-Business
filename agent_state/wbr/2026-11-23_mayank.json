@@ -39,7 +39,30 @@
     "ad_spend_as_pct_of_sales": "6.2%",
     "platform_ad_spend_as_pct_of_sales": "21.2%"
    },
-   "text": "Mayank, Instamart revenue came in at ₹9,900 against a ₹82,483 target (12.0% attainment, −34.4% vs the previous week), and the whole gap sits on Tomato Basil 75g - QC (−₹72,583) even with a 29.3% discount. What happened on this SKU (stock, listing, or visibility), and what is the plan to recover it?"
+   "text": "Mayank, Instamart revenue came in at ₹9,900 against a ₹82,483 target (12.0% attainment, −34.4% vs the previous week), and the whole gap sits on Tomato Basil 75g - QC (−₹72,583) even with a 29.3% discount. What happened on this SKU (stock, listing, or visibility), and what is the plan to recover it?",
+   "review_period_facts": {
+    "week": "14 Nov – 20 Nov",
+    "week_revenue": "₹8,118",
+    "week_target": "₹57,738",
+    "attainment": "14.1%",
+    "gap": "−₹49,620",
+    "vs_previous_week": "+15.5%",
+    "ad_spend": "no ads",
+    "roas": "–",
+    "roas_previous_week": "1.73",
+    "discount": "29.3%",
+    "guideline": "–",
+    "discount_vs_guideline": "–",
+    "sku_drivers": "Tomato Basil 75g - QC (−₹49,620)",
+    "ad_plan_for_the_days": "no ad plan",
+    "spend_vs_ad_plan": "–",
+    "ad_spend_as_pct_of_sales": "0.0%",
+    "platform_ad_spend_as_pct_of_sales": "20.6%"
+   },
+   "verdict": "Partly aligned",
+   "answer": "Tomato Basil 75g lost visibility in the 99 store, which is controlled by Instamart's central team and needs a selling price above 110; the issue is identified and being resolved.",
+   "why": "Visibility is a plausible cause, as the SKU still drives the whole gap (−₹49,620 in the review period, 14.1% attainment, no ads). But the reply says nothing can be done, gives no date, and doesn't address the price needed to get the 99-store spot or the lack of ads.",
+   "ask": "What is the exact date the 99-store slot returns, and will you raise the SP above 110 or put ads on this SKU in the meantime?"
   },
   {
    "id": "Q2",
@@ -66,7 +89,30 @@
     "platform_ad_spend_as_pct_of_sales": "21.2%",
     "why_flagged": "high spend for the sales"
    },
-   "text": "Mayank, Shampoo on Instamart is ahead of target at ₹5.6 L vs ₹4.6 L (120.7%), but ad spend was ₹2.1 L against a ₹1.8 L plan (118%), which is 38.2% of sales versus 21.2% for the platform. Is the extra spend at this ROAS of 1.73 deliberate, and what are you seeing that justifies a share this far above the platform norm?"
+   "text": "Mayank, Shampoo on Instamart is ahead of target at ₹5.6 L vs ₹4.6 L (120.7%), but ad spend was ₹2.1 L against a ₹1.8 L plan (118%), which is 38.2% of sales versus 21.2% for the platform. Is the extra spend at this ROAS of 1.73 deliberate, and what are you seeing that justifies a share this far above the platform norm?",
+   "review_period_facts": {
+    "week": "14 Nov – 20 Nov",
+    "week_revenue": "₹4.0 L",
+    "week_target": "₹3.2 L",
+    "attainment": "122.8%",
+    "gap": "₹73,575",
+    "vs_previous_week": "−12.2%",
+    "ad_spend": "₹1.4 L",
+    "roas": "1.67",
+    "roas_previous_week": "1.75",
+    "discount": "5.4%",
+    "guideline": "8.4%",
+    "discount_vs_guideline": "−3.0 pp",
+    "sku_drivers": "Five Oil Hibiscus Shampoo - QC (₹6,122); Neem Beracyl Dandruff Shampoo 250ml - QC (₹23,124)",
+    "ad_plan_for_the_days": "₹1.3 L",
+    "spend_vs_ad_plan": "112%",
+    "ad_spend_as_pct_of_sales": "35.7%",
+    "platform_ad_spend_as_pct_of_sales": "20.6%"
+   },
+   "verdict": "Partly aligned",
+   "answer": "The ₹2 L set aside in planning for merch or opportunities was deliberately put into Shampoo because it is performing well, and growing the assortment lifts ASP and AOV.",
+   "why": "The overspend was deliberate and revenue is ahead (122.8% attainment), but spend is 112% of plan at 35.7% of sales vs 20.6% for the platform, with ROAS only 1.67 (down from 1.75), and no cap or efficiency action is given.",
+   "ask": "What is the ROAS floor and spend cap for Shampoo, and which keywords or campaigns will you cut to bring ad share toward 20.6%?"
   },
   {
    "id": "Q3",
@@ -93,7 +139,30 @@
     "platform_ad_spend_as_pct_of_sales": "21.2%",
     "why_flagged": "high spend for the sales"
    },
-   "text": "Mayank, Malai Lotion on Instamart hit ₹1.7 L vs ₹1.6 L (107.0%) with ad spend of ₹65,797 against a ₹75,000 plan, but that is 37.8% of sales versus 21.2% for the platform, and the discount is 12.2% against a 5.8% guideline. ROAS did improve from 0.82 to 1.86, so what drove that recovery, and can you bring the ad share and discount closer to norm?"
+   "text": "Mayank, Malai Lotion on Instamart hit ₹1.7 L vs ₹1.6 L (107.0%) with ad spend of ₹65,797 against a ₹75,000 plan, but that is 37.8% of sales versus 21.2% for the platform, and the discount is 12.2% against a 5.8% guideline. ROAS did improve from 0.82 to 1.86, so what drove that recovery, and can you bring the ad share and discount closer to norm?",
+   "review_period_facts": {
+    "week": "14 Nov – 20 Nov",
+    "week_revenue": "₹1.7 L",
+    "week_target": "₹1.1 L",
+    "attainment": "145.8%",
+    "gap": "₹52,078",
+    "vs_previous_week": "+93.4%",
+    "ad_spend": "₹65,009",
+    "roas": "1.53",
+    "roas_previous_week": "1.11",
+    "discount": "12.6%",
+    "guideline": "5.8%",
+    "discount_vs_guideline": "+6.8 pp",
+    "sku_drivers": "Fig Rose PrimaLight - QC (−₹17,420); Double Cocoa Intense Dermacare - QC (−₹16,986)",
+    "ad_plan_for_the_days": "₹52,500",
+    "spend_vs_ad_plan": "124%",
+    "ad_spend_as_pct_of_sales": "39.2%",
+    "platform_ad_spend_as_pct_of_sales": "20.6%"
+   },
+   "verdict": "Partly aligned",
+   "answer": "The flagship sale event moved to December, discount is not an issue because the products are NLC with BFD at 0, and high ad spend is a deliberate November build of awareness and SOV for December.",
+   "why": "The strategy is plausible and ROAS recovered (0.82 to 1.86 in the earlier week), but spend is 124% of plan at 39.2% of sales, ROAS fell back to 1.53, and the discount is 12.6% vs a 5.8% guideline, with no cap or measure of the SOV gain.",
+   "ask": "What SOV and sales lift are you targeting for December, and what is your spend ceiling for the rest of November?"
   },
   {
    "id": "Q4",
@@ -120,7 +189,30 @@
     "platform_ad_spend_as_pct_of_sales": "21.2%",
     "why_flagged": "over ad plan, ROAS falling"
    },
-   "text": "Mayank, Loofah on Instamart landed exactly on target at ₹2.6 L (100.0%), but ad spend was ₹67,595 against a ₹50,000 plan (135%) while ROAS slipped from 3.38 to 2.37. What is behind the drop in returns on the extra spend, and how do you plan to rein it in?"
+   "text": "Mayank, Loofah on Instamart landed exactly on target at ₹2.6 L (100.0%), but ad spend was ₹67,595 against a ₹50,000 plan (135%) while ROAS slipped from 3.38 to 2.37. What is behind the drop in returns on the extra spend, and how do you plan to rein it in?",
+   "review_period_facts": {
+    "week": "14 Nov – 20 Nov",
+    "week_revenue": "₹1.7 L",
+    "week_target": "₹1.8 L",
+    "attainment": "94.5%",
+    "gap": "−₹10,090",
+    "vs_previous_week": "−31.0%",
+    "ad_spend": "₹42,835",
+    "roas": "2.16",
+    "roas_previous_week": "3.07",
+    "discount": "7.7%",
+    "guideline": "5.1%",
+    "discount_vs_guideline": "+2.6 pp",
+    "sku_drivers": "Sun Dried Loofah - Pack of 2 - QC (−₹22,950); Sun Dried Loofah - QC (₹12,860)",
+    "ad_plan_for_the_days": "₹35,000",
+    "spend_vs_ad_plan": "122%",
+    "ad_spend_as_pct_of_sales": "24.8%",
+    "platform_ad_spend_as_pct_of_sales": "20.6%"
+   },
+   "verdict": "Partly aligned",
+   "answer": "Ad ROAS is 2.71 against a 2.49 plan, spends after the 22nd will be cut by 50%, and front-loaded spend is normal because of day-of-week and week-of-month dynamics.",
+   "why": "The 50% cut after the 22nd is concrete, but the 2.71 ROAS claim contradicts the dashboard's 2.16 (down from 3.07), spend is 122% of plan, and the week missed target (94.5%).",
+   "ask": "Your 2.71 ROAS doesn't match the dashboard's 2.16, so which source are you using, and which campaigns will the 50% cut hit?"
   },
   {
    "id": "Q5",
@@ -146,7 +238,30 @@
     "ad_spend_as_pct_of_sales": "28.4%",
     "platform_ad_spend_as_pct_of_sales": "21.2%"
    },
-   "text": "Mayank, Soap on Instamart met target at ₹4.1 L (100.3%), but the discount ran at 11.1% against a 4.7% guideline (+6.3 pp), with Lavender 75g - Pack of 3 - QC at −₹16,922. Why was the discount this deep when ads were only ₹1.2 L against a ₹1.9 L plan, and could the target have been held at a lower discount?"
+   "text": "Mayank, Soap on Instamart met target at ₹4.1 L (100.3%), but the discount ran at 11.1% against a 4.7% guideline (+6.3 pp), with Lavender 75g - Pack of 3 - QC at −₹16,922. Why was the discount this deep when ads were only ₹1.2 L against a ₹1.9 L plan, and could the target have been held at a lower discount?",
+   "review_period_facts": {
+    "week": "14 Nov – 20 Nov",
+    "week_revenue": "₹3.0 L",
+    "week_target": "₹2.9 L",
+    "attainment": "105.9%",
+    "gap": "₹16,938",
+    "vs_previous_week": "−7.5%",
+    "ad_spend": "₹69,472",
+    "roas": "2.17",
+    "roas_previous_week": "2.18",
+    "discount": "11.6%",
+    "guideline": "4.7%",
+    "discount_vs_guideline": "+6.9 pp",
+    "sku_drivers": "Soothing Sandalwood - QC (−₹139); Lavender 75g - Pack of 3 - QC (₹2,307)",
+    "ad_plan_for_the_days": "₹1.3 L",
+    "spend_vs_ad_plan": "53%",
+    "ad_spend_as_pct_of_sales": "22.8%",
+    "platform_ad_spend_as_pct_of_sales": "20.6%"
+   },
+   "verdict": "Not aligned",
+   "answer": "Three of the five soaps are NLC with BFD at 0, and the discount figure is distorted in the data sets.",
+   "why": "The discount is 11.6% vs a 4.7% guideline (+6.9 pp), and the reply only calls the data distorted without quantifying it or proposing any action.",
+   "ask": "What is the true discount once the NLC soaps are excluded, and can you show that number against the 4.7% guideline?"
   },
   {
    "id": "Q6",
@@ -172,7 +287,30 @@
     "ad_spend_as_pct_of_sales": "9.6%",
     "platform_ad_spend_as_pct_of_sales": "21.2%"
    },
-   "text": "Mayank, Dasabuti Hair Oil on Instamart hit target at ₹2.4 L (100.4%), but the discount was 16.0% against a 7.3% guideline (+8.6 pp), while ad spend was only ₹22,881 of a ₹65,000 plan at a ROAS of 5.22. Since ads are working well and are underused, why lean on such a deep discount instead of putting more into ads?"
+   "text": "Mayank, Dasabuti Hair Oil on Instamart hit target at ₹2.4 L (100.4%), but the discount was 16.0% against a 7.3% guideline (+8.6 pp), while ad spend was only ₹22,881 of a ₹65,000 plan at a ROAS of 5.22. Since ads are working well and are underused, why lean on such a deep discount instead of putting more into ads?",
+   "review_period_facts": {
+    "week": "14 Nov – 20 Nov",
+    "week_revenue": "₹1.9 L",
+    "week_target": "₹1.7 L",
+    "attainment": "111.2%",
+    "gap": "₹18,735",
+    "vs_previous_week": "+28.5%",
+    "ad_spend": "₹15,879",
+    "roas": "5.33",
+    "roas_previous_week": "2.63",
+    "discount": "16.7%",
+    "guideline": "7.4%",
+    "discount_vs_guideline": "+9.4 pp",
+    "sku_drivers": "Castor Coconut 50ml - QC (−₹16,222); Crushed Tri-Leaf Summer Hair Oil 100 ml - QC (−₹11,906)",
+    "ad_plan_for_the_days": "₹45,500",
+    "spend_vs_ad_plan": "35%",
+    "ad_spend_as_pct_of_sales": "8.6%",
+    "platform_ad_spend_as_pct_of_sales": "20.6%"
+   },
+   "verdict": "Partly aligned",
+   "answer": "The discount comes from Castor Coconut, which is NLC with BFD at 0.",
+   "why": "This explains part of the 16.7% discount vs a 7.4% guideline, and Castor Coconut is the top SKU driver (−₹16,222). But it doesn't answer why ads are at only 35% of plan at a 5.33 ROAS, and there is no action.",
+   "ask": "With ROAS at 5.33 and spend at 35% of plan, when will you scale ads, and by how much?"
   }
  ],
  "own_ids": [
@@ -194,5 +332,13 @@
   }
  ],
  "reminder_sent": false,
- "pack_sent": false
+ "pack_sent": "2026-11-23T10:01:25.503084+05:30",
+ "replies": [
+  {
+   "from": "mayank.gangwani@nathabit.in",
+   "date": "Fri, 20 Nov 2026 12:49:40 +0530",
+   "text": "Hi Sir,\n\n\nWBR: 23rd NOV\n\n1.     Tomato Basil 75g - No 99-store visibility, given that no marketing\nspends is done this SKU – it saw lower sales. We can’t do anything for this\nas the 99 store’s activation is at the discretion of the central team at\nInstamart. The problem is found and is being resolved. (SP was set at lower\nthan 110, to get a spot in 99 store our SP has to be at above 110)\n\n2.     During planning I had set out 2Lakhs, for any merch or opportunity.\nGiven shampoo is performing so well we went ahead with doubling down on it.\nOur MS is 1.1% now in the Shampoo category. It is also essential to grow\nthe shampoo assortment given their Higher ASP; this would lead overall\nhigher AOV on Instamart for us.\n\n3.     Malai lotion – Flagship sale event pushed to dec (most sales were\nplanned from here), Discount is not an issue here as the products are on\nNLC our BFD is 0. High AD spends is a deliberate choice for NOV to build\nawareness and SOV for better sales in December.\n\n4.     Loofah: AD roas is at 2.71 v/s plan at 2.49. Spends post 22nd will\nbe reduced by 50%. ADs is more more day of week and week of month dynamic\nfor us, hence higher spends up front is normal.\n\n5.     Soap: 3 out of 5 soaps are NLC, BFD is 0. Discount figure is\ndistorted in our data sets.\n\n6.     Dasbuti hair oil: Discount is coming from Castor coconut, again NLC.\nBFD is 0.\n\n*Instamart*\n\n*Target*\n\n*Estimated achievement*\n\n*Primary* (₹ L)\n\n 150 Lakhs\n\n150 Lakhs\n\n*Secondary* (₹ L)\n\n 108 Lakhs\n\n 108 Lakhs\n\n*Discounting %* (%)\n\n 6.94%\n\n6.95%\n\n*Spend* (₹ L)\n\n 24L\n\n24L\n\n*Availability* (%)\n\n 73%\n\n70%",
+   "full": "Hi Sir, \n WBR: 23 rd NOV\n 1. \r\n Tomato Basil 75g - No 99-store visibility, given\r\nthat no marketing spends is done this SKU – it saw lower sales. We can’t do\r\nanything for this as the 99 store’s activation is at the discretion of the\r\ncentral team at Instamart. The problem is found and is being resolved. (SP was\r\nset at lower than 110, to get a spot in 99 store our SP has to be at above 110)\n 2. \r\n During planning I had set out 2Lakhs, for any\r\nmerch or opportunity. Given shampoo is performing so well we went ahead with\r\ndoubling down on it. Our MS is 1.1% now in the Shampoo category. It is also\r\nessential to grow the shampoo assortment given their Higher ASP; this would lead\r\noverall higher AOV on Instamart for us.\n 3. \r\n Malai lotion – Flagship sale event pushed to dec\r\n(most sales were planned from here), Discount is not an issue here as the\r\nproducts are on NLC our BFD is 0. High AD spends is a deliberate choice for NOV\r\nto build awareness and SOV for better sales in December. \n 4. \r\n Loofah: AD roas is at 2.71 v/s plan at 2.49. Spends\r\npost 22 nd will be reduced by 50%. ADs is more more day of week and week\r\nof month dynamic for us, hence higher spends up front is normal.\n 5. \r\n Soap: 3 out of 5 soaps are NLC, BFD is 0. Discount\r\nfigure is distorted in our data sets.\n 6. \r\n Dasbuti hair oil: Discount is coming from Castor\r\ncoconut, again NLC. BFD is 0.\n Instamart \n | \r\n Target \n | \r\n Estimated\r\n achievement \n | \r\n Primary (₹ L) \n | \r\n 150\r\n Lakhs \n | \r\n 150\r\n Lakhs \n | \r\n Secondary (₹ L) \n | \r\n 108\r\n Lakhs \n | \r\n 108\r\n Lakhs \n | \r\n Discounting\r\n % (%) \n | \r\n 6.94% \n | \r\n 6.95% \n | \r\n Spend (₹ L) \n | \r\n 24L \n | \r\n 24L \n | \r\n Availability (%) \n | \r\n 73% \n | \r\n 70% \n | \r\n On Thu, 19 Nov 2026 at 11:01, Sanjog < sanjog@nathabit.in > wrote:\n Hi Mayank,\n Ahead of our WBR on Mon 23 Nov at 5 pm , I’d like your view on the points below. Please reply to this email by Fri 20 Nov, 6 pm .\n 📅 Figures below are for 11 Nov – 17 Nov , the latest 7 days of data available for Instamart.\n For each question, please cover: (1) the reason , (2) the action you have taken or will take , and (3) when you expect it to show in the numbers . Short answers are fine; just keep the Q numbers. Please also fill in the business snapshot table at the end.\n Q1 | Mayank, Instamart revenue came in at ₹9,900 against a ₹82,483 target (12.0% attainment, −34.4% vs the previous week), and the whole gap sits on Tomato Basil 75g - QC (−₹72,583) even with a 29.3% discount. What happened on this SKU (stock, listing, or visibility), and what is the plan to recover it? | \n Q2 | Mayank, Shampoo on Instamart is ahead of target at ₹5.6 L vs ₹4.6 L (120.7%), but ad spend was ₹2.1 L against a ₹1.8 L plan (118%), which is 38.2% of sales versus 21.2% for the platform. Is the extra spend at this ROAS of 1.73 deliberate, and what are you seeing that justifies a share this far above the platform norm? | \n Q3 | Mayank, Malai Lotion on Instamart hit ₹1.7 L vs ₹1.6 L (107.0%) with ad spend of ₹65,797 against a ₹75,000 plan, but that is 37.8% of sales versus 21.2% for the platform, and the discount is 12.2% against a 5.8% guideline. ROAS did improve from 0.82 to 1.86, so what drove that recovery, and can you bring the ad share and discount closer to norm? | \n Q4 | Mayank, Loofah on Instamart landed exactly on target at ₹2.6 L (100.0%), but ad spend was ₹67,595 against a ₹50,000 plan (135%) while ROAS slipped from 3.38 to 2.37. What is behind the drop in returns on the extra spend, and how do you plan to rein it in? | \n Q5 | Mayank, Soap on Instamart met target at ₹4.1 L (100.3%), but the discount ran at 11.1% against a 4.7% guideline (+6.3 pp), with Lavender 75g - Pack of 3 - QC at −₹16,922. Why was the discount this deep when ads were only ₹1.2 L against a ₹1.9 L plan, and could the target have been held at a lower discount? | \n Q6 | Mayank, Dasabuti Hair Oil on Instamart hit target at ₹2.4 L (100.4%), but the discount was 16.0% against a 7.3% guideline (+8.6 pp), while ad spend was only ₹22,881 of a ₹65,000 plan at a ROAS of 5.22. Since ads are working well and are underused, why lean on such a deep discount instead of putting more into ads? | \n Business snapshot · November 2026\n Please fill in the table below for November 2026 and include it in your reply (copy into your reply, or type into the quoted table). ₹ values in lakh.\n Instamart | Target | Estimated achievement | \n Primary (₹ L) | | | \n Secondary (₹ L) | | | \n Discounting % (%) | | | \n Spend (₹ L) | | | \n Availability (%) | | | \n Source: Category Intelligence dashboard. Sales targets are the plan for these days, phased by day; ad targets are the sheet’s targets for the same days.\n Thanks,\nSanjog\n Prepared automatically from the dashboard on Sanjog’s behalf. Your reply goes to Sanjog.\n -- \n Best regards, Mayank Gangwani\n Nat Habit"
+  }
+ ]
 }
