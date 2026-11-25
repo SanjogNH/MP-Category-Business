@@ -7,11 +7,11 @@
    "name": "Sun Dried Loofah - Pack of 2 - QC",
    "sev": "critical",
    "first_raised": "2026-11-03",
-   "last_actioned": "2026-11-22",
+   "last_actioned": "2026-11-25",
    "status_today": "followup",
-   "times_raised": 8,
+   "times_raised": 9,
    "metric_at_raise": 65.2,
-   "metric_last": 63.36920288285165
+   "metric_last": 63.1184012883285
   },
   "revenue|Zepto|BL-FC-KL-CN-040": {
    "tab": "revenue",
@@ -19,11 +19,11 @@
    "name": "Chandan Nagakesar - QC",
    "sev": "critical",
    "first_raised": "2026-11-03",
-   "last_actioned": "2026-11-24",
+   "last_actioned": "2026-11-25",
    "status_today": "escalated",
-   "times_raised": 21,
+   "times_raised": 22,
    "metric_at_raise": 82.6,
-   "metric_last": 64.42208608750887
+   "metric_last": 64.84693199260343
   },
   "ads|Zepto|BL-HR-SH-HB-250": {
    "tab": "ads",
@@ -115,11 +115,11 @@
    "name": "Henna Paste - Pack of 2 - QC",
    "sev": "critical",
    "first_raised": "2026-11-03",
-   "last_actioned": "2026-11-22",
+   "last_actioned": "2026-11-25",
    "status_today": "followup",
-   "times_raised": 9,
+   "times_raised": 10,
    "metric_at_raise": 2.351339170899991,
-   "metric_last": 2.0323812715426017
+   "metric_last": 2.0949202093356836
   },
   "ads|Instamart|BL-HR-SH-HB-250": {
    "tab": "ads",
@@ -175,9 +175,9 @@
    "name": "Lavender 75g - Pack of 3 - QC",
    "sev": "critical",
    "first_raised": "2026-11-03",
-   "last_actioned": "2026-11-22",
+   "last_actioned": "2026-11-25",
    "status_today": "followup",
-   "times_raised": 7,
+   "times_raised": 8,
    "metric_at_raise": 10.4,
    "metric_last": 10.4
   },
@@ -187,11 +187,11 @@
    "name": "Neem Beracyl Dandruff Shampoo - 250g",
    "sev": "critical",
    "first_raised": "2026-11-03",
-   "last_actioned": "2026-11-21",
+   "last_actioned": "2026-11-25",
    "status_today": "followup",
-   "times_raised": 5,
+   "times_raised": 6,
    "metric_at_raise": 0.0,
-   "metric_last": 44.92035550906969
+   "metric_last": 41.91586177522704
   },
   "revenue|Amazon|BC-CPS-NLTB2-125": {
    "tab": "revenue",
@@ -199,11 +199,11 @@
    "name": "Tomato Basil Soap 125g - Pack of 2",
    "sev": "critical",
    "first_raised": "2026-11-03",
-   "last_actioned": "2026-11-24",
+   "last_actioned": "2026-11-25",
    "status_today": "escalated",
-   "times_raised": 21,
+   "times_raised": 22,
    "metric_at_raise": 66.5,
-   "metric_last": 40.1854176396382
+   "metric_last": 39.46079029180278
   },
   "revenue|Amazon|BA-SHO-BM-110": {
    "tab": "revenue",
@@ -216,18 +216,6 @@
    "times_raised": 6,
    "metric_at_raise": 41.0,
    "metric_last": 37.98793522537838
-  },
-  "ads|Amazon|BC-CP-CA-200": {
-   "tab": "ads",
-   "platform": "Amazon",
-   "name": "Castor Oil - 200 ml",
-   "sev": "warning",
-   "first_raised": "2026-11-03",
-   "last_actioned": "2026-11-23",
-   "status_today": "followup",
-   "times_raised": 6,
-   "metric_at_raise": 0.9617430578788891,
-   "metric_last": 1.1556397915124117
   },
   "discount|Amazon|FC-FW-BNGL-100": {
    "tab": "discount",
@@ -307,11 +295,11 @@
    "name": "Tomato Basil Soap 125g - Pack of 2",
    "sev": "critical",
    "first_raised": "2026-11-03",
-   "last_actioned": "2026-11-24",
+   "last_actioned": "2026-11-25",
    "status_today": "escalated",
-   "times_raised": 18,
+   "times_raised": 19,
    "metric_at_raise": 83.0,
-   "metric_last": 48.82683638620364
+   "metric_last": 48.79937022446351
   },
   "discount|Meesho|FC-FW-BUPA-100": {
    "tab": "discount",
@@ -451,11 +439,11 @@
    "name": "Brightening Ubtan Face Wash - Pack of 2",
    "sev": "critical",
    "first_raised": "2026-11-03",
-   "last_actioned": "2026-11-22",
+   "last_actioned": "2026-11-25",
    "status_today": "followup",
-   "times_raised": 7,
+   "times_raised": 8,
    "metric_at_raise": 50.9,
-   "metric_last": 49.1
+   "metric_last": 48.6
   },
   "ads|Zepto|BL-FC-KL-CN-040": {
    "tab": "ads",
@@ -487,11 +475,11 @@
    "name": "Tamarind Kasturi - QC",
    "sev": "critical",
    "first_raised": "2026-11-04",
-   "last_actioned": "2026-11-22",
-   "status_today": "escalated",
-   "times_raised": 14,
+   "last_actioned": "2026-11-25",
+   "status_today": "followup",
+   "times_raised": 15,
    "metric_at_raise": 63.1,
-   "metric_last": 50.175981228668945
+   "metric_last": 57.11612983503982
   },
   "ads|Zepto|BL-HR-NM-HB2-040": {
    "tab": "ads",
@@ -499,11 +487,11 @@
    "name": "Five Oil Hibiscus NutriMask - Pack of 2 - QC",
    "sev": "critical",
    "first_raised": "2026-11-04",
-   "last_actioned": "2026-11-24",
+   "last_actioned": "2026-11-25",
    "status_today": "escalated",
-   "times_raised": 12,
+   "times_raised": 13,
    "metric_at_raise": 2.0306262230919767,
-   "metric_last": 1.679606872697618
+   "metric_last": 1.6455829957868784
   },
   "revenue|Instamart|BL-BC-CP-CA-100": {
    "tab": "revenue",
@@ -511,23 +499,23 @@
    "name": "Castor Oil - 100ml - QC",
    "sev": "warning",
    "first_raised": "2026-11-04",
-   "last_actioned": "2026-11-22",
+   "last_actioned": "2026-11-25",
    "status_today": "followup",
-   "times_raised": 11,
+   "times_raised": 12,
    "metric_at_raise": 82.5,
-   "metric_last": 76.51570708362826
+   "metric_last": 82.2640265526962
   },
   "ads|Instamart|BL-FC-FW-BUPA-100": {
    "tab": "ads",
    "platform": "Instamart",
    "name": "Brightening Ubtan Face Wash - QC",
-   "sev": "warning",
+   "sev": "critical",
    "first_raised": "2026-11-04",
-   "last_actioned": "2026-11-22",
-   "status_today": "followup",
-   "times_raised": 7,
+   "last_actioned": "2026-11-25",
+   "status_today": "escalated",
+   "times_raised": 8,
    "metric_at_raise": 1.2810745475676573,
-   "metric_last": 1.424770530182889
+   "metric_last": 1.3489933321778853
   },
   "discount|Instamart|BL-CB-CPS-SSTO-02": {
    "tab": "discount",
@@ -535,9 +523,9 @@
    "name": "Sandalwood Soap 125g + Turmeric & Oats Soap 125g - QC",
    "sev": "critical",
    "first_raised": "2026-11-04",
-   "last_actioned": "2026-11-22",
+   "last_actioned": "2026-11-25",
    "status_today": "followup",
-   "times_raised": 7,
+   "times_raised": 8,
    "metric_at_raise": 25.4,
    "metric_last": 25.4
   },
@@ -559,11 +547,11 @@
    "name": "Trileaf Rosemary Conditioner - QC",
    "sev": "critical",
    "first_raised": "2026-11-04",
-   "last_actioned": "2026-11-22",
+   "last_actioned": "2026-11-25",
    "status_today": "followup",
-   "times_raised": 7,
+   "times_raised": 8,
    "metric_at_raise": 14.5,
-   "metric_last": 8.7
+   "metric_last": 8.1
   },
   "revenue|Amazon|FC-FW-BUPA2-100": {
    "tab": "revenue",
@@ -595,9 +583,9 @@
    "name": "Henna Paste - Pack of 2",
    "sev": "critical",
    "first_raised": "2026-11-04",
-   "last_actioned": "2026-11-22",
+   "last_actioned": "2026-11-25",
    "status_today": "followup",
-   "times_raised": 7,
+   "times_raised": 8,
    "metric_at_raise": 8.2,
    "metric_last": 5.4
   },
@@ -619,11 +607,11 @@
    "name": "HUFA Pigment Indigo Powder - 85g",
    "sev": "critical",
    "first_raised": "2026-11-04",
-   "last_actioned": "2026-11-22",
+   "last_actioned": "2026-11-25",
    "status_today": "followup",
-   "times_raised": 7,
+   "times_raised": 8,
    "metric_at_raise": 10.4,
-   "metric_last": 8.8
+   "metric_last": 8.7
   },
   "revenue|Flipkart|FK-FW-BUPA-150": {
    "tab": "revenue",
@@ -631,11 +619,11 @@
    "name": "Ubtan Face Wash - 150g",
    "sev": "critical",
    "first_raised": "2026-11-04",
-   "last_actioned": "2026-11-24",
+   "last_actioned": "2026-11-25",
    "status_today": "escalated",
-   "times_raised": 19,
+   "times_raised": 20,
    "metric_at_raise": 40.6,
-   "metric_last": 26.15423913332362
+   "metric_last": 26.47996761478802
   },
   "revenue|Flipkart|FK-FW-BUPA2-150": {
    "tab": "revenue",
@@ -643,11 +631,11 @@
    "name": "Ubtan Face Wash 150g - Pack of 2",
    "sev": "critical",
    "first_raised": "2026-11-04",
-   "last_actioned": "2026-11-24",
+   "last_actioned": "2026-11-25",
    "status_today": "escalated",
-   "times_raised": 18,
+   "times_raised": 19,
    "metric_at_raise": 24.7,
-   "metric_last": 9.384895920180627
+   "metric_last": 9.80149044151942
   },
   "revenue|Flipkart|BC-CPS-NLTB2-125": {
    "tab": "revenue",
@@ -655,11 +643,11 @@
    "name": "Tomato Basil Soap 125g - Pack of 2",
    "sev": "critical",
    "first_raised": "2026-11-04",
-   "last_actioned": "2026-11-24",
+   "last_actioned": "2026-11-25",
    "status_today": "escalated",
-   "times_raised": 13,
+   "times_raised": 14,
    "metric_at_raise": 59.2,
-   "metric_last": 40.979501674787954
+   "metric_last": 41.12017928514525
   },
   "revenue|Flipkart|FK-AOSC-HA-03": {
    "tab": "revenue",
@@ -679,11 +667,11 @@
    "name": "Henna Paste - Pack of 1",
    "sev": "critical",
    "first_raised": "2026-11-04",
-   "last_actioned": "2026-11-24",
+   "last_actioned": "2026-11-25",
    "status_today": "escalated",
-   "times_raised": 14,
+   "times_raised": 15,
    "metric_at_raise": 56.0,
-   "metric_last": 41.12095179647161
+   "metric_last": 40.761444982766356
   },
   "discount|Meesho|FC-FW-MVGL-100": {
    "tab": "discount",
@@ -691,11 +679,11 @@
    "name": "Moringa Vit-C Tikta Gel Face Wash",
    "sev": "critical",
    "first_raised": "2026-11-04",
-   "last_actioned": "2026-11-22",
+   "last_actioned": "2026-11-25",
    "status_today": "followup",
-   "times_raised": 7,
+   "times_raised": 8,
    "metric_at_raise": 23.8,
-   "metric_last": 22.2
+   "metric_last": 22.1
   },
   "discount|Meesho|FC-FW-BNGL-100": {
    "tab": "discount",
@@ -715,11 +703,11 @@
    "name": "HUFA Pigment Indigo Powder - 170g",
    "sev": "critical",
    "first_raised": "2026-11-04",
-   "last_actioned": "2026-11-22",
+   "last_actioned": "2026-11-25",
    "status_today": "followup",
-   "times_raised": 7,
+   "times_raised": 8,
    "metric_at_raise": 17.0,
-   "metric_last": 9.7
+   "metric_last": 7.6
   },
   "discount|Nykaa|AC-SDL-LO4-00": {
    "tab": "discount",
@@ -739,9 +727,9 @@
    "name": "Trileaf Rosemary Shampoo - 250g",
    "sev": "critical",
    "first_raised": "2026-11-04",
-   "last_actioned": "2026-11-22",
+   "last_actioned": "2026-11-25",
    "status_today": "followup",
-   "times_raised": 7,
+   "times_raised": 8,
    "metric_at_raise": 0.0,
    "metric_last": 0.0
   },
@@ -763,11 +751,11 @@
    "name": "Lavender Bloom Soap 90g - Pack of 3 - Cred",
    "sev": "critical",
    "first_raised": "2026-11-04",
-   "last_actioned": "2026-11-22",
+   "last_actioned": "2026-11-25",
    "status_today": "followup",
-   "times_raised": 7,
+   "times_raised": 8,
    "metric_at_raise": 31.8,
-   "metric_last": 28.4
+   "metric_last": 28.2
   },
   "discount|Cred|HR-SH-HBHB-02": {
    "tab": "discount",
@@ -787,11 +775,11 @@
    "name": "Turmeric Nutmeg (Pigmentation)  Face Malai - 30g + Cocoa Mogra (Overnight) Face Malai - 30g",
    "sev": "critical",
    "first_raised": "2026-11-04",
-   "last_actioned": "2026-11-20",
+   "last_actioned": "2026-11-25",
    "status_today": "followup",
-   "times_raised": 5,
+   "times_raised": 6,
    "metric_at_raise": 54.9,
-   "metric_last": 53.4
+   "metric_last": 52.7
   },
   "discount|Cred|BC-CPS-TO2-125": {
    "tab": "discount",
@@ -847,11 +835,11 @@
    "name": "Chandan Nagakesar - QC",
    "sev": "critical",
    "first_raised": "2026-11-05",
-   "last_actioned": "2026-11-22",
+   "last_actioned": "2026-11-25",
    "status_today": "followup",
-   "times_raised": 6,
+   "times_raised": 7,
    "metric_at_raise": 0.6505266202661029,
-   "metric_last": 1.0133551467449737
+   "metric_last": 1.0825325757837672
   },
   "ads|Blinkit|BL-AC-SDL-LO2-00": {
    "tab": "ads",
@@ -943,11 +931,11 @@
    "name": "Milk Rosehip Soap - Pack of 3",
    "sev": "critical",
    "first_raised": "2026-11-05",
-   "last_actioned": "2026-11-24",
+   "last_actioned": "2026-11-25",
    "status_today": "escalated",
-   "times_raised": 15,
+   "times_raised": 16,
    "metric_at_raise": 42.9,
-   "metric_last": 28.85045828835122
+   "metric_last": 29.25279658847958
   },
   "discount|Amazon|BA-SHO-BM-110": {
    "tab": "discount",
@@ -1039,9 +1027,9 @@
    "name": "Neem Beracyl Dandruff Shampoo - 250g",
    "sev": "critical",
    "first_raised": "2026-11-05",
-   "last_actioned": "2026-11-22",
+   "last_actioned": "2026-11-25",
    "status_today": "followup",
-   "times_raised": 6,
+   "times_raised": 7,
    "metric_at_raise": 14.6,
    "metric_last": 14.0
   },
@@ -1051,23 +1039,11 @@
    "name": "Hibiscus Shampoo 300ml + Hibiscus Conditioner 150ml + Hibiscus Hair Jal 200ml - Flipkart",
    "sev": "critical",
    "first_raised": "2026-11-05",
-   "last_actioned": "2026-11-22",
+   "last_actioned": "2026-11-25",
    "status_today": "followup",
-   "times_raised": 6,
+   "times_raised": 7,
    "metric_at_raise": 35.4,
-   "metric_last": 18.9
-  },
-  "revenue|Myntra|FC-FW-MDPA-100": {
-   "tab": "revenue",
-   "platform": "Myntra",
-   "name": "Masoor Dal Tikta Face Wash",
-   "sev": "critical",
-   "first_raised": "2026-11-05",
-   "last_actioned": "2026-11-18",
-   "status_today": "followup",
-   "times_raised": 5,
-   "metric_at_raise": 52.6,
-   "metric_last": 65.21867037189577
+   "metric_last": 18.0
   },
   "revenue|Myntra|HR-HE-RA4-250": {
    "tab": "revenue",
@@ -1075,11 +1051,11 @@
    "name": "Henna Paste - Pack of 4",
    "sev": "critical",
    "first_raised": "2026-11-05",
-   "last_actioned": "2026-11-22",
+   "last_actioned": "2026-11-25",
    "status_today": "followup",
-   "times_raised": 7,
+   "times_raised": 8,
    "metric_at_raise": 55.2,
-   "metric_last": 55.97149878340084
+   "metric_last": 54.38770770209975
   },
   "revenue|Myntra|FC-FW-BNGL-100": {
    "tab": "revenue",
@@ -1099,11 +1075,11 @@
    "name": "Neem Beracyl Dandruff Shampoo - 250g",
    "sev": "critical",
    "first_raised": "2026-11-05",
-   "last_actioned": "2026-11-22",
+   "last_actioned": "2026-11-25",
    "status_today": "followup",
-   "times_raised": 9,
+   "times_raised": 10,
    "metric_at_raise": 15.6,
-   "metric_last": 16.9
+   "metric_last": 17.5
   },
   "revenue|Nykaa|HR-SHO-CS-200": {
    "tab": "revenue",
@@ -1111,11 +1087,11 @@
    "name": "Curry Sesame Summer Hair Oil - 200 ml",
    "sev": "critical",
    "first_raised": "2026-11-05",
-   "last_actioned": "2026-11-22",
+   "last_actioned": "2026-11-25",
    "status_today": "followup",
-   "times_raised": 6,
+   "times_raised": 7,
    "metric_at_raise": 36.4,
-   "metric_last": 56.21692975345008
+   "metric_last": 63.975538737011505
   },
   "discount|Nykaa|BC-SM-CID-200": {
    "tab": "discount",
@@ -1195,9 +1171,9 @@
    "name": "HUFA Pigment Indigo Powder - 85g + Henna Paste - Pack of 2",
    "sev": "critical",
    "first_raised": "2026-11-05",
-   "last_actioned": "2026-11-22",
+   "last_actioned": "2026-11-25",
    "status_today": "followup",
-   "times_raised": 6,
+   "times_raised": 7,
    "metric_at_raise": 0.0,
    "metric_last": 0.0
   },
@@ -1315,11 +1291,11 @@
    "name": "Five Oil Hibiscus Shampoo + Henna Paste - Pack of 2",
    "sev": "critical",
    "first_raised": "2026-11-06",
-   "last_actioned": "2026-11-24",
+   "last_actioned": "2026-11-25",
    "status_today": "escalated",
-   "times_raised": 18,
+   "times_raised": 19,
    "metric_at_raise": 64.39328240071582,
-   "metric_last": 47.47576767646972
+   "metric_last": 47.85257072062771
   },
   "revenue|Flipkart|FK-HR-CB-TRM-03": {
    "tab": "revenue",
@@ -1387,11 +1363,11 @@
    "name": "Amla Herbal Powder - 125g - QC",
    "sev": "critical",
    "first_raised": "2026-11-07",
-   "last_actioned": "2026-11-22",
+   "last_actioned": "2026-11-25",
    "status_today": "followup",
-   "times_raised": 5,
+   "times_raised": 6,
    "metric_at_raise": 66.83415684174192,
-   "metric_last": 65.86889867845464
+   "metric_last": 62.52549366042847
   },
   "ads|Zepto|BL-HR-CN-HB-150": {
    "tab": "ads",
@@ -1399,11 +1375,11 @@
    "name": "Five Oil Hibiscus Conditioner - QC",
    "sev": "critical",
    "first_raised": "2026-11-07",
-   "last_actioned": "2026-11-22",
+   "last_actioned": "2026-11-25",
    "status_today": "followup",
-   "times_raised": 6,
+   "times_raised": 7,
    "metric_at_raise": 3.3238768647063894,
-   "metric_last": 2.906595726712271
+   "metric_last": 2.8717495052962403
   },
   "revenue|Instamart|BL-BC-CPS-NLTB-075": {
    "tab": "revenue",
@@ -1411,11 +1387,11 @@
    "name": "Tomato Basil 75g - QC",
    "sev": "critical",
    "first_raised": "2026-11-07",
-   "last_actioned": "2026-11-22",
+   "last_actioned": "2026-11-25",
    "status_today": "followup",
-   "times_raised": 6,
+   "times_raised": 7,
    "metric_at_raise": 20.604162457062035,
-   "metric_last": 15.363103654200222
+   "metric_last": 40.13310769852495
   },
   "discount|Instamart|BL-LP-LB-BC-010": {
    "tab": "discount",
@@ -1447,11 +1423,11 @@
    "name": "Neem Beracyl Dandruff Shampoo - 250g",
    "sev": "critical",
    "first_raised": "2026-11-07",
-   "last_actioned": "2026-11-22",
+   "last_actioned": "2026-11-25",
    "status_today": "followup",
-   "times_raised": 6,
+   "times_raised": 7,
    "metric_at_raise": 13.8,
-   "metric_last": 15.4
+   "metric_last": 15.6
   },
   "revenue|Myntra|HR-HE-RA2H-85": {
    "tab": "revenue",
@@ -1471,11 +1447,11 @@
    "name": "Tomato Basil Soap 125g - Pack of 2",
    "sev": "critical",
    "first_raised": "2026-11-07",
-   "last_actioned": "2026-11-24",
+   "last_actioned": "2026-11-25",
    "status_today": "escalated",
-   "times_raised": 16,
+   "times_raised": 17,
    "metric_at_raise": 81.23153828675301,
-   "metric_last": 54.21460687309359
+   "metric_last": 54.61538714850709
   },
   "discount|Myntra|LP-LB-BC-010": {
    "tab": "discount",
@@ -1483,11 +1459,11 @@
    "name": "Beetroot Crush Lip Butter",
    "sev": "critical",
    "first_raised": "2026-11-07",
-   "last_actioned": "2026-11-22",
+   "last_actioned": "2026-11-25",
    "status_today": "followup",
-   "times_raised": 6,
+   "times_raised": 7,
    "metric_at_raise": 15.6,
-   "metric_last": 16.4
+   "metric_last": 16.8
   },
   "revenue|Nykaa|BC-CP-AR-030": {
    "tab": "revenue",
@@ -1531,11 +1507,11 @@
    "name": "Henna Paste - Pack of 2",
    "sev": "critical",
    "first_raised": "2026-11-07",
-   "last_actioned": "2026-11-22",
+   "last_actioned": "2026-11-25",
    "status_today": "followup",
-   "times_raised": 6,
+   "times_raised": 7,
    "metric_at_raise": 2.35186153220654,
-   "metric_last": 2.0838929440389293
+   "metric_last": 2.079169626647723
   },
   "discount|Nykaa|FC-CM-CKM-015": {
    "tab": "discount",
@@ -1543,11 +1519,11 @@
    "name": "Classical Kumkumadi Mukhalaya 15 ml",
    "sev": "critical",
    "first_raised": "2026-11-07",
-   "last_actioned": "2026-11-22",
+   "last_actioned": "2026-11-25",
    "status_today": "followup",
-   "times_raised": 6,
+   "times_raised": 7,
    "metric_at_raise": 13.9,
-   "metric_last": 8.0
+   "metric_last": 7.6
   },
   "discount|Nykaa|BC-CPS-NLTB2-125": {
    "tab": "discount",
@@ -1579,11 +1555,11 @@
    "name": "Neem Comb Combo Dual + Wide + Fine",
    "sev": "critical",
    "first_raised": "2026-11-07",
-   "last_actioned": "2026-11-22",
+   "last_actioned": "2026-11-25",
    "status_today": "followup",
-   "times_raised": 6,
+   "times_raised": 7,
    "metric_at_raise": 51.8,
-   "metric_last": 51.6
+   "metric_last": 51.1
   },
   "discount|Cred|BC-HM-CBB-030": {
    "tab": "discount",
@@ -1657,18 +1633,6 @@
    "metric_at_raise": 1.0324837733373815,
    "metric_last": 1.4087688164135308
   },
-  "discount|Amazon|HR-SH-HB2-250": {
-   "tab": "discount",
-   "platform": "Amazon",
-   "name": "Five Oil Hibiscus Shampoo - 250g - Pack of 2",
-   "sev": "critical",
-   "first_raised": "2026-11-08",
-   "last_actioned": "2026-11-11",
-   "status_today": "followup",
-   "times_raised": 2,
-   "metric_at_raise": 12.0,
-   "metric_last": 12.0
-  },
   "discount|Amazon|BA-PBO-VCO-200": {
    "tab": "discount",
    "platform": "Amazon",
@@ -1687,11 +1651,11 @@
    "name": "HUFA Pigment Indigo Powder 85g - Pack of 2",
    "sev": "critical",
    "first_raised": "2026-11-08",
-   "last_actioned": "2026-11-22",
+   "last_actioned": "2026-11-25",
    "status_today": "followup",
-   "times_raised": 5,
+   "times_raised": 6,
    "metric_at_raise": 43.0,
-   "metric_last": 40.2
+   "metric_last": 38.6
   },
   "revenue|Myntra|HR-SH-HB-650": {
    "tab": "revenue",
@@ -1711,11 +1675,11 @@
    "name": "Castor Oil - 200 ml",
    "sev": "critical",
    "first_raised": "2026-11-08",
-   "last_actioned": "2026-11-24",
+   "last_actioned": "2026-11-25",
    "status_today": "escalated",
-   "times_raised": 13,
+   "times_raised": 14,
    "metric_at_raise": 76.14228877851087,
-   "metric_last": 65.7164255049569
+   "metric_last": 64.78708899683157
   },
   "discount|Myntra|LP-LB-PR-010": {
    "tab": "discount",
@@ -1735,11 +1699,11 @@
    "name": "Tamarind Kasturi Lepa - Pack of 1",
    "sev": "critical",
    "first_raised": "2026-11-08",
-   "last_actioned": "2026-11-24",
+   "last_actioned": "2026-11-25",
    "status_today": "escalated",
-   "times_raised": 4,
+   "times_raised": 5,
    "metric_at_raise": 80.71902607196725,
-   "metric_last": 69.15614450908569
+   "metric_last": 66.29910158043151
   },
   "ads|Nykaa|HR-SHO-HA-200": {
    "tab": "ads",
@@ -1879,9 +1843,9 @@
    "name": "Neem Beracyl Dandruff Shampoo - 250g",
    "sev": "critical",
    "first_raised": "2026-11-09",
-   "last_actioned": "2026-11-22",
+   "last_actioned": "2026-11-25",
    "status_today": "followup",
-   "times_raised": 5,
+   "times_raised": 6,
    "metric_at_raise": 18.6,
    "metric_last": 18.9
   },
@@ -1927,11 +1891,11 @@
    "name": "Loofah - Pack of 4",
    "sev": "critical",
    "first_raised": "2026-11-09",
-   "last_actioned": "2026-11-24",
+   "last_actioned": "2026-11-25",
    "status_today": "escalated",
-   "times_raised": 13,
+   "times_raised": 14,
    "metric_at_raise": 81.04295508303355,
-   "metric_last": 59.98011570961603
+   "metric_last": 59.42619965333945
   },
   "ads|Nykaa|AC-SDL-LO2-00": {
    "tab": "ads",
@@ -1939,11 +1903,11 @@
    "name": "Loofah - Pack of 2",
    "sev": "warning",
    "first_raised": "2026-11-09",
-   "last_actioned": "2026-11-22",
+   "last_actioned": "2026-11-25",
    "status_today": "followup",
-   "times_raised": 5,
+   "times_raised": 6,
    "metric_at_raise": 1.6229492091561057,
-   "metric_last": 1.7317317317317318
+   "metric_last": 1.8354392833837574
   },
   "discount|Nykaa|LP-LM-BR-012": {
    "tab": "discount",
@@ -1999,11 +1963,11 @@
    "name": "Tri-Leaf Rosemary NutriMask - Pack of 2 - QC",
    "sev": "critical",
    "first_raised": "2026-11-10",
-   "last_actioned": "2026-11-20",
+   "last_actioned": "2026-11-25",
    "status_today": "followup",
-   "times_raised": 4,
+   "times_raised": 5,
    "metric_at_raise": 1.4192781197537774,
-   "metric_last": 1.7272753989478944
+   "metric_last": 1.7466434782608695
   },
   "discount|Cred|BC-CPS-MR2-125": {
    "tab": "discount",
@@ -2011,11 +1975,11 @@
    "name": "Milk Rosehip Soap - Pack of 2",
    "sev": "critical",
    "first_raised": "2026-11-10",
-   "last_actioned": "2026-11-22",
+   "last_actioned": "2026-11-25",
    "status_today": "followup",
-   "times_raised": 5,
+   "times_raised": 6,
    "metric_at_raise": 46.9,
-   "metric_last": 44.5
+   "metric_last": 43.8
   },
   "discount|Flipkart|FK-CB-BUPG-02": {
    "tab": "discount",
@@ -2035,11 +1999,11 @@
    "name": "Trileaf Rosemary Conditioner - QC",
    "sev": "critical",
    "first_raised": "2026-11-12",
-   "last_actioned": "2026-11-24",
+   "last_actioned": "2026-11-25",
    "status_today": "escalated",
-   "times_raised": 4,
+   "times_raised": 5,
    "metric_at_raise": 3.9541795050193818,
-   "metric_last": 3.3161623813555545
+   "metric_last": 3.3420104640192125
   },
   "revenue|Amazon|FC-FW-BUPA-100": {
    "tab": "revenue",
@@ -2093,13 +2057,13 @@
    "tab": "ads",
    "platform": "Amazon",
    "name": "Neem Bhringraj Summer Hair Oil - 100 ml",
-   "sev": "critical",
+   "sev": "warning",
    "first_raised": "2026-11-12",
-   "last_actioned": "2026-11-16",
+   "last_actioned": "2026-11-25",
    "status_today": "followup",
-   "times_raised": 2,
+   "times_raised": 3,
    "metric_at_raise": 1.8562833334211313,
-   "metric_last": 2.33989099901563
+   "metric_last": 2.7228988028542784
   },
   "ads|Amazon|CB-SH-HRA2-03": {
    "tab": "ads",
@@ -2107,11 +2071,11 @@
    "name": "Five Oil Hibiscus Shampoo + Henna Paste - Pack of 2",
    "sev": "critical",
    "first_raised": "2026-11-12",
-   "last_actioned": "2026-11-22",
+   "last_actioned": "2026-11-25",
    "status_today": "followup",
-   "times_raised": 4,
+   "times_raised": 5,
    "metric_at_raise": 2.457161605552032,
-   "metric_last": 2.553450761099582
+   "metric_last": 2.6084682644306354
   },
   "discount|Amazon|LP-LB-BC-010": {
    "tab": "discount",
@@ -2155,11 +2119,11 @@
    "name": "Summer Baby Maahu (Balamool Nimbuka) - 200 ml",
    "sev": "critical",
    "first_raised": "2026-11-12",
-   "last_actioned": "2026-11-19",
+   "last_actioned": "2026-11-25",
    "status_today": "followup",
-   "times_raised": 3,
+   "times_raised": 4,
    "metric_at_raise": 50.52896170179137,
-   "metric_last": 51.02679812907643
+   "metric_last": 46.232601258208234
   },
   "ads|Nykaa|HR-NJ-RJ-200": {
    "tab": "ads",
@@ -2179,11 +2143,11 @@
    "name": "Beetroot Crush Lip Butter",
    "sev": "critical",
    "first_raised": "2026-11-12",
-   "last_actioned": "2026-11-24",
+   "last_actioned": "2026-11-25",
    "status_today": "escalated",
-   "times_raised": 11,
+   "times_raised": 12,
    "metric_at_raise": 6.2,
-   "metric_last": 10.3
+   "metric_last": 9.4
   },
   "discount|Nykaa|HR-SH-NB-250": {
    "tab": "discount",
@@ -2191,11 +2155,11 @@
    "name": "Neem Beracyl Dandruff Shampoo - 250g",
    "sev": "critical",
    "first_raised": "2026-11-12",
-   "last_actioned": "2026-11-24",
+   "last_actioned": "2026-11-25",
    "status_today": "escalated",
-   "times_raised": 11,
+   "times_raised": 12,
    "metric_at_raise": 6.5,
-   "metric_last": 12.4
+   "metric_last": 11.3
   },
   "discount|Pop Club|AC-SDL-LO2-00": {
    "tab": "discount",
@@ -2215,11 +2179,11 @@
    "name": "Five Oil Hibiscus Shampoo - 250g +  Five Oil Hibiscus Conditioner - 150g",
    "sev": "critical",
    "first_raised": "2026-11-12",
-   "last_actioned": "2026-11-22",
+   "last_actioned": "2026-11-25",
    "status_today": "followup",
-   "times_raised": 4,
+   "times_raised": 5,
    "metric_at_raise": 16.3,
-   "metric_last": 15.4
+   "metric_last": 16.2
   },
   "revenue|Amazon|HR-HE-RA2H-85": {
    "tab": "revenue",
@@ -2227,23 +2191,11 @@
    "name": "HUFA Pigment Indigo Powder - 85g + Henna Paste - Pack of 2",
    "sev": "critical",
    "first_raised": "2026-11-13",
-   "last_actioned": "2026-11-22",
+   "last_actioned": "2026-11-25",
    "status_today": "followup",
-   "times_raised": 4,
+   "times_raised": 5,
    "metric_at_raise": 64.75645265076065,
-   "metric_last": 67.55605826216289
-  },
-  "ads|Amazon|BA-PBO-AL-100": {
-   "tab": "ads",
-   "platform": "Amazon",
-   "name": "Pure Almond Baby Oil - 100 ml",
-   "sev": "critical",
-   "first_raised": "2026-11-13",
-   "last_actioned": "2026-11-19",
-   "status_today": "followup",
-   "times_raised": 3,
-   "metric_at_raise": 2.176566055830479,
-   "metric_last": 2.3045968201403433
+   "metric_last": 66.13507868623877
   },
   "ads|Amazon|BA-BML-AD-200": {
    "tab": "ads",
@@ -2251,11 +2203,11 @@
    "name": "Baby Malai Lotion Almond & Dates",
    "sev": "critical",
    "first_raised": "2026-11-13",
-   "last_actioned": "2026-11-22",
+   "last_actioned": "2026-11-25",
    "status_today": "followup",
-   "times_raised": 4,
+   "times_raised": 5,
    "metric_at_raise": 1.4817291077317787,
-   "metric_last": 1.6684507747020034
+   "metric_last": 1.6213986735668342
   },
   "ads|Amazon|BC-PO-CO-200": {
    "tab": "ads",
@@ -2275,11 +2227,11 @@
    "name": "Moringa Vit-C Tikta Cream Face Wash",
    "sev": "critical",
    "first_raised": "2026-11-13",
-   "last_actioned": "2026-11-22",
+   "last_actioned": "2026-11-25",
    "status_today": "followup",
-   "times_raised": 4,
+   "times_raised": 5,
    "metric_at_raise": 14.96848923178076,
-   "metric_last": 25.370186642261572
+   "metric_last": 33.619664738685515
   },
   "discount|Myntra|HR-NM-HB2-040": {
    "tab": "discount",
@@ -2287,9 +2239,9 @@
    "name": "Five Oil Hibiscus NutriMask - Pack of 2",
    "sev": "critical",
    "first_raised": "2026-11-13",
-   "last_actioned": "2026-11-22",
+   "last_actioned": "2026-11-25",
    "status_today": "followup",
-   "times_raised": 4,
+   "times_raised": 5,
    "metric_at_raise": 11.2,
    "metric_last": 10.9
   },
@@ -2299,11 +2251,11 @@
    "name": "Milk Rosehip + Sandalwood Soap - Pack of 2",
    "sev": "critical",
    "first_raised": "2026-11-13",
-   "last_actioned": "2026-11-17",
+   "last_actioned": "2026-11-25",
    "status_today": "followup",
-   "times_raised": 2,
+   "times_raised": 3,
    "metric_at_raise": 66.39186307711604,
-   "metric_last": 69.32047044436082
+   "metric_last": 62.7170352374819
   },
   "revenue|Nykaa|AC-KNC-DNWT-03": {
    "tab": "revenue",
@@ -2335,9 +2287,9 @@
    "name": "Hibiscus Amla Summer Hair Oil - 200 ml",
    "sev": "critical",
    "first_raised": "2026-11-13",
-   "last_actioned": "2026-11-22",
+   "last_actioned": "2026-11-25",
    "status_today": "followup",
-   "times_raised": 4,
+   "times_raised": 5,
    "metric_at_raise": 0.0,
    "metric_last": 0.0
   },
@@ -2347,9 +2299,9 @@
    "name": "Baby Malai Lotion Tender Coconut",
    "sev": "critical",
    "first_raised": "2026-11-13",
-   "last_actioned": "2026-11-22",
+   "last_actioned": "2026-11-25",
    "status_today": "followup",
-   "times_raised": 4,
+   "times_raised": 5,
    "metric_at_raise": 0.0,
    "metric_last": 0.0
   },
@@ -2359,9 +2311,9 @@
    "name": "Coconut Oil - 200 ml",
    "sev": "critical",
    "first_raised": "2026-11-13",
-   "last_actioned": "2026-11-22",
+   "last_actioned": "2026-11-25",
    "status_today": "followup",
-   "times_raised": 4,
+   "times_raised": 5,
    "metric_at_raise": 0.0,
    "metric_last": 0.0
   },
@@ -2383,11 +2335,11 @@
    "name": "Trileaf Rosemary Shampoo - 250g",
    "sev": "critical",
    "first_raised": "2026-11-13",
-   "last_actioned": "2026-11-22",
+   "last_actioned": "2026-11-25",
    "status_today": "followup",
-   "times_raised": 4,
+   "times_raised": 5,
    "metric_at_raise": 2.011170163170163,
-   "metric_last": 1.9807312614259598
+   "metric_last": 1.979727845254161
   },
   "ads|First Cry|FC-DM-PG-030": {
    "tab": "ads",
@@ -2395,11 +2347,11 @@
    "name": "Turmeric Nutmeg (Pigmentation)  Face Malai - 30g",
    "sev": "critical",
    "first_raised": "2026-11-13",
-   "last_actioned": "2026-11-22",
+   "last_actioned": "2026-11-25",
    "status_today": "followup",
-   "times_raised": 4,
+   "times_raised": 5,
    "metric_at_raise": 1.2836561844863732,
-   "metric_last": 2.325014760379373
+   "metric_last": 2.340228228228228
   },
   "ads|First Cry|HR-SH-NB-250": {
    "tab": "ads",
@@ -2407,11 +2359,11 @@
    "name": "Neem Beracyl Dandruff Shampoo - 250g",
    "sev": "critical",
    "first_raised": "2026-11-13",
-   "last_actioned": "2026-11-22",
+   "last_actioned": "2026-11-25",
    "status_today": "followup",
-   "times_raised": 4,
+   "times_raised": 5,
    "metric_at_raise": 2.7918523918213216,
-   "metric_last": 3.50648306702642
+   "metric_last": 3.8306312771610105
   },
   "ads|First Cry|FC-FL-GU-100": {
    "tab": "ads",
@@ -2419,11 +2371,11 @@
    "name": "Pure Gulab Jal - Single Pack",
    "sev": "critical",
    "first_raised": "2026-11-13",
-   "last_actioned": "2026-11-22",
+   "last_actioned": "2026-11-25",
    "status_today": "followup",
-   "times_raised": 4,
+   "times_raised": 5,
    "metric_at_raise": 0.8218650577782174,
-   "metric_last": 0.9488058830559833
+   "metric_last": 0.997396024652055
   },
   "discount|Cred|EC-UE-PN-009": {
    "tab": "discount",
@@ -2479,11 +2431,11 @@
    "name": "Hibiscus Amla All Season Hair Oil - 100 ml",
    "sev": "warning",
    "first_raised": "2026-11-16",
-   "last_actioned": "2026-11-22",
+   "last_actioned": "2026-11-25",
    "status_today": "followup",
-   "times_raised": 3,
+   "times_raised": 4,
    "metric_at_raise": 4.425451965244113,
-   "metric_last": 4.786036741442631
+   "metric_last": 4.85441942965926
   },
   "revenue|Nykaa|BC-EO-TT-015": {
    "tab": "revenue",
@@ -2503,11 +2455,11 @@
    "name": "Five Oil Hibiscus Shampoo - 250g - Pack of 2",
    "sev": "critical",
    "first_raised": "2026-11-16",
-   "last_actioned": "2026-11-22",
+   "last_actioned": "2026-11-25",
    "status_today": "followup",
-   "times_raised": 3,
+   "times_raised": 4,
    "metric_at_raise": 20.2,
-   "metric_last": 19.7
+   "metric_last": 19.1
   },
   "discount|Jio Mart|HR-HE-RA2-250": {
    "tab": "discount",
@@ -2515,9 +2467,9 @@
    "name": "Henna Paste - Pack of 2",
    "sev": "critical",
    "first_raised": "2026-11-16",
-   "last_actioned": "2026-11-22",
+   "last_actioned": "2026-11-25",
    "status_today": "followup",
-   "times_raised": 3,
+   "times_raised": 4,
    "metric_at_raise": 11.9,
    "metric_last": 11.9
   },
@@ -2527,11 +2479,11 @@
    "name": "Hibiscus Amla Summer Hair Oil - 100 ml - QC",
    "sev": "warning",
    "first_raised": "2026-11-16",
-   "last_actioned": "2026-11-22",
+   "last_actioned": "2026-11-25",
    "status_today": "followup",
-   "times_raised": 3,
+   "times_raised": 4,
    "metric_at_raise": 4.3,
-   "metric_last": 4.0
+   "metric_last": 3.3
   },
   "ads|Amazon|FC-FW-MDPA-100": {
    "tab": "ads",
@@ -2551,11 +2503,11 @@
    "name": "Neem Comb - Dual Tooth",
    "sev": "critical",
    "first_raised": "2026-11-16",
-   "last_actioned": "2026-11-22",
+   "last_actioned": "2026-11-25",
    "status_today": "followup",
-   "times_raised": 3,
+   "times_raised": 4,
    "metric_at_raise": 5.5,
-   "metric_last": 6.4
+   "metric_last": 6.9
   },
   "revenue|Myntra|BA-SHO-BM-110": {
    "tab": "revenue",
@@ -2599,11 +2551,11 @@
    "name": "Pomegranate Rose Lip Butter",
    "sev": "critical",
    "first_raised": "2026-11-16",
-   "last_actioned": "2026-11-22",
+   "last_actioned": "2026-11-25",
    "status_today": "followup",
-   "times_raised": 3,
+   "times_raised": 4,
    "metric_at_raise": 11.5,
-   "metric_last": 12.3
+   "metric_last": 9.9
   },
   "ads|First Cry|BC-CPS-NLHL2-125": {
    "tab": "ads",
@@ -2611,11 +2563,11 @@
    "name": "Lavender Soap 125g - Pack of 2",
    "sev": "critical",
    "first_raised": "2026-11-16",
-   "last_actioned": "2026-11-22",
+   "last_actioned": "2026-11-25",
    "status_today": "followup",
-   "times_raised": 3,
+   "times_raised": 4,
    "metric_at_raise": 1.4492410657329573,
-   "metric_last": 1.4507360836769054
+   "metric_last": 1.5913282968892604
   },
   "ads|Zepto|BL-FC-KL-TK-040": {
    "tab": "ads",
@@ -2671,11 +2623,11 @@
    "name": "Hibiscus Amla Summer Hair Oil - 100 ml",
    "sev": "critical",
    "first_raised": "2026-11-17",
-   "last_actioned": "2026-11-24",
+   "last_actioned": "2026-11-25",
    "status_today": "escalated",
-   "times_raised": 8,
+   "times_raised": 9,
    "metric_at_raise": 7.8,
-   "metric_last": 14.5
+   "metric_last": 15.5
   },
   "discount|Amazon|BA-WMA-BS-200": {
    "tab": "discount",
@@ -2873,13 +2825,13 @@
    "tab": "ads",
    "platform": "Nykaa",
    "name": "Crushed Tri-Leaf Summer Hair Oil - 100 ml",
-   "sev": "warning",
+   "sev": "critical",
    "first_raised": "2026-11-17",
-   "last_actioned": "2026-11-24",
-   "status_today": "followup",
-   "times_raised": 4,
+   "last_actioned": "2026-11-25",
+   "status_today": "escalated",
+   "times_raised": 5,
    "metric_at_raise": 1.8704930812707075,
-   "metric_last": 1.844659477027626
+   "metric_last": 1.6864555562780414
   },
   "ads|Nykaa|FC-ML-TRH-030": {
    "tab": "ads",
@@ -2923,11 +2875,11 @@
    "name": "Classical Kumkumadi Mukhalaya 10 ml",
    "sev": "critical",
    "first_raised": "2026-11-18",
-   "last_actioned": "2026-11-24",
+   "last_actioned": "2026-11-25",
    "status_today": "escalated",
-   "times_raised": 6,
+   "times_raised": 7,
    "metric_at_raise": 62.05651855951299,
-   "metric_last": 45.13201349782762
+   "metric_last": 43.169752041400336
   },
   "revenue|Myntra|BC-PO-AL-50": {
    "tab": "revenue",
@@ -2995,11 +2947,11 @@
    "name": "Sun Dried Loofah - Pack of 2 - QC",
    "sev": "warning",
    "first_raised": "2026-11-19",
-   "last_actioned": "2026-11-22",
+   "last_actioned": "2026-11-25",
    "status_today": "followup",
-   "times_raised": 2,
+   "times_raised": 3,
    "metric_at_raise": 79.07440663808998,
-   "metric_last": 80.24376465380035
+   "metric_last": 83.02708168045525
   },
   "revenue|Nykaa|BA-BP-RHSC-150": {
    "tab": "revenue",
@@ -3019,9 +2971,9 @@
    "name": "Active Orange Kiwi Vit-C Gel",
    "sev": "critical",
    "first_raised": "2026-11-19",
-   "last_actioned": "2026-11-22",
+   "last_actioned": "2026-11-25",
    "status_today": "followup",
-   "times_raised": 2,
+   "times_raised": 3,
    "metric_at_raise": 31.8,
    "metric_last": 31.8
   },
@@ -3103,11 +3055,11 @@
    "name": "Pure Olive Baby Oil - 100 ml",
    "sev": "critical",
    "first_raised": "2026-11-22",
-   "last_actioned": "2026-11-22",
-   "status_today": "new",
-   "times_raised": 1,
+   "last_actioned": "2026-11-25",
+   "status_today": "followup",
+   "times_raised": 2,
    "metric_at_raise": 1.5507833027031346,
-   "metric_last": 1.5507833027031346
+   "metric_last": 1.6724556131331734
   },
   "discount|Blinkit|BL-AC-SDL-LO2-00": {
    "tab": "discount",
@@ -3456,7 +3408,103 @@
    "times_raised": 1,
    "metric_at_raise": 51.1,
    "metric_last": 51.1
+  },
+  "ads|Flipkart|HR-SH-HB-250": {
+   "tab": "ads",
+   "platform": "Flipkart",
+   "name": "Five Oil Hibiscus Shampoo - 250g",
+   "sev": "critical",
+   "first_raised": "2026-11-25",
+   "last_actioned": "2026-11-25",
+   "status_today": "new",
+   "times_raised": 1,
+   "metric_at_raise": 9.248282927212598,
+   "metric_last": 9.248282927212598
+  },
+  "ads|Flipkart|FK-FW-BUPA-150": {
+   "tab": "ads",
+   "platform": "Flipkart",
+   "name": "Ubtan Face Wash - 150g",
+   "sev": "critical",
+   "first_raised": "2026-11-25",
+   "last_actioned": "2026-11-25",
+   "status_today": "new",
+   "times_raised": 1,
+   "metric_at_raise": 6.426572701834387,
+   "metric_last": 6.426572701834387
+  },
+  "ads|Flipkart|CB-RA2-RNTL-03": {
+   "tab": "ads",
+   "platform": "Flipkart",
+   "name": "Ready-to-Apply Henna Paste x 2 + Trileaf Nutrimask",
+   "sev": "critical",
+   "first_raised": "2026-11-25",
+   "last_actioned": "2026-11-25",
+   "status_today": "new",
+   "times_raised": 1,
+   "metric_at_raise": 2.05213601619535,
+   "metric_last": 2.05213601619535
+  },
+  "ads|Flipkart|BC-CPS-NLTB3-125": {
+   "tab": "ads",
+   "platform": "Flipkart",
+   "name": "Tomato Basil 125g - Pack of 3",
+   "sev": "critical",
+   "first_raised": "2026-11-25",
+   "last_actioned": "2026-11-25",
+   "status_today": "new",
+   "times_raised": 1,
+   "metric_at_raise": 3.1567573081656692,
+   "metric_last": 3.1567573081656692
+  },
+  "ads|Flipkart|FK-AHO-TR-150": {
+   "tab": "ads",
+   "platform": "Flipkart",
+   "name": "Trileaf Rosemary - 150g",
+   "sev": "warning",
+   "first_raised": "2026-11-25",
+   "last_actioned": "2026-11-25",
+   "status_today": "new",
+   "times_raised": 1,
+   "metric_at_raise": 8.468310885662643,
+   "metric_last": 8.468310885662643
+  },
+  "ads|Nykaa|BC-CP-JO-050": {
+   "tab": "ads",
+   "platform": "Nykaa",
+   "name": "Jojoba Oil - 50 ml",
+   "sev": "warning",
+   "first_raised": "2026-11-25",
+   "last_actioned": "2026-11-25",
+   "status_today": "new",
+   "times_raised": 1,
+   "metric_at_raise": 2.1482551618924703,
+   "metric_last": 2.1482551618924703
+  },
+  "ads|Nykaa|HR-SH-HBHB-02": {
+   "tab": "ads",
+   "platform": "Nykaa",
+   "name": "Five Oil Hibiscus Shampoo - 250g +  Five Oil Hibiscus Conditioner - 150g",
+   "sev": "warning",
+   "first_raised": "2026-11-25",
+   "last_actioned": "2026-11-25",
+   "status_today": "new",
+   "times_raised": 1,
+   "metric_at_raise": 3.398411647915288,
+   "metric_last": 3.398411647915288
+  },
+  "discount|Snapdeal|CB-RA2-RRT-03": {
+   "tab": "discount",
+   "platform": "Snapdeal",
+   "name": "Ready-to-Apply Henna Paste + Root Touch Up X 2",
+   "sev": "critical",
+   "first_raised": "2026-11-25",
+   "last_actioned": "2026-11-25",
+   "status_today": "new",
+   "times_raised": 1,
+   "metric_at_raise": 21.5,
+   "metric_last": 21.5
   }
  },
- "last_sent": "2026-11-24"
+ "last_sent": "2026-11-25"
 }
