@@ -1,0 +1,183 @@
+{
+ "wbr": "2026-11-30",
+ "manager": "mayank",
+ "sent_at": "2026-11-26T11:01:22.483722+05:30",
+ "message_id": "<179567112078.2548.15224945573475981231@nathabit.in>",
+ "subject": "WBR prep · Mon 30 Nov 5 pm · Mayank [WBR-20261130-mayank]",
+ "query_window": [
+  "2026-11-19",
+  "2026-11-25"
+ ],
+ "query_windows": {
+  "Instamart": [
+   "2026-11-19",
+   "2026-11-25"
+  ]
+ },
+ "questions": [
+  {
+   "id": "Q1",
+   "kind": "spend",
+   "category": "Shampoo",
+   "platform": "Instamart",
+   "facts": {
+    "week": "19 Nov – 25 Nov",
+    "week_revenue": "₹4.9 L",
+    "week_target": "₹3.2 L",
+    "attainment": "152.7%",
+    "gap": "₹1.7 L",
+    "vs_previous_week": "+32.3%",
+    "ad_spend": "₹2.3 L",
+    "roas": "1.68",
+    "roas_previous_week": "1.82",
+    "discount": "5.3%",
+    "guideline": "8.5%",
+    "discount_vs_guideline": "−3.2 pp",
+    "sku_drivers": "Neem Beracyl Dandruff Shampoo 250ml - QC (₹26,239); Trileaf Rosemary Shampoo - QC (₹65,494)",
+    "ad_plan_for_the_days": "₹1.3 L",
+    "spend_vs_ad_plan": "182%",
+    "ad_spend_as_pct_of_sales": "46.5%",
+    "platform_ad_spend_as_pct_of_sales": "27.0%",
+    "why_flagged": "over ad plan, high spend for the sales"
+   },
+   "text": "Shampoo on Instamart hit ₹4.9 L against a ₹3.2 L target (152.7%), but ad spend was ₹2.3 L versus a ₹1.3 L plan, which is 46.5% of sales against the platform's 27.0%, and ROAS slipped from 1.82 to 1.68. What is driving the higher spend, and how are you thinking about pulling that share of sales back toward the platform norm?"
+  },
+  {
+   "id": "Q2",
+   "kind": "spend",
+   "category": "Malai Lotion",
+   "platform": "Instamart",
+   "facts": {
+    "week": "19 Nov – 25 Nov",
+    "week_revenue": "₹1.6 L",
+    "week_target": "₹1.1 L",
+    "attainment": "144.5%",
+    "gap": "₹50,602",
+    "vs_previous_week": "+13.1%",
+    "ad_spend": "₹1.0 L",
+    "roas": "1.23",
+    "roas_previous_week": "1.67",
+    "discount": "13.2%",
+    "guideline": "5.8%",
+    "discount_vs_guideline": "+7.4 pp",
+    "sku_drivers": "Double Cocoa Intense Dermacare - QC (−₹12,449); Fig Rose PrimaLight - QC (−₹9,628)",
+    "ad_plan_for_the_days": "₹52,500",
+    "spend_vs_ad_plan": "197%",
+    "ad_spend_as_pct_of_sales": "63.0%",
+    "platform_ad_spend_as_pct_of_sales": "27.0%",
+    "why_flagged": "over ad plan, high spend for the sales, ROAS falling"
+   },
+   "text": "Malai Lotion on Instamart is at ₹1.6 L against a ₹1.1 L target (144.5%), yet ad spend was ₹1.0 L versus a ₹52,500 plan (63.0% of sales vs 27.0% for the platform), ROAS fell from 1.67 to 1.23, and discount is 13.2% against a 5.8% guideline. Could you walk me through what is behind the spend and the deeper discounting, and whether both are needed to hold this revenue?"
+  },
+  {
+   "id": "Q3",
+   "kind": "spend",
+   "category": "Lepa",
+   "platform": "Instamart",
+   "facts": {
+    "week": "19 Nov – 25 Nov",
+    "week_revenue": "₹2.2 L",
+    "week_target": "₹1.1 L",
+    "attainment": "190.1%",
+    "gap": "₹1.0 L",
+    "vs_previous_week": "−2.8%",
+    "ad_spend": "₹52,603",
+    "roas": "1.85",
+    "roas_previous_week": "2.80",
+    "discount": "4.9%",
+    "guideline": "3.3%",
+    "discount_vs_guideline": "+1.5 pp",
+    "sku_drivers": "Tamarind Kasturi - QC (₹10,727); Chandan Nagakesar - QC (₹92,649)",
+    "ad_plan_for_the_days": "₹28,000",
+    "spend_vs_ad_plan": "188%",
+    "ad_spend_as_pct_of_sales": "24.1%",
+    "platform_ad_spend_as_pct_of_sales": "27.0%",
+    "why_flagged": "over ad plan, ROAS falling"
+   },
+   "text": "Lepa on Instamart did ₹2.2 L against a ₹1.1 L target (190.1%), with ad spend of ₹52,603 versus a ₹28,000 plan. The share of sales is 24.1%, below the platform's 27.0%, but ROAS dropped from 2.80 to 1.85. What do you think is behind the ROAS decline, and is the extra spend still working at this level?"
+  },
+  {
+   "id": "Q4",
+   "kind": "discount",
+   "category": "Soap",
+   "platform": "Instamart",
+   "facts": {
+    "week": "19 Nov – 25 Nov",
+    "week_revenue": "₹3.1 L",
+    "week_target": "₹2.9 L",
+    "attainment": "107.2%",
+    "gap": "₹20,655",
+    "vs_previous_week": "+6.6%",
+    "ad_spend": "₹96,687",
+    "roas": "2.21",
+    "roas_previous_week": "2.26",
+    "discount": "11.8%",
+    "guideline": "4.7%",
+    "discount_vs_guideline": "+7.0 pp",
+    "sku_drivers": "Soothing Sandalwood - QC (−₹5,471); Lavender 75g - Pack of 3 - QC (−₹2,273)",
+    "ad_plan_for_the_days": "₹1.3 L",
+    "spend_vs_ad_plan": "73%",
+    "ad_spend_as_pct_of_sales": "31.4%",
+    "platform_ad_spend_as_pct_of_sales": "27.0%"
+   },
+   "text": "Soap on Instamart is at ₹3.1 L against a ₹2.9 L target (107.2%), but discount is 11.8% against a 4.7% guideline (+7.0 pp), while ad spend of ₹96,687 is under the ₹1.3 L plan. What is behind the deeper discounting, and is it needed to hold the revenue?"
+  },
+  {
+   "id": "Q5",
+   "kind": "discount",
+   "category": "Dasabuti Hair Oil",
+   "platform": "Instamart",
+   "facts": {
+    "week": "19 Nov – 25 Nov",
+    "week_revenue": "₹1.5 L",
+    "week_target": "₹1.3 L",
+    "attainment": "116.2%",
+    "gap": "₹21,617",
+    "vs_previous_week": "−19.6%",
+    "ad_spend": "₹20,865",
+    "roas": "3.30",
+    "roas_previous_week": "6.07",
+    "discount": "18.7%",
+    "guideline": "6.7%",
+    "discount_vs_guideline": "+12.0 pp",
+    "sku_drivers": "Hibiscus Amla Summer Hair Oil - 100 ml - QC (−₹1,686); Castor Coconut 50ml - QC (₹8,756)",
+    "ad_plan_for_the_days": "₹45,500",
+    "spend_vs_ad_plan": "46%",
+    "ad_spend_as_pct_of_sales": "13.5%",
+    "platform_ad_spend_as_pct_of_sales": "27.0%"
+   },
+   "text": "Dasabuti Hair Oil on Instamart reached ₹1.5 L against a ₹1.3 L target (116.2%), but discount is 18.7% against a 6.7% guideline (+12.0 pp), and revenue fell 19.6% week on week. Ad spend was only ₹20,865 against a ₹45,500 plan, with ROAS down from 6.07 to 3.30. What is driving the heavy discounting, and why was spend held well below plan?"
+  },
+  {
+   "id": "Q6",
+   "kind": "persistent",
+   "category": "revenue",
+   "platform": "Instamart",
+   "facts": {
+    "item": "Fig Rose PrimaLight - QC",
+    "note": "raised 2+ times in the daily brief without improving"
+   },
+   "text": "Fig Rose PrimaLight - QC on Instamart has been raised two or more times in the daily brief without improving. What do you think has been holding it back, and what is different in the plan this time?"
+  }
+ ],
+ "own_ids": [
+  "<179567112078.2548.15224945573475981231@nathabit.in>"
+ ],
+ "snapshot_accounts": [
+  {
+   "name": "Instamart",
+   "plats": [
+    "Instamart"
+   ],
+   "metrics": [
+    "Primary",
+    "Secondary",
+    "Discounting %",
+    "Spend",
+    "Availability"
+   ]
+  }
+ ],
+ "reminder_sent": false,
+ "pack_sent": false
+}

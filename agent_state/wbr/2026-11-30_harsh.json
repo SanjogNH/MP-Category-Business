@@ -1,0 +1,213 @@
+{
+ "wbr": "2026-11-30",
+ "manager": "harsh",
+ "sent_at": "2026-11-26T11:01:22.483722+05:30",
+ "message_id": "<179567109475.2548.1937178554287808183@nathabit.in>",
+ "subject": "WBR prep · Mon 30 Nov 12:30 pm · Harsh [WBR-20261130-harsh]",
+ "query_window": [
+  "2026-11-19",
+  "2026-11-25"
+ ],
+ "query_windows": {
+  "Cred": [
+   "2026-11-19",
+   "2026-11-25"
+  ],
+  "First Cry": [
+   "2026-11-19",
+   "2026-11-25"
+  ]
+ },
+ "questions": [
+  {
+   "id": "Q1",
+   "kind": "revenue",
+   "category": "Baby Scalp Oil",
+   "platform": "First Cry",
+   "facts": {
+    "week": "19 Nov – 25 Nov",
+    "week_revenue": "₹43,428",
+    "week_target": "₹1.4 L",
+    "attainment": "31.2%",
+    "gap": "−₹95,913",
+    "vs_previous_week": "0.0%",
+    "ad_spend": "₹18,992",
+    "roas": "2.21",
+    "roas_previous_week": "1.72",
+    "discount": "16.8%",
+    "guideline": "15.2%",
+    "discount_vs_guideline": "+1.6 pp",
+    "sku_drivers": "Brahmi Summer Baby Scalp Oil - 110 ml (−₹63,521); Brahmi Winter Baby Scalp Oil - 110 ml (−₹32,392)",
+    "ad_plan_for_the_days": "no ad plan",
+    "spend_vs_ad_plan": "–",
+    "ad_spend_as_pct_of_sales": "43.7%",
+    "platform_ad_spend_as_pct_of_sales": "20.2%"
+   },
+   "text": "Harsh, Baby Scalp Oil on First Cry did ₹43,428 against a ₹1.4 L target (31.2%), with Brahmi Summer 110 ml the biggest shortfall at −₹63,521. Ad spend was ₹18,992 with no ad plan, which is 43.7% of sales against the platform's 20.2%, even though ROAS improved to 2.21 from 1.72. What is holding conversion back, and how should we rethink the spend level?"
+  },
+  {
+   "id": "Q2",
+   "kind": "revenue",
+   "category": "Baby Pure Oils",
+   "platform": "First Cry",
+   "facts": {
+    "week": "19 Nov – 25 Nov",
+    "week_revenue": "₹6,993",
+    "week_target": "₹83,227",
+    "attainment": "8.4%",
+    "gap": "−₹76,234",
+    "vs_previous_week": "−56.2%",
+    "ad_spend": "₹12,980",
+    "roas": "1.26",
+    "roas_previous_week": "1.18",
+    "discount": "20.0%",
+    "guideline": "20.0%",
+    "discount_vs_guideline": "0.0 pp",
+    "sku_drivers": "Pure Almond Baby Oil - 100 ml (−₹25,692); Pure Virgin Coconut Baby Oil - 200 ml (−₹19,537)",
+    "ad_plan_for_the_days": "no ad plan",
+    "spend_vs_ad_plan": "–",
+    "ad_spend_as_pct_of_sales": "185.6%",
+    "platform_ad_spend_as_pct_of_sales": "20.2%"
+   },
+   "text": "Harsh, Baby Pure Oils on First Cry delivered ₹6,993 against an ₹83,227 target (8.4%), down 56.2% on last week. We spent ₹12,980 on ads with no ad plan, which is 185.6% of sales against the platform's 20.2%, at a ROAS of 1.26. What happened to demand on Pure Almond 100 ml and Pure Virgin Coconut 200 ml, and is this spend worth continuing?"
+  },
+  {
+   "id": "Q3",
+   "kind": "revenue",
+   "category": "Baby Malai Lotion",
+   "platform": "First Cry",
+   "facts": {
+    "week": "19 Nov – 25 Nov",
+    "week_revenue": "₹9,615",
+    "week_target": "₹60,534",
+    "attainment": "15.9%",
+    "gap": "−₹50,919",
+    "vs_previous_week": "−16.7%",
+    "ad_spend": "₹20,130",
+    "roas": "2.02",
+    "roas_previous_week": "1.57",
+    "discount": "27.1%",
+    "guideline": "15.2%",
+    "discount_vs_guideline": "+11.9 pp",
+    "sku_drivers": "Baby Malai Lotion Almond & Dates (−₹43,836); Baby Malai Lotion Tender Coconut (−₹16,698)",
+    "ad_plan_for_the_days": "no ad plan",
+    "spend_vs_ad_plan": "–",
+    "ad_spend_as_pct_of_sales": "209.4%",
+    "platform_ad_spend_as_pct_of_sales": "20.2%"
+   },
+   "text": "Harsh, Baby Malai Lotion on First Cry did ₹9,615 against a ₹60,534 target (15.9%), even with a 27.1% discount versus the 15.2% guideline. Ad spend of ₹20,130 (no ad plan) was 209.4% of sales against the platform's 20.2%. Why isn't the deeper discount translating into sales, and what is your plan for Almond & Dates?"
+  },
+  {
+   "id": "Q4",
+   "kind": "spend",
+   "category": "Shampoo",
+   "platform": "First Cry",
+   "facts": {
+    "week": "19 Nov – 25 Nov",
+    "week_revenue": "₹96,147",
+    "week_target": "₹1.4 L",
+    "attainment": "68.7%",
+    "gap": "−₹43,841",
+    "vs_previous_week": "+7.8%",
+    "ad_spend": "₹30,526",
+    "roas": "2.97",
+    "roas_previous_week": "2.49",
+    "discount": "15.9%",
+    "guideline": "16.6%",
+    "discount_vs_guideline": "−0.8 pp",
+    "sku_drivers": "Trileaf Rosemary Shampoo - 250g (−₹26,778); Neem Beracyl Dandruff Shampoo - 250g (−₹18,742)",
+    "ad_plan_for_the_days": "no ad plan",
+    "spend_vs_ad_plan": "–",
+    "ad_spend_as_pct_of_sales": "31.7%",
+    "platform_ad_spend_as_pct_of_sales": "20.2%",
+    "why_flagged": "high spend for the sales"
+   },
+   "text": "Harsh, Shampoo on First Cry is at ₹96,147 against a ₹1.4 L target (68.7%), and we spent ₹30,526 on ads with no ad plan, which is 31.7% of sales against the platform's 20.2%. ROAS did improve to 2.97 from 2.49. Is this spend level intentional, and what is your plan to close the gap on Trileaf Rosemary and Neem Beracyl?"
+  },
+  {
+   "id": "Q5",
+   "kind": "discount",
+   "category": "Soap",
+   "platform": "Cred",
+   "facts": {
+    "week": "19 Nov – 25 Nov",
+    "week_revenue": "₹68,715",
+    "week_target": "₹0",
+    "attainment": "–",
+    "gap": "–",
+    "vs_previous_week": "−25.2%",
+    "ad_spend": "no ads",
+    "roas": "–",
+    "roas_previous_week": "–",
+    "discount": "61.1%",
+    "guideline": "32.3%",
+    "discount_vs_guideline": "+28.7 pp",
+    "sku_drivers": "–",
+    "ad_plan_for_the_days": "no ad plan",
+    "spend_vs_ad_plan": "–",
+    "ad_spend_as_pct_of_sales": "0.0%",
+    "platform_ad_spend_as_pct_of_sales": "0.0%"
+   },
+   "text": "Harsh, Soap on Cred ran at a 61.1% discount against the 32.3% guideline (+28.7 pp), yet revenue fell 25.2% to ₹68,715. What is driving the deeper discount, and was it approved?"
+  },
+  {
+   "id": "Q6",
+   "kind": "discount",
+   "category": "Flora Jal",
+   "platform": "Cred",
+   "facts": {
+    "week": "19 Nov – 25 Nov",
+    "week_revenue": "₹31,491",
+    "week_target": "₹0",
+    "attainment": "–",
+    "gap": "–",
+    "vs_previous_week": "+370.4%",
+    "ad_spend": "no ads",
+    "roas": "–",
+    "roas_previous_week": "–",
+    "discount": "61.5%",
+    "guideline": "15.1%",
+    "discount_vs_guideline": "+46.4 pp",
+    "sku_drivers": "–",
+    "ad_plan_for_the_days": "no ad plan",
+    "spend_vs_ad_plan": "–",
+    "ad_spend_as_pct_of_sales": "0.0%",
+    "platform_ad_spend_as_pct_of_sales": "0.0%"
+   },
+   "text": "Harsh, Flora Jal on Cred ran at a 61.5% discount against the 15.1% guideline (+46.4 pp), while revenue jumped 370.4% to ₹31,491. Was this discount planned and approved, and how much of the spike came from it?"
+  }
+ ],
+ "own_ids": [
+  "<179567109475.2548.1937178554287808183@nathabit.in>"
+ ],
+ "snapshot_accounts": [
+  {
+   "name": "First Cry",
+   "plats": [
+    "First Cry"
+   ],
+   "metrics": [
+    "Primary",
+    "Secondary",
+    "Discounting %",
+    "Spend",
+    "SLA"
+   ]
+  },
+  {
+   "name": "Cred",
+   "plats": [
+    "Cred"
+   ],
+   "metrics": [
+    "Primary",
+    "Secondary",
+    "Discounting %",
+    "Spend",
+    "SLA"
+   ]
+  }
+ ],
+ "reminder_sent": false,
+ "pack_sent": false
+}

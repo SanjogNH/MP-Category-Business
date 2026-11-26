@@ -1,0 +1,231 @@
+{
+ "wbr": "2026-11-30",
+ "manager": "garima",
+ "sent_at": "2026-11-26T11:01:22.483722+05:30",
+ "message_id": "<179567110265.2548.16203822794042424179@nathabit.in>",
+ "subject": "WBR prep · Mon 30 Nov 3 pm · Garima [WBR-20261130-garima]",
+ "query_window": [
+  "2026-11-18",
+  "2026-11-25"
+ ],
+ "query_windows": {
+  "Big Basket": [
+   "2026-11-19",
+   "2026-11-25"
+  ],
+  "Blinkit": [
+   "2026-11-18",
+   "2026-11-24"
+  ],
+  "Zepto": [
+   "2026-11-19",
+   "2026-11-25"
+  ]
+ },
+ "questions": [
+  {
+   "id": "Q1",
+   "kind": "revenue",
+   "category": "Lepa",
+   "platform": "Blinkit",
+   "facts": {
+    "week": "17 Nov – 24 Nov",
+    "week_revenue": "₹3.7 L",
+    "week_target": "₹4.8 L",
+    "attainment": "75.7%",
+    "gap": "−₹1.2 L",
+    "vs_previous_week": "−36.4%",
+    "ad_spend": "₹59,047",
+    "roas": "12.71",
+    "roas_previous_week": "5.04",
+    "discount": "4.4%",
+    "guideline": "3.7%",
+    "discount_vs_guideline": "+0.7 pp",
+    "sku_drivers": "Tamarind Kasturi - QC (−₹59,749); Chandan Nagakesar - QC (−₹49,391)",
+    "ad_plan_for_the_days": "₹1.1 L",
+    "spend_vs_ad_plan": "53%",
+    "ad_spend_as_pct_of_sales": "16.1%",
+    "platform_ad_spend_as_pct_of_sales": "4.5%"
+   },
+   "text": "Garima, Lepa on Blinkit did ₹3.7 L against a ₹4.8 L target (75.7%, −36.4% vs last week), with Tamarind Kasturi (−₹59,749) and Chandan Nagakesar (−₹49,391) driving most of the gap. Ad spend was ₹59,047 against a ₹1.1 L plan, yet it was 16.1% of sales versus the platform's 4.5%, and ROAS rose from 5.04 to 12.71. What do you think is behind the drop on those two SKUs, and is the lower sales base inflating the spend share?"
+  },
+  {
+   "id": "Q2",
+   "kind": "revenue",
+   "category": "Soap",
+   "platform": "Blinkit",
+   "facts": {
+    "week": "17 Nov – 24 Nov",
+    "week_revenue": "₹1.8 L",
+    "week_target": "₹2.9 L",
+    "attainment": "64.1%",
+    "gap": "−₹1.0 L",
+    "vs_previous_week": "+365.3%",
+    "ad_spend": "₹31,561",
+    "roas": "22.03",
+    "roas_previous_week": "30.55",
+    "discount": "7.0%",
+    "guideline": "17.4%",
+    "discount_vs_guideline": "−10.4 pp",
+    "sku_drivers": "Himalayan Lavender 125g - Pack of 2 - QC (−₹68,475); Tomato Basil Soap 125g Pack of 2 - QC (−₹54,427)",
+    "ad_plan_for_the_days": "₹16,000",
+    "spend_vs_ad_plan": "197%",
+    "ad_spend_as_pct_of_sales": "17.2%",
+    "platform_ad_spend_as_pct_of_sales": "4.5%"
+   },
+   "text": "Soap on Blinkit reached ₹1.8 L against a ₹2.9 L target (64.1%), even though it is up 365.3% on last week, and Himalayan Lavender Pack of 2 (−₹68,475) is the biggest gap driver. Ad spend was ₹31,561 against a ₹16,000 plan, which is 17.2% of sales versus the platform's 4.5%, and ROAS fell from 30.55 to 22.03. What drove spend to nearly double the plan, and what did it deliver for these SKUs?"
+  },
+  {
+   "id": "Q3",
+   "kind": "spend",
+   "category": "Soap",
+   "platform": "Zepto",
+   "facts": {
+    "week": "18 Nov – 25 Nov",
+    "week_revenue": "₹1.8 L",
+    "week_target": "₹1.6 L",
+    "attainment": "113.8%",
+    "gap": "₹22,292",
+    "vs_previous_week": "+7.4%",
+    "ad_spend": "₹1.5 L",
+    "roas": "1.05",
+    "roas_previous_week": "0.76",
+    "discount": "4.5%",
+    "guideline": "11.1%",
+    "discount_vs_guideline": "−6.6 pp",
+    "sku_drivers": "Soothing Sandalwood - QC (−₹5,271); Healing Turmeric & Oats - QC (₹5,176)",
+    "ad_plan_for_the_days": "₹1.9 L",
+    "spend_vs_ad_plan": "78%",
+    "ad_spend_as_pct_of_sales": "82.8%",
+    "platform_ad_spend_as_pct_of_sales": "32.2%",
+    "why_flagged": "high spend for the sales"
+   },
+   "text": "Soap on Zepto is ahead of target at ₹1.8 L against ₹1.6 L (113.8%), but ad spend of ₹1.5 L (against a ₹1.9 L plan) is 82.8% of sales versus the platform's 32.2%. ROAS is 1.05, up from 0.76 last week. What is driving such a high spend share even though you are under plan, and where could it be trimmed without hurting sales?"
+  },
+  {
+   "id": "Q4",
+   "kind": "spend",
+   "category": "Lepa",
+   "platform": "Zepto",
+   "facts": {
+    "week": "18 Nov – 25 Nov",
+    "week_revenue": "₹50,590",
+    "week_target": "₹77,144",
+    "attainment": "65.6%",
+    "gap": "−₹26,554",
+    "vs_previous_week": "−1.1%",
+    "ad_spend": "₹78,456",
+    "roas": "0.69",
+    "roas_previous_week": "0.66",
+    "discount": "2.4%",
+    "guideline": "3.4%",
+    "discount_vs_guideline": "−1.0 pp",
+    "sku_drivers": "Chandan Nagakesar - QC (−₹18,376); Tamarind Kasturi - QC (−₹8,178)",
+    "ad_plan_for_the_days": "₹1.2 L",
+    "spend_vs_ad_plan": "65%",
+    "ad_spend_as_pct_of_sales": "155.1%",
+    "platform_ad_spend_as_pct_of_sales": "32.2%",
+    "why_flagged": "high spend for the sales"
+   },
+   "text": "Lepa on Zepto did ₹50,590 against a ₹77,144 target (65.6%), and ad spend of ₹78,456 (against a ₹1.2 L plan) is 155.1% of sales versus the platform's 32.2%. ROAS is 0.69, barely changed from 0.66 last week. Spend is below plan but still not paying back, so what is your view on how to bring it in line, and what is holding back Chandan Nagakesar (−₹18,376)?"
+  },
+  {
+   "id": "Q5",
+   "kind": "discount",
+   "category": "Indigo Powder",
+   "platform": "Blinkit",
+   "facts": {
+    "week": "17 Nov – 24 Nov",
+    "week_revenue": "₹6.6 L",
+    "week_target": "₹6.6 L",
+    "attainment": "100.0%",
+    "gap": "−₹77",
+    "vs_previous_week": "−7.0%",
+    "ad_spend": "₹25,813",
+    "roas": "8.82",
+    "roas_previous_week": "12.40",
+    "discount": "11.9%",
+    "guideline": "2.3%",
+    "discount_vs_guideline": "+9.6 pp",
+    "sku_drivers": "HUFA Pigment Indigo Powder - 85g - QC (−₹77)",
+    "ad_plan_for_the_days": "₹26,667",
+    "spend_vs_ad_plan": "97%",
+    "ad_spend_as_pct_of_sales": "3.9%",
+    "platform_ad_spend_as_pct_of_sales": "4.5%"
+   },
+   "text": "Indigo Powder on Blinkit hit its target (₹6.6 L, 100.0%), but the discount was 11.9% against a 2.3% guideline (+9.6 pp). ROAS also slipped from 12.40 to 8.82 on ad spend of ₹25,813 (plan ₹26,667). What was the reason for the deeper discount, and was it needed to hold the revenue?"
+  },
+  {
+   "id": "Q6",
+   "kind": "discount",
+   "category": "Loofah",
+   "platform": "Blinkit",
+   "facts": {
+    "week": "17 Nov – 24 Nov",
+    "week_revenue": "₹4.4 L",
+    "week_target": "₹4.7 L",
+    "attainment": "94.4%",
+    "gap": "−₹26,450",
+    "vs_previous_week": "+31.0%",
+    "ad_spend": "₹33,980",
+    "roas": "5.40",
+    "roas_previous_week": "3.89",
+    "discount": "14.5%",
+    "guideline": "4.9%",
+    "discount_vs_guideline": "+9.6 pp",
+    "sku_drivers": "Sun Dried Loofah - Pack of 2 - QC (−₹26,450)",
+    "ad_plan_for_the_days": "₹40,000",
+    "spend_vs_ad_plan": "85%",
+    "ad_spend_as_pct_of_sales": "7.6%",
+    "platform_ad_spend_as_pct_of_sales": "4.5%"
+   },
+   "text": "Loofah on Blinkit did ₹4.4 L against a ₹4.7 L target (94.4%, +31.0% vs last week), but the discount was 14.5% against a 4.9% guideline (+9.6 pp). Sun Dried Loofah Pack of 2 is still short by ₹26,450 despite the discount. Could you share what the discount was meant to achieve here, and whether it is working?"
+  }
+ ],
+ "own_ids": [
+  "<179567110265.2548.16203822794042424179@nathabit.in>"
+ ],
+ "snapshot_accounts": [
+  {
+   "name": "Blinkit",
+   "plats": [
+    "Blinkit"
+   ],
+   "metrics": [
+    "Primary",
+    "Secondary",
+    "Discounting %",
+    "Spend",
+    "Availability"
+   ]
+  },
+  {
+   "name": "Zepto",
+   "plats": [
+    "Zepto"
+   ],
+   "metrics": [
+    "Primary",
+    "Secondary",
+    "Discounting %",
+    "Spend",
+    "Availability"
+   ]
+  },
+  {
+   "name": "Big Basket",
+   "plats": [
+    "Big Basket"
+   ],
+   "metrics": [
+    "Primary",
+    "Secondary",
+    "Discounting %",
+    "Spend",
+    "Availability"
+   ]
+  }
+ ],
+ "reminder_sent": false,
+ "pack_sent": false
+}

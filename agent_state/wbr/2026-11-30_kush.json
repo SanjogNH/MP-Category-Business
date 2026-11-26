@@ -1,0 +1,196 @@
+{
+ "wbr": "2026-11-30",
+ "manager": "kush",
+ "sent_at": "2026-11-26T11:01:22.483722+05:30",
+ "message_id": "<179567111482.2548.15652949461565429053@nathabit.in>",
+ "subject": "WBR prep · Mon 30 Nov 4 pm · Kush [WBR-20261130-kush]",
+ "query_window": [
+  "2026-11-18",
+  "2026-11-24"
+ ],
+ "query_windows": {
+  "Nykaa": [
+   "2026-11-18",
+   "2026-11-24"
+  ]
+ },
+ "questions": [
+  {
+   "id": "Q1",
+   "kind": "revenue",
+   "category": "Henna",
+   "platform": "Nykaa",
+   "facts": {
+    "week": "18 Nov – 24 Nov",
+    "week_revenue": "₹2.5 L",
+    "week_target": "₹3.9 L",
+    "attainment": "62.5%",
+    "gap": "−₹1.5 L",
+    "vs_previous_week": "−18.2%",
+    "ad_spend": "₹33,377",
+    "roas": "2.06",
+    "roas_previous_week": "2.02",
+    "discount": "13.9%",
+    "guideline": "15.0%",
+    "discount_vs_guideline": "−1.2 pp",
+    "sku_drivers": "Henna Paste - Pack of 2 (−₹92,101); Henna Paste - Pack of 3 (−₹50,829)",
+    "ad_plan_for_the_days": "₹26,245",
+    "spend_vs_ad_plan": "127%",
+    "ad_spend_as_pct_of_sales": "13.5%",
+    "platform_ad_spend_as_pct_of_sales": "7.3%"
+   },
+   "text": "Henna on Nykaa made ₹2.5 L against a ₹3.9 L target (62.5%), with Henna Paste - Pack of 2 the biggest gap at −₹92,101. Ad spend was also ₹33,377 against a plan of ₹26,245, which is 13.5% of sales versus 7.3% for the platform, so could you walk me through what happened on Pack of 2 and how you see that spend share?"
+  },
+  {
+   "id": "Q2",
+   "kind": "revenue",
+   "category": "Skin Malai",
+   "platform": "Nykaa",
+   "facts": {
+    "week": "18 Nov – 24 Nov",
+    "week_revenue": "₹2.1 L",
+    "week_target": "₹3.1 L",
+    "attainment": "66.9%",
+    "gap": "−₹1.0 L",
+    "vs_previous_week": "+37.3%",
+    "ad_spend": "₹6,042",
+    "roas": "1.59",
+    "roas_previous_week": "2.94",
+    "discount": "17.1%",
+    "guideline": "15.6%",
+    "discount_vs_guideline": "+1.5 pp",
+    "sku_drivers": "Multi-Nut Skin Malai - 200ml - Single Pack (−₹31,598); Double Cocoa Skin Malai - 200ml - Single Pack (−₹25,860)",
+    "ad_plan_for_the_days": "₹14,919",
+    "spend_vs_ad_plan": "40%",
+    "ad_spend_as_pct_of_sales": "2.9%",
+    "platform_ad_spend_as_pct_of_sales": "7.3%"
+   },
+   "text": "Skin Malai on Nykaa reached ₹2.1 L against a ₹3.1 L target (66.9%) even though revenue grew 37.3% on last week, and the discount was 17.1% against a 15.6% guideline. Ad spend was only ₹6,042 against a plan of ₹14,919 and ROAS fell from 2.94 to 1.59, so what do you think is behind the ROAS drop and the shortfall on the Multi-Nut single pack?"
+  },
+  {
+   "id": "Q3",
+   "kind": "revenue",
+   "category": "Baby Pure Oils",
+   "platform": "Nykaa",
+   "facts": {
+    "week": "18 Nov – 24 Nov",
+    "week_revenue": "₹97,325",
+    "week_target": "₹1.6 L",
+    "attainment": "61.5%",
+    "gap": "−₹60,924",
+    "vs_previous_week": "−6.9%",
+    "ad_spend": "₹14,805",
+    "roas": "1.60",
+    "roas_previous_week": "2.25",
+    "discount": "19.4%",
+    "guideline": "17.8%",
+    "discount_vs_guideline": "+1.6 pp",
+    "sku_drivers": "Pure Virgin Coconut Baby Oil - 200 ml (−₹29,024); Pure Virgin Coconut Baby Oil - 100 ml (−₹11,276)",
+    "ad_plan_for_the_days": "₹11,549",
+    "spend_vs_ad_plan": "128%",
+    "ad_spend_as_pct_of_sales": "15.2%",
+    "platform_ad_spend_as_pct_of_sales": "7.3%"
+   },
+   "text": "Baby Pure Oils on Nykaa made ₹97,325 against a ₹1.6 L target (61.5%), while ad spend of ₹14,805 ran above the ₹11,549 plan, at 15.2% of sales versus 7.3% for the platform. ROAS also slipped from 2.25 to 1.60, so what is happening with the Pure Virgin Coconut Baby Oil 200 ml, and is the spend working for us?"
+  },
+  {
+   "id": "Q4",
+   "kind": "spend",
+   "category": "Comb",
+   "platform": "Nykaa",
+   "facts": {
+    "week": "18 Nov – 24 Nov",
+    "week_revenue": "₹1.7 L",
+    "week_target": "₹2.0 L",
+    "attainment": "81.3%",
+    "gap": "−₹38,038",
+    "vs_previous_week": "−5.0%",
+    "ad_spend": "₹33,408",
+    "roas": "1.42",
+    "roas_previous_week": "1.75",
+    "discount": "18.1%",
+    "guideline": "15.8%",
+    "discount_vs_guideline": "+2.3 pp",
+    "sku_drivers": "Neem Comb - Dual Tooth (−₹25,345); Neem Comb - Wide Tooth (−₹9,878)",
+    "ad_plan_for_the_days": "₹18,428",
+    "spend_vs_ad_plan": "181%",
+    "ad_spend_as_pct_of_sales": "20.2%",
+    "platform_ad_spend_as_pct_of_sales": "7.3%",
+    "why_flagged": "over ad plan, high spend for the sales"
+   },
+   "text": "Comb on Nykaa spent ₹33,408 against a plan of ₹18,428 (181%), which is 20.2% of sales versus 7.3% for the platform, and ROAS dropped from 1.75 to 1.42. Revenue still reached only ₹1.7 L against ₹2.0 L, so what drove the step-up in spend and what are you planning to do with it?"
+  },
+  {
+   "id": "Q5",
+   "kind": "discount",
+   "category": "Nutrimask",
+   "platform": "Nykaa",
+   "facts": {
+    "week": "18 Nov – 24 Nov",
+    "week_revenue": "₹1.5 L",
+    "week_target": "₹77,602",
+    "attainment": "197.2%",
+    "gap": "₹75,401",
+    "vs_previous_week": "+13.6%",
+    "ad_spend": "₹3,960",
+    "roas": "1.90",
+    "roas_previous_week": "2.60",
+    "discount": "19.7%",
+    "guideline": "14.5%",
+    "discount_vs_guideline": "+5.2 pp",
+    "sku_drivers": "Curry Sesame NutriMask - Pack of 2 (−₹2,448); Crushed Tri-Leaf NutriMask - Pack of 2 (−₹2,339)",
+    "ad_plan_for_the_days": "₹5,198",
+    "spend_vs_ad_plan": "76%",
+    "ad_spend_as_pct_of_sales": "2.6%",
+    "platform_ad_spend_as_pct_of_sales": "7.3%"
+   },
+   "text": "Nutrimask on Nykaa made ₹1.5 L against a ₹77,602 target (197.2%), but the discount was 19.7% against a 14.5% guideline (+5.2 pp). Was the deeper discount a deliberate choice to drive this overshoot, and would you expect to keep it at this level?"
+  },
+  {
+   "id": "Q6",
+   "kind": "discount",
+   "category": "Baby Care Combo",
+   "platform": "Nykaa",
+   "facts": {
+    "week": "18 Nov – 24 Nov",
+    "week_revenue": "₹4,003",
+    "week_target": "₹6,179",
+    "attainment": "64.8%",
+    "gap": "−₹2,176",
+    "vs_previous_week": "−55.8%",
+    "ad_spend": "no ads",
+    "roas": "–",
+    "roas_previous_week": "–",
+    "discount": "31.1%",
+    "guideline": "25.5%",
+    "discount_vs_guideline": "+5.6 pp",
+    "sku_drivers": "Baby Winter Kit 1 (−₹1,943); Summer Baby Maahu and Scalp Oil Combo (−₹1,559)",
+    "ad_plan_for_the_days": "no ad plan",
+    "spend_vs_ad_plan": "–",
+    "ad_spend_as_pct_of_sales": "0.0%",
+    "platform_ad_spend_as_pct_of_sales": "7.3%"
+   },
+   "text": "Baby Care Combo on Nykaa made ₹4,003 against a ₹6,179 target (64.8%), down 55.8% on last week, even with a 31.1% discount against a 25.5% guideline (+5.6 pp) and no ads running. What do you think is holding it back, and is the deeper discount helping at all?"
+  }
+ ],
+ "own_ids": [
+  "<179567111482.2548.15652949461565429053@nathabit.in>"
+ ],
+ "snapshot_accounts": [
+  {
+   "name": "Nykaa",
+   "plats": [
+    "Nykaa"
+   ],
+   "metrics": [
+    "Primary",
+    "Secondary",
+    "Discounting %",
+    "Spend",
+    "SLA"
+   ]
+  }
+ ],
+ "reminder_sent": false,
+ "pack_sent": false
+}
