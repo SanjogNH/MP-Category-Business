@@ -1,0 +1,305 @@
+{
+ "wbr": "2026-12-01",
+ "manager": "anika",
+ "sent_at": "2026-11-27T11:01:09.709234+05:30",
+ "message_id": "<179575748472.2338.2420769107972125142@nathabit.in>",
+ "subject": "WBR prep · Tue 1 Dec 12:15 pm · Anika [WBR-20261201-anika]",
+ "query_window": [
+  "2026-10-08",
+  "2026-11-26"
+ ],
+ "query_windows": {
+  "Amala Earth": [
+   "2026-11-18",
+   "2026-11-24"
+  ],
+  "Flipkart": [
+   "2026-11-19",
+   "2026-11-25"
+  ],
+  "Flipkart Minutes": [
+   "2026-11-19",
+   "2026-11-25"
+  ],
+  "Jio Mart": [
+   "2026-11-20",
+   "2026-11-26"
+  ],
+  "Kindlife": [
+   "2026-10-08",
+   "2026-10-14"
+  ],
+  "Maccaron": [
+   "2026-11-19",
+   "2026-11-25"
+  ],
+  "Meesho": [
+   "2026-11-20",
+   "2026-11-26"
+  ],
+  "Myntra": [
+   "2026-11-19",
+   "2026-11-25"
+  ],
+  "Pharmeasy": [
+   "2026-11-20",
+   "2026-11-26"
+  ],
+  "Pop Club": [
+   "2026-11-20",
+   "2026-11-26"
+  ],
+  "Purplle": [
+   "2026-11-19",
+   "2026-11-25"
+  ],
+  "Snapdeal": [
+   "2026-11-20",
+   "2026-11-26"
+  ],
+  "Tata Cliq": [
+   "2026-11-15",
+   "2026-11-21"
+  ]
+ },
+ "questions": [
+  {
+   "id": "Q1",
+   "kind": "revenue",
+   "category": "Soap",
+   "platform": "Meesho",
+   "facts": {
+    "week": "8 Oct – 26 Nov",
+    "week_revenue": "₹3.8 L",
+    "week_target": "₹7.1 L",
+    "attainment": "53.2%",
+    "gap": "−₹3.3 L",
+    "vs_previous_week": "+15.5%",
+    "ad_spend": "₹1,457",
+    "roas": "1.91",
+    "roas_previous_week": "–",
+    "discount": "21.8%",
+    "guideline": "18.1%",
+    "discount_vs_guideline": "+3.8 pp",
+    "sku_drivers": "Tomato Basil Soap 125g - Pack of 2 (−₹2.3 L); Tomato Basil 125g - Pack of 3 (−₹77,614)",
+    "ad_plan_for_the_days": "no ad plan",
+    "spend_vs_ad_plan": "–",
+    "ad_spend_as_pct_of_sales": "0.4%",
+    "platform_ad_spend_as_pct_of_sales": "0.4%"
+   },
+   "text": "Soap on Meesho closed at ₹3.8 L against a ₹7.1 L target (53.2%, −₹3.3 L), even though it grew +15.5% on the previous week, and Tomato Basil Soap 125g - Pack of 2 alone accounts for −₹2.3 L of the gap. What is holding that pack back, and what is the plan to close it?"
+  },
+  {
+   "id": "Q2",
+   "kind": "revenue",
+   "category": "Soap",
+   "platform": "Flipkart",
+   "facts": {
+    "week": "8 Oct – 26 Nov",
+    "week_revenue": "₹2.8 L",
+    "week_target": "₹6.1 L",
+    "attainment": "45.3%",
+    "gap": "−₹3.3 L",
+    "vs_previous_week": "−0.3%",
+    "ad_spend": "₹13,840",
+    "roas": "3.89",
+    "roas_previous_week": "3.17",
+    "discount": "13.8%",
+    "guideline": "18.6%",
+    "discount_vs_guideline": "−4.9 pp",
+    "sku_drivers": "Tomato Basil Soap 125g - Pack of 2 (−₹2.7 L); Tomato Basil Soap 125g - Pack of 4 (−₹35,901)",
+    "ad_plan_for_the_days": "₹47,669",
+    "spend_vs_ad_plan": "29%",
+    "ad_spend_as_pct_of_sales": "5.0%",
+    "platform_ad_spend_as_pct_of_sales": "4.1%"
+   },
+   "text": "Soap on Flipkart reached ₹2.8 L against a ₹6.1 L target (45.3%), with Tomato Basil Soap 125g - Pack of 2 the main drag at −₹2.7 L. Ad spend was only ₹13,840 against a plan of ₹47,669, yet it is 5.0% of sales versus the platform's 4.1%, so could you tell me how much of the shortfall comes from holding back spend and how much from the pack itself?"
+  },
+  {
+   "id": "Q3",
+   "kind": "revenue",
+   "category": "Shampoo Combo",
+   "platform": "Flipkart",
+   "facts": {
+    "week": "8 Oct – 26 Nov",
+    "week_revenue": "₹2.6 L",
+    "week_target": "₹4.1 L",
+    "attainment": "64.7%",
+    "gap": "−₹1.4 L",
+    "vs_previous_week": "+74.6%",
+    "ad_spend": "₹72,018",
+    "roas": "2.07",
+    "roas_previous_week": "3.81",
+    "discount": "19.1%",
+    "guideline": "21.3%",
+    "discount_vs_guideline": "−2.2 pp",
+    "sku_drivers": "Hibiscus All Season Hair Oil + Shampoo + Conditioner - Flipkart (−₹88,380); Trileaf All Season Hair Oil + Shampoo + Conditioner - Flipkart (−₹50,136)",
+    "ad_plan_for_the_days": "₹48,011",
+    "spend_vs_ad_plan": "150%",
+    "ad_spend_as_pct_of_sales": "27.4%",
+    "platform_ad_spend_as_pct_of_sales": "4.1%"
+   },
+   "text": "Shampoo Combo on Flipkart reached ₹2.6 L against a ₹4.1 L target (64.7%), while ad spend was ₹72,018 against a plan of ₹48,011. That is 27.4% of sales versus the platform's 4.1%, and ROAS fell from 3.81 to 2.07. What drove the extra spend, and why did it not convert into more revenue?"
+  },
+  {
+   "id": "Q4",
+   "kind": "spend",
+   "category": "Face Wash",
+   "platform": "Flipkart",
+   "facts": {
+    "week": "8 Oct – 26 Nov",
+    "week_revenue": "₹34.2 L",
+    "week_target": "₹25.9 L",
+    "attainment": "132.2%",
+    "gap": "₹8.3 L",
+    "vs_previous_week": "+19.7%",
+    "ad_spend": "₹1.4 L",
+    "roas": "2.80",
+    "roas_previous_week": "2.11",
+    "discount": "7.7%",
+    "guideline": "12.4%",
+    "discount_vs_guideline": "−4.7 pp",
+    "sku_drivers": "Ubtan Face Wash - 150g (−₹4.1 L); Ubtan Face Wash 150g - Pack of 2 (−₹3.2 L)",
+    "ad_plan_for_the_days": "₹33,982",
+    "spend_vs_ad_plan": "402%",
+    "ad_spend_as_pct_of_sales": "4.0%",
+    "platform_ad_spend_as_pct_of_sales": "4.1%",
+    "why_flagged": "over ad plan"
+   },
+   "text": "Face Wash on Flipkart is well ahead at ₹34.2 L against a ₹25.9 L target (132.2%), but ad spend was ₹1.4 L against a plan of ₹33,982. Spend is in line with the platform at 4.0% of sales versus 4.1%, and ROAS improved from 2.11 to 2.80, so was the higher spend a deliberate call, and should we raise the plan to reflect it?"
+  },
+  {
+   "id": "Q5",
+   "kind": "discount",
+   "category": "Face Wash",
+   "platform": "Meesho",
+   "facts": {
+    "week": "8 Oct – 26 Nov",
+    "week_revenue": "₹61.4 L",
+    "week_target": "₹30.4 L",
+    "attainment": "201.6%",
+    "gap": "₹30.9 L",
+    "vs_previous_week": "+48.1%",
+    "ad_spend": "₹7,066",
+    "roas": "29.60",
+    "roas_previous_week": "–",
+    "discount": "22.3%",
+    "guideline": "15.3%",
+    "discount_vs_guideline": "+7.0 pp",
+    "sku_drivers": "Bitter Neem Tikta Gel Face Wash (−₹51,183); Bitter Neem Gel Face Wash - Pack of 2 (−₹13,040)",
+    "ad_plan_for_the_days": "no ad plan",
+    "spend_vs_ad_plan": "–",
+    "ad_spend_as_pct_of_sales": "0.1%",
+    "platform_ad_spend_as_pct_of_sales": "0.4%"
+   },
+   "text": "Face Wash on Meesho is at ₹61.4 L against a ₹30.4 L target (201.6%), but the discount is 22.3% against a 15.3% guideline (+7.0 pp). How much of the revenue beat comes from the deeper discount, and can we bring it back toward guideline without losing the momentum?"
+  },
+  {
+   "id": "Q6",
+   "kind": "discount",
+   "category": "Face Wash",
+   "platform": "Myntra",
+   "facts": {
+    "week": "8 Oct – 26 Nov",
+    "week_revenue": "₹6.2 L",
+    "week_target": "₹3.6 L",
+    "attainment": "170.0%",
+    "gap": "₹2.5 L",
+    "vs_previous_week": "+53.7%",
+    "ad_spend": "₹25,498",
+    "roas": "3.18",
+    "roas_previous_week": "2.94",
+    "discount": "24.3%",
+    "guideline": "15.4%",
+    "discount_vs_guideline": "+9.0 pp",
+    "sku_drivers": "Bitter Milk Tikta Cream Face Wash (−₹6,387); Moringa Vit-C Tikta Cream Face Wash (−₹4,775)",
+    "ad_plan_for_the_days": "₹14,696",
+    "spend_vs_ad_plan": "173%",
+    "ad_spend_as_pct_of_sales": "4.1%",
+    "platform_ad_spend_as_pct_of_sales": "5.1%"
+   },
+   "text": "Face Wash on Myntra is at ₹6.2 L against a ₹3.6 L target (170.0%), but the discount is 24.3% against a 15.4% guideline (+9.0 pp). Is this discount our own call or part of a platform event, and what is the plan to bring it back toward guideline?"
+  }
+ ],
+ "own_ids": [
+  "<179575748472.2338.2420769107972125142@nathabit.in>"
+ ],
+ "snapshot_accounts": [
+  {
+   "name": "Flipkart",
+   "plats": [
+    "Flipkart"
+   ],
+   "metrics": [
+    "Primary",
+    "Secondary",
+    "Discounting %",
+    "Spend",
+    "SLA"
+   ]
+  },
+  {
+   "name": "Flipkart Minutes",
+   "plats": [
+    "Flipkart Minutes"
+   ],
+   "metrics": [
+    "Primary",
+    "Secondary",
+    "Discounting %",
+    "Spend",
+    "Availability"
+   ]
+  },
+  {
+   "name": "Meesho",
+   "plats": [
+    "Meesho"
+   ],
+   "metrics": [
+    "Primary",
+    "Secondary",
+    "Discounting %",
+    "Spend",
+    "SLA"
+   ]
+  },
+  {
+   "name": "Myntra",
+   "plats": [
+    "Myntra"
+   ],
+   "metrics": [
+    "Primary",
+    "Secondary",
+    "Discounting %",
+    "Spend",
+    "SLA"
+   ]
+  },
+  {
+   "name": "Other accounts",
+   "plats": [
+    "Amala Earth",
+    "Jio Mart",
+    "Kindlife",
+    "Maccaron",
+    "Pharmeasy",
+    "Pop Club",
+    "Purplle",
+    "Snapdeal",
+    "Tata 1mg",
+    "Tata Cliq"
+   ],
+   "metrics": [
+    "Primary",
+    "Secondary",
+    "Discounting %",
+    "Spend",
+    "SLA"
+   ]
+  }
+ ],
+ "reminder_sent": false,
+ "pack_sent": false
+}

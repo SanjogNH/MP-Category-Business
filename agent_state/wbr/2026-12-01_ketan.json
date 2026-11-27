@@ -1,0 +1,197 @@
+{
+ "wbr": "2026-12-01",
+ "manager": "ketan",
+ "sent_at": "2026-11-27T11:01:09.709234+05:30",
+ "message_id": "<179575749233.2338.12048395911872165874@nathabit.in>",
+ "subject": "WBR prep · Tue 1 Dec 3 pm · Ketan [WBR-20261201-ketan]",
+ "query_window": [
+  "2026-11-17",
+  "2026-11-23"
+ ],
+ "query_windows": {
+  "Amazon": [
+   "2026-11-17",
+   "2026-11-23"
+  ]
+ },
+ "questions": [
+  {
+   "id": "Q1",
+   "kind": "revenue",
+   "category": "Soap",
+   "platform": "Amazon",
+   "facts": {
+    "week": "17 Nov – 23 Nov",
+    "week_revenue": "₹5.0 L",
+    "week_target": "₹9.6 L",
+    "attainment": "52.3%",
+    "gap": "−₹4.6 L",
+    "vs_previous_week": "+0.7%",
+    "ad_spend": "₹48,045",
+    "roas": "4.07",
+    "roas_previous_week": "3.85",
+    "discount": "23.3%",
+    "guideline": "18.0%",
+    "discount_vs_guideline": "+5.3 pp",
+    "sku_drivers": "Tomato Basil Soap 125g - Pack of 2 (−₹1.6 L); Tomato Basil Soap - Single Pack (−₹48,664)",
+    "ad_plan_for_the_days": "₹64,653",
+    "spend_vs_ad_plan": "74%",
+    "ad_spend_as_pct_of_sales": "9.6%",
+    "platform_ad_spend_as_pct_of_sales": "15.1%"
+   },
+   "text": "Soap on Amazon reached ₹5.0 L against a ₹9.6 L target (52.3%, −₹4.6 L), and the shortfall is concentrated in Tomato Basil Soap 125g - Pack of 2 (−₹1.6 L) and the Single Pack (−₹48,664). Discount ran at 23.3% against an 18.0% guideline, so what is holding sales back on Tomato Basil despite the deeper discount?"
+  },
+  {
+   "id": "Q2",
+   "kind": "revenue",
+   "category": "Flora Jal",
+   "platform": "Amazon",
+   "facts": {
+    "week": "17 Nov – 23 Nov",
+    "week_revenue": "₹12,575",
+    "week_target": "₹2.8 L",
+    "attainment": "4.4%",
+    "gap": "−₹2.7 L",
+    "vs_previous_week": "+1.3%",
+    "ad_spend": "₹27,137",
+    "roas": "2.33",
+    "roas_previous_week": "2.25",
+    "discount": "16.0%",
+    "guideline": "15.6%",
+    "discount_vs_guideline": "+0.4 pp",
+    "sku_drivers": "Pure Gulab Jal - Single Pack (−₹2.5 L); Pure Gulab Jal - Pack of 2 (−₹16,675)",
+    "ad_plan_for_the_days": "₹26,098",
+    "spend_vs_ad_plan": "104%",
+    "ad_spend_as_pct_of_sales": "215.8%",
+    "platform_ad_spend_as_pct_of_sales": "15.1%"
+   },
+   "text": "Flora Jal on Amazon did only ₹12,575 against a ₹2.8 L target (4.4%), with almost all of the gap in Pure Gulab Jal - Single Pack (−₹2.5 L). Ad spend was ₹27,137 against a plan of ₹26,098, which is 215.8% of sales versus 15.1% for the platform, and ROAS is just 2.33. What is happening with the Single Pack (listing, stock or buy box), and is this spend worth continuing?"
+  },
+  {
+   "id": "Q3",
+   "kind": "revenue",
+   "category": "Face Wash",
+   "platform": "Amazon",
+   "facts": {
+    "week": "17 Nov – 23 Nov",
+    "week_revenue": "₹8.8 L",
+    "week_target": "₹10.9 L",
+    "attainment": "81.1%",
+    "gap": "−₹2.1 L",
+    "vs_previous_week": "−0.4%",
+    "ad_spend": "₹1.1 L",
+    "roas": "4.92",
+    "roas_previous_week": "4.24",
+    "discount": "16.8%",
+    "guideline": "15.2%",
+    "discount_vs_guideline": "+1.7 pp",
+    "sku_drivers": "Ubtan Tikta Face Wash (−₹1.4 L); Brightening Ubtan Face Wash - Pack of 2 (−₹43,378)",
+    "ad_plan_for_the_days": "₹1.1 L",
+    "spend_vs_ad_plan": "101%",
+    "ad_spend_as_pct_of_sales": "12.7%",
+    "platform_ad_spend_as_pct_of_sales": "15.1%"
+   },
+   "text": "Face Wash on Amazon came in at ₹8.8 L against ₹10.9 L (81.1%, −₹2.1 L), mainly from Ubtan Tikta Face Wash (−₹1.4 L). Ad spend of ₹1.1 L is on plan (₹1.1 L) and efficient, with ROAS up to 4.92 from 4.24, so what is limiting Ubtan Tikta volume, and is it something other than advertising?"
+  },
+  {
+   "id": "Q4",
+   "kind": "spend",
+   "category": "CP Hair Oil",
+   "platform": "Amazon",
+   "facts": {
+    "week": "17 Nov – 23 Nov",
+    "week_revenue": "₹4.1 L",
+    "week_target": "₹3.9 L",
+    "attainment": "103.4%",
+    "gap": "₹13,372",
+    "vs_previous_week": "+7.8%",
+    "ad_spend": "₹1.4 L",
+    "roas": "1.73",
+    "roas_previous_week": "1.31",
+    "discount": "19.0%",
+    "guideline": "15.2%",
+    "discount_vs_guideline": "+3.8 pp",
+    "sku_drivers": "Neem Oil - 200 ml (−₹10,595); Castor Oil - 200 ml (−₹10,325)",
+    "ad_plan_for_the_days": "₹1.4 L",
+    "spend_vs_ad_plan": "97%",
+    "ad_spend_as_pct_of_sales": "34.4%",
+    "platform_ad_spend_as_pct_of_sales": "15.1%",
+    "why_flagged": "high spend for the sales"
+   },
+   "text": "CP Hair Oil on Amazon beat target at ₹4.1 L against ₹3.9 L (103.4%), but ad spend of ₹1.4 L (plan ₹1.4 L) is 34.4% of sales against 15.1% for the platform. ROAS improved to 1.73 from 1.31, yet it is still low. What is driving the high spend for this revenue, and where can you tighten it?"
+  },
+  {
+   "id": "Q5",
+   "kind": "spend",
+   "category": "Shampoo Combo",
+   "platform": "Amazon",
+   "facts": {
+    "week": "17 Nov – 23 Nov",
+    "week_revenue": "₹5.2 L",
+    "week_target": "₹4.5 L",
+    "attainment": "114.6%",
+    "gap": "₹65,843",
+    "vs_previous_week": "+2.7%",
+    "ad_spend": "₹1.3 L",
+    "roas": "3.78",
+    "roas_previous_week": "4.04",
+    "discount": "17.1%",
+    "guideline": "20.4%",
+    "discount_vs_guideline": "−3.3 pp",
+    "sku_drivers": "Neem Beracyl Shampoo + Neem Green Tea Conditioner (−₹9,885); Castor Blackseed Shampoo - 250g + Castor Black Seed Conditioner - 150g (−₹2,073)",
+    "ad_plan_for_the_days": "₹1.1 L",
+    "spend_vs_ad_plan": "123%",
+    "ad_spend_as_pct_of_sales": "25.6%",
+    "platform_ad_spend_as_pct_of_sales": "15.1%",
+    "why_flagged": "over ad plan, high spend for the sales"
+   },
+   "text": "Shampoo Combo on Amazon is ahead of target at ₹5.2 L against ₹4.5 L (114.6%), but ad spend was ₹1.3 L against a plan of ₹1.1 L (123%), which is 25.6% of sales versus 15.1% for the platform. ROAS also slipped to 3.78 from 4.04. Why did spend run above plan, and was the extra needed to deliver this revenue?"
+  },
+  {
+   "id": "Q6",
+   "kind": "discount",
+   "category": "Baby Scalp Oil",
+   "platform": "Amazon",
+   "facts": {
+    "week": "17 Nov – 23 Nov",
+    "week_revenue": "₹2.3 L",
+    "week_target": "₹3.8 L",
+    "attainment": "62.3%",
+    "gap": "−₹1.4 L",
+    "vs_previous_week": "+2.8%",
+    "ad_spend": "₹16,321",
+    "roas": "6.60",
+    "roas_previous_week": "5.81",
+    "discount": "33.0%",
+    "guideline": "15.2%",
+    "discount_vs_guideline": "+17.8 pp",
+    "sku_drivers": "Brahmi Summer Baby Scalp Oil - 110 ml (−₹84,238); Brahmi Winter Baby Scalp Oil - 110 ml (−₹57,852)",
+    "ad_plan_for_the_days": "₹27,303",
+    "spend_vs_ad_plan": "60%",
+    "ad_spend_as_pct_of_sales": "7.0%",
+    "platform_ad_spend_as_pct_of_sales": "15.1%"
+   },
+   "text": "Baby Scalp Oil on Amazon reached ₹2.3 L against ₹3.8 L (62.3%, −₹1.4 L), even with discount at 33.0% versus a 15.2% guideline (+17.8 pp). The gap sits in Brahmi Summer (−₹84,238) and Brahmi Winter (−₹57,852). What is behind the deep discount, and why is it not converting into sales on these two SKUs?"
+  }
+ ],
+ "own_ids": [
+  "<179575749233.2338.12048395911872165874@nathabit.in>"
+ ],
+ "snapshot_accounts": [
+  {
+   "name": "Amazon",
+   "plats": [
+    "Amazon"
+   ],
+   "metrics": [
+    "Primary",
+    "Secondary",
+    "Discounting %",
+    "Spend",
+    "SLA"
+   ]
+  }
+ ],
+ "reminder_sent": false,
+ "pack_sent": false
+}
